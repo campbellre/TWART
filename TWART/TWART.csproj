@@ -61,9 +61,13 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Content Include="css\main.css" />
     <Content Include="index.html" />
     <Content Include="web.config" />
+=======
+    <Content Include="Web.config" />
+>>>>>>> origin/master
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -78,10 +82,15 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Folder Include="dataobjects\" />
     <Folder Include="images\photos\" />
     <Folder Include="models\" />
     <Folder Include="scripts\" />
+=======
+    <Folder Include="DataObjects\" />
+    <Folder Include="Models\" />
+>>>>>>> origin/master
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
