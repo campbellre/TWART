@@ -79,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="dataobjects\" />
+    <Folder Include="images\photos\" />
     <Folder Include="models\" />
     <Folder Include="scripts\" />
   </ItemGroup>
