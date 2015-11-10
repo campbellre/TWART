@@ -196,3 +196,5 @@ FakesAssemblies/
 *.opt
 TWART/Resource1.Designer.cs
 TWART/Resource1.resx
+TWART/Properties/Resource1.Designer.cs
+TWART/Properties/Resource1.resx

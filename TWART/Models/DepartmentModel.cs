@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
+using System.Resources;
 using MySql.Data.MySqlClient;
+using MySql.Data.MySqlClient.Properties;
 using TWART.DataObjects;
+using TWART.Properties;
 
 namespace TWART.Models
 {
@@ -54,7 +57,7 @@ namespace TWART.Models
         public void CreateNewDepartment(Department department)
         {
             connect = new MySqlConnection(_connectionString);
-            MySqlCommand createDepartment = new MySqlCommand();
+            MySqlCommand createDepartment = connect.CreateCommand();
 
             createDepartment.CommandText = "INSERT INTO Department(Department_Title, Address_ID, Department_Head)" +
                                            "Values (?,?,?);";

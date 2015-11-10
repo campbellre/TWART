@@ -3,6 +3,7 @@ using System.Data;
 using System.Resources;
 using MySql.Data.MySqlClient;
 using TWART.DataObjects;
+using TWART.Properties;
 
 namespace TWART.Models
 { 
