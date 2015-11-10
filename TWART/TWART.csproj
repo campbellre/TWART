@@ -66,14 +66,11 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <Compile Include="DataObjects\Department.cs" />
     <Compile Include="DataObjects\Employee.cs" />
     <Compile Include="DataObjects\Role.cs" />
     <Compile Include="Models\DepartmentModel.cs" />
     <Compile Include="Models\EmployeesModel.cs" />
-=======
->>>>>>> 66239a0cfb69b0513dcfefb3f493dc55e10cddc9
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
