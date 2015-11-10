@@ -62,12 +62,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\main.css" />
+    <Content Include="images\photos\1.jpg" />
+    <Content Include="images\photos\2.jpg" />
+    <Content Include="images\photos\3.jpg" />
+    <Content Include="images\photos\4.jpg" />
+    <Content Include="images\photos\5.jpg" />
     <Content Include="index.html" />
+    <Content Include="scripts\jquery-1.11.3.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\Search.cs" />
     <Compile Include="DataObjects\Department.cs" />
     <Compile Include="DataObjects\Employee.cs" />
+    <Compile Include="DataObjects\Login.cs" />
+    <Compile Include="DataObjects\Order.cs" />
     <Compile Include="DataObjects\Role.cs" />
     <Compile Include="Models\DepartmentModel.cs" />
     <Compile Include="Models\EmployeesModel.cs" />
@@ -90,12 +99,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="dataobjects\" />
-    <Folder Include="images\photos\" />
-    <Folder Include="models\" />
-    <Folder Include="scripts\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
