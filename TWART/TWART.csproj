@@ -61,36 +61,27 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <Content Include="css\main.css" />
     <Content Include="index.html" />
-    <Content Include="web.config" />
-=======
     <Content Include="Web.config" />
->>>>>>> origin/master
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <None Include="web.Debug.config">
-      <DependentUpon>web.config</DependentUpon>
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
     </None>
-    <None Include="web.Release.config">
-      <DependentUpon>web.config</DependentUpon>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <Folder Include="dataobjects\" />
     <Folder Include="images\photos\" />
     <Folder Include="models\" />
     <Folder Include="scripts\" />
-=======
-    <Folder Include="DataObjects\" />
-    <Folder Include="Models\" />
->>>>>>> origin/master
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
