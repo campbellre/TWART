@@ -68,6 +68,7 @@
     <Compile Include="DataObjects\Department.cs" />
     <Compile Include="DataObjects\Employee.cs" />
     <Compile Include="DataObjects\Role.cs" />
+    <Compile Include="Models\DepartmentModel.cs" />
     <Compile Include="Models\EmployeesModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resource1.Designer.cs">

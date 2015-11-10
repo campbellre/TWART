@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Resources;
 using MySql.Data.MySqlClient;
 using TWART.DataObjects;
@@ -21,19 +22,21 @@ namespace TWART.Models
 
             connect = new MySqlConnection(_connectionString);
             MySqlCommand empCommand = connect.CreateCommand();
+            
 
-            empCommand.CommandText = @"Insert into Employee " +
+            empCommand.CommandType = CommandType.Text;
+            empCommand.CommandText = "INSERT INTO Employee " +
                                      "(Forenames, Surname, DOB, Contact_Number, Start_Date, Department_ID, Role_ID) " +
-                                     "Values" +
-                                     "(" +
-                                     "'" + em.Firstname + "'," +
-                                     "'" + em.Lastname + "'," +
-                                     "'" + em.GetDOBString()+ "'," +
-                                     "'" + em.ContactNumber + "'," +
-                                     "'" + em.GetStartDateString() + "'," +
-                                           em.Dept + "," +
-                                           em.Role +
-                                     "); ";
+                                     "Values (?,?,?,?,?,?,?);";
+
+            empCommand.Parameters.Add(new MySqlParameter("Forenames", em.Firstname));
+            empCommand.Parameters.Add(new MySqlParameter("Surname", em.Lastname));
+            empCommand.Parameters.Add(new MySqlParameter("DOB", em.DOB));
+            empCommand.Parameters.Add(new MySqlParameter("Contact_Number", em.ContactNumber));
+            empCommand.Parameters.Add(new MySqlParameter("Start_Date", em.Startdate));
+            empCommand.Parameters.Add(new MySqlParameter("Department_ID", em.Dept));
+            empCommand.Parameters.Add(new MySqlParameter("Role_ID", em.Role));
+
 
             connect.Open();
 
@@ -42,6 +45,9 @@ namespace TWART.Models
             // TODO: This is Temporary.
             return true;
         }
+
+
+
 
 
 
