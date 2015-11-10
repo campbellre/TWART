@@ -80,7 +80,34 @@ namespace TWART.Models
         // This is the impmented method others should call it. 
         public Department GetDepartment(int ID)
         {
-            
+            Department returnDepartment = null;
+
+            connect = new MySqlConnection(_connectionString);
+            MySqlCommand getByIdDepartment = connect.CreateCommand();
+
+            getByIdDepartment.CommandText = "SELECT Department_ID, Department_Title, Address_Id, Department_Head " +
+                                            "From Department " +
+                                            "WHERE Department_ID = ?";
+            getByIdDepartment.Parameters.Add(new MySqlParameter("Department_ID", ID));
+
+            MySqlDataReader reader;
+
+            connect.Open();
+
+            reader = getByIdDepartment.ExecuteReader();
+
+            if (reader.NextResult())
+            {
+                returnDepartment = new Department(reader["Department_ID"],
+                    reader["Department_Title"],
+                    reader["Address_ID"],
+                    reader["Department_Head"]);
+            }
+
+            connect.Close();
+
+            return returnDepartment;
+
         }
 
 
