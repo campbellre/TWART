@@ -42,6 +42,8 @@ namespace TWART.Models
 
             empCommand.ExecuteNonQuery();
 
+            connect.Close();;
+
             // TODO: This is Temporary.
             return true;
         }

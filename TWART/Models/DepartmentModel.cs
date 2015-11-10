@@ -21,6 +21,8 @@ namespace TWART.Models
 
         public List<Department> GetDepartmentsList()
         {
+            // TODO: Correct to use usings.
+
             List<Department> deptList = new List<Department>(); 
             connect = new MySqlConnection(_connectionString);
             MySqlCommand empCommand = connect.CreateCommand();
@@ -29,7 +31,9 @@ namespace TWART.Models
                                      "From Department;";
 
             MySqlDataReader reader;
-
+            
+            connect.Open();
+            
             reader = empCommand.ExecuteReader();
 
             foreach (DataRow deptColumn in reader)
@@ -38,10 +42,51 @@ namespace TWART.Models
                 deptList.Add(new Department(deptColumn["Department_ID"], deptColumn["Department_Title"],deptColumn["Address_ID"], deptColumn["Department_Head"]));
             }
 
+            reader.Close();
 
+            connect.Close();
 
+            return deptList;
 
         }
+
+
+        public void CreateNewDepartment(Department department)
+        {
+            connect = new MySqlConnection(_connectionString);
+            MySqlCommand createDepartment = new MySqlCommand();
+
+            createDepartment.CommandText = "INSERT INTO Department(Department_Title, Address_ID, Department_Head)" +
+                                           "Values (?,?,?);";
+
+
+            createDepartment.Parameters.Add(new MySqlParameter("Department_Title", department.Title));
+            createDepartment.Parameters.Add(new MySqlParameter("Address_ID", department.Address));
+            createDepartment.Parameters.Add(new MySqlParameter("Department_Head", department.Head));
+
+
+            connect.Open();
+
+            createDepartment.ExecuteNonQuery();
+
+            connect.Close();
+
+        }
+
+        // Get department by id.
+        // This is the impmented method others should call it. 
+        public Department GetDepartment(int ID)
+        {
+            
+        }
+
+
+        // Overload to allow getting department be either id or a department object. 
+        public Department GetDepartment(Department department)
+        {
+            return this.GetDepartment(department.Id);
+        }
+
 
     }
 }
