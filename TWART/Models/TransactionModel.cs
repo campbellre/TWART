@@ -49,7 +49,7 @@ namespace TWART.Models
         }
 
         // Finds Transactions with the specified details in the order object.
-        public List<Transaction> SearchTransactions(CreateOrder o)
+        public List<Transaction> SearchTransactions(Package p)
         {
             throw new NotImplementedException();
         }
