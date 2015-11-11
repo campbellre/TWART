@@ -30,57 +30,54 @@ namespace TWART.Models
         }
 
         // This is the main method to get a package from the packages ID within the databse.
-        public Package GetPackage(int ID)
+        public Package SearchPackage(int ID)
         {
             throw new NotImplementedException();
         }
 
         // Calls the main method to get packages.
-        public Package GetPackage(Package p)
+        public Package SearchPackage(Package p)
         {
-            return GetPackage(p.ID);
+            return SearchPackage(p.ID);
         }
 
         // This method is to get packages that match on elements included in the goods object.
-        public List<Package> GetPackagesByGoods(Goods g)
+        public List<Package> SearchPackage(Goods g)
         {
             throw new NotImplementedException();
         }
 
         // This method is to get packages that match on elements included in the address object.
-        // For a packages Destination Address.
-        public List<Package> GetPackageByDestinationAddress(Address a)
+        // Searches for packages with both source and destination addresses.
+        public List<Package> SearchPackage(Address a)
         {
             throw new NotImplementedException();
         }
 
         // This method is to get packages that match on elements included in the address object.
-        // For a packages Source Address.
-        public List<Package> GetPackageBySourceAddress(Address a)
+        // Will match on items being source of destination, specified by AddressType enum.
+        public List<Package> SearchPackage(Address a, AddressType type)
         {
             throw new NotImplementedException();
         }
 
         // This method is to get packages that match on elements included in the trasport object.
-        public List<Package> GetPackagesByTransport(Transport t)
+        public List<Package> SearchPackage(Transport t)
         {
             throw new NotImplementedException();
         }
 
-        // This method is to get packages that placed between the start and end dates.
-        public List<Package> GetPackagesPlacesBetweenDate(DateTime start, DateTime end)
+        // This method is to get all packages with a placed, received or delivered date
+        // between the start and end dates.
+        public List<Package> SearchPackage(DateTime start, DateTime end)
         {
             throw new NotImplementedException();
         }
 
-        // This method is to get packages that we recived between the start and end dates.
-        public List<Package> GetPackagesReceivedBetweenDate(DateTime start, DateTime end)
-        {
-            throw new NotImplementedException();
-        }
-
-        // This method is to get packages that we delivered or are delivering between the start and end dates.
-        public List<Package> GetPackagesDeliveredBetweenDate(DateTime start, DateTime end)
+        // This method is to get allow packages with either a placed, recieved or delivered date
+        // between the start and end dates. With the PackageDateType specifing whether to search
+        // on the placed, recived or deliverd date. 
+        public List<Package> SearchPackage(DateTime start, DateTime end, PackageDateType type)
         {
             throw new NotImplementedException();
         }

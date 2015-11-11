@@ -24,15 +24,15 @@ namespace TWART.Models
         }
 
         // The main method that gets a role from the database. 
-        public Role GetRoles(int ID)
+        public Role SearchRoles(int ID)
         {
             throw new NotImplementedException();
         }
 
         // Function calls main method for getting roles.
-        public Role GetRoles(Role r)
+        public Role SearchRoles(Role r)
         {
-            return GetRoles(r.Id);
+            return SearchRoles(r.Id);
         }
 
         public List<Role> GetRolesList()

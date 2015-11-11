@@ -78,7 +78,7 @@ namespace TWART.Models
 
         // Get department by id.
         // This is the impmented method others should call it. 
-        public Department GetDepartment(int ID)
+        public Department SearchDepartment(int ID)
         {
             Department returnDepartment = null;
 
@@ -112,9 +112,9 @@ namespace TWART.Models
 
 
         // Overload to allow getting department be either id or a department object. 
-        public Department GetDepartment(Department department)
+        public Department SearchDepartment(Department department)
         {
-            return this.GetDepartment(department.Id);
+            return this.SearchDepartment(department.Id);
         }
 
 
