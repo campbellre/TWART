@@ -72,6 +72,8 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\EditContactDetails.cs" />
+    <Compile Include="Controller\EditEmployeeDetails.cs" />
     <Compile Include="DataObjects\Account.cs" />
     <Compile Include="DataObjects\Account_Type.cs" />
     <Compile Include="DataObjects\Address.cs" />
@@ -113,7 +115,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\Login.cs" />
-    <Compile Include="Controller\Order.cs" />
+    <Compile Include="Controller\CreateOrder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Web.Debug.config">

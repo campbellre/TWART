@@ -6,7 +6,7 @@ using System.Web;
 namespace TWART.Controller
 {
     // Handles the setting up of an order
-    public class Order
+    public class CreateOrder
     {
         // Class parameters
         int orderID;
@@ -15,7 +15,7 @@ namespace TWART.Controller
         DateTime placed;
 
         // Class constructor
-        public Order()
+        public CreateOrder()
         {
             // CONSTRUCTOR GOES HERE
         }

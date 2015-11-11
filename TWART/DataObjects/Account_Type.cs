@@ -12,5 +12,4 @@ namespace TWART.DataObjects
         public String Benefit { get; set; }
         public Decimal Cost { get; set; }
     }
-    }
 }

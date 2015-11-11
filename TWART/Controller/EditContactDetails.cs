@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using TWART.DataObjects;
 using System.Linq;
 using System.Web;
 
@@ -13,16 +14,18 @@ namespace TWART.Controller
         String telephone;
         String firstName;
         String surname;
+        String position;
 
 
         // Constructor
-        public EditContactDetails (int ID, String tele, String fN, String sN)
+        public EditContactDetails (int ID, String tele, String fN, String sN, String pos)
         {
             // CONSTRUCTOR GOES HERE
             this.contactId = ID;
             this.telephone = tele;
             this.firstName = fN;
             this.surname = sN;
+            this.position = pos;
         }
 
         // Blank constructor
@@ -39,7 +42,8 @@ namespace TWART.Controller
          */
         public bool saveDetails()
         {
-            //return ryansMethod(this.contactId, this.telephone, this.firstName, this.surname);
+            Contact newContact = new Contact(contactId, firstName, surname, position, telephone)
+            //return ryansMethod(newContact);
             return false;
         }
     }
