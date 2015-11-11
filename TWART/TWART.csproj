@@ -80,14 +80,17 @@
     <Compile Include="DataObjects\Contact.cs" />
     <Compile Include="DataObjects\Customer.cs" />
     <Compile Include="DataObjects\Goods.cs" />
+    <Compile Include="DataObjects\LoggedIn.cs" />
     <Compile Include="DataObjects\Package.cs" />
     <Compile Include="DataObjects\PackageDateType.cs" />
     <Compile Include="DataObjects\Specification.cs" />
     <Compile Include="DataObjects\Transaction.cs" />
     <Compile Include="DataObjects\Transport.cs" />
+    <Compile Include="DataObjects\User.cs" />
     <Compile Include="Models\AccountModel.cs" />
     <Compile Include="Models\AddressModel.cs" />
     <Compile Include="Models\CustomerModel.cs" />
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\RoleModel.cs" />
     <Compile Include="Models\PackageModel.cs" />
     <Compile Include="Models\TransactionModel.cs" />
