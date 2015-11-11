@@ -72,7 +72,12 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataObjects\Account.cs" />
+    <Compile Include="DataObjects\Account_Type.cs" />
     <Compile Include="DataObjects\Address.cs" />
+    <Compile Include="DataObjects\Bank.cs" />
+    <Compile Include="DataObjects\Contact.cs" />
+    <Compile Include="DataObjects\Customer.cs" />
     <Compile Include="DataObjects\Goods.cs" />
     <Compile Include="DataObjects\Package.cs" />
     <Compile Include="DataObjects\Specification.cs" />
