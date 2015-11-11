@@ -83,6 +83,7 @@
     <Compile Include="DataObjects\Package.cs" />
     <Compile Include="DataObjects\PackageDateType.cs" />
     <Compile Include="DataObjects\Specification.cs" />
+    <Compile Include="DataObjects\Transaction.cs" />
     <Compile Include="DataObjects\Transport.cs" />
     <Compile Include="Models\AccountModel.cs" />
     <Compile Include="Models\AddressModel.cs" />
