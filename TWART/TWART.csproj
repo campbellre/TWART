@@ -77,6 +77,12 @@
     <Compile Include="DataObjects\Package.cs" />
     <Compile Include="DataObjects\Specification.cs" />
     <Compile Include="DataObjects\Transport.cs" />
+    <Compile Include="Models\AccountModel.cs" />
+    <Compile Include="Models\AddressModel.cs" />
+    <Compile Include="Models\ClientModel.cs" />
+    <Compile Include="Models\RoleModel.cs" />
+    <Compile Include="Models\PackageModel.cs" />
+    <Compile Include="Models\TransactionModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controller\Search.cs" />
     <Compile Include="DataObjects\Department.cs" />
