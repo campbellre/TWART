@@ -1,44 +1,156 @@
-﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <title>TWART Shipping Co.</title>
-    <link rel="stylesheet" type="text/css" href="CSS/main.css" />
-</head>
-<body>
-    <h1>TWART Shipping Co.</h1>
-    <div id="Tabs">
-        <ul>
-            <li>
-                <a href="#">Home</a>
-                <a href="#">Admin</a>
-                <a href="#">Banking</a>
-                <a href="#">Client</a>
-                <a href="#">Goods</a>
-            </li>
-        </ul>
-    </div>
-    <div id="Description">
-        <body>We are TWART Shipping Co. We love to ship things!</body>
-    </div>
-    <div id="Login">
-        <body>Insert Login Here</body>
-    </div>
-    <!-- Picture Slideshow -->
-    <div id="Slideshow">
-        <ul class="slides">
-            <li><img src="images/photos/1.jpg" width="620" height="320" alt="Tristan" /></li>
-            <li><img src="images/photos/2.jpg" width="620" height="320" alt="William" /></li>
-            <li><img src="images/photos/3.jpg" width="620" height="320" alt="Andrew" /></li>
-            <li><img src="images/photos/4.jpg" width="620" height="320" alt="Ryan" /></li>
-            <li><img src="images/photos/5.jpg" width="620" height="320" alt="Ryan" /></li>
-        </ul>
-        <span class="arrow previous"></span>
-        <span class="arrow next"></span>
-    </div>
-
-    <!-- Scripts -->
-    <script src="scripts/jquery-1.11.3.js"></script>
-    <script src="scripts/script.js"></script>
-
-</body>
+﻿<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>TWART Shipping Co.</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+	</head>
+	<body>
+		<!-- Header -->
+			<div id="header">
+				<div class="top">
+                    <!-- Logo -->
+                    <div id="logo">
+                        <span class="image avatar48"><img src="images/avatar.jpg" alt="" /></span>
+                        <h1 id="title">TWART Shipping Corporation</h1>
+                    </div>
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li><a href="#about" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-home">What We Do</span></a></li>
+								<li><a href="#contact" id="contact-link" class="skel-layers-ignoreHref"><span class="icon fa-envelope">Get In Touch</span></a></li>
+                                <li><a href="login.html" id="foobar-link"><span class="login">Login</span></a></li>
+                                <li><a href="login.html" id="foobar-link"><span class="signup">Sign Up</span></a></li>
+							</ul>
+						</nav>
+				</div>
+				<div class="bottom">
+					<!-- Social Icons -->
+						<ul class="icons">
+							<li><a href="https://github.com/campbellre/TWART" class="icon fa-github"><span class="label">Github</span></a></li>
+							<li><a href="#contact" class="icon fa-envelope"><span class="label">Email</span></a></li>
+						</ul>
+				</div>
+			</div>
+		<!-- Main -->
+			<div id="main">
+				<!-- Intro -->
+					<section id="top" class="one dark cover">
+						<div class="container">
+							<header>
+								<h2 class="alt">We are <strong>TWART Shipping Corporation</strong><br />
+								A world leader in logistics and supply.</h2>
+								<p>Founded in 2015 by five friends from<br />
+								the University of Dundee, in Scotland.</p>
+							</header>
+							<footer>
+								<a href="#about" class="button scrolly">Find Out More</a>
+							</footer>
+						</div>
+					</section>
+				<!-- About -->
+					<section id="about" class="two">
+						<div class="container">
+							<header>
+								<h2>What We Do</h2>
+							</header>
+							<p>Our logistics have a huge field-leading web based front end, 
+                            all the latest in web technology is used to provide a high quality service 
+                            for our clientele. Our main users are corporate consumers, and unfortunately our shipping is not 
+                            available for an individual. Our high-end database allows multiple demographics from the clientele 
+                            and our own employees to have different views of the database. Our own employees, on the logistics 
+                            side are able to access views of the depots locations, and cargo/goods information. 
+                            Our accountancy employees are able to see views of the transactions, contracts, staff details, 
+                            banking information and orders. For our clients, views of the services we provide will 
+                            be available, such as our different priorities of shipping, our cheapest options or shipping with 
+                            tracking information.</p>
+							<div class="row">
+								<div class="4u 12u$(mobile)">
+									<article class="item">
+                                        <a href="http://www.army.mod.uk/UOTC/30767.aspx" class="image fit"><img src="images/pic02.jpg" alt="" /></a>
+										<header>
+											<h3>Tristan</h3>
+										</header>
+									</article>
+									<article class="item">
+                                        <a href="http://www.willhulme.co.uk" class="image fit"><img src="images/pic03.jpg" alt="" /></a>
+										<header>
+											<h3>William</h3>
+										</header>
+									</article>
+								</div>
+								<div class="4u 12u$(mobile)">
+									<article class="item">
+                                        <a href="http://www.dundee.ac.uk" class="image fit"><img src="images/pic04.jpg" alt="" /></a>
+										<header>
+											<h3>University of Dundee</h3>
+										</header>
+									</article>
+									<article class="item">
+										<a class="image fit"><img src="images/pic05.jpg" alt="" /></a>
+										<header>
+											<h3>Andrew</h3>
+										</header>
+									</article>
+								</div>
+								<div class="4u$ 12u$(mobile)">
+									<article class="item">
+										<a class="image fit"><img src="images/pic06.jpg" alt="" /></a>
+										<header>
+											<h3>Ryan</h3>
+										</header>
+									</article>
+									<article class="item">
+                                        <a href="http://uk.singlemuslim.com/" class="image fit"><img src="images/pic07.jpg" alt="" /></a>
+										<header>
+											<h3>Tousif</h3>
+										</header>
+									</article>
+								</div>
+							</div>
+						</div>
+					</section>
+				<!-- Contact -->
+					<section id="contact" class="four">
+						<div class="container">
+							<header>
+								<h2>Contact</h2>
+							</header>
+							<p>If you are an UK based or International company or business interested in using our service,
+                            please get in touch with us below and we will be in touch within 1-3 business days.</p>
+							<form method="post" action="#">
+								<div class="row">
+									<div class="6u 12u$(mobile)"><input type="text" name="name" placeholder="Name" /></div>
+									<div class="6u$ 12u$(mobile)"><input type="text" name="email" placeholder="Email" /></div>
+									<div class="12u$">
+										<textarea name="message" placeholder="Message"></textarea>
+									</div>
+									<div class="12u$">
+										<input type="submit" value="Send Message" />
+									</div>
+								</div>
+							</form>
+						</div>
+					</section>
+			</div>
+		<!-- Footer -->
+			<div id="footer">
+				<!-- Copyright -->
+					<ul class="copyright">
+						<li>&copy; TWART Shipping Co. All rights reserved.</li>
+					</ul>
+			</div>
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollzer.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+	</body>
 </html>

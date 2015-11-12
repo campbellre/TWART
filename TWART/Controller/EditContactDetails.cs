@@ -42,7 +42,7 @@ namespace TWART.Controller
          */
         public bool saveDetails()
         {
-            Contact newContact = new Contact(contactId, firstName, surname, position, telephone)
+            Contact newContact = new Contact(contactId, firstName, surname, position, telephone);
             //return ryansMethod(newContact);
             return false;
         }
