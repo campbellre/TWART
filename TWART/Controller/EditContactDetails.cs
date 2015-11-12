@@ -44,6 +44,7 @@ namespace TWART.Controller
         {
             Contact newContact = new Contact(contactId, firstName, surname, position, telephone);
             //return ryansMethod(newContact);
+            // Contact newContact = new Contact(contactId, firstName, surname, position, telephone);
             return false;
         }
     }

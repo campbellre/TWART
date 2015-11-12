@@ -54,9 +54,6 @@ namespace TWART.DataObjects
             {
                 // Change a text box to display error message (Toysif - UI)
             }
-
-
-
         }
 
         // Searches for a delivery
@@ -94,7 +91,6 @@ namespace TWART.DataObjects
         {
             string title = parameters[0][1];
             string head = parameters[1][1];
-
         }
         #endregion
 
