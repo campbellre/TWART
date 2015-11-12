@@ -86,11 +86,19 @@
     <Content Include="images\pic05.jpg" />
     <Content Include="images\pic06.jpg" />
     <Content Include="images\pic07.jpg" />
+    <Content Include="Admin.aspx" />
     <Content Include="index.html" />
     <Content Include="scripts\jquery-1.11.3.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin.aspx.cs">
+      <DependentUpon>Admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin.aspx.designer.cs">
+      <DependentUpon>Admin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Controller\EditContactDetails.cs" />
     <Compile Include="Controller\EditEmployeeDetails.cs" />
     <Compile Include="DataObjects\Account.cs" />
