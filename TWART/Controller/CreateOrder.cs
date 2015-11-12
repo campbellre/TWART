@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using TWART.DataObjects;
 using System.Linq;
 using System.Web;
@@ -13,7 +14,7 @@ namespace TWART.Controller
         int orderID;
         int accountID;
         int clientID;
-        ArrayList<Package> packageList = new ArrayList<Package>();
+        List<Package> packageList = new List<Package>();
         DateTime placed;
 
         // Class constructor
