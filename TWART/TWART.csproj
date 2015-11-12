@@ -61,6 +61,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin.aspx" />
     <Content Include="css\main.css" />
     <Content Include="images\photos\1.jpg" />
     <Content Include="images\photos\2.jpg" />
@@ -72,6 +73,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin.aspx.cs">
+      <DependentUpon>Admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin.aspx.designer.cs">
+      <DependentUpon>Admin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Controller\EditContactDetails.cs" />
     <Compile Include="Controller\EditEmployeeDetails.cs" />
     <Compile Include="DataObjects\Account.cs" />
