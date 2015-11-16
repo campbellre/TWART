@@ -88,7 +88,9 @@
     <Content Include="images\pic07.jpg" />
     <Content Include="Admin.aspx" />
     <Content Include="index.html" />
+    <Content Include="login.html" />
     <Content Include="scripts\jquery-1.11.3.js" />
+    <Content Include="signup.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
