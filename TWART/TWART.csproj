@@ -103,6 +103,7 @@
     </Compile>
     <Compile Include="Controller\EditContactDetails.cs" />
     <Compile Include="Controller\EditEmployeeDetails.cs" />
+    <Compile Include="Controller\Register.cs" />
     <Compile Include="DataObjects\Account.cs" />
     <Compile Include="DataObjects\Account_Type.cs" />
     <Compile Include="DataObjects\Address.cs" />
