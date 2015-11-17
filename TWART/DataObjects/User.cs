@@ -14,6 +14,5 @@ namespace TWART.DataObjects
         public String firstname { get; set; }
         public String surname { get; set; }
         public String companyName { get; set; }
-
     }
 }

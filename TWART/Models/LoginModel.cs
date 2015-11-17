@@ -29,7 +29,7 @@ namespace TWART.Models
             throw new NotImplementedException();
         }
 
-        public void ChangePasswork(User u, String password)
+        public void ChangePassword(User u, String password)
         {
             throw new NotImplementedException();
         }
