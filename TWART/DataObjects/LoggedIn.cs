@@ -10,5 +10,11 @@ namespace TWART.DataObjects
         // Why State, Why not State
         // TODO: Correct this
         public Boolean State { get; set; }
+        public String AccessLevel { get; set; }
+
+        public Boolean IsLoggedIn()
+        {
+            return State;
+        }
     }
 }

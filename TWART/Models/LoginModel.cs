@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI.WebControls;
@@ -26,7 +27,35 @@ namespace TWART.Models
 
         public LoggedIn Login(User u)
         {
-            throw new NotImplementedException();
+            var l = new LoggedIn();
+
+            using (connect = new MySqlConnection(_connectionString))
+            {
+                try
+                {
+                    string query = "LoggingIn";
+                    var cmd = new MySqlCommand(query, connect) {CommandType = CommandType.StoredProcedure};
+
+                    cmd.Parameters.AddWithValue("UsersName", u.username);
+                    cmd.Parameters.AddWithValue("UserPass", u.password);
+                    
+                    connect.Open();
+
+                    var reader = cmd.ExecuteReader();
+
+                        l.State = (bool)reader["Login"];
+                        l.AccessLevel = reader["AccessLevel"].ToString();
+
+
+                    connect.Close();
+                }
+                catch (InvalidOperationException ioException)
+                {
+                    connect.Close();
+                }
+            }
+
+            return l;
         }
 
         public void ChangePassword(User u, String password)
