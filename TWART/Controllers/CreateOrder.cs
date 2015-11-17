@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Web;
 using TWART.DataObjects;
+using TWART.Models;
 
 namespace TWART.Controller
 {
@@ -16,6 +17,7 @@ namespace TWART.Controller
         int clientID;
         List<Package> packageList = new List<Package>();
         DateTime placed;
+        int totalPrice;
 
         // Class constructor
         public CreateOrder(int accountID, List<Package> incomingList)
@@ -24,19 +26,71 @@ namespace TWART.Controller
             packageList = incomingList;
             placed = DateTime.Now;
 
-            
+            // Gets the account type (Admin, etc.)
+            int accountType = getAccountType();
 
-            int totalPrice = calcPrice();
-
+            // Calculates the price of the order
+            totalPrice = calcPrice(accountType);
         }
 
+        #region Internal calculations
         // Calculates the account type
-        
+        private int getAccountType()
+        {
+            // Establishes the account model
+            AccountModel accountControl = new AccountModel();
+
+            // Searches for the account
+            Account thisAccount = accountControl.GetAccount(accountID);
+
+            // Returns the account type
+            return thisAccount.ID;
+        }
 
         // Calculates the total cost of the order
-        private int calcPrice()
+        private int calcPrice(int accountType)
         {
+            int baseCost = calcBaseCost();
+
             return 0;
         }
+
+        // Calculates the base cost of the package based on dimensions / weight
+        private int calcBaseCost()
+        {
+            // In pence
+            int runningCost = 0;
+
+            // Iterates through the packages in the list
+            foreach(Package p in packageList)
+            {
+                Specification thisSpec = p.Specification;
+                
+                if (thisSpec.Length <= 42 && thisSpec.Width <= 34 && thisSpec.Height <= 27 && thisSpec.Weight <= 10)
+                {
+                    runningCost += 1500;
+                }
+                else if (thisSpec.Length <= 50 && thisSpec.Width <= 45 && thisSpec.Height <= 34 && thisSpec.Weight <= 25)
+                {
+                    runningCost += 2100;
+                }
+                else if (thisSpec.Length <= 60 && thisSpec.Width <= 54 && thisSpec.Height <= 41 && thisSpec.Weight <= 40)
+                {
+                    runningCost += 3000;
+                }
+                else if (thisSpec.Length <= 96 && thisSpec.Width <= 15 && thisSpec.Height <= 15)
+                {
+                    runningCost += 1750;
+                }
+                else // Catch
+                {
+                    // Outwith package band fee
+                    runningCost += 3500;
+                }
+            }
+
+            return runningCost;
+        }
+        #endregion
     }
 }
