@@ -1,0 +1,10 @@
+INSERT INTO TWART.`Role` (`Role_Title`) VALUES ("Cras"),("magna."),("Donec"),("aliquet"),("lectus"),("nibh"),("diam."),("nostra,"),("amet"),("consectetuer");
+INSERT INTO TWART.`Role` (`Role_Title`) VALUES ("pede,"),("mus."),("euismod"),("arcu."),("tincidunt"),("nisi."),("ornare,"),("ultricies"),("lacinia"),("Nullam");
+INSERT INTO TWART.`Role` (`Role_Title`) VALUES ("elit,"),("purus."),("Aliquam"),("id"),("mattis"),("risus."),("non,"),("dui"),("arcu."),("Suspendisse");
+INSERT INTO TWART.`Role` (`Role_Title`) VALUES ("adipiscing."),("metus"),("a,"),("Aliquam"),("congue"),("Nullam"),("porttitor"),("magna"),("ligula."),("sagittis");
+INSERT INTO TWART.`Role` (`Role_Title`) VALUES ("sit"),("vel"),("dolor,"),("in"),("dui,"),("enim,"),("pede,"),("mi."),("auctor,"),("magna.");
+INSERT INTO TWART.`Role` (`Role_Title`) VALUES ("fermentum"),("pellentesque,"),("metus"),("magnis"),("Donec"),("magna"),("metus."),("Integer"),("velit"),("a,");
+INSERT INTO TWART.`Role` (`Role_Title`) VALUES ("fermentum"),("libero."),("molestie"),("mattis"),("non,"),("Nulla"),("fermentum"),("Duis"),("dictum"),("scelerisque");
+INSERT INTO TWART.`Role` (`Role_Title`) VALUES ("Aenean"),("est."),("orci,"),("urna"),("neque"),("leo"),("nisl."),("adipiscing"),("adipiscing"),("sed,");
+INSERT INTO TWART.`Role` (`Role_Title`) VALUES ("Curabitur"),("Phasellus"),("egestas"),("vulputate"),("non"),("velit"),("pede."),("mauris"),("lectus"),("eleifend,");
+INSERT INTO TWART.`Role` (`Role_Title`) VALUES ("non"),("aliquam"),("ac"),("dui."),("Cras"),("lacus"),("mollis"),("Suspendisse"),("placerat."),("Class");

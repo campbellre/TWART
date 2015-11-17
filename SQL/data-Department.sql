@@ -1,0 +1,10 @@
+INSERT INTO TWART.`Department` (`Department_Title`,`Address_ID`) VALUES ("non",100),("posuere",62),("magna.",26),("Nulla",71),("tempor",38),("adipiscing",25),("pede.",84),("Duis",73),("nisi",69),("semper",18);
+INSERT INTO TWART.`Department` (`Department_Title`,`Address_ID`) VALUES ("aliquet",80),("rutrum",92),("nec",28),("lectus.",45),("erat",19),("cursus",24),("turpis",21),("natoque",61),("ridiculus",78),("accumsan",20);
+INSERT INTO TWART.`Department` (`Department_Title`,`Address_ID`) VALUES ("vitae",47),("volutpat.",50),("blandit.",65),("ornare,",79),("ut",82),("sodales.",18),("ut",31),("Aliquam",58),("id",20),("eu,",39);
+INSERT INTO TWART.`Department` (`Department_Title`,`Address_ID`) VALUES ("eu",18),("non",48),("Sed",12),("Aliquam",60),("Mauris",20),("lorem,",81),("Quisque",42),("ligula",46),("fermentum",46),("interdum.",18);
+INSERT INTO TWART.`Department` (`Department_Title`,`Address_ID`) VALUES ("Aliquam",99),("amet,",39),("mus.",73),("tincidunt",60),("massa.",33),("Suspendisse",51),("mi",62),("nec",18),("Donec",22),("eu,",37);
+INSERT INTO TWART.`Department` (`Department_Title`,`Address_ID`) VALUES ("dignissim",48),("ipsum",77),("ad",63),("tellus",68),("cursus",78),("hendrerit",56),("lacus.",48),("enim",94),("nonummy",58),("vitae",50);
+INSERT INTO TWART.`Department` (`Department_Title`,`Address_ID`) VALUES ("ad",38),("et",71),("ac",20),("Nullam",19),("natoque",51),("Curabitur",94),("pretium",71),("sed",43),("diam",62),("neque",93);
+INSERT INTO TWART.`Department` (`Department_Title`,`Address_ID`) VALUES ("felis.",52),("tempor",44),("odio.",50),("ante.",44),("mattis",98),("mauris.",18),("pretium",76),("mi.",25),("lorem,",75),("Sed",32);
+INSERT INTO TWART.`Department` (`Department_Title`,`Address_ID`) VALUES ("at,",93),("bibendum",16),("scelerisque",22),("lobortis,",18),("risus.",18),("Donec",19),("risus.",18),("Suspendisse",77),("placerat,",84),("eu",91);
+INSERT INTO TWART.`Department` (`Department_Title`,`Address_ID`) VALUES ("Integer",88),("mattis.",31),("ut",74),("porttitor",95),("mauris,",50),("netus",81),("molestie",29),("Curabitur",13),("lacinia",94),("ipsum",23);
