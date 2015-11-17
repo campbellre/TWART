@@ -1,132 +1,101 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Admin.aspx.cs" Inherits="TWART.Admin" %>
-
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>TWART Shipping Co.</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+    <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
     <style type="text/css">
         .auto-style1 {
-            width: 425px;
-            font-size: xx-large;
-            text-align: center;
-        }
-        .auto-style2 {
-            font-size: xx-large;
-            text-align: center;
-        }
-        .auto-style4 {
-            width: 126px;
-        }
-        .auto-style5 {
-            width: 103px;
-        }
-        .auto-style6 {
-            width: 293px;
-        }
-        .auto-style7 {
-            width: 423px;
-        }
-        .auto-style8 {
-            width: 423px;
-            height: 45px;
-        }
-        .auto-style9 {
-            height: 45px;
-        }
-        .auto-style10 {
-            height: 23px;
-        }
-        .auto-style11 {
-            width: 421px;
-        }
-        .auto-style12 {
-            height: 23px;
-            width: 421px;
+            text-align: left;
         }
     </style>
 </head>
 <body>
-    <form id="form1" runat="server">
-    <div style="height: 546px">
-    
-        <table style="width: 100%; height: 70px;">
-            <tr>
-                <td class="auto-style1">Banking</td>
-                
-                <td class="auto-style2">Report</td>
-            </tr>
-            </table>
-    
-        <table style="width: 100%; height: 88px;">
-            <tr>
-                <td class="auto-style6">Client ID</td>
-                <td class="auto-style5">
-                    <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-                </td>
-                <td class="auto-style4">Client</td>
-                <td>
-                    <asp:TextBox ID="TextBox2" runat="server" Height="58px" Width="275px"></asp:TextBox>
-
-                </td>
-
-            </tr>
-            </table>
-    
-        <table style="width:100%; height: 217px;">
-            <tr>
-                <td class="auto-style8">Name<asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
-                </td>
-                
-                <td class="auto-style9">Forename
-                    <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style7">Date Of Birth
-                    <asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
-                </td>
-                
-                <td>Surname<asp:TextBox ID="TextBox6" runat="server"></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style7">Address<asp:TextBox ID="TextBox7" runat="server"></asp:TextBox>
-                </td>
-                
-                <td>Address<asp:TextBox ID="TextBox8" runat="server"></asp:TextBox>
-                </td>
-            </tr>
-        </table>
-    
-        <table style="width:100%; height: 112px;">
-            <tr>
-                <td class="auto-style11">Contact<asp:TextBox ID="TextBox9" runat="server"></asp:TextBox>
-                </td>
-                
-                <td>Postcode<asp:TextBox ID="TextBox10" runat="server"></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style12">Banking<asp:TextBox ID="TextBox11" runat="server"></asp:TextBox>
-                </td>
-                
-                <td class="auto-style10">Contact Number<asp:TextBox ID="TextBox12" runat="server"></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style12">
-                    <asp:Button ID="Button1" runat="server" Text="Search" />
-                </td>
-                
-                <td class="auto-style10">
-                    <asp:Button ID="Button2" runat="server" Text="Edit" />
-                    <asp:Button ID="Button3" runat="server" Text="Update" />
-                </td>
-            </tr>
-        </table>
-    
+    <!-- Header -->
+    <div id="header">
+        <div class="top">
+            <!-- Logo -->
+            <div id="logo">
+                <span class="image avatar48"><img src="images/avatar.jpg" alt="" /></span>
+                <h1 id="title">TWART Shipping Corporation</h1>
+            </div>
+            <!-- Nav -->
+            <nav id="nav">
+                <ul>
+                    <li><a href="index.html#about" id="about-link"><span class="icon fa-home">What We Do</span></a></li>
+                    <li><a href="#contact" id="contact-link"><span class="icon fa-envelope">Get In Touch</span></a></li>
+                    <li><a href="#top" class="skel-layers-ignoreHref" id="foobar-link"><span class="icon fa-hand-o-left">Login</span></a></li>
+                    <li><a href="signup.html" id="foobar-link"><span class="icon fa-hand-o-up">Sign Up</span></a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="bottom">
+            <!-- Social Icons -->
+            <ul class="icons">
+                <li><a href="https://github.com/campbellre/TWART" class="icon fa-github"><span class="label">Github</span></a></li>
+                <li><a href="#contact" class="icon fa-envelope"><span class="label">Email</span></a></li>
+            </ul>
+        </div>
     </div>
-    </form>
+    <!-- Main -->
+    <div id="main">
+        <!-- Log In -->
+        <section id="about" class="top">
+            <div class="container">
+                <header>
+
+                    <h2 class="auto-style1">Admin</h2>
+                </header>
+                <footer>
+                    <form method="post" action="#">
+                        <div>
+                            
+                            <div class="6u 12u$(mobile)"><input type="text" name="name" placeholder="ClientID" /></div>
+                            
+                            <div class="6u 12u$(mobile)"><input type="text" name="name" placeholder="Name2" /></div>
+                            
+                            <div class="6u 12u$(mobile)"><input type="text" name="name" placeholder="Name" /></div>
+                            <div class="6u 12u$(mobile)"><input type="text" name="name" placeholder="Name2" /></div>
+                            <div class="6u 12u$(mobile)"><input type="text" name="name" placeholder="Date Of Birth" /></div>
+                            <div class="6u 12u$(mobile)"><input type="text" name="name" placeholder="Name2" /></div>
+                            <div class="6u 12u$(mobile)"><input type="text" name="name" placeholder="Address" /></div>
+                            <div class="6u 12u$(mobile)"><input type="text" name="name" placeholder="Name2" /></div>
+                            <div class="6u 12u$(mobile)"><input type="text" name="name" placeholder="Contact" /></div>
+                            <div class="6u 12u$(mobile)"><input type="text" name="name" placeholder="Name2" /></div>
+                            <div class="6u 12u$(mobile)"><input type="text" name="name" placeholder="Banking" /></div>
+                            <div class="6u 12u$(mobile)"><input type="text" name="name" placeholder="Name2" /></div>
+                            
+                            <div class="12u$">
+                                
+                                <input type="submit" value="Search" />
+                                    
+                            </div>
+                        </div>
+                    </form>
+                </footer>
+            </div>
+        </section>
+       
+
+    </div>
+    <!-- Footer -->
+    <div id="footer">
+        <!-- Copyright -->
+        <ul class="copyright">
+            <li>&copy; TWART Shipping Co. All rights reserved.</li>
+        </ul>
+    </div>
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/jquery.scrollzer.min.js"></script>
+    <script src="assets/js/skel.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+    <script src="assets/js/main.js"></script>
 </body>
 </html>
