@@ -26,7 +26,7 @@ namespace TWART.Controller
             thisUser.password = password;
 
  
-            // getAccount Type from Database
+            // get Account Type / Access levels from Database
             // Account_Type accountType = RYANSMETHOD();  ** CODE **
 
             // Acquire type of user from Ryan
