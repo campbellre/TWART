@@ -89,8 +89,6 @@
     <Content Include="admin.aspx" />
     <Content Include="index.html" />
     <Content Include="login.html" />
-    <Content Include="scripts\jquery-1.11.3.js" />
-    <Content Include="signup.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -153,13 +151,6 @@
     <Content Include="assets\fonts\fontawesome-webfont.woff" />
     <Content Include="assets\fonts\fontawesome-webfont.woff2" />
     <Content Include="assets\fonts\FontAwesome.otf" />
-    <Content Include="assets\sass\ie8.scss" />
-    <Content Include="assets\sass\ie9.scss" />
-    <Content Include="assets\sass\libs\_functions.scss" />
-    <Content Include="assets\sass\libs\_mixins.scss" />
-    <Content Include="assets\sass\libs\_skel.scss" />
-    <Content Include="assets\sass\libs\_vars.scss" />
-    <Content Include="assets\sass\main.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
