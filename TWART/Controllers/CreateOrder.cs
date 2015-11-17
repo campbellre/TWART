@@ -15,6 +15,7 @@ namespace TWART.Controller
         // Class parameters
         int accountID;
         int clientID;
+        int deliveryBand;
         List<Package> packageList = new List<Package>();
         DateTime placed;
         int totalPrice;
@@ -50,9 +51,40 @@ namespace TWART.Controller
         // Calculates the total cost of the order
         private int calcPrice(int accountType)
         {
-            int baseCost = calcBaseCost();
+            int runningTotal = calcBaseCost();
+            float modifier = 0f;
+            
+            // Determines account benefit modifier
+            switch(accountType)
+            {
+                case 1: modifier = 1;
+                    break;
+                case 2: modifier = 0.9f;
+                    break;
+                default: modifier = 1;
+                    break;
+            }
 
-            return 0;
+            // Determines delivery modifier
+            switch(deliveryBand)
+            {
+                case 1: modifier *= 2;      // Next Day Delivery
+                    break;
+                case 2: modifier *= 1.6f;   // Express 1-2 Days Delivery
+                    break;
+                case 3: modifier *= 1.2f;   // (Next) Saturday Delivery
+                    break;
+                case 4: modifier *= 1;      // Standard 3-5 Days Delivery
+                    break;
+                default: modifier *= 1;     // Not reached
+                    break;
+            }
+
+            // Apply modifiers
+            float finalCost = (float)runningTotal * modifier;
+
+            // Return the calculated total
+            return (int)finalCost;
         }
 
         // Calculates the base cost of the package based on dimensions / weight
