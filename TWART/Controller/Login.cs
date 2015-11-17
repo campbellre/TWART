@@ -50,8 +50,8 @@ namespace TWART.Controller
 
                 // Creates a new user with the specified details
                 User newUser = new User();
-                newUser.UserName = username;
-                newUser.Password = password;
+                newUser.username = username;
+                newUser.password = password;
 
                 // Passes the user to the login model
                 result = loginControl.Login(newUser);   
