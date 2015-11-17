@@ -27,7 +27,7 @@ namespace TWART.Controller
 
  
             // get Account Type / Access levels from Database
-            // Account_Type accountType = RYANSMETHOD();  ** CODE **
+            //Account_Type accountType = RYANSMETHOD();  ** CODE **
 
             // Acquire type of user from Ryan
             // Redirect based on user:
@@ -38,17 +38,17 @@ namespace TWART.Controller
 			String pageToDirectTo = "/index.html";
 
             // if the user is an admin, go to the admin page
-            if (accountTypeName.equals("Admin"))
-            {
+            //if (accountTypeName.equals("Admin"))  ** CODE **
+            //{                                     ** CODE **
                 pageToDirectTo = "/admin.aspx";
-            }
+            //}                                     ** CODE **
 
             // otherwise, go to the main login page
-            else 
-            {
+                //else                              ** CODE **
+                //{                                 ** CODE **
                 // THIS WILL CHANGE ONCE THE OTHER PAGE HAS BEEN CREATED
-                pageToDirectTo = "/admin.aspx";
-            }
+                //pageToDirectTo = "/admin.aspx";   ** CODE **
+            //}                                     ** CODE **
 
             // redirect the user to the relevant page
             return Redirect(pageToDirectTo);

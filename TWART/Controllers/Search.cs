@@ -92,6 +92,12 @@ namespace TWART.DataObjects
             string title = parameters[0][1];
             string head = parameters[1][1];
         }
+
+        // Searches for company
+        private void doSearchCompany()
+        {
+            string companyName = parameters[0][1];
+        }
         #endregion
 
         #region Error Handling
