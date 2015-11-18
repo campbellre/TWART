@@ -42,10 +42,11 @@ namespace TWART.Models
                     connect.Open();
 
                     var reader = cmd.ExecuteReader();
-
-                        l.State = (bool)reader["Login"];
+                    while (reader.Read())
+                    {
+                        l.State = (bool) reader["Login"];
                         l.AccessLevel = reader["AccessLevel"].ToString();
-
+                    }
 
                     connect.Close();
                 }
