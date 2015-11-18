@@ -8,11 +8,14 @@ namespace TWART.DataObjects
     public class Order
     {
         public int ID { get; set; }
-        public String Status { get; set; }
-        public DateTime DatePlaces { get; set; }
-        public DateTime DateReceived { get; set; }
-        public DateTime DateDelivered { get; set; }
-        public 
+        public string OrderStatus { get; set; }
+        public DateTime Placed { get; set; }
+        public DateTime Received { get; set; }
+        public DateTime Delivered { get; set; }
+        public int GoodsID { get; set; }
+        public int DestinationAddressID { get; set; }
+        public int SourceAddressID { get; set; }
+        public int AccountID { get; set; }
     
     }
 }

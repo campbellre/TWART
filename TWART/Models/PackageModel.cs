@@ -77,7 +77,7 @@ namespace TWART.Models
         // This method is to get allow packages with either a placed, recieved or delivered date
         // between the start and end dates. With the PackageDateType specifing whether to search
         // on the placed, recived or deliverd date. 
-        public List<Package> SearchPackage(DateTime start, DateTime end, PackageDateType type)
+        public List<Package> SearchPackage(DateTime start, DateTime end, OrderDateType type)
         {
             throw new NotImplementedException();
         }
