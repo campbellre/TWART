@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using TWART.DataObjects;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TWART.DataObjects;
 
-namespace TWART.Controller
+namespace TWART.Controllers
 {
     public class LoginController : System.Web.Mvc.Controller
     {
@@ -53,5 +53,12 @@ namespace TWART.Controller
             // redirect the user to the relevant page
             return Redirect(pageToDirectTo);
         }
+
+               // GET: Login
+        public string Test()
+        {
+            return "BANANA HAMMOCK";
+        }
+
     }
 }
