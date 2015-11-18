@@ -10,7 +10,6 @@
     <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 </head>
 <body>
-    <form id ="form1" runat="server">
     <!-- Header -->
     <div id="header">
         <div class="top">
@@ -36,22 +35,26 @@
         </div>
     </div>
     <!-- Main -->
-    <div id="main">
-        <!-- Admin Control Panel -->
-        <section id="admin" class="top">
-            <div class="container">
-                <header>
-                    <h2 style="color:#ff0000">Administrator's Control Panel</h2>
-                </header>
-            </div>
-        </section>
-    <!-- Controls -->
-        <section id="controls" class="middle">
-            <div class="container">
-                <asp:GridView ID="GridView1" runat="server"></asp:GridView>
-            </div>
-        </section>
-    </div>
+    <form id="admincontrols" runat="server">
+        <div id="main">
+            <!-- Admin Control Panel -->
+            <section id="admin" class="top">
+                <div class="container">
+                    <header>
+                        <h2 style="color: #ff0000">Administrator's Control Panel</h2>
+                    </header>
+                </div>
+            </section>
+            <!-- Controls -->
+            <section id="controls" class="middle">
+                <div class="container">
+                    <asp:SqlDataSource ID="adminDataSource" runat="server" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT * FROM 15ac3d04.customer" ConnectionString="<%$ ConnectionStrings:ConnectionString %>"></asp:SqlDataSource>
+                    <h2>Client List</h2>
+                    <asp:GridView ID="clients" runat="server" DataSourceID="adminDataSource" RowDataBound="Customer" DataKeyNames="Company_Name"></asp:GridView>
+                </div>
+            </section>
+        </div>
+    </form>
     <!-- Footer -->
     <div id="footer">
         <!-- Copyright -->
@@ -67,6 +70,5 @@
     <script src="assets/js/util.js"></script>
     <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
     <script src="assets/js/main.js"></script>
-        </form>
 </body>
 </html>
