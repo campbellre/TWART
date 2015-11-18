@@ -10,6 +10,7 @@
     <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 </head>
 <body>
+    <form id ="form1" runat="server">
     <!-- Header -->
     <div id="header">
         <div class="top">
@@ -66,5 +67,6 @@
     <script src="assets/js/util.js"></script>
     <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
     <script src="assets/js/main.js"></script>
+        </form>
 </body>
 </html>
