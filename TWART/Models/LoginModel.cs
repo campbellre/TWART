@@ -44,7 +44,8 @@ namespace TWART.Models
                     var reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
-                        l.State = (bool) reader["Login"];
+                        l.State = reader["login"].Equals(1);
+
                         l.AccessLevel = reader["AccessLevel"].ToString();
                     }
 

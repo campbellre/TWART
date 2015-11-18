@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
 <html>
 <head>
     <title>TWART Shipping Co.</title>
@@ -46,8 +50,8 @@
                 <footer>
                     <form method="post" action="Login/loginpost">
                         <div class="row">
-                            <div class="6u 12u$(mobile)"><input type="text"  name="username" placeholder="Username" /></div>
-                            <div class="6u$ 12u$(mobile)"><input type="password"  name="password" placeholder="Password" /></div>
+                            <div class="6u 12u$(mobile)"><input type="text" value="username" name="username" placeholder="Username" /></div>
+                            <div class="6u$ 12u$(mobile)"><input type="password" value="password" name="password" placeholder="Password" /></div>
                             <div class="12u$">
                                 <input type="submit" value="Go!" />
                             </div>
@@ -98,3 +102,4 @@
     <script src="assets/js/main.js"></script>
 </body>
 </html>
+

@@ -10,8 +10,16 @@ namespace TWART.Controllers
 {
     public class LoginController : System.Web.Mvc.Controller
     {
-        // GET: Login
+
+        [HttpGet]
         public ActionResult Index()
+        {
+            return Redirect("/index.html");
+        }
+
+        // GET: Login
+        [HttpPost]
+        public ActionResult loginpost()
         {  
 
             LoginModel loginModel = new LoginModel();
@@ -21,8 +29,8 @@ namespace TWART.Controllers
             String password;
 
             // Acquire login details from front-end
-            username = Request.QueryString["username"];
-            password = Request.QueryString["password"];
+            username = Request.Form[0];
+            password = Request.Form[1];
 
             // Composes object
             User thisUser = new User();
@@ -51,12 +59,13 @@ namespace TWART.Controllers
                 }
                 else
                 {
-                    pageToDirectTo = "/admin.aspx";     // this will change to the standard login page
+                    pageToDirectTo = "/403.html";     // this will change to the standard login page
+                    //note by will: this will instead show a forbidden access page
                 }
             }                                   
             else                              
             {                                 
-                pageToDirectTo = "/index.aspx";   
+                pageToDirectTo = "/index.html";   
             }                                    
 
             // redirect the user to the relevant page

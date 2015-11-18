@@ -222,6 +222,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\web.config" />
+    <Content Include="Views\Login\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -232,7 +233,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\HelloWorld\" />
-    <Folder Include="Views\Login\" />
     <Folder Include="Views\new\" />
   </ItemGroup>
   <ItemGroup>
