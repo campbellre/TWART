@@ -49,7 +49,7 @@ namespace TWART.Controllers
             {
                 if (logState.AccessLevel.Equals("Admin"))
                 {
-                    pageToDirectTo = "/admin.aspx";
+                    pageToDirectTo = "/Admin/Customer";
                 }
                 else
                 {
