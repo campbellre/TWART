@@ -26,7 +26,7 @@ namespace TWART.Controllers
 			
 			
 			foreach (var c in cl){
-				Address address = addressModel.SearchAddress(c.AddressID);
+				Address address = addressModel.SearchAddress(c.Address_ID);
 				c.Address = address;
 			}
 			
