@@ -15,8 +15,12 @@ namespace TWART.Controllers
         public ActionResult Customer()
         {
 
-            try
-            {
+            
+            
+                if (Session["loggedInState"] == null)
+                {
+                    Redirect("403.aspx");
+                }
                 bool state = (bool)Session["loggedInState"];
                 if (state == true)
                 {
@@ -45,11 +49,7 @@ namespace TWART.Controllers
                     return Redirect("/login.html");
                 }
             }
-            catch (Exception e)
-            {
-                return Redirect("/403.html");
-            }
-        }
+          
 
 		
 		// Function to do something
