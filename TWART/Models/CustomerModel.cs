@@ -37,12 +37,14 @@ namespace TWART.Models
                         string query = "EditCustomer";
                         var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
 
-                        cmd.Parameters.AddWithValue("cid", c.ID);
-                        cmd.Parameters.AddWithValue("CName", c.Name);
-                        cmd.Parameters.AddWithValue("Adds", c.Address_ID);
+                        cmd.Parameters.AddWithValue("CustomerID", c.ID);
+                        cmd.Parameters.AddWithValue("CustomerName", c.Name);
+                        cmd.Parameters.AddWithValue("AddressID", c.Address_ID);
 
 
                         cmd.ExecuteNonQuery();
+
+                        transaction.Commit();
 
                         connect.Close();
                     }
@@ -68,7 +70,7 @@ namespace TWART.Models
                     string query = "GetCustomer";
                     var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
 
-                    cmd.Parameters.AddWithValue("cid", ID);
+                    cmd.Parameters.AddWithValue("CustomerID", ID);
 
                     connect.Open();
 

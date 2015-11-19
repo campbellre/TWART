@@ -38,7 +38,7 @@ namespace TWART.Controllers
         [HttpPost]
         public ActionResult EditCustomer()
         {
-            DataObjects.Customer c = new Customer();
+            var c = new Customer();
             c.ID = int.Parse(Request.Form["id"]);
             c.Name = Request.Form["name"].ToString();
             c.Address_ID = int.Parse(Request.Form["addressid"]);
