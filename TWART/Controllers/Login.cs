@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using TWART.DataObjects;
 using TWART.Models;
+using System.Web.UI;
 
 namespace TWART.Controller
 {
@@ -53,11 +54,17 @@ namespace TWART.Controller
                 newUser.username = username;
                 newUser.password = password;
 
+
                 // Passes the user to the login model
                 result = loginControl.Login(newUser);   
 
+                // Sets the Session variables
+                HttpContext.Current.Session["loggedInState"] = "true";
+                HttpContext.Current.Session["loggedInUser"] = newUser.username;
+
                 // Returns bool. State of the login attempt
                 return result.State;
+
             }
             else
             {
