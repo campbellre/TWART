@@ -65,6 +65,13 @@
                     <p>Use this control to view, create or delete orders which exist on our system.</p>
                 </div>
             </section>
+            <!-- Create Admin User -->
+            <section id="user" class="user">
+                <div class="container">
+                    <a href="#">Create New Admin User</a>
+                    <p>Use this control to Create a new Administrative user for this System</p>
+                </div>
+            </section>
         </div>
     </form>
     <!-- Footer -->

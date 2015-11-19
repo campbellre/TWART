@@ -20,6 +20,7 @@ namespace TWART.Models
             _connectionString = Resource1.ConnectionString;
         }
 
+
         public void CreateUser(User u)
         {
             throw new NotImplementedException();
