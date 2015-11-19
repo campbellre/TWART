@@ -70,6 +70,11 @@
                     <p></p>
                 </div>
                 
+            <div style="text-align: center">
+                <p></p>
+                <input type="submit" value="Delete" />
+                <p></p>
+            </div>
         </div>
     </div>
     <!-- Footer -->

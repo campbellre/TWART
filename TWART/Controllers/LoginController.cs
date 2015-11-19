@@ -38,6 +38,7 @@ namespace TWART.Controllers
 
             // Sets the Session variables
             Session["loggedInState"] = logState.State;
+            Session["userID"] = logState.UserID;
 
             // Acquire type of user from Ryan
             // Redirect based on user:

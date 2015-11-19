@@ -45,7 +45,7 @@ namespace TWART.Models
                     while (reader.Read())
                     {
                         l.State = reader["login"].Equals(1);
-
+                        l.UserID = (int)reader["UID"];
                         l.AccessLevel = reader["AccessLevel"].ToString();
                     }
 

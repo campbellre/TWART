@@ -26,9 +26,9 @@
             <!-- Nav -->
             <nav id="nav">
                 <ul>
-                    <li><a href="adminIndex" id="foobar-link"><span class="icon fa-hand-o-left">Control Panel</span></a></li>
                     <li><a href="#client" id="client-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Client Information</span></a></li>
                     <li><a href="#order" id="order-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Order Page</span></a></li>
+                    <li><a href="logout" id="logout"><span class="icon fa-hand-o-left">Log Out</span></a></li>
                 </ul>
             </nav>
         </div>
