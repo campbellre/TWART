@@ -58,7 +58,7 @@ namespace TWART.Controllers
                     }
                     else
                     {
-                        pageToDirectTo = "/403.html";     // this will change to the standard login page
+                        pageToDirectTo = "/clientIndex.aspx";     // this will change to the standard login page
                         //note by will: this will instead show a forbidden access page
                     }
                 }
