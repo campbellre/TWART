@@ -170,13 +170,6 @@
     <Compile Include="Controllers\LogoutController.cs" />
     <Compile Include="Controllers\Register.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="customerdelete.aspx.cs">
-      <DependentUpon>customerdelete.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="customerdelete.aspx.designer.cs">
-      <DependentUpon>customerdelete.aspx</DependentUpon>
-    </Compile>
     <Compile Include="DataObjects\Account.cs" />
     <Compile Include="DataObjects\Account_Type.cs" />
     <Compile Include="DataObjects\Address.cs" />
