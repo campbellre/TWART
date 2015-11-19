@@ -16,25 +16,6 @@ namespace TWART.Controllers
         {
             if (Session["loggedInState"] == null)
             {
-                return Redirect("/403.html");
-            }
-            bool state = (bool)Session["loggedInState"];
-            if (state == true)
-            {
-
-                // Create a new AddressModel object
-                var addressModel = new AddressModel();
-
-                // Create a CustomerModel object
-                var cm = new CustomerModel();
-
-                // Call the method to get the list
-                var cl = cm.ListCustomers();
-
-
-
-            if (Session["loggedInState"] == null)
-            {
                 Redirect("403.html");
             }
             bool state = (bool)Session["loggedInState"];
@@ -66,23 +47,6 @@ namespace TWART.Controllers
             }
         }
 
-
-
-
-                foreach (var c in cl)
-                {
-                    Address address = addressModel.SearchAddress(c.Address_ID);
-                    c.Address = address;
-                }
-
-                // Return the CustomerList
-                return View(cl);
-            }
-            else
-            {
-                return Redirect("/login.html");
-            }
-        }
 
         public ActionResult Logout()
         {
@@ -128,7 +92,6 @@ namespace TWART.Controllers
             }
             else
             {
-                return Redirect("/403.html");
                 return Redirect("/login.html");
             }
         }
