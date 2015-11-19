@@ -12,7 +12,5 @@ namespace TWART.DataObjects
         public int Height { get; set; }
         public int Width { get; set; }
         public int Length { get; set; }
-        public String Handling { get; set; }
-        public Transport Transport { get; set; }
     }
 }
