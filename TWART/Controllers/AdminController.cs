@@ -154,6 +154,20 @@ namespace TWART.Controllers
         }
 
 
+        public ActionResult CreateCustomer(){
+            
+            String username = RouteData.Values["username"].ToString();
+            String password = RouteData.Values["password"].ToString();
+
+            User user = new User();
+            user.username = username;
+            user.password = password;
+
+            LoginModel loginMod = new LoginModel();
+            loginMod.CreateUser(user);
+
+            return Redirect("../customer");
+        }
 
 
 
