@@ -125,31 +125,29 @@ namespace TWART.Controllers
         [HttpPost]
         public ActionResult EditCustomer()
         {
-            try
-            {
-                bool state = (bool)Session["loggedInState"];
-                if (state == true)
-                {
-                    var c = new Customer();
-                    c.ID = int.Parse(Request.Form["id"]);
-                    c.Name = Request.Form["name"].ToString();
-                    c.Address_ID = int.Parse(Request.Form["addressid"]);
-
-                    var cm = new CustomerModel();
-
-                    cm.EditCustomer(c);
-
-                    return Redirect("/Admin/Edit/" + c.ID);
-                }
-                else
-                {
-                    return Redirect("/login.html");
-                }
+            if(Session["loggedInState"] == null){
+                return Redirect("403.html");
             }
-            catch (Exception e)
+
+            bool state = (bool)Session["loggedInState"];
+            if (state == true)
             {
-                return Redirect("/403.html");
+                var c = new Customer();
+                c.ID = int.Parse(Request.Form["id"]);
+                c.Name = Request.Form["name"].ToString();
+                c.Address_ID = int.Parse(Request.Form["addressid"]);
+
+                var cm = new CustomerModel();
+
+                cm.EditCustomer(c);
+
+                return Redirect("/Admin/Edit/" + c.ID);
             }
+            else
+            {
+                return Redirect("/login.html");
+            }
+
 
         }
 
