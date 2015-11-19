@@ -49,7 +49,7 @@ namespace TWART.Controllers
 
             try { 
                 bool state = (bool)Session["loggedInState"];
-                if (state != true)  
+                if (state == true)  
                 {
                     pageToDirectTo = "/Admin/";
                     if (logState.AccessLevel.Equals("Admin"))
@@ -58,13 +58,13 @@ namespace TWART.Controllers
                     }
                     else
                     {
-                        pageToDirectTo = "/403.html";     // this will change to the standard login page
+                        pageToDirectTo = "/clientIndex.aspx";     // this will change to the standard login page
                         //note by will: this will instead show a forbidden access page
                     }
                 }
                 else                              
                 {
-                    pageToDirectTo = "/403.html";   
+                    pageToDirectTo = "/login.html";   
                 }                  
             }catch(Exception e){
                 pageToDirectTo = "/403.html";

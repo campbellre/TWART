@@ -18,7 +18,7 @@ namespace TWART.Controllers
             try
             {
                 bool state = (bool)Session["loggedInState"];
-                if (state != true)
+                if (state == true)
                 {
 
                     // Create a new AddressModel object
@@ -42,7 +42,7 @@ namespace TWART.Controllers
                 }
                 else
                 {
-                    return Redirect("/403.html");
+                    return Redirect("/login.html");
                 }
             }
             catch (Exception e)
@@ -58,7 +58,7 @@ namespace TWART.Controllers
             try
             {
                 bool state = (bool)Session["loggedInState"];
-                if (state != true)
+                if (state == true)
                 {
                     // Get the ID as a parameter
                     var p = int.Parse(Url.RequestContext.RouteData.Values["id"].ToString());
@@ -74,7 +74,7 @@ namespace TWART.Controllers
                 }
                 else
                 {
-                    return Redirect("/403.html");
+                    return Redirect("/login.html");
                 }
             }
             catch (Exception e)
@@ -103,7 +103,7 @@ namespace TWART.Controllers
             try
             {
                 bool state = (bool)Session["loggedInState"];
-                if (state != true)
+                if (state == true)
                 {
                     var c = new Customer();
                     c.ID = int.Parse(Request.Form["id"]);
@@ -118,7 +118,7 @@ namespace TWART.Controllers
                 }
                 else
                 {
-                    return Redirect("/403.html");
+                    return Redirect("/login.html");
                 }
             }
             catch (Exception e)
