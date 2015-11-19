@@ -26,12 +26,14 @@ namespace TWART.Controllers
 
                     // Holds the order
                     Order newOrder = new Order();
-                    newOrder.Placed = DateTime.Now;
 
                     // Stored details
                     int userID = (int)Session["userID"];
                     int deliveryBand = int.Parse(Request.Form[0]);
+                    String sourceAddress = Request.Form[1];
+                    String destAddress = Request.Form[2];
 
+                    // List of packages from form
                     List<Package> packageList = new List<Package>();
 
                     // Acquires type of account (Standard | Premium)
@@ -40,17 +42,59 @@ namespace TWART.Controllers
                     // Price of order
                     int totalPrice = calcPrice(accountType, deliveryBand, packageList);
 
+                    
+                     
+                    
+
+                    // Finalises the order
+                    newOrder.Placed = DateTime.Now;
+                    newOrder.OrderStatus = "Order Placed";
+                    //newOrder.SourceAddressID;
+
+                    // Passes back to the view
                     return View();
                 }
                 else
                 {
+                    // If not logged in
                     return Redirect("/login.html");
                 }
            }
            catch (Exception e)
            {
-                return Redirect("/403.html");
+               // If an error occurs
+               return Redirect("/403.html");
            }                
+        }
+
+        // Gets all orders
+        public ActionResult Order()
+        {
+            try
+            {
+                bool state = (bool)Session["loggedInState"];
+                if (state == true)
+                {
+                    // Create a CustomerModel object
+                    var om = new OrderModel();
+
+                    // Call the method to get the list
+                    var ol = om.GetOrdersList();
+
+                    // Return the CustomerList
+                    return View(ol);
+                }
+                else
+                {
+                    // If not logged in
+                    return Redirect("/login.html");
+                }
+            }
+            catch (Exception e)
+            {
+                // If an error occurs
+                return Redirect("/403.html");
+            }
         }
 
         #region Internal calculations
@@ -144,8 +188,5 @@ namespace TWART.Controllers
             return runningCost;
         }
         #endregion
-
-
-
     }
 }
