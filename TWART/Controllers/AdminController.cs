@@ -16,7 +16,7 @@ namespace TWART.Controllers
         {
             if (Session["loggedInState"] == null)
             {
-                return Redirect("/403.html");
+                Redirect("403.html");
             }
             bool state = (bool)Session["loggedInState"];
             if (state == true)
@@ -46,6 +46,7 @@ namespace TWART.Controllers
                 return Redirect("/login.html");
             }
         }
+
 
         public ActionResult Logout()
         {
@@ -141,6 +142,8 @@ namespace TWART.Controllers
 
                 cm.EditCustomer(c);
 
+
+
                 return Redirect("/Admin/Edit/" + c.ID);
             }
             else
@@ -148,12 +151,24 @@ namespace TWART.Controllers
                 return Redirect("/login.html");
             }
 
-
         }
+
+
+
+
 
         public ActionResult Delete()
         {
-            return View();
+
+            int id = int.Parse(RouteData.Values["id"].ToString());
+
+            // Create a customer model object
+            CustomerModel customerModel = new CustomerModel();
+
+            // Call the method to delete a customer from the database
+            customerModel.DeleteCustomer(id);
+
+            return Redirect("../customer");
         }
 
         public ActionResult ViewInfo()
