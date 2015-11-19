@@ -11,48 +11,48 @@ namespace TWART.Controllers
     public class AdminController : System.Web.Mvc.Controller
     {
 
-		// Function to get a list of all customers
+        // Function to get a list of all customers
         public ActionResult Customer()
         {
 
-            
-            
-                if (Session["loggedInState"] == null)
-                {
-                    Redirect("403.aspx");
-                }
-                bool state = (bool)Session["loggedInState"];
-                if (state == true)
-                {
-
-                    // Create a new AddressModel object
-                    var addressModel = new AddressModel();
-
-                    // Create a CustomerModel object
-                    var cm = new CustomerModel();
-
-                    // Call the method to get the list
-                    var cl = cm.ListCustomers();
 
 
-                    foreach (var c in cl)
-                    {
-                        Address address = addressModel.SearchAddress(c.Address_ID);
-                        c.Address = address;
-                    }
-
-                    // Return the CustomerList
-                    return View(cl);
-                }
-                else
-                {
-                    return Redirect("/login.html");
-                }
+            if (Session["loggedInState"] == null)
+            {
+                Redirect("403.html");
             }
-          
+            bool state = (bool)Session["loggedInState"];
+            if (state == true)
+            {
 
-		
-		// Function to do something
+                // Create a new AddressModel object
+                var addressModel = new AddressModel();
+
+                // Create a CustomerModel object
+                var cm = new CustomerModel();
+
+                // Call the method to get the list
+                var cl = cm.ListCustomers();
+
+
+                foreach (var c in cl)
+                {
+                    Address address = addressModel.SearchAddress(c.Address_ID);
+                    c.Address = address;
+                }
+
+                // Return the CustomerList
+                return View(cl);
+            }
+            else
+            {
+                return Redirect("/login.html");
+            }
+        }
+
+
+
+        // Function to do something
         public ActionResult Edit()
         {
             try
@@ -80,7 +80,7 @@ namespace TWART.Controllers
             catch (Exception e)
             {
                 return Redirect("/403.html");
-            } 
+            }
         }
 
         public ActionResult Index()
@@ -88,7 +88,8 @@ namespace TWART.Controllers
             return Redirect("/Admin/adminIndex");
         }
 
-        public ActionResult adminIndex() {
+        public ActionResult adminIndex()
+        {
             return View();
         }
 
@@ -100,38 +101,47 @@ namespace TWART.Controllers
         [HttpPost]
         public ActionResult EditCustomer()
         {
-            try
+            if (Session["loggedInState"]== null)
             {
-                bool state = (bool)Session["loggedInState"];
-                if (state == true)
-                {
-                    var c = new Customer();
-                    c.ID = int.Parse(Request.Form["id"]);
-                    c.Name = Request.Form["name"].ToString();
-                    c.Address_ID = int.Parse(Request.Form["addressid"]);
+                return Redirect("403.html");
 
-                    var cm = new CustomerModel();
-
-                    cm.EditCustomer(c);
-
-                    return Redirect("/Admin/Edit/" + c.ID);
-                }
-                else
-                {
-                    return Redirect("/login.html");
-                }
             }
-            catch (Exception e)
+            bool state = (bool)Session["loggedInState"];
+            if (state == true)
             {
-                return Redirect("/403.html");
-            }
+                var c = new Customer();
+                c.ID = int.Parse(Request.Form["id"]);
+                c.Name = Request.Form["name"].ToString();
+                c.Address_ID = int.Parse(Request.Form["addressid"]);
 
+                var cm = new CustomerModel();
+
+                cm.EditCustomer(c);
+
+                return Redirect("/Admin/Edit/" + c.ID);
+            }
+            else
+            {
+                return Redirect("/login.html");
+            }
         }
+
+
+
 
 
         public ActionResult Delete()
         {
-            return View();
+
+            int id = int.Parse(RouteData.Values["id"].ToString());
+
+            // Create a customer model object
+            CustomerModel customerModel = new CustomerModel();
+
+            // Call the method to delete a customer from the database
+            customerModel.DeleteCustomer(id);
+
+            return Redirect("../customer");
         }
 
         public ActionResult ViewInfo()
