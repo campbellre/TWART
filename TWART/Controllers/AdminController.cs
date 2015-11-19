@@ -11,84 +11,109 @@ namespace TWART.Controllers
     public class AdminController : System.Web.Mvc.Controller
     {
 
-		// Function to get a list of all customers
+        // Function to get a list of all customers
         public ActionResult Customer()
         {
-
-            try
-            {
-                bool state = (bool)Session["loggedInState"];
-                if (state == true)
-                {
-
-                    // Create a new AddressModel object
-                    var addressModel = new AddressModel();
-
-                    // Create a CustomerModel object
-                    var cm = new CustomerModel();
-
-                    // Call the method to get the list
-                    var cl = cm.ListCustomers();
-
-
-                    foreach (var c in cl)
-                    {
-                        Address address = addressModel.SearchAddress(c.Address_ID);
-                        c.Address = address;
-                    }
-
-                    // Return the CustomerList
-                    return View(cl);
-                }
-                else
-                {
-                    return Redirect("/login.html");
-                }
-            }
-            catch (Exception e)
+            if (Session["loggedInState"] == null)
             {
                 return Redirect("/403.html");
+            }
+            bool state = (bool)Session["loggedInState"];
+            if (state == true)
+            {
+
+                // Create a new AddressModel object
+                var addressModel = new AddressModel();
+
+                // Create a CustomerModel object
+                var cm = new CustomerModel();
+
+                // Call the method to get the list
+                var cl = cm.ListCustomers();
+
+
+                foreach (var c in cl)
+                {
+                    Address address = addressModel.SearchAddress(c.Address_ID);
+                    c.Address = address;
+                }
+
+                // Return the CustomerList
+                return View(cl);
+            }
+            else
+            {
+                return Redirect("/login.html");
             }
         }
 
-		
-		// Function to do something
+        public ActionResult Logout()
+        {
+
+            doLogout();
+
+            // redirect the user to the index page
+            return Redirect("../index.html");
+        }
+
+        private bool doLogout()
+        {
+            // Sets the Session variable
+            Session["loggedInState"] = null;
+            Session["loggedInUser"] = null;
+
+            // Returns bool. State of the Logout attempt
+            return true;
+
+        }
+
+        // Function to do something
         public ActionResult Edit()
         {
-            try
-            {
-                bool state = (bool)Session["loggedInState"];
-                if (state == true)
-                {
-                    // Get the ID as a parameter
-                    var p = int.Parse(Url.RequestContext.RouteData.Values["id"].ToString());
-
-                    // Create a new CustomerModel object
-                    var cm = new CustomerModel();
-
-                    // Call the method to search for a Customer with an ID matching the value passed in
-                    var c = cm.SearchCustomers(p);
-
-                    // Return the Customer information
-                    return View(c);
-                }
-                else
-                {
-                    return Redirect("/login.html");
-                }
-            }
-            catch (Exception e)
+            if (Session["loggedInState"] == null)
             {
                 return Redirect("/403.html");
-            } 
+            }
+            bool state = (bool)Session["loggedInState"];
+            if (state == true)
+            {
+                // Get the ID as a parameter
+                var p = int.Parse(Url.RequestContext.RouteData.Values["id"].ToString());
+
+                // Create a new CustomerModel object
+                var cm = new CustomerModel();
+
+                // Call the method to search for a Customer with an ID matching the value passed in
+                var c = cm.SearchCustomers(p);
+
+                // Return the Customer information
+                return View(c);
+            }
+            else
+            {
+                return Redirect("/login.html");
+            }
         }
 
         public ActionResult Index()
         {
-            return Redirect("/Admin/adminIndex");
+            if (Session["loggedInState"] == null)
+            {
+                return Redirect("/403.html");
+            }
+            bool state = (bool)Session["loggedInState"];
+            if (state == true)
+            {
+                return Redirect("/Admin/adminIndex");
+            }
+            else
+            {
+                return Redirect("/403.html");
+            }
         }
 
-        public ActionResult adminIndex() {
+        public ActionResult adminIndex()
+        {
             return View();
         }
 
@@ -128,8 +153,6 @@ namespace TWART.Controllers
 
         }
 
-        
-        
         public ActionResult Delete()
         {
             return View();
