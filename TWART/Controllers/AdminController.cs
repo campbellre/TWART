@@ -128,8 +128,7 @@ namespace TWART.Controllers
 
             cm.EditCustomer(c);
 
-            // TODO: This Should be dynamic. Not go to '1' all the time.
-            return Redirect("/Admin/Edit/1");
+            return Redirect("/Admin/Edit/" + c.ID);
 
         }
         

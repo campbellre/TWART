@@ -58,35 +58,37 @@ namespace TWART.Models
         }
 
 
-        public void DeleteCustomer(int ID) {
+        public void DeleteCustomer(int ID) 
+        {
             using (connect = new MySqlConnection(_connectionString))
             {
-                try
+                connect.Open();
+                using (MySqlTransaction transaction = connect.BeginTransaction())
                 {
-                    string query = "";
-                    var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.TableDirect };
-
-                    cmd.Parameters.AddWithValue("CustomerID", ID);
-
-                    connect.Open();
-
-                    var reader = cmd.ExecuteReader();
-                    while (reader.Read())
+                    try
                     {
+                        string query = "DeleteCustomer";
+                        var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
 
+                        cmd.Parameters.AddWithValue("CustomerID", ID);
+
+
+                        cmd.ExecuteNonQuery();
+
+                        transaction.Commit();
+
+                        connect.Close();
                     }
-
-                    connect.Close();
+                    catch (InvalidOperationException ioException)
+                    {
+                        transaction.Rollback();
+                        connect.Close();
+                    }
                 }
-                catch (InvalidOperationException ioException)
-                {
-                    connect.Close();
-                }
-
             }
         }
 
-
+        
         // Main method for getting a customer
         public Customer SearchCustomers(int ID)
         {
