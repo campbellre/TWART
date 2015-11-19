@@ -131,7 +131,6 @@
     <Content Include="images\pic05.jpg" />
     <Content Include="images\pic06.jpg" />
     <Content Include="images\pic07.jpg" />
-    <Content Include="admin.aspx" />
     <Content Include="index.html" />
     <Content Include="login.html" />
     <Content Include="Scripts\bootstrap.js" />
@@ -145,19 +144,15 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Views\Admin\Customer.aspx" />
+    <Content Include="Views\Admin\Edit.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="admin.aspx.cs">
-      <DependentUpon>admin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin.aspx.designer.cs">
-      <DependentUpon>admin.aspx</DependentUpon>
-    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\EditContactDetails.cs" />
     <Compile Include="Controllers\EditEmployeeDetails.cs" />
     <Compile Include="Controllers\HelloWorldController.cs" />
@@ -202,6 +197,20 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource1.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\Customer.aspx.cs">
+      <DependentUpon>Customer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\Customer.aspx.designer.cs">
+      <DependentUpon>Customer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\Edit.aspx.cs">
+      <DependentUpon>Edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\Edit.aspx.designer.cs">
+      <DependentUpon>Edit.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

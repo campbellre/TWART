@@ -1,4 +1,7 @@
-﻿<
+﻿
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Customer.aspx.cs" Inherits="TWART.Views.Admin.CustomerView" %>
+<%@ Import Namespace="System.Web.Mvc.Html" %>
+<%@ Import Namespace="TWART.DataObjects" %>
 
 <!DOCTYPE html>
 <html>
@@ -7,7 +10,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="../../assets/css/main.css" />
     <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
     <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 </head>
@@ -18,7 +21,7 @@
             <!-- Logo -->
             <div id="logo">
                 <span class="image avatar48">
-                    <img src="images/avatar.jpg" alt="" /></span>
+                    <img src="../../images/avatar.jpg" alt="" /></span>
                 <h1 id="title">TWART Shipping Corporation</h1>
             </div>
             <!-- Nav -->
@@ -50,12 +53,44 @@
             <!-- Controls -->
             <section id="controls" class="middle">
                 <div class="container">
-                    <asp:SqlDataSource ID="adminDataSource" runat="server" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT * FROM 15ac3d04.customer" ConnectionString="<%$ ConnectionStrings:ConnectionString %>"></asp:SqlDataSource>
-                    <h2>Client List</h2>
-                    <asp:GridView ID="clients" 
-                        runat="server" DataSourceID="adminDataSource"
-                         RowDataBound="Customer" DataKeyNames="Company_Name"></asp:GridView>
-                    <asp:GridView ID="client" runat="server" ></asp:GridView>
+                        <ul>
+                            
+                            <%foreach (var customer in Model) { %>
+                            
+
+                              
+                            
+                            <li>
+                                <%= Html.Encode(customer.Name) %>
+
+                            </li>
+                            
+                             <% } %>
+                    </ul>
+                    
+                    <table>
+                        <tr>
+                            <th>Edit</th>
+                        </tr>
+                        <tr>
+                            <th>Company Name</th> 
+                        </tr>
+                        
+                        <% foreach (var customer in Model)
+                           { %>
+
+                        <tr>
+                            <td> <%= Html.ActionLink("Edit", "Edit", new {id = customer.ID}) %></td>
+                        </tr>
+                        
+                        <tr>
+                            <td> <%= Html.Encode( customer.Name ) %></td>
+                        </tr>
+                        
+                        <% } %>
+                    </table>
+
+
                 </div>
             </section>
         </div>
@@ -68,12 +103,12 @@
         </ul>
     </div>
     <!-- Scripts -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/jquery.scrolly.min.js"></script>
-    <script src="assets/js/jquery.scrollzer.min.js"></script>
-    <script src="assets/js/skel.min.js"></script>
-    <script src="assets/js/util.js"></script>
+    <script src="../../assets/js/jquery.min.js"></script>
+    <script src="../../assets/js/jquery.scrolly.min.js"></script>
+    <script src="../../assets/js/jquery.scrollzer.min.js"></script>
+    <script src="../../assets/js/skel.min.js"></script>
+    <script src="../../assets/js/util.js"></script>
     <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-    <script src="assets/js/main.js"></script>
+    <script src="../../assets/js/main.js"></script>
 </body>
 </html>

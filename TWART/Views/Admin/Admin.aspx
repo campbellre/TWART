@@ -1,4 +1,8 @@
-﻿<
+﻿@model IEnumerable<TWART.DataObjects.Customer>
+
+@{
+    ViewBag.Title = "Admin";
+}
 
 <!DOCTYPE html>
 <html>
@@ -50,12 +54,20 @@
             <!-- Controls -->
             <section id="controls" class="middle">
                 <div class="container">
-                    <asp:SqlDataSource ID="adminDataSource" runat="server" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT * FROM 15ac3d04.customer" ConnectionString="<%$ ConnectionStrings:ConnectionString %>"></asp:SqlDataSource>
+                    <%--<asp:SqlDataSource ID="adminDataSource" runat="server" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT * FROM 15ac3d04.customer" ConnectionString="<%$ ConnectionStrings:ConnectionString %>"></asp:SqlDataSource>
                     <h2>Client List</h2>
                     <asp:GridView ID="clients" 
                         runat="server" DataSourceID="adminDataSource"
                          RowDataBound="Customer" DataKeyNames="Company_Name"></asp:GridView>
-                    <asp:GridView ID="client" runat="server" ></asp:GridView>
+                    <asp:GridView ID="client" runat="server" ></asp:GridView>--%>
+                    
+                    <ul>
+                     @foreach (var customer in Model)
+                        {
+                        <li>@customer.Name</li>
+                    }
+                    </ul>
+
                 </div>
             </section>
         </div>
