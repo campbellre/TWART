@@ -26,6 +26,7 @@
             <!-- Nav -->
             <nav id="nav">
                 <ul>
+                    <li><a href="adminIndex" id="control"><span class="icon fa-hand-o-left">Control Panel</span></a></li>
                     <li><a href="login.html" class="skel-layers-ignoreHref" id="foobar-link"><span class="icon fa-hand-o-right">Log Out</span></a></li>
                 </ul>
             </nav>

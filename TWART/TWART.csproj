@@ -149,9 +149,8 @@
     <Content Include="Views\Admin\adminIndex.aspx">
       <BrowseToURL>~/Admin/adminIndex</BrowseToURL>
     </Content>
-    <Content Include="Views\Admin\order.aspx" />
+    <Content Include="Views\Admin\Orders.aspx" />
     <Content Include="Views\Client\clientIndex.aspx" />
-    <Content Include="Views\Admin\Customer.aspx" />
     <Content Include="Views\Admin\delete.aspx" />
     <Content Include="Views\Admin\viewinfo.aspx" />
     <Content Include="Web.config" />
@@ -236,12 +235,12 @@
     <Compile Include="Views\Admin\adminIndex.aspx.designer.cs">
       <DependentUpon>adminIndex.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Admin\order.aspx.cs">
-      <DependentUpon>order.aspx</DependentUpon>
+    <Compile Include="Views\Admin\Orders.aspx.cs">
+      <DependentUpon>Orders.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Admin\order.aspx.designer.cs">
-      <DependentUpon>order.aspx</DependentUpon>
+    <Compile Include="Views\Admin\Orders.aspx.designer.cs">
+      <DependentUpon>Orders.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Client\clientIndex.aspx.cs">
       <DependentUpon>clientIndex.aspx</DependentUpon>
@@ -260,7 +259,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\Login.cs" />
@@ -274,9 +272,7 @@
     <Content Include="assets\fonts\FontAwesome.otf" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
