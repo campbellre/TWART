@@ -108,7 +108,7 @@ namespace TWART.Controllers
             }
             else
             {
-                return Redirect("/403.html");
+                return Redirect("/login.html");
             }
         }
 
