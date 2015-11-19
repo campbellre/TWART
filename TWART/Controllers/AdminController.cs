@@ -32,8 +32,21 @@ namespace TWART.Controllers
 
             return View(c);
 
+
         }
 
+		
+		public ActionResult GetAddress(){
+		
+            var id = int.Parse(Url.RequestContext.RouteData.Values["id"].ToString());
+			 
+			var addressModel = new AddressModel();
+			
+			var address = addressModel.SearchAddress(id);
+			
+			return View(address);
+			
+		}
 
 
         [HttpPost]
