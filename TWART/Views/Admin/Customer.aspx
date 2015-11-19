@@ -46,7 +46,7 @@
             <section id="client" class="top">
                 <div class="container">
                     <header>
-                        <h2 style="color: #ff0000">Administrator's Control Panel</h2>
+                        <h2>Client Information</h2>
                     </header>
                 </div>
             </section>

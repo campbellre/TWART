@@ -51,15 +51,25 @@
             <div class="container">
                 <header>
                     <h2 style="color: #ff0000">Delete</h2>
+                    <p></p>
+                    <h2 style="color: #ff0000">Are You Sure You Want To Delete?</h2>
                 </header>
             </div>
         </section>
         <div style="text-align: center">
+
+
+
+
+
                 <div style="text-align: center">
                     <p></p>
-                    <input type="submit" value="Delete" />
+                    <input type="submit" value="Yes" />
+                    
+                    <input type="submit" value="No" />
                     <p></p>
                 </div>
+                
         </div>
     </div>
     <!-- Footer -->
