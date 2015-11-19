@@ -116,5 +116,32 @@ namespace TWART.Controllers
 
         }
 
+        [HttpPost]
+        public ActionResult Delete()
+        {
+            var c = new Customer();
+            c.ID = int.Parse(Request.Form["id"]);
+            c.Name = Request.Form["name"].ToString();
+            c.Address_ID = int.Parse(Request.Form["addressid"]);
+
+            var cm = new CustomerModel();
+
+            cm.EditCustomer(c);
+
+            // TODO: This Should be dynamic. Not go to '1' all the time.
+            return Redirect("/Admin/Edit/1");
+
+        }
+        
+        public ActionResult Delete()
+        {
+            return View();
+        }
+
+        public ActionResult ViewInfo()
+        {
+            return View();
+        }
+
     }
 }
