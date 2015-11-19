@@ -135,9 +135,7 @@ namespace TWART.Models
                     while (reader.Read())
                     {
                         var o = new Order();
-                        o.
-                        cust.Name = reader["Company_name"].ToString();
-                        cust.Address_ID = (int)reader["Address_ID"];
+                        // TODO : FIX THIS
 
                     }
 
@@ -148,7 +146,7 @@ namespace TWART.Models
                     connect.Close();
                 }
 
-                return cust;
+                return orderList;
             }
         }
 
