@@ -92,6 +92,11 @@ namespace TWART.Controllers
             return View();
         }
 
+        public ActionResult Orders()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult EditCustomer()
         {

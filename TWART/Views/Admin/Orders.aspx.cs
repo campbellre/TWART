@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace TWART.Views.Admin
 {
-    public partial class order : System.Web.UI.Page
+    public partial class OrderView : System.Web.Mvc.ViewPage<IEnumerable<order>>
     {
         protected void Page_Load(object sender, EventArgs e)
         {
