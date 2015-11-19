@@ -11,42 +11,48 @@ namespace TWART.Controllers
     public class AdminController : System.Web.Mvc.Controller
     {
 
+		// Function to get a list of all customers
         public ActionResult Customer()
         {
+		
+			 // Create a new AddressModel object
+			var addressModel = new AddressModel();
+			
+			// Create a CustomerModel object
             var cm = new CustomerModel();
 
+			// Call the method to get the list
             var cl = cm.ListCustomers();
-
+			
+			
+			foreach (var c in cl){
+				Address address = addressModel.SearchAddress(c.AddressID);
+				c.Address = address;
+			}
+			
+			// Return the CustomerList
             return View(cl);
         }
 
+		
+		// Function to do something
         public ActionResult Edit()
         {
 
+			// Get the ID as a parameter
             var p = int.Parse(Url.RequestContext.RouteData.Values["id"].ToString());
 
+			// Create a new CustomerModel object
             var cm = new CustomerModel();
 
+			// Call the method to search for a Customer with an ID matching the value passed in
             var c = cm.SearchCustomers(p);
 
-
+			// Return the Customer information
             return View(c);
-
 
         }
 
-		
-		public ActionResult GetAddress(){
-		
-            var id = int.Parse(Url.RequestContext.RouteData.Values["id"].ToString());
-			 
-			var addressModel = new AddressModel();
-			
-			var address = addressModel.SearchAddress(id);
-			
-			return View(address);
-			
-		}
 
 
         [HttpPost]
