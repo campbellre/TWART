@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="customer.aspx.cs" Inherits="TWART.Views.Admin.CustomerView" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="clientIndex.aspx.cs" Inherits="TWART.Views.Client.IndexView" %>
 
 <%@ Import Namespace="System.Web.Mvc.Html" %>
 <%@ Import Namespace="TWART.DataObjects" %>
@@ -26,6 +26,7 @@
             <!-- Nav -->
             <nav id="nav">
                 <ul>
+                    <li><a href="customer.aspx" class="skel-layers-ignoreHref" id="foobar-link"><span class="icon fa-hand-o-right">Our Clients</span></a></li>
                     <li><a href="login.html" class="skel-layers-ignoreHref" id="foobar-link"><span class="icon fa-hand-o-right">Log Out</span></a></li>
                 </ul>
             </nav>
@@ -51,22 +52,6 @@
             </section>
             <!-- Controls -->
             <section id="controls" class="middle">
-                <div class="container">
-                    <h2>Customer List</h2>
-                    <table>
-                        <% foreach (var customer in Model)
-                           { %>
-                        <tr>
-                            <td><%= Html.Encode(customer.Name) %></td>
-                            <td><%= Html.Encode(customer.Address.LineOne) %></td>
-                            <td><%= Html.Encode(customer.Address.LineTwo) %></td>
-                            <td><%= Html.ActionLink("View", "view", new { id = customer.ID })%></td>
-                            <td><%= Html.ActionLink("Edit", "edit", new { id = customer.ID })%></td>
-                            <td><%= Html.ActionLink("Delete", "delete", new { id = customer.ID })%></td>
-                        </tr>
-                        <% } %>
-                    </table>
-                </div>
             </section>
         </div>
     </form>
