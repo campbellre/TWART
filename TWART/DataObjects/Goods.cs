@@ -9,5 +9,9 @@ namespace TWART.DataObjects
     {
         public int ID { get; set; }
         public String Name { get; set; }
+        public Transport Transport { get; set; }
+        public int TransportID { get; set; }
+        public DateTime DesiredDeliveryDate { get; set; }
+        public String HandlingRequirments { get; set; }
     }
 }

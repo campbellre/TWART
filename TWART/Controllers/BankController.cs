@@ -23,8 +23,12 @@ namespace TWART.Controllers
             // using the Account_ID, calculate Bank_ID
             var accountModel = new AccountModel();
             var a = accountModel.GetAccount(accountID);
-            var theBank = a.Bank;
+            var theBank = a.BankID;
 
+            // using the Bank_ID, get the bank details
+
+
+            // PASS A CUSTOMER TO THE BANKMODEL
 
             return View(theBank);
         }

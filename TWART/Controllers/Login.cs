@@ -58,9 +58,6 @@ namespace TWART.Controller
                 // Passes the user to the login model
                 result = loginControl.Login(newUser);   
 
-                // Sets the Session variables
-                HttpContext.Current.Session["loggedInState"] = "true";
-                HttpContext.Current.Session["loggedInUser"] = newUser.username;
 
                 // Returns bool. State of the login attempt
                 return result.State;
