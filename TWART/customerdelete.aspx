@@ -1,11 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Edit.aspx.cs" Inherits="TWART.Views.Admin.Edit" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Customer.aspx.cs" Inherits="TWART.Views.Admin.CustomerView" %>
 
+<%@ Import Namespace="System.Web.Mvc.Html" %>
 <%@ Import Namespace="TWART.DataObjects" %>
-
 <!DOCTYPE html>
-
 <html>
-<head runat="server">
+<head>
     <title>TWART Shipping Co.</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -18,7 +17,6 @@
     <!-- Header -->
     <div id="header">
         <div class="top">
-
             <!-- Logo -->
             <div id="logo">
                 <span class="image avatar48">
@@ -28,14 +26,11 @@
             <!-- Nav -->
             <nav id="nav">
                 <ul>
-                    <li><a href="index.html#top" id="about-link"><span class="icon fa-home">About Us</span></a></li>
-                    <li><a href="#contact" id="contact-link"><span class="icon fa-envelope">Get In Touch</span></a></li>
-                    <li><a href="#top" class="skel-layers-ignoreHref" id="foobar-link"><span class="icon fa-hand-o-left">Login</span></a></li>
+                    <li><a href="login.html" class="skel-layers-ignoreHref" id="foobar-link"><span class="icon fa-hand-o-right">Log Out</span></a></li>
                 </ul>
             </nav>
         </div>
         <div class="bottom">
-
             <!-- Social Icons -->
             <ul class="icons">
                 <li><a href="https://github.com/campbellre/TWART" class="icon fa-github"><span class="label">Github</span></a></li>
@@ -43,34 +38,21 @@
             </ul>
         </div>
     </div>
-    <!-- Grid Display -->
-    <div id="main">
-
-        <!-- Admin Control Panel -->
-        <section id="admin" class="top">
-            <div class="container">
-                <header>
-                    <h2 style="color: #ff0000">Edit Company Name</h2>
-                </header>
-            </div>
-        </section>
-        <div style="text-align: center">
-
-
-            <% Customer editCustomer = (Customer)Model; %>
-            <form action="/admin/EditCustomer" method="POST">
-
-                <input type="text" name="name" value="<%= editCustomer.Name %>" />
-
-                <div style="text-align: center">
-                    <p></p>
-                    <input type="submit" value="Update" />
-                    <p></p>
+    <!-- Main -->
+    <form id="customerForm" runat="server">
+        <div id="main">
+            <!-- Client View -->
+            <section id="client" class="top">
+                <div class="container">
+                    <header>
+                        <h2 style="color: #ff0000">Customer Details Has Been Deleted!</h2>
+                    </header>
                 </div>
-            </form>
-
+            </section>
+            <!-- Controls -->
+          
         </div>
-    </div>
+    </form>
     <!-- Footer -->
     <div id="footer">
         <!-- Copyright -->
@@ -79,12 +61,12 @@
         </ul>
     </div>
     <!-- Scripts -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/jquery.scrolly.min.js"></script>
-    <script src="assets/js/jquery.scrollzer.min.js"></script>
-    <script src="assets/js/skel.min.js"></script>
-    <script src="assets/js/util.js"></script>
+    <script src="../../assets/js/jquery.min.js"></script>
+    <script src="../../assets/js/jquery.scrolly.min.js"></script>
+    <script src="../../assets/js/jquery.scrollzer.min.js"></script>
+    <script src="../../assets/js/skel.min.js"></script>
+    <script src="../../assets/js/util.js"></script>
     <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-    <script src="assets/js/main.js"></script>
+    <script src="../../assets/js/main.js"></script>
 </body>
 </html>

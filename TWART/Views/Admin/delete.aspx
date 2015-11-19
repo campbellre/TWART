@@ -50,7 +50,7 @@
         <section id="admin" class="top">
             <div class="container">
                 <header>
-                    <h2 style="color: #ff0000">Edit Company Name</h2>
+                    <h2 style="color: #ff0000">Delete</h2>
                 </header>
             </div>
         </section>
@@ -64,7 +64,7 @@
 
                 <div style="text-align: center">
                     <p></p>
-                    <input type="submit" value="Update" />
+                    <input type="submit" value="Delete" />
                     <p></p>
                 </div>
             </form>

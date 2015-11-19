@@ -43,24 +43,29 @@ namespace TWART.Controllers
             // variable to store the path to redirect to
 			String pageToDirectTo = "/index.html";
 
-
-
-            if (logState.IsLoggedIn())  
-            {
-                if (logState.AccessLevel.Equals("Admin"))
+            try { 
+                String state = (string)Session["loggedInState"];
+                if (state != "true")  
                 {
                     pageToDirectTo = "/Admin/";
+                    if (logState.AccessLevel.Equals("Admin"))
+                    {
+                        pageToDirectTo = "/Admin/Customer";
+                    }
+                    else
+                    {
+                        pageToDirectTo = "/403.html";     // this will change to the standard login page
+                        //note by will: this will instead show a forbidden access page
+                    }
+>>>>>>> b2eb258530d31a6a42c088a88f0fa93a9ba3a979
                 }
-                else
+                else                              
                 {
-                    pageToDirectTo = "/403.html";     // this will change to the standard login page
-                    //note by will: this will instead show a forbidden access page
-                }
-            }                                   
-            else                              
-            {                                 
-                pageToDirectTo = "/index.html";   
-            }                                    
+                    pageToDirectTo = "/403.html";   
+                }                  
+            }catch(Exception e){
+                pageToDirectTo = "/403.html";
+            }     
 
             // redirect the user to the relevant page
             return Redirect(pageToDirectTo);

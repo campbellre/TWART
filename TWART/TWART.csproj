@@ -153,6 +153,10 @@
     </Content>
     <Content Include="Views\Admin\order.aspx" />
     <Content Include="Views\Client\clientIndex.aspx" />
+    <Content Include="Views\Admin\Customer.aspx" />
+    <Content Include="Views\Admin\delete.aspx" />
+    <Content Include="Views\Admin\Edit.aspx" />
+    <Content Include="Views\Admin\viewinfo.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -160,12 +164,20 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\BankController.cs" />
+    <Compile Include="Controllers\DeleteCustomerController.cs" />
     <Compile Include="Controllers\EditContactDetails.cs" />
     <Compile Include="Controllers\EditEmployeeDetails.cs" />
-    <Compile Include="Controllers\HelloWorldController.cs" />
-    <Compile Include="Controllers\newController.cs" />
+    <Compile Include="Controllers\LogoutController.cs" />
     <Compile Include="Controllers\Register.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="customerdelete.aspx.cs">
+      <DependentUpon>customerdelete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customerdelete.aspx.designer.cs">
+      <DependentUpon>customerdelete.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DataObjects\Account.cs" />
     <Compile Include="DataObjects\Account_Type.cs" />
     <Compile Include="DataObjects\Address.cs" />
@@ -212,6 +224,13 @@
     <Compile Include="Views\Admin\customer.aspx.designer.cs">
       <DependentUpon>customer.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Admin\delete.aspx.cs">
+      <DependentUpon>delete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\delete.aspx.designer.cs">
+      <DependentUpon>delete.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Admin\Edit.aspx.cs">
       <DependentUpon>Edit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -219,6 +238,7 @@
     <Compile Include="Views\Admin\Edit.aspx.designer.cs">
       <DependentUpon>Edit.aspx</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="Views\Admin\adminIndex.aspx.cs">
       <DependentUpon>adminIndex.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -239,6 +259,14 @@
     </Compile>
     <Compile Include="Views\Client\clientIndex.aspx.designer.cs">
       <DependentUpon>clientIndex.aspx</DependentUpon>
+=======
+    <Compile Include="Views\Admin\viewinfo.aspx.cs">
+      <DependentUpon>viewinfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\viewinfo.aspx.designer.cs">
+      <DependentUpon>viewinfo.aspx</DependentUpon>
+>>>>>>> b2eb258530d31a6a42c088a88f0fa93a9ba3a979
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -272,6 +300,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+<<<<<<< HEAD
+=======
+    <Folder Include="Views\Bank\" />
+    <Folder Include="Views\DeleteCustomer\" />
+    <Folder Include="Views\HelloWorld\" />
+    <Folder Include="Views\new\" />
+>>>>>>> b2eb258530d31a6a42c088a88f0fa93a9ba3a979
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resource1.resx">
