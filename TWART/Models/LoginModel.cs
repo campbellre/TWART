@@ -83,5 +83,41 @@ namespace TWART.Models
             throw new NotImplementedException();
         }
 
+        public List<User> UsersList()
+        {
+            var lu = new List<User>();
+
+            using (connect = new MySqlConnection(_connectionString))
+            {
+                try
+                {
+                    string query = "ListUserAccount";
+                    var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
+
+                    connect.Open();
+
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        var u = new User();
+
+                        u.ID = int.Parse(reader["UID"].ToString());
+                        u.username = reader["Username"].ToString();
+                        u.AccessLevel = reader["AccessLevel"].ToString();
+
+                        lu.Add(u);
+                    }
+
+                    connect.Close();
+                }
+                catch (InvalidOperationException ioException)
+                {
+                    connect.Close();
+                }
+            }
+
+            return lu;
+        }
+
     }
 }
