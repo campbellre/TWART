@@ -13,6 +13,5 @@ namespace TWART.DataObjects
         public CreateOrder Order { get; set; }
         public Customer Customer { get; set; }
         public Bank Bank { get; set; }
-
     }
 }
