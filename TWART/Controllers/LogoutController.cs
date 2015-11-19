@@ -17,8 +17,6 @@ namespace TWART.Controllers
         [HttpPost]
         public ActionResult Index()
         {  
-            // get Account Type / Access levels from Database
-            LoggedIn logState = null;
 
             doLogout();
 
