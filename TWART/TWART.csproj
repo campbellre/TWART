@@ -120,9 +120,6 @@
     <Content Include="assets\js\main.js" />
     <Content Include="assets\js\skel.min.js" />
     <Content Include="assets\js\util.js" />
-    <Content Include="Content\Site.css" />
-    <Content Include="customerdelete.aspx" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="images\avatar.jpg" />
     <Content Include="images\banner.jpg" />
@@ -145,9 +142,17 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Views\Admin\customer.aspx">
+      <BrowseToURL>~/Admin/customer</BrowseToURL>
+    </Content>
+    <Content Include="Views\Admin\Edit.aspx" />
+    <Content Include="Views\Admin\adminIndex.aspx">
+      <BrowseToURL>~/Admin/adminIndex</BrowseToURL>
+    </Content>
+    <Content Include="Views\Admin\order.aspx" />
+    <Content Include="Views\Client\clientIndex.aspx" />
     <Content Include="Views\Admin\Customer.aspx" />
     <Content Include="Views\Admin\delete.aspx" />
-    <Content Include="Views\Admin\Edit.aspx" />
     <Content Include="Views\Admin\viewinfo.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -163,13 +168,6 @@
     <Compile Include="Controllers\LogoutController.cs" />
     <Compile Include="Controllers\Register.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="customerdelete.aspx.cs">
-      <DependentUpon>customerdelete.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="customerdelete.aspx.designer.cs">
-      <DependentUpon>customerdelete.aspx</DependentUpon>
-    </Compile>
     <Compile Include="DataObjects\Account.cs" />
     <Compile Include="DataObjects\Account_Type.cs" />
     <Compile Include="DataObjects\Address.cs" />
@@ -191,6 +189,7 @@
     </Compile>
     <Compile Include="Models\AccountModel.cs" />
     <Compile Include="Models\AddressModel.cs" />
+    <Compile Include="Models\BankingModel.cs" />
     <Compile Include="Models\CustomerModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\OrderModel.cs" />
@@ -209,12 +208,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource1.resx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Admin\Customer.aspx.cs">
-      <DependentUpon>Customer.aspx</DependentUpon>
+    <Compile Include="Views\Admin\customer.aspx.cs">
+      <DependentUpon>customer.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Admin\Customer.aspx.designer.cs">
-      <DependentUpon>Customer.aspx</DependentUpon>
+    <Compile Include="Views\Admin\customer.aspx.designer.cs">
+      <DependentUpon>customer.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Admin\delete.aspx.cs">
       <DependentUpon>delete.aspx</DependentUpon>
@@ -229,6 +228,27 @@
     </Compile>
     <Compile Include="Views\Admin\Edit.aspx.designer.cs">
       <DependentUpon>Edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\adminIndex.aspx.cs">
+      <DependentUpon>adminIndex.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\adminIndex.aspx.designer.cs">
+      <DependentUpon>adminIndex.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\order.aspx.cs">
+      <DependentUpon>order.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\order.aspx.designer.cs">
+      <DependentUpon>order.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Client\clientIndex.aspx.cs">
+      <DependentUpon>clientIndex.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Client\clientIndex.aspx.designer.cs">
+      <DependentUpon>clientIndex.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Admin\viewinfo.aspx.cs">
       <DependentUpon>viewinfo.aspx</DependentUpon>
@@ -252,15 +272,11 @@
     <Content Include="assets\fonts\fontawesome-webfont.woff" />
     <Content Include="assets\fonts\fontawesome-webfont.woff2" />
     <Content Include="assets\fonts\FontAwesome.otf" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\web.config" />
-    <Content Include="Views\Login\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -268,13 +284,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Views\Bank\" />
-    <Folder Include="Views\DeleteCustomer\" />
-    <Folder Include="Views\HelloWorld\" />
-    <Folder Include="Views\new\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resource1.resx">
       <Generator>ResXFileCodeGenerator</Generator>

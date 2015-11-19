@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="customer.aspx.cs" Inherits="TWART.Views.Admin.CustomerView" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="adminIndex.aspx.cs" Inherits="TWART.Views.Admin.IndexView" %>
 
 <%@ Import Namespace="System.Web.Mvc.Html" %>
 <%@ Import Namespace="TWART.DataObjects" %>
@@ -26,7 +26,9 @@
             <!-- Nav -->
             <nav id="nav">
                 <ul>
-                    <li><a href="login.html" class="skel-layers-ignoreHref" id="foobar-link"><span class="icon fa-hand-o-right">Log Out</span></a></li>
+                    <li><a href="adminIndex" id="foobar-link"><span class="icon fa-hand-o-left">Control Panel</span></a></li>
+                    <li><a href="#client" id="client-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Client Information</span></a></li>
+                    <li><a href="#order" id="order-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Order Page</span></a></li>
                 </ul>
             </nav>
         </div>
@@ -49,23 +51,18 @@
                     </header>
                 </div>
             </section>
-            <!-- Controls -->
-            <section id="controls" class="middle">
+            <!-- Client -->
+            <section id="controls" class="controls">
                 <div class="container">
-                    <h2>Customer List</h2>
-                    <table>
-                        <% foreach (var customer in Model)
-                           { %>
-                        <tr>
-                            <td><%= Html.Encode(customer.Name) %></td>
-                            <td><%= Html.Encode(customer.Address.LineOne) %></td>
-                            <td><%= Html.Encode(customer.Address.LineTwo) %></td>
-                            <td><%= Html.ActionLink("View", "view", new { id = customer.ID })%></td>
-                            <td><%= Html.ActionLink("Edit", "edit", new { id = customer.ID })%></td>
-                            <td><%= Html.ActionLink("Delete", "delete", new { id = customer.ID })%></td>
-                        </tr>
-                        <% } %>
-                    </table>
+                    <a href="Customer">Client Controls</a>
+                    <p>Use this control to view or modify our client's addresses or account information.</p>
+                </div>
+            </section>
+            <!-- Order -->
+            <section id="order" class="order">
+                <div class="container">
+                    <a href="Orders">Order Page</a>
+                    <p>Use this control to view, create or delete orders which exist on our system.</p>
                 </div>
             </section>
         </div>

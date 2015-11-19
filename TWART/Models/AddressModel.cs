@@ -124,7 +124,7 @@ namespace TWART.Models
             }
         }
 
-
+        
         public List<Address> GetAddressesList()
         {
             var addressList = new List<Address>();

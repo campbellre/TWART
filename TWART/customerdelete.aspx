@@ -45,7 +45,7 @@
             <section id="client" class="top">
                 <div class="container">
                     <header>
-                        <h2 style="color: #ff0000">Customer Details Has Been Deleted!</h2>
+                        <h2 style="color: #ff0000">Company Details Has Been Deleted!</h2>
                     </header>
                 </div>
             </section>

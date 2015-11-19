@@ -47,9 +47,10 @@ namespace TWART.Controllers
                 String state = (string)Session["loggedInState"];
                 if (state != "true")  
                 {
+                    pageToDirectTo = "/Admin/";
                     if (logState.AccessLevel.Equals("Admin"))
                     {
-                        pageToDirectTo = "/Admin/Customer";
+                        pageToDirectTo = "/Admin/adminIndex";
                     }
                     else
                     {

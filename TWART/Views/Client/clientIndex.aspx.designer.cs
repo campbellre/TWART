@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TWART.Views.Admin {
+namespace TWART.Views.Client {
     
     
-    public partial class order {
+    public partial class IndexView {
         
         /// <summary>
         /// customerForm control.

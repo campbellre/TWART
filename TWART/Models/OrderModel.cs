@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using MySql.Data.MySqlClient;
@@ -17,14 +18,136 @@ namespace TWART.Models
             _connectionString = Resource1.ConnectionString;
         }
 
-        public void CreateOrder()
+        // This may be broken 
+        public void CreateOrder(Order o)
         {
-            throw new NotImplementedException();
+            using (connect = new MySqlConnection(_connectionString))
+            {
+                connect.Open();
+                using (MySqlTransaction transaction = connect.BeginTransaction())
+                {
+                    try
+                    {
+                        string query = "NewOrder";
+                        var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
+
+                        cmd.Parameters.AddWithValue("OrderStatus", o.OrderStatus);
+                        cmd.Parameters.AddWithValue("DatePlaced", o.Placed);
+                        cmd.Parameters.AddWithValue("GoodsID", o.GoodsID);
+                        cmd.Parameters.AddWithValue("DestinationAddressID", o.DestinationAddressID);
+                        cmd.Parameters.AddWithValue("SourceAddressID", o.SourceAddressID);
+                        cmd.Parameters.AddWithValue("AccountID", o.AccountID);
+
+                        cmd.ExecuteNonQuery();
+
+                        transaction.Commit();
+
+                        connect.Close();
+                    }
+                    catch (InvalidOperationException ioException)
+                    {
+                        transaction.Rollback();
+                        connect.Close();
+                    }
+                }
+            }
+        }
+
+        public void EditOrder(Order o)
+        {
+            using (connect = new MySqlConnection(_connectionString))
+            {
+                connect.Open();
+                using (MySqlTransaction transaction = connect.BeginTransaction())
+                {
+                    try
+                    {
+                        string query = "EditOrder";
+                        var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
+
+                        cmd.Parameters.AddWithValue("OrderID", o.ID);
+                        cmd.Parameters.AddWithValue("OrderStatus", o.OrderStatus);
+                        cmd.Parameters.AddWithValue("DatePlaced", o.Placed);
+                        cmd.Parameters.AddWithValue("DateReceived", o.Received);
+                        cmd.Parameters.AddWithValue("DateDelivered", o.Delivered);
+                        cmd.Parameters.AddWithValue("GoodsID", o.GoodsID);
+                        cmd.Parameters.AddWithValue("DestinationAddressID", o.DestinationAddressID);
+                        cmd.Parameters.AddWithValue("SourceAddressID", o.SourceAddressID);
+                        cmd.Parameters.AddWithValue("AccountID", o.AccountID);
+
+                        cmd.ExecuteNonQuery();
+
+                        transaction.Commit();
+
+                        connect.Close();
+                    }
+                    catch (InvalidOperationException ioException)
+                    {
+                        transaction.Rollback();
+                        connect.Close();
+                    }
+                }
+            }
+        }
+
+        public void DeleteOrder(int ID)
+        {
+            using (connect = new MySqlConnection(_connectionString))
+            {
+                connect.Open();
+                using (MySqlTransaction transaction = connect.BeginTransaction())
+                {
+                    try
+                    {
+                        string query = "DeleteOrder";
+                        var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
+
+                        cmd.Parameters.AddWithValue("OrderID", ID);
+                        cmd.ExecuteNonQuery();
+
+                        transaction.Commit();
+
+                        connect.Close();
+                    }
+                    catch (InvalidOperationException ioException)
+                    {
+                        transaction.Rollback();
+                        connect.Close();
+                    }
+                }
+            }
         }
 
         public List<Order> GetOrdersList()
         {
-            throw new NotImplementedException();
+            var orderList = new List<Order>();
+
+            using (connect = new MySqlConnection(_connectionString))
+            {
+                try
+                {
+                    string query = "ListOrder";
+                    var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
+
+                    connect.Open();
+
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        var o = new Order();
+                        // TODO : FIX THIS
+
+                    }
+
+                    connect.Close();
+                }
+                catch (InvalidOperationException ioException)
+                {
+                    connect.Close();
+                }
+
+                return orderList;
+            }
         }
 
         // This is the main method to get a order from the order ID within the databse.

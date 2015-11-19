@@ -55,20 +55,11 @@
             </div>
         </section>
         <div style="text-align: center">
-
-
-            <% Customer editCustomer = (Customer)Model; %>
-            <form action="/admin/EditCustomer" method="POST">
-
-                <input type="text" name="name" value="<%= editCustomer.Name %>" />
-
                 <div style="text-align: center">
                     <p></p>
                     <input type="submit" value="Delete" />
                     <p></p>
                 </div>
-            </form>
-
         </div>
     </div>
     <!-- Footer -->
