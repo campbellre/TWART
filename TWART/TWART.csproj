@@ -144,8 +144,15 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Views\Admin\Customer.aspx" />
+    <Content Include="Views\Admin\customer.aspx">
+      <BrowseToURL>~/Admin/customer</BrowseToURL>
+    </Content>
     <Content Include="Views\Admin\Edit.aspx" />
+    <Content Include="Views\Admin\adminIndex.aspx">
+      <BrowseToURL>~/Admin/adminIndex</BrowseToURL>
+    </Content>
+    <Content Include="Views\Admin\order.aspx" />
+    <Content Include="Views\Client\clientIndex.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -198,12 +205,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource1.resx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Admin\Customer.aspx.cs">
-      <DependentUpon>Customer.aspx</DependentUpon>
+    <Compile Include="Views\Admin\customer.aspx.cs">
+      <DependentUpon>customer.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Admin\Customer.aspx.designer.cs">
-      <DependentUpon>Customer.aspx</DependentUpon>
+    <Compile Include="Views\Admin\customer.aspx.designer.cs">
+      <DependentUpon>customer.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Admin\Edit.aspx.cs">
       <DependentUpon>Edit.aspx</DependentUpon>
@@ -211,6 +218,27 @@
     </Compile>
     <Compile Include="Views\Admin\Edit.aspx.designer.cs">
       <DependentUpon>Edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\adminIndex.aspx.cs">
+      <DependentUpon>adminIndex.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\adminIndex.aspx.designer.cs">
+      <DependentUpon>adminIndex.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\order.aspx.cs">
+      <DependentUpon>order.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\order.aspx.designer.cs">
+      <DependentUpon>order.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Client\clientIndex.aspx.cs">
+      <DependentUpon>clientIndex.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Client\clientIndex.aspx.designer.cs">
+      <DependentUpon>clientIndex.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -235,7 +263,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\web.config" />
-    <Content Include="Views\Login\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -245,8 +272,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\HelloWorld\" />
-    <Folder Include="Views\new\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resource1.resx">

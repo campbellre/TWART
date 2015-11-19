@@ -53,7 +53,14 @@ namespace TWART.Controllers
 
         }
 
+        public ActionResult Index()
+        {
+            return Redirect("/Admin/adminIndex");
+        }
 
+        public ActionResult adminIndex() {
+            return View();
+        }
 
         [HttpPost]
         public ActionResult EditCustomer()

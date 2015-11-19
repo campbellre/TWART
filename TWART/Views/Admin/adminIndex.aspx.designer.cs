@@ -10,7 +10,7 @@
 namespace TWART.Views.Admin {
     
     
-    public partial class order {
+    public partial class IndexView {
         
         /// <summary>
         /// customerForm control.
