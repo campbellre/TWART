@@ -57,7 +57,6 @@ namespace TWART.Controllers
                         pageToDirectTo = "/403.html";     // this will change to the standard login page
                         //note by will: this will instead show a forbidden access page
                     }
->>>>>>> b2eb258530d31a6a42c088a88f0fa93a9ba3a979
                 }
                 else                              
                 {

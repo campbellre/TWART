@@ -258,6 +258,7 @@
     </Compile>
     <Compile Include="Views\Client\clientIndex.aspx.designer.cs">
       <DependentUpon>clientIndex.aspx</DependentUpon>
+</Compile>
     <Compile Include="Views\Admin\viewinfo.aspx.cs">
       <DependentUpon>viewinfo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
