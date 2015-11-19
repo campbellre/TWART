@@ -10,7 +10,7 @@ namespace TWART.DataObjects
     {
         public int ID { get; set; }
         public DateTime DateOfOrder { get; set; }
-        public CreateOrder Order { get; set; }
+        public Order Order { get; set; }
         public Customer Customer { get; set; }
         public Bank Bank { get; set; }
     }
