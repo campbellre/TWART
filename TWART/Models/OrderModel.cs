@@ -135,8 +135,17 @@ namespace TWART.Models
                     while (reader.Read())
                     {
                         var o = new Order();
-                        // TODO : FIX THIS
+                        o.AccountID = int.Parse(reader["Purchace_ID"].ToString());
+                        o.OrderStatus = reader["Order_Status"].ToString();
+                        o.Placed = DateTime.Parse(reader["Date_Placed"].ToString());
+                        o.Received = DateTime.Parse(reader["Date_Received"].ToString());
+                        o.Delivered = DateTime.Parse(reader["Date_Delivered"].ToString());
+                        o.GoodsID = int.Parse(reader["Goods_ID"].ToString());
+                        o.DestinationAddressID = int.Parse(reader["Destination_Address"].ToString());
+                        o.SourceAddressID = int.Parse(reader["Source_Address"].ToString());
+                        o.AccountID = int.Parse(reader["Account_ID"].ToString());
 
+                        orderList.Add(o);
                     }
 
                     connect.Close();
