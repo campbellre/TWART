@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using MySql.Data.MySqlClient;
@@ -26,29 +27,31 @@ namespace TWART.Models
 
         public void EditCustomer(Customer c)
         {
-            // TODO: Add a transation
             using (connect = new MySqlConnection(_connectionString))
             {
-                try
+                connect.Open();
+                using (MySqlTransaction transaction = connect.BeginTransaction())
                 {
-                    string query = "EditCustomer";
-                    var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
+                    try
+                    {
+                        string query = "EditCustomer";
+                        var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
 
-                    cmd.Parameters.AddWithValue("cid", c.ID);
-                    cmd.Parameters.AddWithValue("CName", c.Name);
-                    cmd.Parameters.AddWithValue("Adds", c.Address_ID);
+                        cmd.Parameters.AddWithValue("cid", c.ID);
+                        cmd.Parameters.AddWithValue("CName", c.Name);
+                        cmd.Parameters.AddWithValue("Adds", c.Address_ID);
 
-                    connect.Open();
 
-                    cmd.ExecuteNonQuery();
+                        cmd.ExecuteNonQuery();
 
-                    connect.Close();
+                        connect.Close();
+                    }
+                    catch (InvalidOperationException ioException)
+                    {
+                        transaction.Rollback();
+                        connect.Close();
+                    }
                 }
-                catch (InvalidOperationException ioException)
-                {
-                    connect.Close();
-                }
-
             }
         }
 

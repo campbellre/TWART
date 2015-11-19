@@ -23,7 +23,7 @@ namespace TWART.Models
             throw new NotImplementedException();
         }
 
-        public void AlterAccount(Account a)
+        public void EditAccount(Account a)
         {
             throw new NotImplementedException();
 
@@ -39,7 +39,7 @@ namespace TWART.Models
         {
             throw new NotImplementedException();
         }
-        public List<Account> GetAccountsList()
+        public List<Account> ListAccounts()
         {
             throw new NotImplementedException();
         }
@@ -51,7 +51,7 @@ namespace TWART.Models
         }
 
         // Gets a list of account by values specified in the package object.
-        public List<Account> SearchAccounts(Package p)
+        public List<Account> SearchAccounts(Order o)
         {
             throw new NotImplementedException();
         }
