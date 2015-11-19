@@ -22,6 +22,7 @@ namespace TWART.Controllers
 
         public ActionResult Edit()
         {
+
             var p = int.Parse(Url.RequestContext.RouteData.Values["id"].ToString());
 
             var cm = new CustomerModel();
@@ -47,6 +48,7 @@ namespace TWART.Controllers
 
             cm.EditCustomer(c);
 
+            // TODO: This Should be dynamic. Not go to '1' all the time.
             return Redirect("/Admin/Edit/1");
 
         }
