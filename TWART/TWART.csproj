@@ -238,7 +238,6 @@
     <Compile Include="Views\Admin\Edit.aspx.designer.cs">
       <DependentUpon>Edit.aspx</DependentUpon>
     </Compile>
-<<<<<<< HEAD
     <Compile Include="Views\Admin\adminIndex.aspx.cs">
       <DependentUpon>adminIndex.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -259,14 +258,12 @@
     </Compile>
     <Compile Include="Views\Client\clientIndex.aspx.designer.cs">
       <DependentUpon>clientIndex.aspx</DependentUpon>
-=======
     <Compile Include="Views\Admin\viewinfo.aspx.cs">
       <DependentUpon>viewinfo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Views\Admin\viewinfo.aspx.designer.cs">
       <DependentUpon>viewinfo.aspx</DependentUpon>
->>>>>>> b2eb258530d31a6a42c088a88f0fa93a9ba3a979
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -300,13 +297,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-<<<<<<< HEAD
-=======
-    <Folder Include="Views\Bank\" />
-    <Folder Include="Views\DeleteCustomer\" />
-    <Folder Include="Views\HelloWorld\" />
-    <Folder Include="Views\new\" />
->>>>>>> b2eb258530d31a6a42c088a88f0fa93a9ba3a979
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resource1.resx">
