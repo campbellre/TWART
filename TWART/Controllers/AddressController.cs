@@ -38,8 +38,11 @@ namespace TWART.Controllers
                     newAddress.Country = Request.Form[7];
                     newAddress.PostalCode = Request.Form[8];
 
-                    // Adds the object to the database
-                    addressModel.CreateAddress(newAddress);
+                    // Adds the object to the database. Returns address ID
+                    int addressID = addressModel.CreateAddress(newAddress);
+
+                    // Append ID to address object
+                    newAddress.ID = addressID;
 
                     // Passes back to the view with address
                     return View(newAddress);
@@ -102,5 +105,23 @@ namespace TWART.Controllers
                 return Redirect("/login.html");
             }
         }
+
+        // Deletes an address
+        public ActionResult Delete()
+        {
+            int addressID = int.Parse(RouteData.Values["id"].ToString());
+
+            // Establishes address model
+            AddressModel addressModel = new AddressModel();
+
+            // Deletes the address from the database using the id
+            addressModel.DeleteAddress(addressID);
+
+            // TODO: Confirm this is the correct return state
+            // Return to address page
+            return Redirect("../address");
+        }
+
+
     }
 }
