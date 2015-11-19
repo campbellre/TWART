@@ -32,10 +32,9 @@ namespace TWART.Models
                         string query = "NewBanking";
                         var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
 
-                        cmd.Parameters.AddWithValue("Address_ID", b.Address_ID);
-                        cmd.Parameters.AddWithValue("Sort_Code", b.SortCode);
-                        cmd.Parameters.AddWithValue("Account_Number", b.ID);
-                        cmd.Parameters.AddWithValue("Address_ID", b.Address_ID);
+                        cmd.Parameters.AddWithValue("AddressID", b.Address_ID);
+                        cmd.Parameters.AddWithValue("SortCode", b.SortCode);
+                        cmd.Parameters.AddWithValue("AccountNumber", b.ID);
 
                         connect.Open();
 
@@ -52,39 +51,11 @@ namespace TWART.Models
             return ret;
         }
 
-        public void EditBank(Bank b)
-        {
-
-            using (connect = new MySqlConnection(_connectionString))
-            {
-                connect.Open();
-                using (MySqlTransaction transaction = connect.BeginTransaction())
-                {
-
-                    try
-                    {
-                        string query = "EditBanking";
-                        var cmd = new MySqlCommand(query, connect) {CommandType = CommandType.StoredProcedure};
-
-                        cmd.Parameters.AddWithValue("Banking_ID", b.ID);
-                        cmd.Parameters.AddWithValue("Address_ID", b.Address_ID);
-                        cmd.Parameters.AddWithValue("Sort_Code", b.SortCode);
-                        cmd.Parameters.AddWithValue("Account_Number", b.ID);
-                        cmd.Parameters.AddWithValue("Address_ID", b.Address_ID);
-
-                        connect.Open();
-
-                        cmd.ExecuteNonQuery();
-
-                        connect.Close();
-                    }
-                    catch (InvalidOperationException ioException)
-                    {
-                        connect.Close();
-                    }
-                }
-            }
-        }
+        // Due to the transaction we don't change banks we add new ones
+        //public int EditBank(Bank b)
+        
+        // Due to the transaction we don't delete banks we add new ones
+        //public void DeleteBank(Bank b)
 
         public Bank SearchBanking(Customer c)
         {

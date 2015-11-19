@@ -56,23 +56,35 @@ namespace TWART.Models
 
         public int CreateNewDepartment(Department department)
         {
-            connect = new MySqlConnection(_connectionString);
-            MySqlCommand createDepartment = connect.CreateCommand();
+            int ret = 0;
+            using (connect = new MySqlConnection(_connectionString))
+            {
+                connect.Open();
+                using (MySqlTransaction transaction = connect.BeginTransaction())
+                {
 
-            createDepartment.CommandText = "INSERT INTO Department(Department_Title, Address_ID, Department_Head)" +
-                                           "Values (?,?,?);";
+                    try
+                    {
+                        string query = "NewDepartment";
+                        var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
 
+                        cmd.Parameters.AddWithValue("DepartmentTitle", department.Title);
+                        cmd.Parameters.AddWithValue("AddressID", department.Address);
+                        cmd.Parameters.AddWithValue("DepartmentHead", department.Head);
 
-            createDepartment.Parameters.Add(new MySqlParameter("Department_Title", department.Title));
-            createDepartment.Parameters.Add(new MySqlParameter("Address_ID", department.Address));
-            createDepartment.Parameters.Add(new MySqlParameter("Department_Head", department.Head));
+                        connect.Open();
 
+                        ret = (int)cmd.ExecuteScalar();
 
-            connect.Open();
-
-            createDepartment.ExecuteNonQuery();
-
-            connect.Close();
+                        connect.Close();
+                    }
+                    catch (InvalidOperationException ioException)
+                    {
+                        connect.Close();
+                    }
+                }
+            }
+            return ret;
 
         }
 
