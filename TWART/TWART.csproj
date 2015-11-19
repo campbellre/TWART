@@ -159,12 +159,12 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AddressController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BankController.cs" />
     <Compile Include="Controllers\DeleteCustomerController.cs" />
     <Compile Include="Controllers\EditContactDetails.cs" />
     <Compile Include="Controllers\EditEmployeeDetails.cs" />
-    <Compile Include="Controllers\LogoutController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\Register.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -280,7 +280,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Address\" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resource1.resx">
       <Generator>ResXFileCodeGenerator</Generator>

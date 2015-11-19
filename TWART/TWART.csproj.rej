@@ -1,0 +1,9 @@
+diff a/TWART/TWART.csproj b/TWART/TWART.csproj	(rejected hunks)
+@@ -172,6 +172,7 @@
+ +=======
+      <Compile Include="Controllers\LogoutController.cs" />
+      <Compile Include="Controllers\OrderController.cs" />
+++>>>>>>> f7a982a7b341bd51e5914ad22987cfb8dc4f503e
+      <Compile Include="Controllers\Register.cs" />
+      <Compile Include="Controllers\LoginController.cs" />
+      <Compile Include="DataObjects\Account.cs" />
