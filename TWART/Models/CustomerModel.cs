@@ -20,7 +20,7 @@ namespace TWART.Models
             _connectionString = Resource1.ConnectionString;
         }
 
-        public void CreateCustomer(Customer c)
+        public int CreateCustomer(Customer c)
         {
             throw new NotImplementedException();
         }

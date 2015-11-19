@@ -54,7 +54,7 @@ namespace TWART.Models
         }
 
 
-        public void CreateNewDepartment(Department department)
+        public int CreateNewDepartment(Department department)
         {
             connect = new MySqlConnection(_connectionString);
             MySqlCommand createDepartment = connect.CreateCommand();

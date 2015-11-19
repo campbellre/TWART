@@ -19,8 +19,9 @@ namespace TWART.Models
         }
 
         // This may be broken 
-        public void CreateOrder(Order o)
+        public int CreateOrder(Order o)
         {
+            int ret = 0;
             using (connect = new MySqlConnection(_connectionString))
             {
                 connect.Open();
@@ -38,7 +39,7 @@ namespace TWART.Models
                         cmd.Parameters.AddWithValue("SourceAddressID", o.SourceAddressID);
                         cmd.Parameters.AddWithValue("AccountID", o.AccountID);
 
-                        cmd.ExecuteNonQuery();
+                        ret = (int) cmd.ExecuteScalar();
 
                         transaction.Commit();
 
@@ -51,6 +52,7 @@ namespace TWART.Models
                     }
                 }
             }
+            return ret;
         }
 
         public void EditOrder(Order o)

@@ -19,7 +19,7 @@ namespace TWART.Models
             _connectionString = Resource1.ConnectionString;
         }
 
-        public void CreateTransaction(Transaction t)
+        public int CreateTransaction(Transaction t)
         {
             throw new NotImplementedException();
         }
