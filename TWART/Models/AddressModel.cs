@@ -19,8 +19,10 @@ namespace TWART.Models
             _connectionString = Resource1.ConnectionString;
         }
 
-        public void CreateAddress(Address a)
+        public int CreateAddress(Address a)
         {
+            int ret = 0;
+
             using (connect = new MySqlConnection(_connectionString))
             {
                 connect.Open();
@@ -42,7 +44,7 @@ namespace TWART.Models
                         cmd.Parameters.AddWithValue("Pcountry", a.Country);
                         cmd.Parameters.AddWithValue("postalCode", a.PostalCode);
 
-                        cmd.ExecuteNonQuery();
+                        ret = (int)cmd.ExecuteScalar();
 
                         transaction.Commit();
 
@@ -55,6 +57,7 @@ namespace TWART.Models
                     }
                 }
             }
+            return ret;
         }
 
         public void EditAddress(Address a)

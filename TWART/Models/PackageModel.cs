@@ -19,7 +19,7 @@ namespace TWART.Models
             _connectionString = Resource1.ConnectionString;
         }
 
-        public void CreatePackage()
+        public int CreatePackage()
         {
             throw new NotImplementedException();
         }

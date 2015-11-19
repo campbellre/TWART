@@ -18,7 +18,7 @@ namespace TWART.Models
             _connectionString = Resource1.ConnectionString;
         }
 
-        public void CreateAccount(Account a)
+        public int CreateAccount(Account a)
         {
             throw new NotImplementedException();
         }

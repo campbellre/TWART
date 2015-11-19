@@ -11,7 +11,6 @@ namespace TWART.Controllers
     public class OrderController : System.Web.Mvc.Controller
     {
         // GET: Order
-        [HttpPost]
         public ActionResult orderpost()
         {
             // Ensures logged in

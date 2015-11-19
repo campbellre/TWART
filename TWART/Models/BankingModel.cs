@@ -18,6 +18,45 @@ namespace TWART.Models
             _connectionString = Resource1.ConnectionString;
         }
 
+        public int CreateBank(Bank b)
+        {
+            throw new NotImplementedException( );
+        }
+
+        public void EditBank(Bank b)
+        {
+
+            using (connect = new MySqlConnection(_connectionString))
+            {
+                connect.Open();
+                using (MySqlTransaction transaction = connect.BeginTransaction())
+                {
+
+                    try
+                    {
+                        string query = "EditBanking";
+                        var cmd = new MySqlCommand(query, connect) {CommandType = CommandType.StoredProcedure};
+
+                        cmd.Parameters.AddWithValue("Banking_ID", b.ID);
+                        cmd.Parameters.AddWithValue("Address_ID", b.Address_ID);
+                        cmd.Parameters.AddWithValue("Sort_Code", b.SortCode);
+                        cmd.Parameters.AddWithValue("Account_Number", b.ID);
+                        cmd.Parameters.AddWithValue("Address_ID", b.Address_ID);
+
+                        connect.Open();
+
+                        cmd.ExecuteNonQuery();
+
+                        connect.Close();
+                    }
+                    catch (InvalidOperationException ioException)
+                    {
+                        connect.Close();
+                    }
+                }
+            }
+        }
+
         public Bank SearchBanking(Customer c)
         {
             var bank = new Bank();

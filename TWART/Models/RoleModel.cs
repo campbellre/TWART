@@ -18,7 +18,7 @@ namespace TWART.Models
             _connectionString = Resource1.ConnectionString;
         }
 
-        public void CreateRole(Role r)
+        public int CreateRole(Role r)
         {
             throw new NotImplementedException();
         }
