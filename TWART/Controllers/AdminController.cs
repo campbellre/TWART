@@ -17,8 +17,8 @@ namespace TWART.Controllers
 
             try
             {
-                String state = (string)Session["loggedInState"];
-                if (state != "true")
+                bool state = (bool)Session["loggedInState"];
+                if (state != true)
                 {
 
                     // Create a new AddressModel object
@@ -57,8 +57,8 @@ namespace TWART.Controllers
         {
             try
             {
-                String state = (string)Session["loggedInState"];
-                if (state != "true")
+                bool state = (bool)Session["loggedInState"];
+                if (state != true)
                 {
                     // Get the ID as a parameter
                     var p = int.Parse(Url.RequestContext.RouteData.Values["id"].ToString());
@@ -92,13 +92,18 @@ namespace TWART.Controllers
             return View();
         }
 
+        public ActionResult Orders()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult EditCustomer()
         {
             try
             {
-                String state = (string)Session["loggedInState"];
-                if (state != "true")
+                bool state = (bool)Session["loggedInState"];
+                if (state != true)
                 {
                     var c = new Customer();
                     c.ID = int.Parse(Request.Form["id"]);

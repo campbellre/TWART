@@ -35,6 +35,10 @@ namespace TWART.Controllers
             // get Account Type / Access levels from Database
             LoggedIn logState = loginModel.Login(thisUser);
 
+
+            // Sets the Session variables
+            Session["loggedInState"] = logState.State;
+
             // Acquire type of user from Ryan
             // Redirect based on user:
                 // Admin (Staff)
@@ -44,8 +48,8 @@ namespace TWART.Controllers
 			String pageToDirectTo = "/index.html";
 
             try { 
-                String state = (string)Session["loggedInState"];
-                if (state != "true")  
+                bool state = (bool)Session["loggedInState"];
+                if (state != true)  
                 {
                     pageToDirectTo = "/Admin/";
                     if (logState.AccessLevel.Equals("Admin"))

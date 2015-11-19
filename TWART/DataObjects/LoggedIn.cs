@@ -12,6 +12,8 @@ namespace TWART.DataObjects
         public Boolean State { get; set; }
         public String AccessLevel { get; set; }
 
+        public int UserID { get; set; }
+
         public Boolean IsLoggedIn()
         {
             return State;
