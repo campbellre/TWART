@@ -116,21 +116,7 @@ namespace TWART.Controllers
 
         }
 
-        [HttpPost]
-        public ActionResult Delete()
-        {
-            var c = new Customer();
-            c.ID = int.Parse(Request.Form["id"]);
-            c.Name = Request.Form["name"].ToString();
-            c.Address_ID = int.Parse(Request.Form["addressid"]);
-
-            var cm = new CustomerModel();
-
-            cm.EditCustomer(c);
-
-            return Redirect("/Admin/Edit/" + c.ID);
-
-        }
+        
         
         public ActionResult Delete()
         {
