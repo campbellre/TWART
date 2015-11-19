@@ -121,6 +121,7 @@
     <Content Include="assets\js\skel.min.js" />
     <Content Include="assets\js\util.js" />
     <Content Include="Content\Site.css" />
+    <Content Include="customerdelete.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="images\avatar.jpg" />
@@ -161,6 +162,13 @@
     <Compile Include="Controllers\newController.cs" />
     <Compile Include="Controllers\Register.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="customerdelete.aspx.cs">
+      <DependentUpon>customerdelete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customerdelete.aspx.designer.cs">
+      <DependentUpon>customerdelete.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DataObjects\Account.cs" />
     <Compile Include="DataObjects\Account_Type.cs" />
     <Compile Include="DataObjects\Address.cs" />
