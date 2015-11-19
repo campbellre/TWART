@@ -155,7 +155,6 @@
     <Content Include="Views\Client\clientIndex.aspx" />
     <Content Include="Views\Admin\Customer.aspx" />
     <Content Include="Views\Admin\delete.aspx" />
-    <Content Include="Views\Admin\Edit.aspx" />
     <Content Include="Views\Admin\viewinfo.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -258,7 +257,7 @@
     </Compile>
     <Compile Include="Views\Client\clientIndex.aspx.designer.cs">
       <DependentUpon>clientIndex.aspx</DependentUpon>
-</Compile>
+    </Compile>
     <Compile Include="Views\Admin\viewinfo.aspx.cs">
       <DependentUpon>viewinfo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
