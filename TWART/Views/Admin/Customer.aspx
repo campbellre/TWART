@@ -1,8 +1,7 @@
-﻿
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Customer.aspx.cs" Inherits="TWART.Views.Admin.CustomerView" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Customer.aspx.cs" Inherits="TWART.Views.Admin.CustomerView" %>
+
 <%@ Import Namespace="System.Web.Mvc.Html" %>
 <%@ Import Namespace="TWART.DataObjects" %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,10 +39,10 @@
         </div>
     </div>
     <!-- Main -->
-    <form id="admincontrols" runat="server">
+    <form id="customerForm" runat="server">
         <div id="main">
-            <!-- Admin Control Panel -->
-            <section id="admin" class="top">
+            <!-- Client View -->
+            <section id="client" class="top">
                 <div class="container">
                     <header>
                         <h2 style="color: #ff0000">Administrator's Control Panel</h2>
@@ -53,44 +52,20 @@
             <!-- Controls -->
             <section id="controls" class="middle">
                 <div class="container">
-                        <ul>
-                            
-                            <%foreach (var customer in Model) { %>
-                            
-
-                              
-                            
-                            <li>
-                                <%= Html.Encode(customer.Name) %>
-
-                            </li>
-                            
-                             <% } %>
-                    </ul>
-                    
+                    <h2>Customer List</h2>
                     <table>
-                        <tr>
-                            <th>Edit</th>
-                        </tr>
-                        <tr>
-                            <th>Company Name</th> 
-                        </tr>
-                        
                         <% foreach (var customer in Model)
                            { %>
-
                         <tr>
-                            <td> <%= Html.ActionLink("Edit", "Edit", new {id = customer.ID}) %></td>
+                            <td><%= Html.Encode(customer.Name) %></td>
+                            <td><%= Html.Encode(customer.Address.LineOne) %></td>
+                            <td><%= Html.Encode(customer.Address.LineTwo) %></td>
+                            <td><%= Html.ActionLink("View", "view", new { id = customer.ID })%></td>
+                            <td><%= Html.ActionLink("Edit", "edit", new { id = customer.ID })%></td>
+                            <td><%= Html.ActionLink("Delete", "delete", new { id = customer.ID })%></td>
                         </tr>
-                        
-                        <tr>
-                            <td> <%= Html.Encode( customer.Name ) %></td>
-                        </tr>
-                        
                         <% } %>
                     </table>
-
-
                 </div>
             </section>
         </div>

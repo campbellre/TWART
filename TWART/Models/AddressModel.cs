@@ -95,6 +95,36 @@ namespace TWART.Models
             }
         }
 
+        public void DeleteAddress(int ID)
+        {
+            using (connect = new MySqlConnection(_connectionString))
+            {
+                connect.Open();
+                using (MySqlTransaction transaction = connect.BeginTransaction())
+                {
+                    try
+                    {
+                        string query = "DeleteAddress";
+                        var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
+
+                        cmd.Parameters.AddWithValue("AddressID", ID);
+
+                        cmd.ExecuteNonQuery();
+
+                        transaction.Commit();
+
+                        connect.Close();
+                    }
+                    catch (InvalidOperationException ioException)
+                    {
+                        transaction.Rollback();
+                        connect.Close();
+                    }
+                }
+            }
+        }
+
+
         public List<Address> GetAddressesList()
         {
             var addressList = new List<Address>();
