@@ -19,6 +19,6 @@ namespace TWART.Views.Admin {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm customerForm;
+        protected global::System.Web.UI.HtmlControls.HtmlForm orderForm;
     }
 }
