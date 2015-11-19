@@ -28,9 +28,9 @@
             <!-- Nav -->
             <nav id="nav">
                 <ul>
-                    <li><a href="index.html#top" id="about-link"><span class="icon fa-home">About Us</span></a></li>
-                    <li><a href="#contact" id="contact-link"><span class="icon fa-envelope">Get In Touch</span></a></li>
-                    <li><a href="#top" class="skel-layers-ignoreHref" id="foobar-link"><span class="icon fa-hand-o-left">Login</span></a></li>
+                    <li><a href="../Customer" id="about-link"><span class="icon fa-home">Client Information</span></a></li>
+                    
+                   
                 </ul>
             </nav>
         </div>
