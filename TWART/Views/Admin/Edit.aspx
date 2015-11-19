@@ -28,9 +28,9 @@
             <!-- Nav -->
             <nav id="nav">
                 <ul>
-                    <li><a href="customer.aspx" id="about-link"><span class="icon fa-home">Client Information</span></a></li>
+                    <li><a href="../Customer" id="about-link"><span class="icon fa-home">Client Information</span></a></li>
                     
-                    <li><a href="#top" class="skel-layers-ignoreHref" id="foobar-link"><span class="icon fa-hand-o-left">Login</span></a></li>
+                   
                 </ul>
             </nav>
         </div>
@@ -61,6 +61,8 @@
             <form action="/admin/EditCustomer" method="POST">
 
                 <input type="text" name="name" value="<%= editCustomer.Name %>" />
+                <input type="hidden" name="id" value="<%= editCustomer.ID %>" />
+                <input type="hidden" name="addressid" value="<%= editCustomer.Address_ID %>" />
 
                 <div style="text-align: center">
                     <p></p>

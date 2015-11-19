@@ -13,7 +13,7 @@ namespace TWART.Controllers
         public ActionResult Index()
         {
 
-            int id = int.Parse(RouteData.Values["id"] + Request.Url.Query);
+            int id = int.Parse(RouteData.Values["id"].ToString());
 
             // Create a customer model object
             CustomerModel customerModel = new CustomerModel();
@@ -21,7 +21,7 @@ namespace TWART.Controllers
             // Call the method to delete a customer from the database
             customerModel.DeleteCustomer(id);
 
-            return Redirect("customerdelete.aspx");
+            return Redirect("index.html");
         }
     }
 }

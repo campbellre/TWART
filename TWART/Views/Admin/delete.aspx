@@ -64,17 +64,13 @@
 
                 <div style="text-align: center">
                     <p></p>
-                    <input type="submit" value="Yes" />
+                    <a href="/Admin/Delete" type="submit" value="Yes" >yes</a>
                     
-                    <input type="submit" value="No" />
+                    <a href="../Customer" type="submit" value="No" >no</a>
                     <p></p>
                 </div>
                 
-            <div style="text-align: center">
-                <p></p>
-                <input type="submit" value="Delete" />
-                <p></p>
-            </div>
+
         </div>
     </div>
     <!-- Footer -->
