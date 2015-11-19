@@ -21,7 +21,6 @@ namespace TWART.Models
         // Function to create a new employee in the database.
         public int NewEmployee(Employee em)
         {
-
             int ret = 0;
             using (connect = new MySqlConnection(_connectionString))
             {

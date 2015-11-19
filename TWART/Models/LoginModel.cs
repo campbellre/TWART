@@ -22,7 +22,35 @@ namespace TWART.Models
 
         public int CreateUser(User u)
         {
-            throw new NotImplementedException();
+            int ret = 0;
+            using (connect = new MySqlConnection(_connectionString))
+            {
+                connect.Open();
+                using (MySqlTransaction transaction = connect.BeginTransaction())
+                {
+
+                    try
+                    {
+                        string query = "NewUserAccount";
+                        var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
+
+                        cmd.Parameters.AddWithValue("PUsername", u.username);
+                        cmd.Parameters.AddWithValue("PPWD", u.password);
+                        cmd.Parameters.AddWithValue("PAccesLevel", u.AccessLevel);
+
+                        connect.Open();
+
+                        ret = (int)cmd.ExecuteScalar();
+
+                        connect.Close();
+                    }
+                    catch (InvalidOperationException ioException)
+                    {
+                        connect.Close();
+                    }
+                }
+            }
+            return ret;
         }
 
         public LoggedIn Login(User u)
