@@ -11,12 +11,6 @@ namespace TWART.Controllers
     public class LoginController : System.Web.Mvc.Controller
     {
 
-        [HttpGet]
-        public ActionResult Index()
-        {
-            return Redirect("/index.html");
-        }
-
         // GET: Login
         [HttpPost]
         public ActionResult loginpost()
