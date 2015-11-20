@@ -108,7 +108,7 @@ namespace TWART.Controllers
                 DepartmentModel departmentModel = new DepartmentModel();
                 EmployeesModel employeeModel = new EmployeesModel();
 
-                // Sets all employees who were attached to this department to be "Unassigned"
+                // Gets list of all employees
                 var employeeList = employeeModel.GetEmployeesList();
 
                 // For each employee within the list
