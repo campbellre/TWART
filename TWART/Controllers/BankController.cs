@@ -13,24 +13,19 @@ namespace TWART.Controllers
         // GET: Bank
         public ActionResult Index()
         {
+            //get the ID from the front-end
             var ID = int.Parse(Request.Form["id"]);
 
-            // calculate Account_ID based on Customer ID
+            //get a customer object based on the id
             var customerModel = new CustomerModel();
-            var c = customerModel.SearchCustomers(ID);
-            var accountID = c.Account_ID;
+            var customer = customerModel.SearchCustomers(ID);
 
-            // using the Account_ID, calculate Bank_ID
-            var accountModel = new AccountModel();
-            var a = accountModel.GetAccount(accountID);
-            var theBank = a.BankID;
+            //get a bank object - search for a bank which matches customer
+            var bankModel = new BankingModel();
+            var bank = bankModel.SearchBanking(customer);
 
-            // using the Bank_ID, get the bank details
-
-
-            // PASS A CUSTOMER TO THE BANKMODEL
-
-            return View(theBank);
+            //return the bank object
+            return View(bank);
         }
     }
 }

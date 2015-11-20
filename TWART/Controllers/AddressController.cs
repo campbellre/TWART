@@ -14,49 +14,46 @@ namespace TWART.Controllers
         // GET: Address
         public ActionResult Index()
         {
-            // Ensures logged in
-            try
+            // Null handling
+            if (Session["loggedInState"] == null)
             {
-                // Checks if logged in
-                bool state = (bool)Session["loggedInState"];
-                if (state == true)
-                {
-                    // Creates an address model
-                    AddressModel addressModel = new AddressModel();
-
-                    // Holds the new address
-                    Address newAddress = new Address();
-
-                    // Stored details for address
-                    newAddress.LineOne = Request.Form[0];
-                    newAddress.LineTwo = Request.Form[1];
-                    newAddress.LineThree = Request.Form[2];
-                    newAddress.LineFour = Request.Form[3];
-                    newAddress.LineFive = Request.Form[4];
-                    newAddress.State = Request.Form[5];
-                    newAddress.County = Request.Form[6];
-                    newAddress.Country = Request.Form[7];
-                    newAddress.PostalCode = Request.Form[8];
-
-                    // Adds the object to the database. Returns address ID
-                    int addressID = addressModel.CreateAddress(newAddress);
-
-                    // Append ID to address object
-                    newAddress.ID = addressID;
-
-                    // Passes back to the view with address
-                    return View(newAddress);
-                }
-                else
-                {
-                    // If not logged in
-                    return Redirect("/login.html");
-                }
-            }
-            catch (Exception e)
-            {
-                // If an error occurs
                 return Redirect("/403.html");
+            }
+
+            // Checks if logged in
+            bool state = (bool)Session["loggedInState"];
+            if (state == true)
+            {
+                // Creates an address model
+                AddressModel addressModel = new AddressModel();
+
+                // Holds the new address
+                Address newAddress = new Address();
+
+                // Stored details for address
+                newAddress.LineOne = Request.Form[0];
+                newAddress.LineTwo = Request.Form[1];
+                newAddress.LineThree = Request.Form[2];
+                newAddress.LineFour = Request.Form[3];
+                newAddress.LineFive = Request.Form[4];
+                newAddress.State = Request.Form[5];
+                newAddress.County = Request.Form[6];
+                newAddress.Country = Request.Form[7];
+                newAddress.PostalCode = Request.Form[8];
+
+                // Adds the object to the database. Returns address ID
+                int addressID = addressModel.CreateAddress(newAddress);
+
+                // Append ID to address object
+                newAddress.ID = addressID;
+
+                // Passes back to the view with address
+                return View(newAddress);
+            }
+            else
+            {
+                // If not logged in
+                return Redirect("/login.html");
             }
         }
 
@@ -64,7 +61,7 @@ namespace TWART.Controllers
         // Controller for modification of an address
         public ActionResult EditAddress()
         {
-            // Ensures logged in
+            // Null handling
             if (Session["loggedInState"] == null)
             {
                 return Redirect("/403.html");
@@ -109,17 +106,34 @@ namespace TWART.Controllers
         // Deletes an address
         public ActionResult Delete()
         {
-            int addressID = int.Parse(RouteData.Values["id"].ToString());
+            // Null handling
+            if (Session["loggedInState"] == null)
+            {
+                return Redirect("/403.html");
+            }
 
-            // Establishes address model
-            AddressModel addressModel = new AddressModel();
+            // Checks if logged in
+            bool state = (bool)Session["loggedInState"];
+            if (state == true)
+            {
 
-            // Deletes the address from the database using the id
-            addressModel.DeleteAddress(addressID);
+                int addressID = int.Parse(RouteData.Values["id"].ToString());
 
-            // TODO: Confirm this is the correct return state
-            // Return to address page
-            return Redirect("../address");
+                // Establishes address model
+                AddressModel addressModel = new AddressModel();
+
+                // Deletes the address from the database using the ID
+                addressModel.DeleteAddress(addressID);
+
+                // TODO: Confirm this is the correct return state
+                // Return to address page
+                return Redirect("../address");
+            }
+            else
+            {
+                // If not logged in
+                return Redirect("/login.html");
+            }
         }
 
 
