@@ -74,6 +74,19 @@ namespace TWART.Controllers
                 return Redirect("/login.html");
             }
         }
+        public ActionResult newCustomer()
+        {
+            if (Session["loggedInState"] == null)
+            {
+                return Redirect("/403.html");
+            }
+            else
+            {
+                var addresses = new AddressModel();
+                var addresslist = addresses.GetAddressesList();
+                return View(addresslist);
+            }
+        }
         public ActionResult adminIndex()
         {
             //If there is no valid session, return forbidden
@@ -249,14 +262,15 @@ namespace TWART.Controllers
                 // Call the method to get the list
                 var customerList = customerModel.ListCustomers();
 
-                
+
 
                 // Get the ID requested
                 var p = int.Parse(Url.RequestContext.RouteData.Values["id"].ToString());
 
                 foreach (var customer in customerList)
                 {
-                    if (customer.ID == p) {
+                    if (customer.ID == p)
+                    {
                         Address address = addressModel.SearchAddress(customer.Address_ID);
                         customer.Address = address;
 

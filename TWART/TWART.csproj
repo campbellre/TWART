@@ -142,6 +142,7 @@
       <BrowseToURL>~/Admin/adminIndex</BrowseToURL>
     </Content>
     <Content Include="Views\Admin\Employees.aspx" />
+    <Content Include="Views\Admin\newCustomer.aspx" />
     <Content Include="Views\Admin\Orders.aspx" />
     <Content Include="Views\Admin\Users.aspx" />
     <Content Include="Views\Client\clientIndex.aspx" />
@@ -261,6 +262,13 @@
     </Compile>
     <Compile Include="Views\Admin\Employees.aspx.designer.cs">
       <DependentUpon>Employees.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\newCustomer.aspx.cs">
+      <DependentUpon>newCustomer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\newCustomer.aspx.designer.cs">
+      <DependentUpon>newCustomer.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Admin\Orders.aspx.cs">
       <DependentUpon>Orders.aspx</DependentUpon>

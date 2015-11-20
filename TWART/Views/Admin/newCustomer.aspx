@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="customer.aspx.cs" Inherits="TWART.Views.Admin.CustomerView" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="newCustomer.aspx.cs" Inherits="TWART.Views.Admin.newCustomerView" %>
 
 <%@ Import Namespace="System.Web.Mvc.Html" %>
 <%@ Import Namespace="TWART.DataObjects" %>
@@ -26,9 +26,7 @@
             <!-- Nav -->
             <nav id="nav">
                 <ul>
-                    <li><a href="adminIndex" id="control"><span class="icon fa-hand-o-left">Control Panel</span></a></li>
-                    <li><a href="#clientList" id="clientList" class="skel-layers-ignoreHref"><span class="icon fa-users">Client List</span></a></li>
-                    <li><a href="#newClient" id="new" class="skel-layers-ignoreHref"><span class="icon fa-plus">New Client</span></a></li>
+                    <li><a href="adminIndex" id="foobar-link"><span class="icon fa-hand-o-left">Control Panel</span></a></li>
                 </ul>
             </nav>
         </div>
@@ -41,43 +39,39 @@
         </div>
     </div>
     <!-- Main -->
-    <form id="customerForm" runat="server">
-        <div id="main">
-            <!-- Client View -->
-            <section id="client" class="top">
-                <div class="container">
-                    <header>
-                        <h2>Client Information</h2>
-                    </header>
-                </div>
-            </section>
-            <!-- Controls -->
-            <section id="controls" class="two">
-                <div class="container">
+    <div id="main">
+        <!-- Client View -->
+        <section id="client" class="top">
+            <div class="container">
+                <header>
+                    <h2>Create a new Customer</h2>
+                </header>
+            </div>
+        </section>
+        <!-- Controls -->
+        <section id="controls" class="two">
+            <div class="container">
+                <form action="newCustomer" method="POST" runat="server">
                     <table>
-                        <% foreach (var customer in Model)
-                           { %>
                         <tr>
-                            <td><%= Html.Encode(customer.Name) %></td>
-                            <td><%= Html.Encode(customer.Address.LineOne) %></td>
-                            <td><%= Html.Encode(customer.Address.LineTwo) %></td>
-                            <td><%= Html.ActionLink("View", "viewinfo", new { id = customer.ID })%></td>
-                            <td><%= Html.ActionLink("Edit", "edit", new { id = customer.ID })%></td>
-                            <td><%= Html.ActionLink("Delete", "delete", new { id = customer.ID })%></td>
+                            <% foreach (var addresses in Model)
+                               {
+                                   ListItem item = new ListItem(addresses.LineOne.ToString() + ", " + addresses.LineTwo.ToString() + ", " + addresses.PostalCode.ToString());
+                                   newAddress.Items.Add(item);
+                               } %>
+                            <asp:TextBox runat="server" ID="newClientName">Client Name</asp:TextBox>
+                            <asp:DropDownList runat="server" ID="newAddress"></asp:DropDownList>
                         </tr>
-                        <% } %>
                     </table>
-                </div>
-            </section>
-            <!-- New -->
-            <section id="newClient" class="three">
-                <div class="container">
-                    <a href="newCustomer">Create a new Client</a>
-                    <p>Use this control to create a our client on our system.</p>
-                </div>
-            </section>
-        </div>
-    </form>
+                    <div class="row">
+                        <div class="12u$">
+                            <input type="submit" value="Add" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
     <!-- Footer -->
     <div id="footer">
         <!-- Copyright -->
