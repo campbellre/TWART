@@ -165,6 +165,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BankController.cs" />
     <Compile Include="Controllers\DeleteCustomerController.cs" />
+    <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\EditContactDetails.cs" />
     <Compile Include="Controllers\EditEmployeeDetails.cs" />
     <Compile Include="Controllers\OrderController.cs" />
@@ -298,6 +299,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Address\" />
+    <Folder Include="Views\Department\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resource1.resx">
