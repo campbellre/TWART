@@ -41,8 +41,13 @@ namespace TWART.Models
 
             foreach (DataRow deptColumn in reader)
             {
-         
-                deptList.Add(new Department(deptColumn["Department_ID"], deptColumn["Department_Title"],deptColumn["Address_ID"], deptColumn["Department_Head"]));
+                Department dpt = new Department();
+                dpt.Id = (int)deptColumn["Department_ID"];
+                dpt.Title = deptColumn["Department_Title"].ToString();
+                dpt.Address = (int)deptColumn["Address_ID"];
+                dpt.Head = (int)deptColumn["Department_Head"];
+
+                deptList.Add(dpt);
             }
 
             reader.Close();
@@ -101,7 +106,7 @@ namespace TWART.Models
                         string query = "EditDepartment";
                         var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
 
-                        cmd.Parameters.AddWithValue("DepartmentID",d.Id)
+                        cmd.Parameters.AddWithValue("DepartmentID", d.Id);
                         cmd.Parameters.AddWithValue("DepartmentTitle", d.Title);
                         cmd.Parameters.AddWithValue("AddressID", d.Address);
                         cmd.Parameters.AddWithValue("DepartmentHead", d.Head);
@@ -172,10 +177,12 @@ namespace TWART.Models
 
             if (reader.NextResult())
             {
-                returnDepartment = new Department(reader["Department_ID"],
-                    reader["Department_Title"],
-                    reader["Address_ID"],
-                    reader["Department_Head"]);
+                returnDepartment = new Department();
+                returnDepartment.Id = (int)reader["Department_ID"];
+                returnDepartment.Address = (int)reader["Address_ID"];
+                returnDepartment.Title = reader["Department_Title"].ToString();
+                returnDepartment.Head = (int)reader["Department_Head"];
+
             }
 
             connect.Close();
