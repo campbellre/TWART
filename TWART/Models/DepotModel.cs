@@ -186,11 +186,19 @@ namespace TWART.Models
                     var reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
-                        depot.ID = (int)reader["Depot_ID"];
+                        try
+                        {
+                            depot.ID = (int)reader["Depot_ID"];
+                        }
+                        catch (Exception) { }
                         depot.DepotName = reader["Depot_Name"].ToString();
                         depot.FloorSpace = (double)reader["Floor_space"];
                         depot.NumVehicles = (int)reader["NumVehicles"];
-                        depot.AddressID = (int)reader["Address_ID"];
+                        try
+                        {
+                            depot.AddressID = (int)reader["Address_ID"];
+                        }
+                        catch (Exception) { }
                         depot.ManagerID = (int)reader["Depot_Manager"];
                     }
 

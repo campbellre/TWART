@@ -45,8 +45,8 @@
             </ul>
         </div>
     </div>
-    <!-- Main -->
-    <form id="customerForm" runat="server">
+    <form id="adminForm" runat="server">
+        <!-- Main -->
         <div id="main">
             <!-- Controls -->
             <section id="client" class="top">
@@ -101,7 +101,7 @@
             <!-- Employees -->
             <section id="employees" class="two">
                 <div class="container">
-                    <a href="Employees">Employees</a>
+                    <a href="../Employee/Employees">Employees</a>
                     <p>Use this control to create, retrieve, update or delete on our employees system.</p>
                 </div>
             </section>
