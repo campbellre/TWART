@@ -6,6 +6,7 @@ using System.Web;
 using MySql.Data.MySqlClient;
 using TWART.DataObjects;
 using TWART.Properties;
+using WebGrease;
 
 namespace TWART.Models
 {
@@ -164,7 +165,43 @@ namespace TWART.Models
         // This is the main method to get a order from the order ID within the databse.
         public Order SearchOrder(int ID)
         {
-            throw new NotImplementedException();
+            var o = new Order();
+            using (connect = new MySqlConnection(_connectionString))
+            {
+                try
+                {
+                    string query = "GetOrder";
+                    var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
+
+                    cmd.Parameters.AddWithValue("OrderID", ID);
+
+                    connect.Open();
+
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        o.AccountID = int.Parse(reader["Purchace_ID"].ToString());
+                        o.OrderStatus = reader["Order_Status"].ToString();
+                        o.Placed = DateTime.Parse(reader["Date_Placed"].ToString());
+                        o.Received = DateTime.Parse(reader["Date_Received"].ToString());
+                        o.Delivered = DateTime.Parse(reader["Date_Delivered"].ToString());
+                        o.GoodsID = int.Parse(reader["Goods_ID"].ToString());
+                        o.DestinationAddressID = int.Parse(reader["Destination_Address"].ToString());
+                        o.SourceAddressID = int.Parse(reader["Source_Address"].ToString());
+                        o.AccountID = int.Parse(reader["Account_ID"].ToString());
+
+                    }
+
+                    connect.Close();
+                }
+                catch (InvalidOperationException ioException)
+                {
+                    connect.Close();
+                }
+
+            }
+
+            return o;
         }
 
         // Calls the main method to get order.
