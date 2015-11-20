@@ -164,7 +164,6 @@
     <Compile Include="Controllers\AddressController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BankController.cs" />
-    <Compile Include="Controllers\DeleteCustomerController.cs" />
     <Compile Include="Controllers\EditContactDetails.cs" />
     <Compile Include="Controllers\EditEmployeeDetails.cs" />
     <Compile Include="Controllers\OrderController.cs" />

@@ -15,7 +15,7 @@ namespace TWART.Controllers
         {
             if (Session["loggedInState"] == null)
             {
-                Redirect("403.html");
+                Redirect("/403.html");
             }
 
             // Checks if logged in
@@ -67,7 +67,7 @@ namespace TWART.Controllers
         {
             if (Session["loggedInState"] == null)
             {
-                Redirect("403.html");
+                Redirect("/403.html");
             }
 
             bool state = (bool)Session["loggedInState"];
