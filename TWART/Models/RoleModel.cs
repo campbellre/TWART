@@ -56,7 +56,6 @@ namespace TWART.Models
 
         public void EditRole(Role r)
         {
-            int ret = 0;
             using (connect = new MySqlConnection(_connectionString))
             {
                 connect.Open();
@@ -78,6 +77,40 @@ namespace TWART.Models
 
                         transaction.Commit();
                         
+                        connect.Close();
+                    }
+                    catch (InvalidOperationException ioException)
+                    {
+                        transaction.Rollback();
+
+                        connect.Close();
+                    }
+                }
+            }
+        }
+
+        public void DeleteRole(int ID)
+        {
+            using (connect = new MySqlConnection(_connectionString))
+            {
+                connect.Open();
+                using (MySqlTransaction transaction = connect.BeginTransaction())
+                {
+
+                    try
+                    {
+                        string query = "DeleteRole";
+                        var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
+
+                        cmd.Parameters.AddWithValue("RoleID", ID);
+
+
+                        connect.Open();
+
+                        cmd.ExecuteNonQuery();
+
+                        transaction.Commit();
+
                         connect.Close();
                     }
                     catch (InvalidOperationException ioException)
@@ -130,9 +163,41 @@ namespace TWART.Models
             return SearchRoles(r.Id);
         }
 
-        public List<Role> GetRolesList()
+        public List<Role> ListRoles()
         {
-            throw new NotImplementedException();
+            var roleList = new List<Role>();
+
+            using (connect = new MySqlConnection(_connectionString))
+            {
+                try
+                {
+                    string query = "ListRole";
+                    var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
+
+                    connect.Open();
+
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        var role = new Role();
+
+                        role.Id = (int)reader["Role_ID"];
+                        role.Title = reader["Role_Title"].ToString();
+
+
+                        roleList.Add(role);
+
+                    }
+
+                    connect.Close();
+                }
+                catch (InvalidOperationException ioException)
+                {
+                    connect.Close();
+                }
+
+                return roleList;
+            }
         }
 
 
