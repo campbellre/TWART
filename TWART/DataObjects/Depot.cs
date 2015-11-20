@@ -15,5 +15,5 @@ namespace TWART.DataObjects
         public String DepotName { get; set; }
         public double FloorSpace { get; set; }
         public int NumVehicles { get; set; }
-
+    }
 }
