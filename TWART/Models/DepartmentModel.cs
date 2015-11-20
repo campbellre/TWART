@@ -182,7 +182,6 @@ namespace TWART.Models
                 returnDepartment.Address = (int)reader["Address_ID"];
                 returnDepartment.Title = reader["Department_Title"].ToString();
                 returnDepartment.Head = (int)reader["Department_Head"];
-
             }
 
             connect.Close();
