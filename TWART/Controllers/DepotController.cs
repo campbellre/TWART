@@ -8,9 +8,9 @@ using TWART.Models;
 
 namespace TWART.Controllers
 {
-    public class RoleController : System.Web.Mvc.Controller
+    public class DepotController : System.Web.Mvc.Controller
     {
-        // GET: Role
+        // GET: Depot
         public ActionResult Index()
         {
             // Ensures logged in
@@ -19,24 +19,28 @@ namespace TWART.Controllers
                 return Redirect("/403.html");
             }
 
-             // Checks if logged in
+            // Checks if logged in
             bool state = (bool)Session["loggedInState"];
             if (state == true)
             {
-                // Establishes role model
-                RoleModel roleModel = new RoleModel();
+                // Establishes depot model
+                DepotModel depotModel = new DepotModel();
 
-                // Holds the new role
-                Role newRole = new Role();
+                // Holds the new depot
+                Depot newDepot = new Depot();
 
-                // Stored details for the role
-                newRole.Title = Request.Form[0];
+                // Stored details for the depot
+                newDepot.AddressID = int.Parse(Request.Form[0]);
+                newDepot.ManagerID = int.Parse(Request.Form[1]);
+                newDepot.DepotName = Request.Form[2];
+                newDepot.FloorSpace = Double.Parse(Request.Form[3]);
+                newDepot.NumVehicles = int.Parse(Request.Form[4]);
 
                 // Adds the object to the database
-                roleModel.CreateRole(newRole);
+                depotModel.CreateDepot(newDepot);
 
-                // Returns the created role to view
-                return View(newRole);
+                // Return created department to view
+                return View(newDepot);
             }
             else
             {
@@ -45,8 +49,8 @@ namespace TWART.Controllers
             }
         }
 
-        // Controller for modification of a role
-        public ActionResult EditRole()
+        // Controller for modification of a depot
+        public ActionResult EditDepot()
         {
             // Null handling
             if (Session["loggedInState"] == null)
@@ -59,17 +63,20 @@ namespace TWART.Controllers
             if (state == true)
             {
                 // Creates a role placeholder
-                var role = new Role();
+                var depot = new Depot();
 
                 // Setup role edit
-                role.Id = int.Parse(Request.Form["id"]);
-                role.Title = Request.Form["title"];
+                depot.ID = int.Parse(Request.Form["id"]);
+                depot.ManagerID = int.Parse(Request.Form["managerID"]);
+                depot.DepotName = Request.Form["depotName"];
+                depot.FloorSpace = int.Parse(Request.Form["floorSpace"]);
+                depot.NumVehicles = int.Parse(Request.Form["numVehicles"]);
 
                 // Establishes role model
-                var roleModel = new RoleModel();
+                var depotModel = new DepotModel();
 
                 // Conduct edit
-                roleModel.EditRole(role);
+                depotModel.EditDepot(depot);
 
                 // Passes back to the view
                 return View();
@@ -81,7 +88,7 @@ namespace TWART.Controllers
             }
         }
 
-        // Deletes a role
+        // Deletes a depot
         public ActionResult Delete()
         {
             // Null handling
@@ -94,43 +101,15 @@ namespace TWART.Controllers
             bool state = (bool)Session["loggedInState"];
             if (state == true)
             {
-                int roleID = int.Parse(RouteData.Values[""].ToString());
+                int depotID = int.Parse(RouteData.Values[""].ToString());
 
                 // Establishes role model
-                RoleModel roleModel = new RoleModel();
+                DepotModel depotModel = new DepotModel();
 
-                // Deletes the role from the database using the ID
-                roleModel.DeleteRole(roleID);
+                // Deletes the depot from the database using the ID
+                depotModel.DeleteDepot(depotID);
 
-                return Redirect("/..role");
-            }
-            else
-            {
-                // If not logged in
-                return Redirect("/login.html");
-            }
-        }
-
-        // Lists all roles
-        public ActionResult ListRoles()
-        {
-            // Null handling
-            if (Session["loggedInState"] == null)
-            {
-                return Redirect("/403.html");
-            }
-
-            bool state = (bool)Session["loggedInState"];
-            if (state == true)
-            {
-                // Creates an employee model
-                var rm = new RoleModel();
-
-                // Gets the complete list
-                var rl = rm.ListRoles();
-
-                // Returns the list
-                return View(rl);
+                return Redirect("/..depot");
             }
             else
             {

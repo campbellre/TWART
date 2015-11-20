@@ -43,12 +43,21 @@
         <section id="top" class="top">
             <div class="container">
                 <header>
-                    <h2 style="color: #ff0000">Are You Sure You Want To Delete?</h2>
+                    <h2 style="color: #ff0000">Are You Sure You Want To Delete this?</h2>
                 </header>
             </div>
         </section>
         <!-- Controls -->
         <section id="controls" class="two">
+             <% Customer deleteCustomer = (Customer)Model; %>
+            <form action="/admin/deleteThis" method="POST">
+                <div class="row">
+                    <div class="12u$">
+                        <input type="hidden" name="id" value="<%= deleteCustomer.ID %>" />
+                        <input type="submit" value="Delete" />
+                    </div>
+                </div>
+            </form>
         </section>
     </div>
     <!-- Footer -->
