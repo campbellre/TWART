@@ -22,12 +22,8 @@
                 <span class="image avatar48">
                     <img src="../../images/avatar.jpg" alt="" /></span>
                 <h1 id="title">TWART Shipping Corporation</h1>
+                <p id="title">Welcome <%=Session["username"].ToString() %></p>
             </div>
-            <div id="loggedIn">
-
-                <h1 id="title">Welcome <%=Session["username"].ToString() %></h1>
-            </div>
-            <br />
             <!-- Nav -->
             <nav id="nav">
                 <ul>
