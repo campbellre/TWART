@@ -103,8 +103,26 @@ namespace TWART.Controllers
             {
                 int depotID = int.Parse(RouteData.Values[""].ToString());
 
-                // Establishes role model
+                // Establishes models
                 DepotModel depotModel = new DepotModel();
+                EmployeesModel employeeModel = new EmployeesModel();
+
+                // Gets list of all employees
+                var employeeList = employeeModel.GetEmployeesList();
+
+                // For each employee in depot
+                foreach (var employee in employeeList)
+                {
+                    // If employee belongs to depot
+                    if (employee.Depot == depotID)
+                    {
+                        // Sets the depot to null
+                        employee.Depot = 0;
+
+                        // Saves employee to database
+                        employeeModel.EditEmployee(employee);
+                    }
+                }
 
                 // Deletes the depot from the database using the ID
                 depotModel.DeleteDepot(depotID);

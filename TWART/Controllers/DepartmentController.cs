@@ -104,8 +104,26 @@ namespace TWART.Controllers
             {
                 int departmentID = int.Parse(RouteData.Values["id"].ToString());
 
-                // Establishes department model
+                // Establishes models
                 DepartmentModel departmentModel = new DepartmentModel();
+                EmployeesModel employeeModel = new EmployeesModel();
+
+                // Sets all employees who were attached to this department to be "Unassigned"
+                var employeeList = employeeModel.GetEmployeesList();
+
+                // For each employee within the list
+                foreach (var employee in employeeList)
+                {
+                    // If the employee belongs to department
+                    if (employee.Dept == departmentID)
+                    {
+                        // Sets department to none
+                        employee.Dept = 0;
+
+                        // Saves employee to database
+                        employeeModel.EditEmployee(employee);
+                    }
+                }           
 
                 // Deletes the department from the database using the ID
                 departmentModel.DeleteDepartment(departmentID);

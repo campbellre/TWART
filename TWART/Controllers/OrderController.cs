@@ -14,7 +14,7 @@ namespace TWART.Controllers
         // TODO: Acquire package band (dimensions)
 
         // GET: Order
-        public ActionResult orderpost()
+        public ActionResult DoOrder()
         {
             if (Session["loggedInState"] == null)
             {
@@ -46,9 +46,9 @@ namespace TWART.Controllers
                 // Price of order
                 int totalPrice = calcPrice(accountType, deliveryBand, packageList);
 
-                    
-                     
-                    
+
+                // EVERYTHING MUST CHANGE
+
 
                 // Finalises the order
                 newOrder.Placed = DateTime.Now;
@@ -62,7 +62,7 @@ namespace TWART.Controllers
             {
                 // If not logged in
                 return Redirect("/login.html");
-            }         
+            }
         }
 
         // Gets all orders
