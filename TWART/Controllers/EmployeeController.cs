@@ -145,11 +145,11 @@ namespace TWART.Controllers
                 var roleModel = new RoleModel();
                 var depotModel = new DepotModel();
 
-                try
-                {
-                    // Gets the complete list
-                    var el = employeeModel.GetEmployeesList();
+                // Gets the complete list
+                List<Employee> el = employeeModel.GetEmployeesList();
 
+                if (el.Count != 0)
+                {
                     // Attaches associated department / role to employee
                     foreach (var employee in el)
                     {
@@ -165,10 +165,12 @@ namespace TWART.Controllers
                     // Returns the list
                     return View(el);
                 }
-                catch
+                else
                 {
                     return Redirect("/403.html");
-                } 
+                }
+                    
+
             }
             else
             {
