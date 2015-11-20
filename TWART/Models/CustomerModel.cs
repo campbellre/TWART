@@ -22,7 +22,35 @@ namespace TWART.Models
 
         public int CreateCustomer(Customer c)
         {
-            throw new NotImplementedException();
+            int ret = 0;
+            using (connect = new MySqlConnection(_connectionString))
+            {
+                connect.Open();
+                using (MySqlTransaction transaction = connect.BeginTransaction())
+                {
+                    try
+                    {
+                        string query = "NewCustomer";
+                        var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
+
+                        cmd.Parameters.AddWithValue("CustomerName", c.Name);
+                        cmd.Parameters.AddWithValue("AddressID", c.Address_ID);
+
+
+                        ret = (int)cmd.ExecuteScalar();
+
+                        transaction.Commit();
+
+                        connect.Close();
+                    }
+                    catch (InvalidOperationException ioException)
+                    {
+                        transaction.Rollback();
+                        connect.Close();
+                    }
+                }
+            }
+            return ret;
         }
 
         public void EditCustomer(Customer c)

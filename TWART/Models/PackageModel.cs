@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading;
 using System.Web;
@@ -19,20 +20,170 @@ namespace TWART.Models
             _connectionString = Resource1.ConnectionString;
         }
 
-        public int CreatePackage()
+        public int CreatePackage(Package p)
         {
-            throw new NotImplementedException();
+            int ret = 0;
+            using (connect = new MySqlConnection(_connectionString))
+            {
+                connect.Open();
+                using (MySqlTransaction transaction = connect.BeginTransaction())
+                {
+                    try
+                    {
+                        string query = "NewPackage";
+                        var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
+
+                        cmd.Parameters.AddWithValue("SpecificationID", p.Specification);
+                        cmd.Parameters.AddWithValue("GoodsID", p.Goods);
+
+
+                        ret = (int)cmd.ExecuteScalar();
+
+                        transaction.Commit();
+
+                        connect.Close();
+                    }
+                    catch (InvalidOperationException ioException)
+                    {
+                        transaction.Rollback();
+                        connect.Close();
+                    }
+                }
+            }
+            return ret;
+        }
+
+        public void EditPackage(Package p)
+        {
+            using (connect = new MySqlConnection(_connectionString))
+            {
+                connect.Open();
+                using (MySqlTransaction transaction = connect.BeginTransaction())
+                {
+                    try
+                    {
+                        string query = "EditPackage";
+                        var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
+
+                        cmd.Parameters.AddWithValue("PackageID", p.ID);
+                        cmd.Parameters.AddWithValue("SpecificationID", p.Specification);
+                        cmd.Parameters.AddWithValue("GoodsID", p.Goods);
+
+
+                        cmd.ExecuteNonQuery();
+
+                        transaction.Commit();
+
+                        connect.Close();
+                    }
+                    catch (InvalidOperationException ioException)
+                    {
+                        transaction.Rollback();
+                        connect.Close();
+                    }
+                }
+            }
+        }
+
+        public void DeletePackage(int ID)
+        {
+            using (connect = new MySqlConnection(_connectionString))
+            {
+                connect.Open();
+                using (MySqlTransaction transaction = connect.BeginTransaction())
+                {
+                    try
+                    {
+                        string query = "DeletePackage";
+                        var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
+
+                        cmd.Parameters.AddWithValue("PackageID", ID);
+
+                        cmd.ExecuteNonQuery();
+
+                        transaction.Commit();
+
+                        connect.Close();
+                    }
+                    catch (InvalidOperationException ioException)
+                    {
+                        transaction.Rollback();
+                        connect.Close();
+                    }
+                }
+            }
         }
 
         public List<Package> GetPackagesList()
         {
-            throw new NotImplementedException();
+            var packageList = new List<Package>();
+
+            using (connect = new MySqlConnection(_connectionString))
+            {
+                try
+                {
+                    string query = "ListPackage";
+                    var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
+
+                    connect.Open();
+
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        var p = new Package();
+                        p.ID = int.Parse(reader["Package_ID "].ToString());
+                        p.SpecificationID = int.Parse(reader["Specification_ID"].ToString());
+                        p.GoodsID = int.Parse(reader["Goods_ID"].ToString());
+
+
+                        packageList.Add(p);
+                    }
+
+                    connect.Close();
+                }
+                catch (InvalidOperationException ioException)
+                {
+                    connect.Close();
+                }
+
+                return packageList;
+            }
         }
 
         // This is the main method to get a package from the packages ID within the databse.
         public Package SearchPackage(int ID)
         {
-            throw new NotImplementedException();
+
+            var p = new Package();
+            using (connect = new MySqlConnection(_connectionString))
+            {
+                try
+                {
+                    string query = "ListPackage";
+                    var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
+
+                    cmd.Parameters.AddWithValue("PackageID", ID);
+
+                    connect.Open();
+
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        p.ID = int.Parse(reader["Package_ID "].ToString());
+                        p.SpecificationID = int.Parse(reader["Specification_ID"].ToString());
+                        p.GoodsID = int.Parse(reader["Goods_ID"].ToString());
+
+                    }
+
+                    connect.Close();
+                }
+                catch (InvalidOperationException ioException)
+                {
+                    connect.Close();
+                }
+
+                return p;
+            }
         }
 
         // Calls the main method to get packages.

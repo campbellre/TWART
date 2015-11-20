@@ -11,5 +11,9 @@ namespace TWART.DataObjects
         public String Title { get; set; }
         public int Address { get; set; }
         public int Head { get; set; }
+
+        public int AddressID { get; set; }
+
+        public int DHeadID { get; set; }
     }
 }

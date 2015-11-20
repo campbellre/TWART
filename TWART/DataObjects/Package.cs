@@ -11,5 +11,8 @@ namespace TWART.DataObjects
         public int ID { get; set; }
         public Specification Specification { get; set; }
         public Goods Goods { get; set; }
+        public int SpecificationID { get; set; }
+        public int GoodsID { get; set; }
+
     }
 }
