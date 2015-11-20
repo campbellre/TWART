@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Edit.aspx.cs" Inherits="TWART.Views.Admin.Edit" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Delete.aspx.cs" Inherits="TWART.Views.Admin.delete" %>
 
 <%@ Import Namespace="TWART.DataObjects" %>
 <!DOCTYPE html>
@@ -49,12 +49,6 @@
         </section>
         <!-- Controls -->
         <section id="controls" class="two">
-            <div style="text-align: center">
-                <div style="text-align: center">
-                    <a href="/Admin/Delete" type="submit">Yes</a>
-                    <a href="../Customer" type="submit">No</a>
-                </div>
-            </div>
         </section>
     </div>
     <!-- Footer -->

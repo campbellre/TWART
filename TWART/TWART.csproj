@@ -133,8 +133,6 @@
     <Content Include="login.html" />
     <Content Include="Views\Admin\Accounts.aspx" />
     <Content Include="Views\Admin\Address.aspx" />
-    <Content Include="Views\Admin\afterdelete.aspx" />
-    <Content Include="Views\Admin\afterupdate.aspx" />
     <Content Include="Views\Admin\Banking.aspx" />
     <Content Include="Views\Admin\customer.aspx">
       <BrowseToURL>~/Admin/customer</BrowseToURL>
@@ -216,20 +214,6 @@
     </Compile>
     <Compile Include="Views\Admin\Address.aspx.designer.cs">
       <DependentUpon>Address.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Admin\afterdelete.aspx.cs">
-      <DependentUpon>afterdelete.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Admin\afterdelete.aspx.designer.cs">
-      <DependentUpon>afterdelete.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Admin\afterupdate.aspx.cs">
-      <DependentUpon>afterupdate.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Admin\afterupdate.aspx.designer.cs">
-      <DependentUpon>afterupdate.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Admin\Banking.aspx.cs">
       <DependentUpon>Banking.aspx</DependentUpon>

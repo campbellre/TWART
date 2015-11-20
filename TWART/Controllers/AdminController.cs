@@ -189,16 +189,17 @@ namespace TWART.Controllers
             user.password = password;
             LoginModel loginMod = new LoginModel();
             loginMod.CreateUser(user);
-            return Redirect("../customer");
+            return Redirect("Customer");
         }
         public ActionResult Delete()
         {
-            int id = int.Parse(RouteData.Values["id"].ToString());
+            return View();
+            //int id = int.Parse(RouteData.Values["id"].ToString());
             // Create a customer model object
-            CustomerModel customerModel = new CustomerModel();
+            ///CustomerModel customerModel = new CustomerModel();
             // Call the method to delete a customer from the database
-            customerModel.DeleteCustomer(id);
-            return Redirect("../afterdelete");
+           // customerModel.DeleteCustomer(id);
+           // return Redirect("Customer");
         }
         public ActionResult afterdelete()
         {
