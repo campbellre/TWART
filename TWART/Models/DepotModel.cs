@@ -3,65 +3,25 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
-using System.Resources;
 using MySql.Data.MySqlClient;
-using MySql.Data.MySqlClient.Properties;
 using TWART.DataObjects;
 using TWART.Properties;
 
 namespace TWART.Models
 {
-    public class DepartmentModel
+    public class DepotModel
     {
+
         private MySqlConnection connect;
         private string _connectionString;
 
-        public DepartmentModel()
+        public DepotModel()
         {
             _connectionString = Resource1.ConnectionString;
         }
 
 
-        public List<Department> GetDepartmentsList()
-        {
-            var departmentList = new List<Department>();
-
-            using (connect = new MySqlConnection(_connectionString))
-            {
-                try
-                {
-                    string query = "ListDepartment";
-                    var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
-
-                    connect.Open();
-
-                    var reader = cmd.ExecuteReader();
-                    while (reader.Read())
-                    {
-
-                        var d = new Department();
-                        d.Id = (int)reader["Department_ID"];
-                        d.Title = reader["Department_Title"].ToString();
-                        d.AddressID = (int)reader["Address_ID"];
-                        d.DHeadID = (int)reader["Department_Head"];
-
-
-                        departmentList.Add(d);
-                    }
-
-                    connect.Close();
-                }
-                catch (InvalidOperationException ioException)
-                {
-                    connect.Close();
-                }
-
-                return departmentList;
-            }
-        }
-
-
-        public int CreateNewDepartment(Department department)
+        public int CreateDepot(Depot d)
         {
             int ret = 0;
             using (connect = new MySqlConnection(_connectionString))
@@ -72,12 +32,15 @@ namespace TWART.Models
 
                     try
                     {
-                        string query = "NewDepartment";
+                        string query = "NewRole";
                         var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
 
-                        cmd.Parameters.AddWithValue("DepartmentTitle", department.Title);
-                        cmd.Parameters.AddWithValue("AddressID", department.Address);
-                        cmd.Parameters.AddWithValue("DepartmentHead", department.Head);
+                        cmd.Parameters.AddWithValue("DepotName", d.DepotName);
+                        cmd.Parameters.AddWithValue("FloorSpace", d.FloorSpace);
+                        cmd.Parameters.AddWithValue("NumOfVehicles", d.NumVehicles);
+                        cmd.Parameters.AddWithValue("AddressID", d.Address);
+                        cmd.Parameters.AddWithValue("DepotManager", d.ManagerID);
+
 
                         connect.Open();
 
@@ -94,10 +57,9 @@ namespace TWART.Models
                 }
             }
             return ret;
-
         }
 
-        public void EditDepartment(Department d)
+        public void EditDepot(Depot d)
         {
             using (connect = new MySqlConnection(_connectionString))
             {
@@ -107,17 +69,21 @@ namespace TWART.Models
 
                     try
                     {
-                        string query = "EditDepartment";
+                        string query = "EditRole";
                         var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
 
-                        cmd.Parameters.AddWithValue("DepartmentID", d.Id);
-                        cmd.Parameters.AddWithValue("DepartmentTitle", d.Title);
+                        cmd.Parameters.AddWithValue("DepotID", d.ID);
+                        cmd.Parameters.AddWithValue("DepotName", d.DepotName);
+                        cmd.Parameters.AddWithValue("FloorSpace", d.FloorSpace);
+                        cmd.Parameters.AddWithValue("NumOfVehicles", d.NumVehicles);
                         cmd.Parameters.AddWithValue("AddressID", d.Address);
-                        cmd.Parameters.AddWithValue("DepartmentHead", d.Head);
+                        cmd.Parameters.AddWithValue("DepotManager", d.ManagerID);
+
 
                         connect.Open();
 
                         cmd.ExecuteNonQuery();
+
                         transaction.Commit();
                         connect.Close();
                     }
@@ -130,7 +96,7 @@ namespace TWART.Models
             }
         }
 
-        public void DeleteDepartment(int ID)
+        public void DeleteDepot(int ID)
         {
             using (connect = new MySqlConnection(_connectionString))
             {
@@ -140,10 +106,10 @@ namespace TWART.Models
 
                     try
                     {
-                        string query = "DeleteDepartment";
+                        string query = "DeleteDepot";
                         var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
 
-                        cmd.Parameters.AddWithValue("DepartmentID", ID);
+                        cmd.Parameters.AddWithValue("DepotID", ID);
 
 
                         connect.Open();
@@ -162,17 +128,15 @@ namespace TWART.Models
             }
         }
 
-        // Get department by id.
-        // This is the impmented method others should call it. 
-        public Department SearchDepartment(int ID)
+        public List<Depot> ListDepots()
         {
-            var department = new Department();
+            var depotList = new List<Depot>();
 
             using (connect = new MySqlConnection(_connectionString))
             {
                 try
                 {
-                    string query = "GetDepartment";
+                    string query = "ListDepot";
                     var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
 
                     connect.Open();
@@ -180,11 +144,18 @@ namespace TWART.Models
                     var reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
+                        var depot = new Depot();
 
-                        department.Id = (int)reader["Department_ID"];
-                        department.Title = reader["Department_Title"].ToString();
-                        department.AddressID = (int)reader["Address_ID"];
-                        department.DHeadID = (int)reader["Department_Head"];
+                        depot.ID = (int) reader["Depot_ID"];
+                        depot.DepotName = reader["Depot_Name"].ToString();
+                        depot.FloorSpace = (double)reader["Floor_space"];
+                        depot.NumVehicles = (int)reader["NumVehicles"];
+                        depot.AddressID = (int)reader["Address_ID"];
+                        depot.ManagerID = (int) reader["Depot_Manager"];
+
+
+
+                        depotList.Add(depot);
 
                     }
 
@@ -195,18 +166,48 @@ namespace TWART.Models
                     connect.Close();
                 }
 
-                return department;
+                return depotList;
             }
-
         }
 
-
-        // Overload to allow getting department be either id or a department object. 
-        public Department SearchDepartment(Department department)
+        public Depot SearchDepot(int ID)
         {
-            return this.SearchDepartment(department.Id);
+            var depot = new Depot();
+
+            using (connect = new MySqlConnection(_connectionString))
+            {
+                try
+                {
+                    string query = "GetDepot";
+                    var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
+
+                    connect.Open();
+
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        depot.ID = (int)reader["Depot_ID"];
+                        depot.DepotName = reader["Depot_Name"].ToString();
+                        depot.FloorSpace = (double)reader["Floor_space"];
+                        depot.NumVehicles = (int)reader["NumVehicles"];
+                        depot.AddressID = (int)reader["Address_ID"];
+                        depot.ManagerID = (int)reader["Depot_Manager"];
+                    }
+
+                    connect.Close();
+                }
+                catch (InvalidOperationException ioException)
+                {
+                    connect.Close();
+                }
+
+                return depot;
+            }
         }
 
-
+        public Depot SearchDepot(Depot d)
+        {
+            SearchDepot(d.ID);
+        }
     }
 }

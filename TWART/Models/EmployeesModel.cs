@@ -47,10 +47,13 @@ namespace TWART.Models
 
                         ret = (int)cmd.ExecuteScalar();
 
+                        transaction.Commit();;
                         connect.Close();
                     }
                     catch (InvalidOperationException ioException)
                     {
+                        transaction.Rollback();
+                        
                         connect.Close();
                     }
                 }
@@ -85,11 +88,13 @@ namespace TWART.Models
                         connect.Open();
 
                         cmd.ExecuteNonQuery();
-
+                        transaction.Commit();
+                        
                         connect.Close();
                     }
                     catch (InvalidOperationException ioException)
                     {
+                        transaction.Rollback();
                         connect.Close();
                     }
                 }
@@ -114,11 +119,13 @@ namespace TWART.Models
                         connect.Open();
 
                         cmd.ExecuteNonQuery();
-
+                        transaction.Commit();
+                        
                         connect.Close();
                     }
                     catch (InvalidOperationException ioException)
                     {
+                        transaction.Rollback();
                         connect.Close();
                     }
                 }
