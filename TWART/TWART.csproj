@@ -155,11 +155,14 @@
     <Compile Include="Controllers\AddressController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BankController.cs" />
+    <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\EditContactDetails.cs" />
     <Compile Include="Controllers\EditEmployeeDetails.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\Register.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="DataObjects\Account.cs" />
     <Compile Include="DataObjects\Account_Type.cs" />
     <Compile Include="DataObjects\Address.cs" />
@@ -309,7 +312,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Role\" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resource1.resx">
       <Generator>ResXFileCodeGenerator</Generator>

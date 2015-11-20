@@ -108,7 +108,7 @@ namespace TWART.Controllers
                 DepartmentModel departmentModel = new DepartmentModel();
 
                 // Deletes the department from the database using the ID
-                departmentModel.DeleteDepartment(departmentModel);
+                departmentModel.DeleteDepartment(departmentID);
 
                 // TODO: Confirm this is the correct return state
                 // Return to department listing
