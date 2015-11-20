@@ -23,7 +23,7 @@ namespace TWART.Controller
 
 
         // Constructor
-        public EditEmployeeDetails (int ID, String contact, String fN, String sN, DateTime bDate, DateTime sDate, DateTime eDate, int depot, int dept, int role)
+        public EditEmployeeDetails(int ID, String contact, String fN, String sN, DateTime bDate, DateTime sDate, DateTime eDate, int depot, int dept, int role)
         {
             // CONSTRUCTOR GOES HERE
             this.employeeId = ID;
@@ -40,8 +40,8 @@ namespace TWART.Controller
         }
 
         // Blank constructor
-        public EditEmployeeDetails() 
-        { 
+        public EditEmployeeDetails()
+        {
             // Blank constructor    
         }
 
@@ -53,7 +53,16 @@ namespace TWART.Controller
          */
         public bool saveDetails()
         {
-            Employee newEmployee = new Employee(employeeId, firstName, surname, DOB, contactNumber, startDate, dept_id, depot_id, role_id);
+            Employee newEmployee = new Employee();
+            newEmployee.Id = employeeId;
+            newEmployee.Firstname = firstName;
+            newEmployee.Lastname = surname;
+            newEmployee.DOB = DOB;
+            newEmployee.ContactNumber = contactNumber;
+            newEmployee.Startdate = startDate;
+            newEmployee.Dept = dept_id;
+            newEmployee.Depot = depot_id;
+            newEmployee.Role = role_id;
             //return ryansMethod(newEmployee);
             return false;
         }
