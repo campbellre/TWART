@@ -88,6 +88,68 @@ namespace TWART.Models
 
         }
 
+        public void EditDepartment(Department d)
+        {
+            using (connect = new MySqlConnection(_connectionString))
+            {
+                connect.Open();
+                using (MySqlTransaction transaction = connect.BeginTransaction())
+                {
+
+                    try
+                    {
+                        string query = "EditDepartment";
+                        var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
+
+                        cmd.Parameters.AddWithValue("DepartmentID",d.Id)
+                        cmd.Parameters.AddWithValue("DepartmentTitle", d.Title);
+                        cmd.Parameters.AddWithValue("AddressID", d.Address);
+                        cmd.Parameters.AddWithValue("DepartmentHead", d.Head);
+
+                        connect.Open();
+
+                        cmd.ExecuteNonQuery();
+
+                        connect.Close();
+                    }
+                    catch (InvalidOperationException ioException)
+                    {
+                        connect.Close();
+                    }
+                }
+            }
+        }
+
+        public void DeleteDepartment(int ID)
+        {
+            using (connect = new MySqlConnection(_connectionString))
+            {
+                connect.Open();
+                using (MySqlTransaction transaction = connect.BeginTransaction())
+                {
+
+                    try
+                    {
+                        string query = "DeleteDepartment";
+                        var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
+
+                        cmd.Parameters.AddWithValue("DepartmentID", ID);
+
+
+                        connect.Open();
+
+                        cmd.ExecuteNonQuery();
+
+                        connect.Close();
+                    }
+                    catch (InvalidOperationException ioException)
+                    {
+                        connect.Close();
+                    }
+                }
+            }
+        }
+
         // Get department by id.
         // This is the impmented method others should call it. 
         public Department SearchDepartment(int ID)
