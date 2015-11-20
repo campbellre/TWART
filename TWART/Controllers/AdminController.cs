@@ -173,7 +173,7 @@ namespace TWART.Controllers
                 c.Address_ID = int.Parse(Request.Form["addressid"]);
                 var cm = new CustomerModel();
                 cm.EditCustomer(c);
-                return Redirect("afterupdate");
+                return Redirect("Customer");
             }
             else
             {
