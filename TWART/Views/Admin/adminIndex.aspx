@@ -26,8 +26,13 @@
             <!-- Nav -->
             <nav id="nav">
                 <ul>
-                    <li><a href="#client" id="client-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Client Information</span></a></li>
-                    <li><a href="#order" id="order-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Order Page</span></a></li>
+                    <li><a href="#client" id="client-link" class="skel-layers-ignoreHref"><span class="icon fa-user">Client System</span></a></li>
+                    <li><a href="#order" id="order-link" class="skel-layers-ignoreHref"><span class="icon fa-sort">Order System</span></a></li>
+                    <li><a href="#user" id="user-link" class="skel-layers-ignoreHref"><span class="icon fa-unlock-alt">User System</span></a></li>
+                    <li><a href="#address" id="address-link" class="skel-layers-ignoreHref"><span class="icon fa-map-marker">Address System</span></a></li>
+                    <li><a href="#banking" id="banking-link" class="skel-layers-ignoreHref"><span class="icon fa-credit-card">Banking System</span></a></li>
+                    <li><a href="#accounts" id="accounts-link" class="skel-layers-ignoreHref"><span class="icon fa-clone">Accounts System</span></a></li>
+                    <li><a href="#employees" id="employees-link" class="skel-layers-ignoreHref"><span class="icon fa-industry">Employees System</span></a></li>
                     <li><a href="Logout" id="logout"><span class="icon fa-hand-o-left">Log Out</span></a></li>
                 </ul>
             </nav>
@@ -43,33 +48,61 @@
     <!-- Main -->
     <form id="customerForm" runat="server">
         <div id="main">
-            <!-- Client View -->
+            <!-- Controls -->
             <section id="client" class="top">
                 <div class="container">
                     <header>
-                        <h2 style="color: #ff0000">Administrator's Control Panel</h2>
+                        <h2><strong style="color: #ff0000">Administrator's Control Panel</strong></h2>
                     </header>
                 </div>
             </section>
             <!-- Client -->
-            <section id="controls" class="controls">
+            <section id="controls" class="two">
                 <div class="container">
                     <a href="Customer">Client Controls</a>
-                    <p>Use this control to view or modify our client's addresses or account information.</p>
+                    <p>Use this control to create, retrieve, update or delete on our client system.</p>
                 </div>
             </section>
             <!-- Order -->
-            <section id="order" class="order">
+            <section id="order" class="three">
                 <div class="container">
-                    <a href="Orders">Order Page</a>
-                    <p>Use this control to view, create or delete orders which exist on our system.</p>
+                    <a href="Orders">Order Controls</a>
+                    <p>Use this control to create, retrieve, update or delete on our order system.</p>
                 </div>
             </section>
-            <!-- Create Admin User -->
-            <section id="user" class="user">
+            <!-- User -->
+            <section id="user" class="four">
                 <div class="container">
                     <a href="Users">Create New Admin User</a>
                     <p>Use this control to Create a new Administrative user for this System</p>
+                </div>
+            </section>
+            <!-- Address -->
+            <section id="address" class="two">
+                <div class="container">
+                    <a href="Address">Address</a>
+                    <p>Use this control to create, retrieve, update or delete on our address system.</p>
+                </div>
+            </section>
+            <!-- Banking -->
+            <section id="banking" class="three">
+                <div class="container">
+                    <a href="Banking">Banking</a>
+                    <p>Use this control to create, retrieve, update or delete on our banking system.</p>
+                </div>
+            </section>
+            <!-- Accounts -->
+            <section id="accounts" class="four">
+                <div class="container">
+                    <a href="Accounts">Accounts</a>
+                    <p>Use this control to create, retrieve, update or delete on our accounts system.</p>
+                </div>
+            </section>
+            <!-- Employees -->
+            <section id="employees" class="two">
+                <div class="container">
+                    <a href="Employees">Employees</a>
+                    <p>Use this control to create, retrieve, update or delete on our employees system.</p>
                 </div>
             </section>
         </div>

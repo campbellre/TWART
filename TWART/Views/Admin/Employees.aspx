@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Orders.aspx.cs" Inherits="TWART.Views.Admin.OrderView" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Employees.aspx.cs" Inherits="TWART.Views.Admin.Employees" %>
+
 
 <%@ Import Namespace="System.Web.Mvc.Html" %>
 <%@ Import Namespace="TWART.DataObjects" %>
@@ -27,7 +28,6 @@
             <nav id="nav">
                 <ul>
                     <li><a href="adminIndex" id="foobar-link"><span class="icon fa-hand-o-left">Control Panel</span></a></li>
-                    <li><a href="#specification" id="specification" class="skel-layers-ignoreHref"><span class="icon fa-home">Package Specifications</span></a></li>
                 </ul>
             </nav>
         </div>
@@ -35,18 +35,18 @@
             <!-- Social Icons -->
             <ul class="icons">
                 <li><a href="https://github.com/campbellre/TWART" class="icon fa-github"><span class="label">Github</span></a></li>
-                <li><a href="#contact" class="icon fa-envelope"><span class="label">Email</span></a></li>
+                <li><a href="../../index.html#contact" class="icon fa-envelope"><span class="label">Email</span></a></li>
             </ul>
         </div>
     </div>
     <!-- Main -->
-    <form id="orderForm" runat="server">
+    <form id="employeesForm" runat="server">
         <div id="main">
             <!-- Client View -->
             <section id="client" class="top">
                 <div class="container">
                     <header>
-                        <h2>Order Information</h2>
+                        <h2>Title</h2>
                     </header>
                 </div>
             </section>

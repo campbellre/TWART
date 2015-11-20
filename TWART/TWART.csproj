@@ -142,8 +142,11 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Views\Admin\Accounts.aspx" />
+    <Content Include="Views\Admin\Address.aspx" />
     <Content Include="Views\Admin\afterdelete.aspx" />
     <Content Include="Views\Admin\afterupdate.aspx" />
+    <Content Include="Views\Admin\Banking.aspx" />
     <Content Include="Views\Admin\customer.aspx">
       <BrowseToURL>~/Admin/customer</BrowseToURL>
     </Content>
@@ -151,7 +154,9 @@
     <Content Include="Views\Admin\adminIndex.aspx">
       <BrowseToURL>~/Admin/adminIndex</BrowseToURL>
     </Content>
+    <Content Include="Views\Admin\Employees.aspx" />
     <Content Include="Views\Admin\Orders.aspx" />
+    <Content Include="Views\Admin\Users.aspx" />
     <Content Include="Views\Client\clientIndex.aspx" />
     <Content Include="Views\Admin\delete.aspx" />
     <Content Include="Views\Admin\viewinfo.aspx" />
@@ -210,6 +215,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource1.resx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Admin\Accounts.aspx.cs">
+      <DependentUpon>Accounts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\Accounts.aspx.designer.cs">
+      <DependentUpon>Accounts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\Address.aspx.cs">
+      <DependentUpon>Address.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\Address.aspx.designer.cs">
+      <DependentUpon>Address.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Admin\afterdelete.aspx.cs">
       <DependentUpon>afterdelete.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -223,6 +242,13 @@
     </Compile>
     <Compile Include="Views\Admin\afterupdate.aspx.designer.cs">
       <DependentUpon>afterupdate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\Banking.aspx.cs">
+      <DependentUpon>Banking.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\Banking.aspx.designer.cs">
+      <DependentUpon>Banking.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Admin\customer.aspx.cs">
       <DependentUpon>customer.aspx</DependentUpon>
@@ -252,12 +278,26 @@
     <Compile Include="Views\Admin\adminIndex.aspx.designer.cs">
       <DependentUpon>adminIndex.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Admin\Employees.aspx.cs">
+      <DependentUpon>Employees.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\Employees.aspx.designer.cs">
+      <DependentUpon>Employees.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Admin\Orders.aspx.cs">
       <DependentUpon>Orders.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Views\Admin\Orders.aspx.designer.cs">
       <DependentUpon>Orders.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\Users.aspx.cs">
+      <DependentUpon>Users.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\Users.aspx.designer.cs">
+      <DependentUpon>Users.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Client\clientIndex.aspx.cs">
       <DependentUpon>clientIndex.aspx</DependentUpon>
