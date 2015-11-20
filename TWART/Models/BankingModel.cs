@@ -6,6 +6,7 @@ using System.Web;
 using MySql.Data.MySqlClient;
 using TWART.DataObjects;
 using TWART.Properties;
+using TWART.Views.Admin;
 
 namespace TWART.Models
 {
@@ -56,6 +57,83 @@ namespace TWART.Models
         
         // Due to the transaction we don't delete banks we add new ones
         //public void DeleteBank(Bank b)
+
+        public List<Bank> ListBanking()
+        {
+            var bankList = new List<Bank>();
+
+            using (connect = new MySqlConnection(_connectionString))
+            {
+                try
+                {
+                    string query = "ListBank";
+                    var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
+
+                    connect.Open();
+
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        var b = new Bank();
+                        b.ID = int.Parse(reader["Banking_ID"].ToString());
+                        b.Address_ID = int.Parse(reader["Address_ID"].ToString());
+                        b.SortCode = reader["Sort_Code"].ToString();
+                        b.AccountNumber = int.Parse(reader["Account_Number"].ToString());
+
+
+
+                        bankList.Add(b);
+                    }
+
+                    connect.Close();
+                }
+                catch (InvalidOperationException ioException)
+                {
+                    connect.Close();
+                }
+
+                return bankList;
+            }
+        }
+
+        public Bank SearchBank(int ID)
+        {
+            var bank = new Bank();
+
+            using (connect = new MySqlConnection(_connectionString))
+            {
+                try
+                {
+                    string query = "GetBank";
+                    var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
+
+                    connect.Open();
+
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        bank.ID = int.Parse(reader["Banking_ID"].ToString());
+                        bank.Address_ID = int.Parse(reader["Address_ID"].ToString());
+                        bank.SortCode = reader["Sort_Code"].ToString();
+                        bank.AccountNumber = int.Parse(reader["Account_Number"].ToString());
+
+                    }
+
+                    connect.Close();
+                }
+                catch (InvalidOperationException ioException)
+                {
+                    connect.Close();
+                }
+
+                return bank;
+            }
+        }
+
+        public Bank SearchBank(Bank b)
+        {
+            return SearchBank(b.ID);
+        }
 
         public Bank SearchBanking(Customer c)
         {
