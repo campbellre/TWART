@@ -23,6 +23,11 @@
                     <img src="../../images/avatar.jpg" alt="" /></span>
                 <h1 id="title">TWART Shipping Corporation</h1>
             </div>
+            <div id="loggedIn">
+
+                <h1 id="title">Welcome <%=Session["username"].ToString() %></h1>
+            </div>
+            <br />
             <!-- Nav -->
             <nav id="nav">
                 <ul>
