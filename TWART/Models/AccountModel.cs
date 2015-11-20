@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using MySql.Data.MySqlClient;
@@ -20,28 +21,176 @@ namespace TWART.Models
 
         public int CreateAccount(Account a)
         {
-            throw new NotImplementedException();
+            int ret = 0;
+            using (connect = new MySqlConnection(_connectionString))
+            {
+                connect.Open();
+                using (MySqlTransaction transaction = connect.BeginTransaction())
+                {
+                    try
+                    {
+                        string query = "NewAccount";
+                        var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
+
+                        cmd.Parameters.AddWithValue("ContactID", a.ContactID);
+                        cmd.Parameters.AddWithValue("CustomerID", a.CustomerID);
+                        cmd.Parameters.AddWithValue("AccountTypeID", a.AccountTypeID);
+                        cmd.Parameters.AddWithValue("BankingID", a.BankID);
+
+                        ret = (int)cmd.ExecuteScalar();
+
+                        transaction.Commit();
+
+                        connect.Close();
+                    }
+                    catch (InvalidOperationException ioException)
+                    {
+                        transaction.Rollback();
+                        connect.Close();
+                    }
+                }
+            }
+            return ret;
         }
 
         public void EditAccount(Account a)
         {
-            throw new NotImplementedException();
+            using (connect = new MySqlConnection(_connectionString))
+            {
+                connect.Open();
+                using (MySqlTransaction transaction = connect.BeginTransaction())
+                {
+                    try
+                    {
+                        string query = "EditAccount";
+                        var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
 
+                        cmd.Parameters.AddWithValue("AccountID", a.ID);
+                        cmd.Parameters.AddWithValue("ContactID", a.ContactID);
+                        cmd.Parameters.AddWithValue("CustomerID", a.CustomerID);
+                        cmd.Parameters.AddWithValue("AccountTypeID", a.AccountTypeID);
+                        cmd.Parameters.AddWithValue("BankingID", a.BankID);
+
+                        cmd.ExecuteNonQuery();
+                         
+                        transaction.Commit();
+
+                        connect.Close();
+                    }
+                    catch (InvalidOperationException ioException)
+                    {
+                        transaction.Rollback();
+                        connect.Close();
+                    }
+                }
+            }
+        }
+
+        public void DeleteAccount(int ID)
+        {
+            using (connect = new MySqlConnection(_connectionString))
+            {
+                connect.Open();
+                using (MySqlTransaction transaction = connect.BeginTransaction())
+                {
+                    try
+                    {
+                        string query = "DeleteAccount";
+                        var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
+
+                        cmd.Parameters.AddWithValue("AccountID", ID);
+
+                        cmd.ExecuteNonQuery();
+
+                        transaction.Commit();
+
+                        connect.Close();
+                    }
+                    catch (InvalidOperationException ioException)
+                    {
+                        transaction.Rollback();
+                        connect.Close();
+                    }
+                }
+            }
         }
 
         // The main method to get a user account.
-        public Account GetAccount(int ID)
+        public Account SearchAccount(int ID)
         {
-            throw new NotImplementedException();
+            var account = new Account();
+
+            using (connect = new MySqlConnection(_connectionString))
+            {
+                try
+                {
+                    string query = "GetAccount";
+                    var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
+
+                    connect.Open();
+
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        account.ID = int.Parse(reader["Package_ID "].ToString());
+                        account.ContactID = int.Parse(reader["Specification_ID"].ToString());
+                        account.CustomerID = int.Parse(reader["Customer_ID"].ToString());
+                        account.AccountTypeID = int.Parse(reader["Account_Type_ID "].ToString());
+                        account.BankID = int.Parse(reader["Banking_ID"].ToString());
+                    }
+
+                    connect.Close();
+                }
+                catch (InvalidOperationException ioException)
+                {
+                    connect.Close();
+                }
+
+                return account;
+            }
         }
 
-        public Account GetAccount(Account a)
+        public Account SearchAccount(Account a)
         {
-            throw new NotImplementedException();
+            return SearchAccount(a.ID);
         }
         public List<Account> ListAccounts()
         {
-            throw new NotImplementedException();
+            var accountList = new List<Account>();
+
+            using (connect = new MySqlConnection(_connectionString))
+            {
+                try
+                {
+                    string query = "ListAccount";
+                    var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
+
+                    connect.Open();
+
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        var a = new Account();
+                        a.ID = int.Parse(reader["Package_ID "].ToString());
+                        a.ContactID = int.Parse(reader["Specification_ID"].ToString());
+                        a.CustomerID = int.Parse(reader["Customer_ID"].ToString());
+                        a.AccountTypeID = int.Parse(reader["Account_Type_ID "].ToString());
+                        a.BankID = int.Parse(reader["Banking_ID"].ToString());
+
+
+
+                        accountList.Add(a);
+                    }
+
+                    connect.Close();
+                }
+                catch (InvalidOperationException ioException)
+                {
+                    connect.Close();
+                }
+
+                return accountList;
+            }
         }
 
         // Gets a list of account on elements specified in the account object.
