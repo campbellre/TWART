@@ -40,21 +40,31 @@
         </div>
     </div>
     <!-- Main -->
-    <form id="usersForm" runat="server">
-        <div id="main">
-            <!-- Client View -->
-            <section id="client" class="top">
-                <div class="container">
-                    <header>
-                        <h2>Title</h2>
-                    </header>
-                </div>
-            </section>
-            <!-- Controls -->
-            <section id="controls" class="middle">
-            </section>
-        </div>
-    </form>
+    <div id="main">
+        <!-- Client View -->
+        <section id="client" class="top">
+            <div class="container">
+                <header>
+                    <h2>Add a new Admin User</h2>
+                </header>
+            </div>
+        </section>
+        <!-- Edit Here -->
+        <section id="edit" class="two">
+            <div class="container">
+                <form action="/admin/EditCustomer" method="POST">
+                    <div class="row">
+                        <div class="12u$">
+                            <input type="text" name="username" placeholder="Username" /><br/>
+                            <input type="password" name="password" placeholder="Password" /><br/>
+                            <input type="password" name="confirmPassword" placeholder="Confirm Password" /><br/>
+                            <input type="submit" value="Update" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
     <!-- Footer -->
     <div id="footer">
         <!-- Copyright -->
