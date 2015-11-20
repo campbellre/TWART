@@ -109,7 +109,7 @@ namespace TWART.Controllers
             }
             else
             {
-                return Redirect("/403.html");
+                return Redirect("/login.html");
             }
         }
 
@@ -126,11 +126,10 @@ namespace TWART.Controllers
         [HttpPost]
         public ActionResult EditCustomer()
         {
-            if (Session["loggedInState"]== null)
-            {
+            if(Session["loggedInState"] == null){
                 return Redirect("403.html");
-
             }
+
             bool state = (bool)Session["loggedInState"];
             if (state == true)
             {
@@ -143,15 +142,32 @@ namespace TWART.Controllers
 
                 cm.EditCustomer(c);
 
+
+
                 return Redirect("/Admin/Edit/" + c.ID);
             }
             else
             {
                 return Redirect("/login.html");
             }
+
         }
 
 
+        public ActionResult CreateCustomer(){
+            
+            String username = RouteData.Values["username"].ToString();
+            String password = RouteData.Values["password"].ToString();
+
+            User user = new User();
+            user.username = username;
+            user.password = password;
+
+            LoginModel loginMod = new LoginModel();
+            loginMod.CreateUser(user);
+
+            return Redirect("../customer");
+        }
 
 
 

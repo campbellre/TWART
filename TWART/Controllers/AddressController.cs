@@ -38,11 +38,14 @@ namespace TWART.Controllers
                     newAddress.Country = Request.Form[7];
                     newAddress.PostalCode = Request.Form[8];
 
-                    // Adds the object to the database
-                    addressModel.CreateAddress(newAddress);
+                    // Adds the object to the database. Returns address ID
+                    int addressID = addressModel.CreateAddress(newAddress);
 
-                    // Passes back to the view
-                    return View();
+                    // Append ID to address object
+                    newAddress.ID = addressID;
+
+                    // Passes back to the view with address
+                    return View(newAddress);
                 }
                 else
                 {
@@ -57,41 +60,68 @@ namespace TWART.Controllers
             }
         }
 
+        [HttpPost]
         // Controller for modification of an address
-        public ActionResult Edit()
+        public ActionResult EditAddress()
         {
             // Ensures logged in
-            try
+            if (Session["loggedInState"] == null)
             {
-                // Checks if logged in
-                bool state = (bool)Session["loggedInState"];
-                if (state == true)
-                {
-                    // Creates an address model
-                    AddressModel addressModel = new AddressModel();
-
-                    // Holds the new address
-                    Address newAddress = new Address();
-
-                    // Gets the ID as a parameter
-                    var p = int.Parse(Url.RequestContext.RouteData.Values["id"].ToString());
-
-                    // 
-
-                    // Passes back to the view
-                    return View();
-                }
-                else
-                {
-                    // If not logged in
-                    return Redirect("/login.html");
-                }
-            }
-            catch (Exception e)
-            {
-                // If an error occurs
                 return Redirect("/403.html");
             }
+
+            // Checks if logged in
+            bool state = (bool)Session["loggedInState"];
+            if (state == true)
+            {
+                // Creates an address placeholder
+                var a = new Address();
+
+                // Setup address edit
+                a.ID = int.Parse(Request.Form["id"]);
+                a.LineOne = Request.Form["lineOne"].ToString();
+                a.LineTwo = Request.Form["lineTwo"].ToString();
+                a.LineThree = Request.Form["lineThree"].ToString();
+                a.LineFour = Request.Form["lineFour"].ToString();
+                a.LineFive = Request.Form["lineFive"].ToString();
+                a.PostalCode = Request.Form["postalCode"].ToString();
+                a.County = Request.Form["county"].ToString();
+                a.Country = Request.Form["country"].ToString();
+
+                // Establish address model
+                var am = new AddressModel();
+
+                // Conduct edit
+                am.EditAddress(a);
+
+                // TODO: Redirect to appropriate page (Add address?)
+
+                // Passes back to the view
+                return View();
+            }
+            else
+            {
+                // If not logged in
+                return Redirect("/login.html");
+            }
         }
+
+        // Deletes an address
+        public ActionResult Delete()
+        {
+            int addressID = int.Parse(RouteData.Values["id"].ToString());
+
+            // Establishes address model
+            AddressModel addressModel = new AddressModel();
+
+            // Deletes the address from the database using the id
+            addressModel.DeleteAddress(addressID);
+
+            // TODO: Confirm this is the correct return state
+            // Return to address page
+            return Redirect("../address");
+        }
+
+
     }
 }

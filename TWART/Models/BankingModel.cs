@@ -18,6 +18,45 @@ namespace TWART.Models
             _connectionString = Resource1.ConnectionString;
         }
 
+        public int CreateBank(Bank b)
+        {
+            int ret = 0;
+            using (connect = new MySqlConnection(_connectionString))
+            {
+                connect.Open();
+                using (MySqlTransaction transaction = connect.BeginTransaction())
+                {
+
+                    try
+                    {
+                        string query = "NewBanking";
+                        var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
+
+                        cmd.Parameters.AddWithValue("AddressID", b.Address_ID);
+                        cmd.Parameters.AddWithValue("SortCode", b.SortCode);
+                        cmd.Parameters.AddWithValue("AccountNumber", b.ID);
+
+                        connect.Open();
+
+                        ret = (int) cmd.ExecuteScalar();
+
+                        connect.Close();
+                    }
+                    catch (InvalidOperationException ioException)
+                    {
+                        connect.Close();
+                    }
+                }
+            }
+            return ret;
+        }
+
+        // Due to the transaction we don't change banks we add new ones
+        //public int EditBank(Bank b)
+        
+        // Due to the transaction we don't delete banks we add new ones
+        //public void DeleteBank(Bank b)
+
         public Bank SearchBanking(Customer c)
         {
             var bank = new Bank();
