@@ -164,8 +164,7 @@ namespace TWART.Controllers
             {
                 return Redirect("/403.html");
             }
-            bool state = (bool)Session["loggedInState"];
-            if (state == true)
+            else
             {
                 var c = new Customer();
                 c.ID = int.Parse(Request.Form["id"]);
@@ -174,10 +173,6 @@ namespace TWART.Controllers
                 var cm = new CustomerModel();
                 cm.EditCustomer(c);
                 return Redirect("Customer");
-            }
-            else
-            {
-                return Redirect("/login.html");
             }
         }
         public ActionResult CreateCustomer()
@@ -193,13 +188,23 @@ namespace TWART.Controllers
         }
         public ActionResult Delete()
         {
-            return View();
-            //int id = int.Parse(RouteData.Values["id"].ToString());
-            // Create a customer model object
-            ///CustomerModel customerModel = new CustomerModel();
-            // Call the method to delete a customer from the database
-           // customerModel.DeleteCustomer(id);
-           // return Redirect("Customer");
+            //If there is no valid session, return forbidden
+            if (Session["loggedInState"] == null)
+            {
+                return Redirect("/403.html");
+            }
+            else
+            {
+                CustomerModel cm = new CustomerModel();
+                Customer c = cm.SearchCustomers(int.Parse(RouteData.Values["id"].ToString()));
+                return View(c);
+            }
+        }
+        public ActionResult deleteThis()
+        {
+            CustomerModel deleteMe = new CustomerModel();
+            deleteMe.DeleteCustomer(int.Parse(Request.Form["ID"]));
+            return Redirect("Customer");
         }
         public ActionResult afterdelete()
         {

@@ -139,11 +139,26 @@ namespace TWART.Controllers
             bool state = (bool)Session["loggedInState"];
             if (state == true)
             {
-                // Creates an employee model
-                var em = new EmployeesModel();
+                // Creates models
+                var employeeModel = new EmployeesModel();
+                var departmentModel = new DepartmentModel();
+                var roleModel = new RoleModel();
+                var depotModel = new DepotModel();
 
                 // Gets the complete list
-                var el = em.GetEmployeesList();
+                var el = employeeModel.GetEmployeesList();
+
+                // Attaches associated department / role to employee
+                foreach (var employee in el)
+                {
+                    Depot depot = depotModel.SearchDepot(employee.Depot);
+                    Department dept = departmentModel.SearchDepartment(employee.Dept);
+                    Role role = roleModel.SearchRoles(employee.Role);
+
+                    employee.DepotO = depot;
+                    employee.Department = dept;
+                    employee.RoleO = role;
+                }
 
                 // Returns the list
                 return View(el);
