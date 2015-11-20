@@ -193,7 +193,7 @@ namespace TWART.Models
 
         public Specification SearchSpecification(Specification s)
         {
-            SearchSpecification(s.ID);
+            return SearchSpecification(s.ID);
         }
 
 
