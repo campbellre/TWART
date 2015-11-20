@@ -154,18 +154,21 @@ namespace TWART.Controllers
                     // Attaches associated department / role to employee
                     foreach (var employee in el)
                     {
+                        // Acquires, and adds the employee depot
                         Depot depot = null;
                         if (employee.Depot != 0)
                         {
                             depot = depotModel.SearchDepot(employee.Depot);
                         }
-                        
+
+                        // Acquires, and adds the employee department
                         Department dept = null;
                         if (employee.Dept != 0)
                         {
                             dept = departmentModel.SearchDepartment(employee.Dept);
                         }
 
+                        // Acquires, and adds the employee role
                         Role role = null;
                         if (employee.Role != 0)
                         {
