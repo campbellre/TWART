@@ -64,12 +64,14 @@ namespace TWART.Controllers
             {
                 return Redirect("/403.html");
             }
+
             // Checks if logged in
             bool state = (bool)Session["loggedInState"];
             if (state == true)
             {
                 // Creates an address placeholder
                 var address = new Address();
+
                 // Setup address edit
                 address.ID = int.Parse(Request.Form["id"]);
                 address.LineOne = Request.Form["lineOne"].ToString();
@@ -80,10 +82,13 @@ namespace TWART.Controllers
                 address.PostalCode = Request.Form["postalCode"].ToString();
                 address.County = Request.Form["county"].ToString();
                 address.Country = Request.Form["country"].ToString();
+
                 // Establish address model
                 var addressModel = new AddressModel();
+
                 // Conduct edit
                 addressModel.EditAddress(address);
+
                 // Passes back to the view
                 return View();
             }
@@ -126,7 +131,5 @@ namespace TWART.Controllers
                 return Redirect("/login.html");
             }
         }
-
-
     }
 }

@@ -52,21 +52,21 @@
         <section id="controls" class="two">
             <div class="container">
                 <table>
-                    <% foreach (var customer in Model)
-                       { %>
+
+                    <% Customer viewCustomer = (Customer)Model; %>
+                    
                     <tr>
-                        <td><%= Html.Encode(customer.Name) %></td>
-                        <td><%= Html.Encode(customer.Address.LineOne) %></td>
-                        <td><%= Html.Encode(customer.Address.LineTwo) %></td>
-                        <td><%= Html.Encode(customer.Address.LineThree) %></td>
-                        <td><%= Html.Encode(customer.Address.LineFour) %></td>
-                        <td><%= Html.Encode(customer.Address.LineFive) %></td>
-                        <td><%= Html.Encode(customer.Address.State) %></td>
-                        <td><%= Html.Encode(customer.Address.County) %></td>
-                        <td><%= Html.Encode(customer.Address.Country) %></td>
-                        <td><%= Html.Encode(customer.Address.PostalCode) %></td>
+                        <td><%= Html.Encode(viewCustomer.Name) %></td>
+                        <td><%= Html.Encode(viewCustomer.Address.LineOne) %></td>
+                        <td><%= Html.Encode(viewCustomer.Address.LineTwo) %></td>
+                        <td><%= Html.Encode(viewCustomer.Address.LineThree) %></td>
+                        <td><%= Html.Encode(viewCustomer.Address.LineFour) %></td>
+                        <td><%= Html.Encode(viewCustomer.Address.LineFive) %></td>
+                        <td><%= Html.Encode(viewCustomer.Address.State) %></td>
+                        <td><%= Html.Encode(viewCustomer.Address.County) %></td>
+                        <td><%= Html.Encode(viewCustomer.Address.Country) %></td>
+                        <td><%= Html.Encode(viewCustomer.Address.PostalCode) %></td>
                     </tr>
-                    <% } %>
                 </table>
             </div>
         </section>

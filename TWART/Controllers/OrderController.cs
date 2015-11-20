@@ -76,13 +76,13 @@ namespace TWART.Controllers
             bool state = (bool)Session["loggedInState"];
             if (state == true)
             {
-                // Create a CustomerModel object
+                // Create a OrderModel object
                 var om = new OrderModel();
 
                 // Call the method to get the list
                 var ol = om.GetOrdersList();
 
-                // Return the CustomerList
+                // Return the OrderList
                 return View(ol);
             }
             else
