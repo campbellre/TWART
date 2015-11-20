@@ -153,9 +153,11 @@
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AddressController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BankController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\DepotController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
@@ -184,6 +186,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModel.cs" />
+    <Compile Include="Models\AccountTypeModel.cs" />
     <Compile Include="Models\AddressModel.cs" />
     <Compile Include="Models\BankingModel.cs" />
     <Compile Include="Models\ContactModel.cs" />
@@ -328,6 +331,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Views\Account\" />
+    <Folder Include="Views\Contact\" />
     <Folder Include="Views\Depot\" />
     <Folder Include="Views\Role\" />
   </ItemGroup>

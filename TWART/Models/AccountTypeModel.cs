@@ -4,23 +4,23 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using MySql.Data.MySqlClient;
-using MySql.Data.MySqlClient.Memcached;
 using TWART.DataObjects;
 using TWART.Properties;
 
 namespace TWART.Models
 {
-    public class ContactModel
+    public class AccountTypeModel
     {
+
         private MySqlConnection connect;
         private string _connectionString;
 
-        public ContactModel()
+        public AccountTypeModel()
         {
             _connectionString = Resource1.ConnectionString;
         }
 
-        public int CreateContact(Contact c)
+        public int CreateAccountType(Account_Type a)
         {
             int ret = 0;
             using (connect = new MySqlConnection(_connectionString))
@@ -30,14 +30,12 @@ namespace TWART.Models
                 {
                     try
                     {
-                        string query = "NewContact";
+                        string query = "NewAccountType";
                         var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
 
-                        cmd.Parameters.AddWithValue("PForename", c.Forename);
-                        cmd.Parameters.AddWithValue("PSurname", c.Surname);
-                        cmd.Parameters.AddWithValue("JobTitle", c.Position);
-                        cmd.Parameters.AddWithValue("TelNumber", c.PhoneNumber);
-
+                        cmd.Parameters.AddWithValue("AccountName", a.Name);
+                        cmd.Parameters.AddWithValue("PBenifit", a.Benefit);
+                        cmd.Parameters.AddWithValue("PCost", a.Cost);
 
                         ret = (int)cmd.ExecuteScalar();
 
@@ -55,7 +53,7 @@ namespace TWART.Models
             return ret;
         }
 
-        public void EditContact(Contact c)
+        public void EditAccount(Account_Type a)
         {
             using (connect = new MySqlConnection(_connectionString))
             {
@@ -64,15 +62,42 @@ namespace TWART.Models
                 {
                     try
                     {
-                        string query = "EditContact";
+                        string query = "EditAccountType";
                         var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
 
-                        cmd.Parameters.AddWithValue("ContactID", c.ID);
-                        cmd.Parameters.AddWithValue("PForename", c.Forename);
-                        cmd.Parameters.AddWithValue("PSurname", c.Surname);
-                        cmd.Parameters.AddWithValue("JobTitle", c.Position);
-                        cmd.Parameters.AddWithValue("TelNumber", c.PhoneNumber);
+                        cmd.Parameters.AddWithValue("AccountTypeID", a.ID);
+                        cmd.Parameters.AddWithValue("AccountName", a.Name);
+                        cmd.Parameters.AddWithValue("PBenifit", a.Benefit);
+                        cmd.Parameters.AddWithValue("PCost", a.Cost);
 
+                        cmd.ExecuteNonQuery();
+                         
+                        transaction.Commit();
+
+                        connect.Close();
+                    }
+                    catch (InvalidOperationException ioException)
+                    {
+                        transaction.Rollback();
+                        connect.Close();
+                    }
+                }
+            }
+        }
+
+        public void DeleteAccount(int ID)
+        {
+            using (connect = new MySqlConnection(_connectionString))
+            {
+                connect.Open();
+                using (MySqlTransaction transaction = connect.BeginTransaction())
+                {
+                    try
+                    {
+                        string query = "DeleteAccountType";
+                        var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
+
+                        cmd.Parameters.AddWithValue("AccountTypeID", ID);
 
                         cmd.ExecuteNonQuery();
 
@@ -89,62 +114,28 @@ namespace TWART.Models
             }
         }
 
-
-        public void DeleteContact(int ID) 
+        // The main method to get a user account.
+        public Account_Type SearchAccountType(int ID)
         {
-            using (connect = new MySqlConnection(_connectionString))
-            {
-                connect.Open();
-                using (MySqlTransaction transaction = connect.BeginTransaction())
-                {
-                    try
-                    {
-                        string query = "DeleteContact";
-                        var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
-
-                        cmd.Parameters.AddWithValue("ContactID", ID);
-
-
-                        cmd.ExecuteNonQuery();
-
-                        transaction.Commit();
-
-                        connect.Close();
-                    }
-                    catch (InvalidOperationException ioException)
-                    {
-                        transaction.Rollback();
-                        connect.Close();
-                    }
-                }
-            }
-        }
-
-        
-        // Main method for getting a customer
-        public Contact SearchContact(int ID)
-        {
-            var contact = new Contact();
+            var accountT = new Account_Type();
 
             using (connect = new MySqlConnection(_connectionString))
             {
                 try
                 {
-                    string query = "GetContact";
+                    string query = "GetAccountType";
                     var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
 
-                    cmd.Parameters.AddWithValue("ContactID", ID);
-
+                    cmd.Parameters.AddWithValue("AccountTypeID", ID);
                     connect.Open();
 
                     var reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
-                        contact.ID = (int)reader["Contact_ID"];
-                        contact.Forename = reader["Forename"].ToString();
-                        contact.Surname = reader["Surname"].ToString();
-                        contact.Position = reader["Job_Title"].ToString();
-                        contact.PhoneNumber = reader["Tel_Number"].ToString();
+                        accountT.ID = int.Parse(reader["Account_Type_ID "].ToString());
+                        accountT.Name = reader["Account_Name"].ToString();
+                        accountT.Benefit = reader["Benefit"].ToString();
+                        accountT.Cost = decimal.Parse(reader["Cost "].ToString());
                     }
 
                     connect.Close();
@@ -154,26 +145,23 @@ namespace TWART.Models
                     connect.Close();
                 }
 
-                return contact;
+                return accountT;
             }
         }
 
-        // Calls main method for getting a customer
-        public Contact SearchContact(Contact c)
+        public Account_Type SearchAccountType(Account_Type a)
         {
-            return SearchContact(c.ID);
+            return SearchAccountType(a.ID);
         }
-
-        // List all customers
-        public List<Contact> ListContacts()
+        public List<Account_Type> ListAccounts()
         {
-            var contactList = new List<Contact>();
+            var accountList = new List<Account_Type>();
 
             using (connect = new MySqlConnection(_connectionString))
             {
                 try
                 {
-                    string query = "ListContact";
+                    string query = "ListAccountType";
                     var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
 
                     connect.Open();
@@ -181,14 +169,15 @@ namespace TWART.Models
                     var reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
-                        var contact = new Contact();
-                        contact.ID = (int)reader["Contact_ID"];
-                        contact.Forename = reader["Forename"].ToString();
-                        contact.Surname = reader["Surname"].ToString();
-                        contact.Position = reader["Job_Title"].ToString();
-                        contact.PhoneNumber = reader["Tel_Number"].ToString();
+                        var accountType = new Account_Type();
+                        accountType.ID = int.Parse(reader["Account_Type_ID "].ToString());
+                        accountType.Name = reader["Account_Name"].ToString();
+                        accountType.Benefit = reader["Benefit"].ToString();
+                        accountType.Cost = decimal.Parse(reader["Cost "].ToString());
 
-                        contactList.Add(contact);
+
+
+                        accountList.Add(accountType);
                     }
 
                     connect.Close();
@@ -198,10 +187,9 @@ namespace TWART.Models
                     connect.Close();
                 }
 
-                return contactList;
+                return accountList;
             }
         }
-
 
     }
 }
