@@ -157,8 +157,6 @@
     <Compile Include="Controllers\BankController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\DepotController.cs" />
-    <Compile Include="Controllers\EditContactDetails.cs" />
-    <Compile Include="Controllers\EditEmployeeDetails.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\Register.cs" />

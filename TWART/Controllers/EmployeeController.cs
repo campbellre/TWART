@@ -128,7 +128,7 @@ namespace TWART.Controllers
         }
 
         // Returns a complete list of employees
-        public ActionResult ListEmployees()
+        public ActionResult Employees()
         {
             // Null handling
             if (Session["loggedInState"] == null)
@@ -153,9 +153,23 @@ namespace TWART.Controllers
                     // Attaches associated department / role to employee
                     foreach (var employee in el)
                     {
-                        Depot depot = depotModel.SearchDepot(employee.Depot);
-                        Department dept = departmentModel.SearchDepartment(employee.Dept);
-                        Role role = roleModel.SearchRoles(employee.Role);
+                        Depot depot = null;
+                        if (employee.Depot != 0)
+                        {
+                            depot = depotModel.SearchDepot(employee.Depot);
+                        }
+                        
+                        Department dept = null;
+                        if (employee.Dept != 0)
+                        {
+                            dept = departmentModel.SearchDepartment(employee.Dept);
+                        }
+
+                        Role role = null;
+                        if (employee.Role != 0)
+                        {
+                            role = roleModel.SearchRoles(employee.Role);
+                        }
 
                         employee.DepotO = depot;
                         employee.Department = dept;
