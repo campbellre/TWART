@@ -22,6 +22,7 @@
                 <span class="image avatar48">
                     <img src="../../images/avatar.jpg" alt="" /></span>
                 <h1 id="title">TWART Shipping Corporation</h1>
+                <p id="title">Welcome <%=Session["username"].ToString() %></p>
             </div>
             <!-- Nav -->
             <nav id="nav">
@@ -52,8 +53,23 @@
                 </div>
             </section>
             <!-- Controls -->
-            <section id="controls" class="middle">
+           
+            <!-- Package Specification -->
+            <section id="specification" class="four">
+                <div class="container">
+                    <a href="#">Package Specifications</a>
+                    <p>Use this control to get Package Specifications for Orders.</p>
+                </div>
             </section>
+
+            <!-- User -->
+            <section id="orders" class="four">
+                <div class="container">
+                    <a href="#">View Orders</a>
+                    <p>Use this control to View orders that have been created.</p>
+                </div>
+            </section>
+            
         </div>
     </form>
     <!-- Footer -->

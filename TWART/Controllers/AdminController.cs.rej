@@ -1,9 +1,9 @@
 diff a/TWART/Controllers/AdminController.cs b/TWART/Controllers/AdminController.cs	(rejected hunks)
-@@ -173,6 +173,8 @@
-                  var cm = new CustomerModel();
-                  cm.EditCustomer(c);
-                  return Redirect("Customer");
+@@ -263,8 +263,11 @@
+                  // Call the method to get the list
+                  var customerList = customerModel.ListCustomers();
+  
 ++<<<<<<< HEAD
-              }
-              else
-              {
+                  // Get the ID requested
+                  var p = int.Parse(Url.RequestContext.RouteData.Values["id"].ToString());
+  

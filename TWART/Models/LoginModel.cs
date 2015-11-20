@@ -36,11 +36,10 @@ namespace TWART.Models
 
                         cmd.Parameters.AddWithValue("PUsername", u.username);
                         cmd.Parameters.AddWithValue("PPWD", u.password);
-                        cmd.Parameters.AddWithValue("PAccesLevel", u.AccessLevel);
+                        cmd.Parameters.AddWithValue("PAccessLevel", u.AccessLevel);
 
-                        connect.Open();
 
-                        ret = (int)cmd.ExecuteScalar();
+                        ret = int.Parse(cmd.ExecuteScalar().ToString());
 
                         transaction.Commit();
                         

@@ -14,6 +14,5 @@ namespace TWART.DataObjects
         public int AccountNumber { get; set; }
         public Customer Customer { get; set; }
         public int Customer_ID { get; set; }
-
     }
 }

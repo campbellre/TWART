@@ -156,10 +156,25 @@ namespace TWART.Models
                         e.DOB = DateTime.Parse(reader["DOB"].ToString());
                         e.ContactNumber = reader["Contact_Number"].ToString();
                         e.Startdate = DateTime.Parse(reader["Start_Date"].ToString());
-                        e.EndDate = DateTime.Parse(reader["End_Date"].ToString());
-                        e.Dept = (int)reader["Department_ID"];
-                        e.Depot = (int)reader["Depot_ID"];
-                        e.Role = (int)reader["Role_ID"];
+                        try
+                        {
+                            e.EndDate = DateTime.Parse(reader["End_Date"].ToString());
+                        }catch(Exception){}
+                        try
+                        {
+                            e.Dept = (int)reader["Department_ID"];
+                        }
+                        catch (Exception) { }
+                        try
+                        {
+                            e.Depot = (int)reader["Depot_ID"];
+                        }
+                        catch (Exception) { }
+                        try
+                        {
+                            e.Role = (int)reader["Role_ID"];
+                        }
+                        catch (Exception) { }
 
 
                         empList.Add(e);

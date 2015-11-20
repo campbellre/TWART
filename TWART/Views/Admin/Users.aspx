@@ -23,6 +23,7 @@
                 <span class="image avatar48">
                     <img src="../../images/avatar.jpg" alt="" /></span>
                 <h1 id="title">TWART Shipping Corporation</h1>
+                <p id="title">Welcome <%=Session["username"].ToString() %></p>
             </div>
             <!-- Nav -->
             <nav id="nav">
@@ -52,7 +53,7 @@
         <!-- Edit Here -->
         <section id="edit" class="two">
             <div class="container">
-                <form action="/admin/EditCustomer" method="POST">
+                <form action="/admin/CreateCustomer" method="POST">
                     <div class="row">
                         <div class="12u$">
                             <input type="text" name="username" placeholder="Username" /><br/>

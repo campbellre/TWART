@@ -62,7 +62,7 @@ namespace TWART.Controllers
             bool state = (bool)Session["loggedInState"];
             if (state == true)
             {
-                // Creates an address placeholder
+                // Creates an department placeholder
                 var d = new Department();
 
                 // Setup address edit
@@ -71,7 +71,7 @@ namespace TWART.Controllers
                 d.Head = int.Parse(Request.Form["head"]);
                 d.Address = int.Parse(Request.Form["address"]);
 
-                // Establish address model
+                // Establish department model
                 var dm = new DepartmentModel();
 
                 // Conduct edit
@@ -104,8 +104,26 @@ namespace TWART.Controllers
             {
                 int departmentID = int.Parse(RouteData.Values["id"].ToString());
 
-                // Establishes department model
+                // Establishes models
                 DepartmentModel departmentModel = new DepartmentModel();
+                EmployeesModel employeeModel = new EmployeesModel();
+
+                // Gets list of all employees
+                var employeeList = employeeModel.GetEmployeesList();
+
+                // For each employee within the list
+                foreach (var employee in employeeList)
+                {
+                    // If the employee belongs to department
+                    if (employee.Dept == departmentID)
+                    {
+                        // Sets department to none
+                        employee.Dept = 0;
+
+                        // Saves employee to database
+                        employeeModel.EditEmployee(employee);
+                    }
+                }           
 
                 // Deletes the department from the database using the ID
                 departmentModel.DeleteDepartment(departmentID);
@@ -124,11 +142,13 @@ namespace TWART.Controllers
         // Returns a list of all departments
         public ActionResult Department()
         {
+            // Null handling
             if (Session["loggedInState"] == null)
             {
                 Redirect("403.html");
             }
 
+            // If logged in
             bool state = (bool)Session["loggedInState"];
             if (state == true)
             {
@@ -145,7 +165,5 @@ namespace TWART.Controllers
                 return Redirect("/login.html");
             }
         }
-
-
     }
 }

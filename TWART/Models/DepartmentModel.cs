@@ -33,6 +33,7 @@ namespace TWART.Models
                     string query = "ListDepartment";
                     var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
 
+
                     connect.Open();
 
                     var reader = cmd.ExecuteReader();
@@ -175,16 +176,21 @@ namespace TWART.Models
                     string query = "GetDepartment";
                     var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
 
+                    cmd.Parameters.AddWithValue("DepartmentID", ID);
+
                     connect.Open();
 
                     var reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
-
-                        department.Id = (int)reader["Department_ID"];
-                        department.Title = reader["Department_Title"].ToString();
-                        department.AddressID = (int)reader["Address_ID"];
-                        department.DHeadID = (int)reader["Department_Head"];
+                        try
+                        {
+                            department.Id = (int)reader["Department_ID"];
+                            department.Title = reader["Department_Title"].ToString();
+                            department.AddressID = (int)reader["Address_ID"];
+                            department.DHeadID = (int)reader["Department_Head"];
+                        }
+                        catch (Exception) { }
 
                     }
 

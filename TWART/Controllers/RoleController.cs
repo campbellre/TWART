@@ -100,7 +100,7 @@ namespace TWART.Controllers
                 RoleModel roleModel = new RoleModel();
 
                 // Deletes the role from the database using the ID
-                //roleModel.DeleteRole(roleID);
+                roleModel.DeleteRole(roleID);
 
                 return Redirect("/..role");
             }

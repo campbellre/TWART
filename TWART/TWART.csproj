@@ -148,22 +148,25 @@
     <Content Include="Views\Client\clientIndex.aspx" />
     <Content Include="Views\Admin\delete.aspx" />
     <Content Include="Views\Admin\viewinfo.aspx" />
+    <Content Include="Views\Employee\Employees.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AddressController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BankController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
-    <Compile Include="Controllers\EditContactDetails.cs" />
-    <Compile Include="Controllers\EditEmployeeDetails.cs" />
+    <Compile Include="Controllers\DepotController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\Register.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\TransactionController.cs" />
     <Compile Include="DataObjects\Account.cs" />
     <Compile Include="DataObjects\Account_Type.cs" />
     <Compile Include="DataObjects\Address.cs" />
@@ -187,16 +190,18 @@
     <Compile Include="Models\AccountModel.cs" />
     <Compile Include="Models\AddressModel.cs" />
     <Compile Include="Models\BankingModel.cs" />
+    <Compile Include="Models\ContactModel.cs" />
     <Compile Include="Models\CustomerModel.cs" />
     <Compile Include="Models\DepotModel.cs" />
+    <Compile Include="Models\GoodsModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\OrderModel.cs" />
     <Compile Include="Models\RoleModel.cs" />
     <Compile Include="Models\PackageModel.cs" />
     <Compile Include="Models\SpecificationModel.cs" />
     <Compile Include="Models\TransactionModel.cs" />
+    <Compile Include="Models\TransportModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Controllers\Search.cs" />
     <Compile Include="DataObjects\Department.cs" />
     <Compile Include="DataObjects\Employee.cs" />
     <Compile Include="DataObjects\Role.cs" />
@@ -298,6 +303,13 @@
     <Compile Include="Views\Admin\viewinfo.aspx.designer.cs">
       <DependentUpon>viewinfo.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Employee\Employees.aspx.cs">
+      <DependentUpon>Employees.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Employee\Employees.aspx.designer.cs">
+      <DependentUpon>Employees.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -313,6 +325,13 @@
     <Content Include="assets\fonts\FontAwesome.otf" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Employee\Web.config" />
+    <None Include="Views\Employee\Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Views\Employee\Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -321,7 +340,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Views\Account\" />
+    <Folder Include="Views\Contact\" />
+    <Folder Include="Views\Depot\" />
     <Folder Include="Views\Role\" />
+    <Folder Include="Views\Transaction\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resource1.resx">

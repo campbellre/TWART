@@ -190,14 +190,15 @@ namespace TWART.Controllers
         }
         public ActionResult CreateCustomer()
         {
-            String username = RouteData.Values["username"].ToString();
-            String password = RouteData.Values["password"].ToString();
+            String username = Request.Form["username"].ToString();
+            String password = Request.Form["password"].ToString();
             User user = new User();
             user.username = username;
             user.password = password;
+            user.AccessLevel = "Admin";
             LoginModel loginMod = new LoginModel();
             loginMod.CreateUser(user);
-            return Redirect("Customer");
+            return Redirect("adminIndex");
         }
         public ActionResult Delete()
         {
@@ -262,8 +263,11 @@ namespace TWART.Controllers
                 // Call the method to get the list
                 var customerList = customerModel.ListCustomers();
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 1b0f798585ca06a37dc84a8cb4ac61c126247f4d
                 // Get the ID requested
                 var p = int.Parse(Url.RequestContext.RouteData.Values["id"].ToString());
 

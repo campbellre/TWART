@@ -13,7 +13,7 @@ namespace TWART.Controllers
         // GET: Employee
         public ActionResult Index()
         {
-            // Ensures logged in
+            // Null handling
             if (Session["loggedInState"] == null)
             {
                 return Redirect("/403.html");
@@ -42,7 +42,7 @@ namespace TWART.Controllers
                 // Adds the object to the database
                 employeeModel.NewEmployee(newEmployee);
 
-                // Return created department to view
+                // Return created employee to view
                 return View(newEmployee);
             }
             else
@@ -128,7 +128,7 @@ namespace TWART.Controllers
         }
 
         // Returns a complete list of employees
-        public ActionResult ListEmployees()
+        public ActionResult Employees()
         {
             // Null handling
             if (Session["loggedInState"] == null)
@@ -136,17 +136,58 @@ namespace TWART.Controllers
                 return Redirect("/403.html");
             }
 
+            // If logged in
             bool state = (bool)Session["loggedInState"];
             if (state == true)
             {
-                // Creates an employee model
-                var em = new EmployeesModel();
+                // Creates models
+                var employeeModel = new EmployeesModel();
+                var departmentModel = new DepartmentModel();
+                var roleModel = new RoleModel();
+                var depotModel = new DepotModel();
 
                 // Gets the complete list
-                var el = em.GetEmployeesList();
+                List<Employee> el = employeeModel.GetEmployeesList();
 
-                // Returns the list
-                return View(el);
+                if (el.Count != 0)
+                {
+                    // Attaches associated department / role to employee
+                    foreach (var employee in el)
+                    {
+                        // Acquires, and adds the employee depot
+                        Depot depot = null;
+                        if (employee.Depot != 0)
+                        {
+                            depot = depotModel.SearchDepot(employee.Depot);
+                        }
+
+                        // Acquires, and adds the employee department
+                        Department dept = null;
+                        if (employee.Dept != 0)
+                        {
+                            dept = departmentModel.SearchDepartment(employee.Dept);
+                        }
+
+                        // Acquires, and adds the employee role
+                        Role role = null;
+                        if (employee.Role != 0)
+                        {
+                            role = roleModel.SearchRoles(employee.Role);
+                        }
+
+                        // Appends objects to employee
+                        employee.DepotO = depot;
+                        employee.Department = dept;
+                        employee.RoleO = role;
+                    }
+
+                    // Returns the list
+                    return View(el);
+                }
+                else
+                {
+                    return Redirect("/403.html");
+                }
             }
             else
             {

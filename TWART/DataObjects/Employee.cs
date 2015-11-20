@@ -14,6 +14,9 @@ namespace TWART.DataObjects
         public String ContactNumber { get; set; }
         public DateTime Startdate { get; set; }
         public DateTime EndDate { get; set; }
+        public Department Department { get; set; }
+        public Depot DepotO { get; set; }
+        public Role RoleO { get; set; }
         public int Dept { get; set; }
         public int Depot { get; set; }
         public int Role { get; set; }

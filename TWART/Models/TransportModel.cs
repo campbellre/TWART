@@ -3,25 +3,25 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
+using Microsoft.Ajax.Utilities;
 using MySql.Data.MySqlClient;
 using TWART.DataObjects;
 using TWART.Properties;
 
 namespace TWART.Models
 {
-    public class DepotModel
+    public class TransportModel
     {
-
+        
         private MySqlConnection connect;
         private string _connectionString;
 
-        public DepotModel()
+        public TransportModel()
         {
             _connectionString = Resource1.ConnectionString;
         }
 
-
-        public int CreateDepot(Depot d)
+        public int CreateAccount(Transport t)
         {
             int ret = 0;
             using (connect = new MySqlConnection(_connectionString))
@@ -29,24 +29,18 @@ namespace TWART.Models
                 connect.Open();
                 using (MySqlTransaction transaction = connect.BeginTransaction())
                 {
-
                     try
                     {
-                        string query = "NewRole";
+                        string query = "NewTransportation";
                         var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
 
-                        cmd.Parameters.AddWithValue("DepotName", d.DepotName);
-                        cmd.Parameters.AddWithValue("FloorSpace", d.FloorSpace);
-                        cmd.Parameters.AddWithValue("NumOfVehicles", d.NumVehicles);
-                        cmd.Parameters.AddWithValue("AddressID", d.Address);
-                        cmd.Parameters.AddWithValue("DepotManager", d.ManagerID);
+                        cmd.Parameters.AddWithValue("TransportationType", t.Type);
 
-
-                        connect.Open();
 
                         ret = (int)cmd.ExecuteScalar();
 
                         transaction.Commit();
+
                         connect.Close();
                     }
                     catch (InvalidOperationException ioException)
@@ -59,32 +53,26 @@ namespace TWART.Models
             return ret;
         }
 
-        public void EditDepot(Depot d)
+        public void EditAccount(Transport t)
         {
             using (connect = new MySqlConnection(_connectionString))
             {
                 connect.Open();
                 using (MySqlTransaction transaction = connect.BeginTransaction())
                 {
-
                     try
                     {
-                        string query = "EditRole";
+                        string query = "EditTransportation";
                         var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
 
-                        cmd.Parameters.AddWithValue("DepotID", d.ID);
-                        cmd.Parameters.AddWithValue("DepotName", d.DepotName);
-                        cmd.Parameters.AddWithValue("FloorSpace", d.FloorSpace);
-                        cmd.Parameters.AddWithValue("NumOfVehicles", d.NumVehicles);
-                        cmd.Parameters.AddWithValue("AddressID", d.Address);
-                        cmd.Parameters.AddWithValue("DepotManager", d.ManagerID);
+                        cmd.Parameters.AddWithValue("TransportationID", t.ID);
+                        cmd.Parameters.AddWithValue("TransportationType", t.Type);
 
-
-                        connect.Open();
 
                         cmd.ExecuteNonQuery();
-
+                         
                         transaction.Commit();
+
                         connect.Close();
                     }
                     catch (InvalidOperationException ioException)
@@ -96,27 +84,24 @@ namespace TWART.Models
             }
         }
 
-        public void DeleteDepot(int ID)
+        public void DeleteAccount(int ID)
         {
             using (connect = new MySqlConnection(_connectionString))
             {
                 connect.Open();
                 using (MySqlTransaction transaction = connect.BeginTransaction())
                 {
-
                     try
                     {
-                        string query = "DeleteDepot";
+                        string query = "DeleteTransportation";
                         var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
 
-                        cmd.Parameters.AddWithValue("DepotID", ID);
-
-
-                        connect.Open();
+                        cmd.Parameters.AddWithValue("TransportationID", ID);
 
                         cmd.ExecuteNonQuery();
 
                         transaction.Commit();
+
                         connect.Close();
                     }
                     catch (InvalidOperationException ioException)
@@ -128,15 +113,16 @@ namespace TWART.Models
             }
         }
 
-        public List<Depot> ListDepots()
+        // The main method to get a user account.
+        public Transport SearchAccount(int ID)
         {
-            var depotList = new List<Depot>();
+            var transport = new Transport();
 
             using (connect = new MySqlConnection(_connectionString))
             {
                 try
                 {
-                    string query = "ListDepot";
+                    string query = "GetTransportation";
                     var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
 
                     connect.Open();
@@ -144,18 +130,8 @@ namespace TWART.Models
                     var reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
-                        var depot = new Depot();
-
-                        depot.ID = (int) reader["Depot_ID"];
-                        depot.DepotName = reader["Depot_Name"].ToString();
-                        depot.FloorSpace = (double)reader["Floor_space"];
-                        depot.NumVehicles = (int)reader["NumVehicles"];
-                        depot.AddressID = (int)reader["Address_ID"];
-                        depot.ManagerID = (int) reader["Depot_Manager"];
-
-
-
-                        depotList.Add(depot);
+                        transport.ID = int.Parse(reader["Transportation_ID"].ToString());
+                        transport.Type = reader["Transportation_Type"].ToString();
 
                     }
 
@@ -166,42 +142,35 @@ namespace TWART.Models
                     connect.Close();
                 }
 
-                return depotList;
+                return transport;
             }
         }
 
-        public Depot SearchDepot(int ID)
+        public Transport SearchAccount(Transport a)
         {
-            var depot = new Depot();
+            return SearchAccount(a.ID);
+        }
+        public List<Transport> ListAccounts()
+        {
+            var transportList = new List<Transport>();
 
             using (connect = new MySqlConnection(_connectionString))
             {
                 try
                 {
-                    string query = "GetDepot";
+                    string query = "ListAccount";
                     var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
-
-                    cmd.Parameters.AddWithValue("DepotID", ID);
 
                     connect.Open();
 
                     var reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
-                        try
-                        {
-                            depot.ID = (int)reader["Depot_ID"];
-                        }
-                        catch (Exception) { }
-                        depot.DepotName = reader["Depot_Name"].ToString();
-                        depot.FloorSpace = (double)reader["Floor_space"];
-                        depot.NumVehicles = (int)reader["NumVehicles"];
-                        try
-                        {
-                            depot.AddressID = (int)reader["Address_ID"];
-                        }
-                        catch (Exception) { }
-                        depot.ManagerID = (int)reader["Depot_Manager"];
+                        var transport = new Transport();
+                        transport.ID = int.Parse(reader["Transportation_ID "].ToString());
+                        transport.Type = reader["Transportation_Type"].ToString();
+
+                        transportList.Add(transport);
                     }
 
                     connect.Close();
@@ -211,13 +180,9 @@ namespace TWART.Models
                     connect.Close();
                 }
 
-                return depot;
+                return transportList;
             }
         }
 
-        public Depot SearchDepot(Depot d)
-        {
-            return SearchDepot(d.ID);
-        }
     }
 }

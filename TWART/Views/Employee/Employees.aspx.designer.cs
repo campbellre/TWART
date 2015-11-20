@@ -7,18 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TWART.Views.Admin {
+namespace TWART.Views.Employee {
     
     
-    public partial class IndexView {
+    public partial class Employees {
         
         /// <summary>
-        /// adminForm control.
+        /// employeesForm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm adminForm;
+        protected global::System.Web.UI.HtmlControls.HtmlForm employeesForm;
     }
 }
