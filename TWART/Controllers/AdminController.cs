@@ -174,10 +174,6 @@ namespace TWART.Controllers
                 cm.EditCustomer(c);
                 return Redirect("Customer");
             }
-            else
-            {
-                return Redirect("/login.html");
-            }
         }
         public ActionResult CreateCustomer()
         {
