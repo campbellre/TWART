@@ -263,11 +263,7 @@ namespace TWART.Controllers
                 // Call the method to get the list
                 var customerList = customerModel.ListCustomers();
 
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 1b0f798585ca06a37dc84a8cb4ac61c126247f4d
                 // Get the ID requested
                 var p = int.Parse(Url.RequestContext.RouteData.Values["id"].ToString());
 
