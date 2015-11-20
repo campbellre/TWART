@@ -171,6 +171,7 @@ namespace TWART.Controllers
                             role = roleModel.SearchRoles(employee.Role);
                         }
 
+                        // Appends objects to employee
                         employee.DepotO = depot;
                         employee.Department = dept;
                         employee.RoleO = role;
@@ -183,8 +184,6 @@ namespace TWART.Controllers
                 {
                     return Redirect("/403.html");
                 }
-                    
-
             }
             else
             {
