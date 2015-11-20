@@ -10,6 +10,9 @@ namespace TWART.Controllers
 {
     public class OrderController : System.Web.Mvc.Controller
     {
+        // TODO: Implement package breakdown
+        // TODO: Acquire package band (dimensions)
+
         // GET: Order
         public ActionResult orderpost()
         {

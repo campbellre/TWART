@@ -196,6 +196,7 @@
     <Compile Include="Models\OrderModel.cs" />
     <Compile Include="Models\RoleModel.cs" />
     <Compile Include="Models\PackageModel.cs" />
+    <Compile Include="Models\SpecificationModel.cs" />
     <Compile Include="Models\TransactionModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\Search.cs" />
