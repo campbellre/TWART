@@ -10,6 +10,6 @@
 namespace TWART.Views.Admin {
     
     
-    public partial class Delete {
+    public partial class delete {
     }
 }
