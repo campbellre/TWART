@@ -33,7 +33,6 @@ namespace TWART.Models
                         string query = "NewAddress";
                         var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
 
-                        cmd.Parameters.AddWithValue("AddressID", a.ID);
                         cmd.Parameters.AddWithValue("AddressLine1", a.LineOne);
                         cmd.Parameters.AddWithValue("AddressLine2", a.LineTwo);
                         cmd.Parameters.AddWithValue("AddressLine3", a.LineThree);
