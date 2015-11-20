@@ -1,25 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Resources;
+using System.Linq;
+using System.Web;
 using MySql.Data.MySqlClient;
 using TWART.DataObjects;
 using TWART.Properties;
 
 namespace TWART.Models
-{ 
-    public class EmployeesModel
+{
+    public class DepotModel
     {
+
         private MySqlConnection connect;
         private string _connectionString;
 
-        public EmployeesModel()
+        public DepotModel()
         {
             _connectionString = Resource1.ConnectionString;
         }
 
-        // Function to create a new employee in the database.
-        public int NewEmployee(Employee em)
+
+        public int CreateDepot(Depot d)
         {
             int ret = 0;
             using (connect = new MySqlConnection(_connectionString))
@@ -30,30 +32,26 @@ namespace TWART.Models
 
                     try
                     {
-                        string query = "NewEmployee";
+                        string query = "NewRole";
                         var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
 
-                        cmd.Parameters.AddWithValue("PForename", em.Firstname);
-                        cmd.Parameters.AddWithValue("PSurname", em.Lastname);
-                        cmd.Parameters.AddWithValue("PDOB", em.DOB);
-                        cmd.Parameters.AddWithValue("ContactNumber", em.ContactNumber);
-                        cmd.Parameters.AddWithValue("StartDate", em.Startdate);
-                        cmd.Parameters.AddWithValue("EndDate", em.EndDate);
-                        cmd.Parameters.AddWithValue("DepartmentID", em.Dept);
-                        cmd.Parameters.AddWithValue("DepotID", em.Depot);
-                        cmd.Parameters.AddWithValue("RoleID", em.Role);
+                        cmd.Parameters.AddWithValue("DepotName", d.DepotName);
+                        cmd.Parameters.AddWithValue("FloorSpace", d.FloorSpace);
+                        cmd.Parameters.AddWithValue("NumOfVehicles", d.NumVehicles);
+                        cmd.Parameters.AddWithValue("AddressID", d.Address);
+                        cmd.Parameters.AddWithValue("DepotManager", d.ManagerID);
+
 
                         connect.Open();
 
                         ret = (int)cmd.ExecuteScalar();
 
-                        transaction.Commit();;
+                        transaction.Commit();
                         connect.Close();
                     }
                     catch (InvalidOperationException ioException)
                     {
                         transaction.Rollback();
-                        
                         connect.Close();
                     }
                 }
@@ -61,7 +59,7 @@ namespace TWART.Models
             return ret;
         }
 
-        public void EditEmployee(Employee em)
+        public void EditDepot(Depot d)
         {
             using (connect = new MySqlConnection(_connectionString))
             {
@@ -71,25 +69,22 @@ namespace TWART.Models
 
                     try
                     {
-                        string query = "EditEmployee";
+                        string query = "EditRole";
                         var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
 
-                        cmd.Parameters.AddWithValue("EmployeeID", em.Id);
-                        cmd.Parameters.AddWithValue("PForename", em.Firstname);
-                        cmd.Parameters.AddWithValue("PSurname", em.Lastname);
-                        cmd.Parameters.AddWithValue("PDOB", em.DOB);
-                        cmd.Parameters.AddWithValue("ContactNumber", em.ContactNumber);
-                        cmd.Parameters.AddWithValue("StartDate", em.Startdate);
-                        cmd.Parameters.AddWithValue("EndDate", em.EndDate);
-                        cmd.Parameters.AddWithValue("DepartmentID", em.Dept);
-                        cmd.Parameters.AddWithValue("DepotID", em.Depot);
-                        cmd.Parameters.AddWithValue("RoleID", em.Role);
+                        cmd.Parameters.AddWithValue("DepotID", d.ID);
+                        cmd.Parameters.AddWithValue("DepotName", d.DepotName);
+                        cmd.Parameters.AddWithValue("FloorSpace", d.FloorSpace);
+                        cmd.Parameters.AddWithValue("NumOfVehicles", d.NumVehicles);
+                        cmd.Parameters.AddWithValue("AddressID", d.Address);
+                        cmd.Parameters.AddWithValue("DepotManager", d.ManagerID);
+
 
                         connect.Open();
 
                         cmd.ExecuteNonQuery();
+
                         transaction.Commit();
-                        
                         connect.Close();
                     }
                     catch (InvalidOperationException ioException)
@@ -101,7 +96,7 @@ namespace TWART.Models
             }
         }
 
-        public void DeleteEmployee(int ID)
+        public void DeleteDepot(int ID)
         {
             using (connect = new MySqlConnection(_connectionString))
             {
@@ -111,16 +106,17 @@ namespace TWART.Models
 
                     try
                     {
-                        string query = "DeleteEmployee";
+                        string query = "DeleteDepot";
                         var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
 
-                        cmd.Parameters.AddWithValue("EmployeeID", ID);
+                        cmd.Parameters.AddWithValue("DepotID", ID);
+
 
                         connect.Open();
 
                         cmd.ExecuteNonQuery();
+
                         transaction.Commit();
-                        
                         connect.Close();
                     }
                     catch (InvalidOperationException ioException)
@@ -132,15 +128,15 @@ namespace TWART.Models
             }
         }
 
-        public List<Employee> GetEmployeesList()
+        public List<Depot> ListDepots()
         {
-            var empList = new List<Employee>();
+            var depotList = new List<Depot>();
 
             using (connect = new MySqlConnection(_connectionString))
             {
                 try
                 {
-                    string query = "ListEmployee";
+                    string query = "ListDepot";
                     var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
 
                     connect.Open();
@@ -148,21 +144,18 @@ namespace TWART.Models
                     var reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
-                        var e = new Employee();
+                        var depot = new Depot();
 
-                        e.Id = (int)reader["Employee_ID"];
-                        e.Firstname = reader["Forenames"].ToString();
-                        e.Lastname = reader["Surname"].ToString();
-                        e.DOB = DateTime.Parse(reader["DOB"].ToString());
-                        e.ContactNumber = reader["Contact_Number"].ToString();
-                        e.Startdate = DateTime.Parse(reader["Start_Date"].ToString());
-                        e.EndDate = DateTime.Parse(reader["End_Date"].ToString());
-                        e.Dept = (int)reader["Department_ID"];
-                        e.Depot = (int)reader["Depot_ID"];
-                        e.Role = (int)reader["Role_ID"];
+                        depot.ID = (int) reader["Depot_ID"];
+                        depot.DepotName = reader["Depot_Name"].ToString();
+                        depot.FloorSpace = (double)reader["Floor_space"];
+                        depot.NumVehicles = (int)reader["NumVehicles"];
+                        depot.AddressID = (int)reader["Address_ID"];
+                        depot.ManagerID = (int) reader["Depot_Manager"];
 
 
-                        empList.Add(e);
+
+                        depotList.Add(depot);
 
                     }
 
@@ -173,38 +166,32 @@ namespace TWART.Models
                     connect.Close();
                 }
 
-                return empList;
+                return depotList;
             }
         }
 
-        public Employee SearchEmployee(int ID)
+        public Depot SearchDepot(int ID)
         {
-            var emp = new Employee();
+            var depot = new Depot();
 
             using (connect = new MySqlConnection(_connectionString))
             {
                 try
                 {
-                    string query = "GetEmployee";
+                    string query = "GetDepot";
                     var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
-
-                    cmd.Parameters.AddWithValue("EmployeID", ID);
 
                     connect.Open();
 
                     var reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
-                        emp.Id = (int)reader["Employee_ID"];
-                        emp.Firstname = reader["Forenames"].ToString();
-                        emp.Lastname = reader["Surname"].ToString();
-                        emp.DOB = DateTime.Parse(reader["DOB"].ToString());
-                        emp.ContactNumber = reader["Contact_Number"].ToString();
-                        emp.Startdate = DateTime.Parse(reader["Start_Date"].ToString());
-                        emp.EndDate = DateTime.Parse(reader["End_Date"].ToString());
-                        emp.Dept = (int)reader["Department_ID"];
-                        emp.Depot = (int)reader["Depot_ID"];
-                        emp.Role = (int)reader["Role_ID"];
+                        depot.ID = (int)reader["Depot_ID"];
+                        depot.DepotName = reader["Depot_Name"].ToString();
+                        depot.FloorSpace = (double)reader["Floor_space"];
+                        depot.NumVehicles = (int)reader["NumVehicles"];
+                        depot.AddressID = (int)reader["Address_ID"];
+                        depot.ManagerID = (int)reader["Depot_Manager"];
                     }
 
                     connect.Close();
@@ -214,16 +201,13 @@ namespace TWART.Models
                     connect.Close();
                 }
 
-                return emp;
+                return depot;
             }
         }
 
-        public Employee SearchEmployee(Employee em)
+        public Depot SearchDepot(Depot d)
         {
-            return SearchEmployee(em.Id);
+            SearchDepot(d.ID);
         }
-
-
-
     }
 }
