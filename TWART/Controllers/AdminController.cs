@@ -204,6 +204,13 @@ namespace TWART.Controllers
         {
             return View();
         }
+        public ActionResult afterupdate()
+        {
+
+            return View();
+
+        }
+
         public ActionResult ViewInfo()
         {
             return View();

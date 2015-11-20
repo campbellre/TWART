@@ -1,0 +1,9 @@
+diff a/TWART/Controllers/AdminController.cs b/TWART/Controllers/AdminController.cs	(rejected hunks)
+@@ -175,6 +175,7 @@
+                  var cm = new CustomerModel();
+ -
+                  cm.EditCustomer(c);
+++<<<<<<< HEAD
+ +                return Redirect("/Admin/Edit/" + c.ID);
+ +=======
+  

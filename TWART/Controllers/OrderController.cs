@@ -10,12 +10,15 @@ namespace TWART.Controllers
 {
     public class OrderController : System.Web.Mvc.Controller
     {
+        // TODO: Implement package breakdown
+        // TODO: Acquire package band (dimensions)
+
         // GET: Order
         public ActionResult orderpost()
         {
             if (Session["loggedInState"] == null)
             {
-                Redirect("403.html");
+                Redirect("/403.html");
             }
 
             // Checks if logged in
@@ -67,7 +70,7 @@ namespace TWART.Controllers
         {
             if (Session["loggedInState"] == null)
             {
-                Redirect("403.html");
+                Redirect("/403.html");
             }
 
             bool state = (bool)Session["loggedInState"];

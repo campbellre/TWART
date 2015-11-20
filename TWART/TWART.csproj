@@ -169,7 +169,6 @@
     <Compile Include="Controllers\AddressController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BankController.cs" />
-    <Compile Include="Controllers\DeleteCustomerController.cs" />
     <Compile Include="Controllers\EditContactDetails.cs" />
     <Compile Include="Controllers\EditEmployeeDetails.cs" />
     <Compile Include="Controllers\OrderController.cs" />
@@ -202,6 +201,7 @@
     <Compile Include="Models\OrderModel.cs" />
     <Compile Include="Models\RoleModel.cs" />
     <Compile Include="Models\PackageModel.cs" />
+    <Compile Include="Models\SpecificationModel.cs" />
     <Compile Include="Models\TransactionModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\Search.cs" />

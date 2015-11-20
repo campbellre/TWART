@@ -60,7 +60,7 @@
             <% Customer editCustomer = (Customer)Model; %>
             <form action="/admin/EditCustomer" method="POST">
 
-                <input type="text" name="name" value="<%= editCustomer.Name %>" />
+                <input maxlength="49" type="text" name="name" value="<%= editCustomer.Name %>" />
                 <input type="hidden" name="id" value="<%= editCustomer.ID %>" />
                 <input type="hidden" name="addressid" value="<%= editCustomer.Address_ID %>" />
 
