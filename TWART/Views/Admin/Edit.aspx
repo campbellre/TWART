@@ -1,9 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Edit.aspx.cs" Inherits="TWART.Views.Admin.Edit" %>
 
 <%@ Import Namespace="TWART.DataObjects" %>
-
 <!DOCTYPE html>
-
 <html>
 <head runat="server">
     <title>TWART Shipping Co.</title>
@@ -18,7 +16,6 @@
     <!-- Header -->
     <div id="header">
         <div class="top">
-
             <!-- Logo -->
             <div id="logo">
                 <span class="image avatar48">
@@ -29,49 +26,42 @@
             <nav id="nav">
                 <ul>
                     <li><a href="../Customer" id="about-link"><span class="icon fa-home">Client Information</span></a></li>
-                    
-                   
                 </ul>
             </nav>
         </div>
         <div class="bottom">
-
             <!-- Social Icons -->
             <ul class="icons">
                 <li><a href="https://github.com/campbellre/TWART" class="icon fa-github"><span class="label">Github</span></a></li>
-                <li><a href="#contact" class="icon fa-envelope"><span class="label">Email</span></a></li>
+                <li><a href="../../index.html#contact" class="icon fa-envelope"><span class="label">Email</span></a></li>
             </ul>
         </div>
     </div>
     <!-- Grid Display -->
     <div id="main">
-
         <!-- Admin Control Panel -->
         <section id="admin" class="top">
             <div class="container">
                 <header>
-                    <h2 style="color: #ff0000">Edit Company Name</h2>
+                    <h2>Change Company Name</h2>
                 </header>
             </div>
         </section>
-        <div style="text-align: center">
-
-
-            <% Customer editCustomer = (Customer)Model; %>
-            <form action="/admin/EditCustomer" method="POST">
-
-                <input maxlength="49" type="text" name="name" value="<%= editCustomer.Name %>" />
-                <input type="hidden" name="id" value="<%= editCustomer.ID %>" />
-                <input type="hidden" name="addressid" value="<%= editCustomer.Address_ID %>" />
-
-                <div style="text-align: center">
-                    <p></p>
-                    <input type="submit" value="Update" />
-                    <p></p>
-                </div>
-            </form>
-
-        </div>
+        <!-- Edit Here -->
+        <section id="edit" class="two">
+            <div class="container">
+                <% Customer editCustomer = (Customer)Model; %>
+                <form action="/admin/EditCustomer" method="POST">
+                    <input maxlength="49" type="text" name="name" value="<%= editCustomer.Name %>" />
+                    <input type="hidden" name="id" value="<%= editCustomer.ID %>" />
+                    <input type="hidden" name="addressid" value="<%= editCustomer.Address_ID %>" />
+                    <div class="row">
+                        <div class="12u$">
+                            <input type="submit" value="Update" /></div>
+                    </div>
+                </form>
+            </div>
+        </section>
     </div>
     <!-- Footer -->
     <div id="footer">

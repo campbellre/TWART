@@ -27,7 +27,8 @@
             <nav id="nav">
                 <ul>
                     <li><a href="adminIndex" id="foobar-link"><span class="icon fa-hand-o-left">Control Panel</span></a></li>
-                    <li><a href="#specification" id="specification" class="skel-layers-ignoreHref"><span class="icon fa-home">Package Specifications</span></a></li>
+                    <li><a href="#specification" id="specification" class="skel-layers-ignoreHref"><span class="icon fa-archive">Package Specifications</span></a></li>
+                    <li><a href="#orders" id="orders" class="skel-layers-ignoreHref"><span class="icon fa-list">Order List</span></a></li>
                 </ul>
             </nav>
         </div>
@@ -46,7 +47,7 @@
             <section id="client" class="top">
                 <div class="container">
                     <header>
-                        <h2>Order Information</h2>
+                        <h2>Order Service</h2>
                     </header>
                 </div>
             </section>
