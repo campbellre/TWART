@@ -127,7 +127,7 @@ namespace TWART.Controllers
                 var rm = new RoleModel();
 
                 // Gets the complete list
-                var rl = rm.GetRolesList();
+                var rl = rm.ListRoles();
 
                 // Returns the list
                 return View(rl);
