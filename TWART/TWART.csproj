@@ -156,6 +156,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BankController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
+    <Compile Include="Controllers\DepotController.cs" />
     <Compile Include="Controllers\EditContactDetails.cs" />
     <Compile Include="Controllers\EditEmployeeDetails.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
@@ -313,6 +314,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Views\Depot\" />
     <Folder Include="Views\Role\" />
   </ItemGroup>
   <ItemGroup>
