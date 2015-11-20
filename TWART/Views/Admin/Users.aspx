@@ -52,7 +52,7 @@
         <!-- Edit Here -->
         <section id="edit" class="two">
             <div class="container">
-                <form action="/admin/EditCustomer" method="POST">
+                <form action="/admin/CreateCustomer" method="POST">
                     <div class="row">
                         <div class="12u$">
                             <input type="text" name="username" placeholder="Username" /><br/>
