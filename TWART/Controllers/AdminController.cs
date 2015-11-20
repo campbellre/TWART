@@ -143,8 +143,7 @@ namespace TWART.Controllers
                 cm.EditCustomer(c);
 
 
-
-                return Redirect("/Admin/Edit/" + c.ID);
+                return Redirect("afterupdate");
             }
             else
             {
@@ -186,6 +185,13 @@ namespace TWART.Controllers
         }
 
         public ActionResult afterdelete()
+        {
+
+            return View();
+
+        }
+
+        public ActionResult afterupdate()
         {
 
             return View();
