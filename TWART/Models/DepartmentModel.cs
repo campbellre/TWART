@@ -33,6 +33,7 @@ namespace TWART.Models
                     string query = "ListDepartment";
                     var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
 
+
                     connect.Open();
 
                     var reader = cmd.ExecuteReader();
@@ -174,6 +175,8 @@ namespace TWART.Models
                 {
                     string query = "GetDepartment";
                     var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
+
+                    cmd.Parameters.AddWithValue("DepartmentID", ID);
 
                     connect.Open();
 

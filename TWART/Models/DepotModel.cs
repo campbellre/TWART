@@ -181,6 +181,8 @@ namespace TWART.Models
                     string query = "GetDepot";
                     var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
 
+                    cmd.Parameters.AddWithValue("DepotID", ID);
+
                     connect.Open();
 
                     var reader = cmd.ExecuteReader();
