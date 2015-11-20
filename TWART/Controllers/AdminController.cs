@@ -143,8 +143,7 @@ namespace TWART.Controllers
                 cm.EditCustomer(c);
 
 
-
-                return Redirect("/Admin/Edit/" + c.ID);
+                return Redirect("afterupdate");
             }
             else
             {
@@ -182,7 +181,21 @@ namespace TWART.Controllers
             // Call the method to delete a customer from the database
             customerModel.DeleteCustomer(id);
 
-            return Redirect("../customer");
+            return Redirect("../afterdelete");
+        }
+
+        public ActionResult afterdelete()
+        {
+
+            return View();
+
+        }
+
+        public ActionResult afterupdate()
+        {
+
+            return View();
+
         }
 
         public ActionResult ViewInfo()

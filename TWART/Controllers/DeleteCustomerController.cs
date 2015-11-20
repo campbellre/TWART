@@ -21,7 +21,7 @@ namespace TWART.Controllers
             // Call the method to delete a customer from the database
             customerModel.DeleteCustomer(id);
 
-            return Redirect("index.html");
+            return Redirect("../customer");
         }
     }
 }

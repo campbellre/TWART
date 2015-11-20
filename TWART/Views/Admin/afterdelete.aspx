@@ -28,9 +28,9 @@
             <!-- Nav -->
             <nav id="nav">
                 <ul>
-                    <li><a href="../Customer" id="about-link"><span class="icon fa-home">Client Information</span></a></li>
-                    
-                   
+                    <li><a href="index.html#top" id="about-link"><span class="icon fa-home">About Us</span></a></li>
+                    <li><a href="#contact" id="contact-link"><span class="icon fa-envelope">Get In Touch</span></a></li>
+                    <li><a href="#top" class="skel-layers-ignoreHref" id="foobar-link"><span class="icon fa-hand-o-left">Login</span></a></li>
                 </ul>
             </nav>
         </div>
@@ -50,26 +50,24 @@
         <section id="admin" class="top">
             <div class="container">
                 <header>
-                    <h2 style="color: #ff0000">Edit Company Name</h2>
+                    <h2 style="color: #ff0000">Delete</h2>
+                    <p></p>
+                    <h2 style="color: #ff0000">Client Has Been Deleted!</h2>
                 </header>
             </div>
         </section>
         <div style="text-align: center">
 
 
-            <% Customer editCustomer = (Customer)Model; %>
-            <form action="/admin/EditCustomer" method="POST">
 
-                <input maxlength="49" type="text" name="name" value="<%= editCustomer.Name %>" />
-                <input type="hidden" name="id" value="<%= editCustomer.ID %>" />
-                <input type="hidden" name="addressid" value="<%= editCustomer.Address_ID %>" />
+
 
                 <div style="text-align: center">
                     <p></p>
-                    <input type="submit" value="Update" />
+                            <a href="customer" class="button scrolly">Go Back</a>
                     <p></p>
                 </div>
-            </form>
+                
 
         </div>
     </div>

@@ -80,7 +80,7 @@ namespace TWART.Models
 
         public Employee SearchEmployee(Employee em)
         {
-            SearchEmployee(em.Id);
+            return SearchEmployee(em.Id);
         }
 
 
