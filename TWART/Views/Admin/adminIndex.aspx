@@ -68,7 +68,7 @@
             <!-- Create Admin User -->
             <section id="user" class="user">
                 <div class="container">
-                    <a href="#">Create New Admin User</a>
+                    <a href="Users">Create New Admin User</a>
                     <p>Use this control to Create a new Administrative user for this System</p>
                 </div>
             </section>
