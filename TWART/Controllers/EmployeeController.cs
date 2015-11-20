@@ -13,7 +13,7 @@ namespace TWART.Controllers
         // GET: Employee
         public ActionResult Index()
         {
-            // Ensures logged in
+            // Null handling
             if (Session["loggedInState"] == null)
             {
                 return Redirect("/403.html");
@@ -42,7 +42,7 @@ namespace TWART.Controllers
                 // Adds the object to the database
                 employeeModel.NewEmployee(newEmployee);
 
-                // Return created department to view
+                // Return created employee to view
                 return View(newEmployee);
             }
             else
@@ -136,6 +136,7 @@ namespace TWART.Controllers
                 return Redirect("/403.html");
             }
 
+            // If logged in
             bool state = (bool)Session["loggedInState"];
             if (state == true)
             {

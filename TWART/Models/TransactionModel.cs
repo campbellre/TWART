@@ -150,7 +150,6 @@ namespace TWART.Models
                     var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
 
                     cmd.Parameters.AddWithValue("SearchDate", date);
-
                     connect.Open();
 
                     var reader = cmd.ExecuteReader();

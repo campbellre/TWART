@@ -147,6 +147,7 @@
     <Content Include="Views\Client\clientIndex.aspx" />
     <Content Include="Views\Admin\delete.aspx" />
     <Content Include="Views\Admin\viewinfo.aspx" />
+    <Content Include="Views\Employee\Employees.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -185,7 +186,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModel.cs" />
-    <Compile Include="Models\AccountTypeModel.cs" />
     <Compile Include="Models\AddressModel.cs" />
     <Compile Include="Models\BankingModel.cs" />
     <Compile Include="Models\ContactModel.cs" />
@@ -200,7 +200,6 @@
     <Compile Include="Models\TransactionModel.cs" />
     <Compile Include="Models\TransportModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Controllers\Search.cs" />
     <Compile Include="DataObjects\Department.cs" />
     <Compile Include="DataObjects\Employee.cs" />
     <Compile Include="DataObjects\Role.cs" />
@@ -295,6 +294,13 @@
     <Compile Include="Views\Admin\viewinfo.aspx.designer.cs">
       <DependentUpon>viewinfo.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Employee\Employees.aspx.cs">
+      <DependentUpon>Employees.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Employee\Employees.aspx.designer.cs">
+      <DependentUpon>Employees.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -310,6 +316,13 @@
     <Content Include="assets\fonts\FontAwesome.otf" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Employee\Web.config" />
+    <None Include="Views\Employee\Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Views\Employee\Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

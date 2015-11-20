@@ -141,9 +141,11 @@ namespace TWART.Models
                     var reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
-                        r.Id = int.Parse(reader["Role_ID "].ToString());
-                        r.Title = reader["Role_Title"].ToString();
-
+                        try
+                        {
+                            r.Id = int.Parse(reader["Role_ID "].ToString());
+                            r.Title = reader["Role_Title"].ToString();
+                        }catch(Exception){}
                     }
 
                     connect.Close();
