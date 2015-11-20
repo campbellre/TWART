@@ -48,5 +48,74 @@ namespace TWART.Controllers
                 return Redirect("/login.html");
             }
         }
+
+        // Controller for modification of a depot
+        public ActionResult EditDepot()
+        {
+            // Null handling
+            if (Session["loggedInState"] == null)
+            {
+                return Redirect("/403.html");
+            }
+
+            // Checks if logged in
+            bool state = (bool)Session["loggedInState"];
+            if (state == true)
+            {
+                // Creates a role placeholder
+                var depot = new Depot();
+
+                // Setup role edit
+                depot.ID = int.Parse(Request.Form["id"]);
+                depot.ManagerID = int.Parse(Request.Form["managerID"]);
+                depot.DepotName = Request.Form["depotName"];
+                depot.FloorSpace = int.Parse(Request.Form["floorSpace"]);
+                depot.NumVehicles = int.Parse(Request.Form["numVehicles"]);
+
+                // Establishes role model
+                var depotModel = new DepotModel();
+
+                // Conduct edit
+                depotModel.EditDepot(depot);
+
+                // Passes back to the view
+                return View();
+            }
+            else
+            {
+                // If not logged in
+                return Redirect("/login.html");
+            }
+        }
+
+        // Deletes a depot
+        public ActionResult Delete()
+        {
+            // Null handling
+            if (Session["loggedInState"] == null)
+            {
+                return Redirect("/403.html");
+            }
+
+            // Checks if logged in
+            bool state = (bool)Session["loggedInState"];
+            if (state == true)
+            {
+                int depotID = int.Parse(RouteData.Values[""].ToString());
+
+                // Establishes role model
+                DepotModel depotModel = new DepotModel();
+
+                // Deletes the depot from the database using the ID
+                depotModel.DeleteDepot(depotID);
+
+                return Redirect("/..depot");
+            }
+            else
+            {
+                // If not logged in
+                return Redirect("/login.html");
+            }
+        }
     }
 }
