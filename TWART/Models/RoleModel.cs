@@ -143,9 +143,9 @@ namespace TWART.Models
                     {
                         try
                         {
-                            r.Id = int.Parse(reader["Role_ID "].ToString());
+                            r.Id = int.Parse(reader["Role_ID"].ToString());
                             r.Title = reader["Role_Title"].ToString();
-                        }catch(Exception){}
+                        }catch(Exception e){}
                     }
 
                     connect.Close();

@@ -26,7 +26,7 @@
             <!-- Nav -->
             <nav id="nav">
                 <ul>
-                    <li><a href="adminIndex" id="foobar-link"><span class="icon fa-hand-o-left">Control Panel</span></a></li>
+                    <li><a href="../admin/adminIndex" id="foobar-link"><span class="icon fa-hand-o-left">Control Panel</span></a></li>
                 </ul>
             </nav>
         </div>
@@ -45,7 +45,7 @@
             <section id="client" class="top">
                 <div class="container">
                     <header>
-                        <h2>Title</h2>
+                        <h2>Employee List</h2>
                     </header>
                 </div>
             </section>
@@ -53,15 +53,18 @@
             <section id="controls" class="two">
                 <div class="container">
                     <table>
+                        <tr><th><h3>NAME</h3></th><th><h3>DEPOT</h3></th><th><h3>DEPARTMENT</h3></th><th><h3>ROLE</h3></th></tr>
                         <% foreach (var employee in Model)
                            { %>
                         <tr>
                             <td><%= Html.Encode(employee.Lastname.ToUpper() + ", " + employee.Firstname) %></td>
+
                             <% if(employee.DepotO != null){%>
                                 <td><%= Html.Encode(employee.DepotO.DepotName) %></td>
                             <% }else{ %>
                                 <td><%= Html.Encode("Unassigned") %></td>
                             <% } %>
+
                             <td><%= Html.Encode(employee.Department.Title) %></td>
                             <td><%= Html.Encode(employee.RoleO.Title) %></td>
                             <td><%= Html.ActionLink("Edit", "edit", new { id = employee.Id })%></td>
