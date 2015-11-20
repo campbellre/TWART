@@ -24,38 +24,40 @@ namespace TWART.Models
 
         public List<Department> GetDepartmentsList()
         {
-            // TODO: Correct to use usings.
+            var departmentList = new List<Department>();
 
-            List<Department> deptList = new List<Department>(); 
-            connect = new MySqlConnection(_connectionString);
-            MySqlCommand empCommand = connect.CreateCommand();
-
-            empCommand.CommandText = "SELECT Department_ID, Department_Title, Address_ID, Department_Head" +
-                                     "From Department;";
-
-            MySqlDataReader reader;
-            
-            connect.Open();
-            
-            reader = empCommand.ExecuteReader();
-
-            foreach (DataRow deptColumn in reader)
+            using (connect = new MySqlConnection(_connectionString))
             {
-                Department dpt = new Department();
-                dpt.Id = (int)deptColumn["Department_ID"];
-                dpt.Title = deptColumn["Department_Title"].ToString();
-                dpt.Address = (int)deptColumn["Address_ID"];
-                dpt.Head = (int)deptColumn["Department_Head"];
+                try
+                {
+                    string query = "ListDepartment";
+                    var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
 
-                deptList.Add(dpt);
+                    connect.Open();
+
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+
+                        var d = new Department();
+                        d.Id = (int)reader["Department_ID"];
+                        d.Title = reader["Department_Title"].ToString();
+                        d.AddressID = (int)reader["Address_ID"];
+                        d.DHeadID = (int)reader["Department_Head"];
+
+
+                        departmentList.Add(d);
+                    }
+
+                    connect.Close();
+                }
+                catch (InvalidOperationException ioException)
+                {
+                    connect.Close();
+                }
+
+                return departmentList;
             }
-
-            reader.Close();
-
-            connect.Close();
-
-            return deptList;
-
         }
 
 
@@ -159,34 +161,37 @@ namespace TWART.Models
         // This is the impmented method others should call it. 
         public Department SearchDepartment(int ID)
         {
-            Department returnDepartment = null;
+            var department = new Department();
 
-            connect = new MySqlConnection(_connectionString);
-            MySqlCommand getByIdDepartment = connect.CreateCommand();
-
-            getByIdDepartment.CommandText = "SELECT Department_ID, Department_Title, Address_Id, Department_Head " +
-                                            "From Department " +
-                                            "WHERE Department_ID = ?";
-            getByIdDepartment.Parameters.Add(new MySqlParameter("Department_ID", ID));
-
-            MySqlDataReader reader;
-
-            connect.Open();
-
-            reader = getByIdDepartment.ExecuteReader();
-
-            if (reader.NextResult())
+            using (connect = new MySqlConnection(_connectionString))
             {
-                returnDepartment = new Department();
-                returnDepartment.Id = (int)reader["Department_ID"];
-                returnDepartment.Address = (int)reader["Address_ID"];
-                returnDepartment.Title = reader["Department_Title"].ToString();
-                returnDepartment.Head = (int)reader["Department_Head"];
+                try
+                {
+                    string query = "GetDepartment";
+                    var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
+
+                    connect.Open();
+
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+
+                        department.Id = (int)reader["Department_ID"];
+                        department.Title = reader["Department_Title"].ToString();
+                        department.AddressID = (int)reader["Address_ID"];
+                        department.DHeadID = (int)reader["Department_Head"];
+
+                    }
+
+                    connect.Close();
+                }
+                catch (InvalidOperationException ioException)
+                {
+                    connect.Close();
+                }
+
+                return department;
             }
-
-            connect.Close();
-
-            return returnDepartment;
 
         }
 
