@@ -243,13 +243,23 @@ namespace TWART.Controllers
                 var customerModel = new CustomerModel();
                 // Call the method to get the list
                 var customerList = customerModel.ListCustomers();
+
+                
+
+                // Get the ID requested
+                var p = int.Parse(Url.RequestContext.RouteData.Values["id"].ToString());
+
                 foreach (var customer in customerList)
                 {
-                    Address address = addressModel.SearchAddress(customer.Address_ID);
-                    customer.Address = address;
+                    if (customer.ID == p) {
+                        Address address = addressModel.SearchAddress(customer.Address_ID);
+                        customer.Address = address;
+
+                        return View(customer);
+                    }
                 }
-                // Return the CustomerList
-                return View(customerList);
+                // No match found! Change the page later...
+                return Redirect("/404.html");
             }
         }
         public ActionResult Logout()

@@ -207,7 +207,7 @@ namespace TWART.Models
 
         public Depot SearchDepot(Depot d)
         {
-            SearchDepot(d.ID);
+            return SearchDepot(d.ID);
         }
     }
 }
