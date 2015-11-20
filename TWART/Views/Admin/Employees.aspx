@@ -51,7 +51,21 @@
                 </div>
             </section>
             <!-- Controls -->
-            <section id="controls" class="middle">
+            <section id="controls" class="two">
+                <div class="container">
+                    <table>
+                        <% foreach (var employee in Model)
+                           { %>
+                        <tr>
+                            <td><%= Html.Encode(employee.Firstname + ", " + employee.Lastname) %></td>
+                            <td><%= Html.Encode(employee.Department) %></td>
+                            <td><%= Html.Encode(employee.RoleO) %></td>
+                            <td><%= Html.ActionLink("Edit", "edit", new { id = employee.Id })%></td>
+                            <td><%= Html.ActionLink("Delete", "delete", new { id = employee.Id })%></td>
+                        </tr>
+                        <% } %>
+                    </table>
+                </div>
             </section>
         </div>
     </form>
