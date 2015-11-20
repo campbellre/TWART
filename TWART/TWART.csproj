@@ -185,7 +185,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModel.cs" />
-    <Compile Include="Models\AccountTypeModel.cs" />
     <Compile Include="Models\AddressModel.cs" />
     <Compile Include="Models\BankingModel.cs" />
     <Compile Include="Models\ContactModel.cs" />
@@ -198,7 +197,6 @@
     <Compile Include="Models\SpecificationModel.cs" />
     <Compile Include="Models\TransactionModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Controllers\Search.cs" />
     <Compile Include="DataObjects\Department.cs" />
     <Compile Include="DataObjects\Employee.cs" />
     <Compile Include="DataObjects\Role.cs" />
