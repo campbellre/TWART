@@ -96,6 +96,39 @@ namespace TWART.Controllers
             }
         }
 
+        // Deletes an account from the database
+        public ActionResult Delete()
+        {
+            // Null handling
+            if (Session["loggedInState"] == null)
+            {
+                return Redirect("/403.html");
+            }
+
+            // Checks if logged in
+            bool state = (bool)Session["loggedInState"];
+            if (state == true)
+            {
+                int accountID = int.Parse(RouteData.Values["id"].ToString());
+
+                // Establishes account model
+                AccountModel accountModel = new AccountModel();
+
+                // Deletes the account from the database using the ID
+                accountModel.DeleteAccount(accountID);
+
+                // TODO: Confirm this is the correct return state
+                // Return to the account page
+                return Redirect("/..account");
+            }
+            else
+            {
+                // If not logged in
+                return Redirect("/login.html");
+            }
+        }
+
+        // Gets a full list of accounts
         public ActionResult AccountList()
         {
             // Null handling
