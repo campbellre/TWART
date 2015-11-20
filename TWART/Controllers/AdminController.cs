@@ -162,7 +162,7 @@ namespace TWART.Controllers
         {
             if (Session["loggedInState"] == null)
             {
-                return Redirect("403.html");
+                return Redirect("/403.html");
             }
             bool state = (bool)Session["loggedInState"];
             if (state == true)
@@ -173,7 +173,7 @@ namespace TWART.Controllers
                 c.Address_ID = int.Parse(Request.Form["addressid"]);
                 var cm = new CustomerModel();
                 cm.EditCustomer(c);
-                return Redirect("/Admin/Edit/" + c.ID);
+                return Redirect("Customer");
             }
             else
             {
@@ -202,18 +202,54 @@ namespace TWART.Controllers
         }
         public ActionResult afterdelete()
         {
-            return View();
+            //If there is no valid session, return forbidden
+            if (Session["loggedInState"] == null)
+            {
+                return Redirect("/403.html");
+            }
+            else
+            {
+                return View();
+            }
         }
         public ActionResult afterupdate()
         {
 
-            return View();
+            //If there is no valid session, return forbidden
+            if (Session["loggedInState"] == null)
+            {
+                return Redirect("/403.html");
+            }
+            else
+            {
+                return View();
+            }
 
         }
 
         public ActionResult ViewInfo()
         {
-            return View();
+            //If there is no valid session, return forbidden
+            if (Session["loggedInState"] == null)
+            {
+                return Redirect("/403.html");
+            }
+            else
+            {
+                // Create a new AddressModel object
+                var addressModel = new AddressModel();
+                // Create a CustomerModel object
+                var customerModel = new CustomerModel();
+                // Call the method to get the list
+                var customerList = customerModel.ListCustomers();
+                foreach (var customer in customerList)
+                {
+                    Address address = addressModel.SearchAddress(customer.Address_ID);
+                    customer.Address = address;
+                }
+                // Return the CustomerList
+                return View(customerList);
+            }
         }
         public ActionResult Logout()
         {

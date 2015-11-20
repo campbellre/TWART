@@ -41,7 +41,7 @@
             <!-- Social Icons -->
             <ul class="icons">
                 <li><a href="https://github.com/campbellre/TWART" class="icon fa-github"><span class="label">Github</span></a></li>
-                <li><a href="#contact" class="icon fa-envelope"><span class="label">Email</span></a></li>
+                <li><a href="../../index.html#contact" class="icon fa-envelope"><span class="label">Email</span></a></li>
             </ul>
         </div>
     </div>
@@ -74,7 +74,7 @@
             <section id="user" class="four">
                 <div class="container">
                     <a href="Users">Create New Admin User</a>
-                    <p>Use this control to Create a new Administrative user for this System</p>
+                    <p>Use this control to create, retrieve, update or delete on our user system.</p>
                 </div>
             </section>
             <!-- Address -->

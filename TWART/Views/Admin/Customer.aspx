@@ -27,7 +27,7 @@
             <nav id="nav">
                 <ul>
                     <li><a href="adminIndex" id="control"><span class="icon fa-hand-o-left">Control Panel</span></a></li>
-                    <li><a href="login.html" class="skel-layers-ignoreHref" id="foobar-link"><span class="icon fa-hand-o-right">Log Out</span></a></li>
+                    <li><a href="#clientList" id="clientList" class="skel-layers-ignoreHref"><span class="icon fa-users">Client List</span></a></li>
                 </ul>
             </nav>
         </div>
@@ -35,7 +35,7 @@
             <!-- Social Icons -->
             <ul class="icons">
                 <li><a href="https://github.com/campbellre/TWART" class="icon fa-github"><span class="label">Github</span></a></li>
-                <li><a href="#contact" class="icon fa-envelope"><span class="label">Email</span></a></li>
+                <li><a href="../../index.html#contact" class="icon fa-envelope"><span class="label">Email</span></a></li>
             </ul>
         </div>
     </div>
@@ -51,9 +51,8 @@
                 </div>
             </section>
             <!-- Controls -->
-            <section id="controls" class="middle">
+            <section id="controls" class="two">
                 <div class="container">
-                    <h2>Customer List</h2>
                     <table>
                         <% foreach (var customer in Model)
                            { %>
@@ -61,7 +60,7 @@
                             <td><%= Html.Encode(customer.Name) %></td>
                             <td><%= Html.Encode(customer.Address.LineOne) %></td>
                             <td><%= Html.Encode(customer.Address.LineTwo) %></td>
-                            <td><%= Html.ActionLink("View", "view", new { id = customer.ID })%></td>
+                            <td><%= Html.ActionLink("View", "viewinfo", new { id = customer.ID })%></td>
                             <td><%= Html.ActionLink("Edit", "edit", new { id = customer.ID })%></td>
                             <td><%= Html.ActionLink("Delete", "delete", new { id = customer.ID })%></td>
                         </tr>

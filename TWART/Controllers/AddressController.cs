@@ -56,8 +56,6 @@ namespace TWART.Controllers
                 return Redirect("/login.html");
             }
         }
-
-        [HttpPost]
         // Controller for modification of an address
         public ActionResult EditAddress()
         {
@@ -66,33 +64,26 @@ namespace TWART.Controllers
             {
                 return Redirect("/403.html");
             }
-
             // Checks if logged in
             bool state = (bool)Session["loggedInState"];
             if (state == true)
             {
                 // Creates an address placeholder
-                var a = new Address();
-
+                var address = new Address();
                 // Setup address edit
-                a.ID = int.Parse(Request.Form["id"]);
-                a.LineOne = Request.Form["lineOne"].ToString();
-                a.LineTwo = Request.Form["lineTwo"].ToString();
-                a.LineThree = Request.Form["lineThree"].ToString();
-                a.LineFour = Request.Form["lineFour"].ToString();
-                a.LineFive = Request.Form["lineFive"].ToString();
-                a.PostalCode = Request.Form["postalCode"].ToString();
-                a.County = Request.Form["county"].ToString();
-                a.Country = Request.Form["country"].ToString();
-
+                address.ID = int.Parse(Request.Form["id"]);
+                address.LineOne = Request.Form["lineOne"].ToString();
+                address.LineTwo = Request.Form["lineTwo"].ToString();
+                address.LineThree = Request.Form["lineThree"].ToString();
+                address.LineFour = Request.Form["lineFour"].ToString();
+                address.LineFive = Request.Form["lineFive"].ToString();
+                address.PostalCode = Request.Form["postalCode"].ToString();
+                address.County = Request.Form["county"].ToString();
+                address.Country = Request.Form["country"].ToString();
                 // Establish address model
-                var am = new AddressModel();
-
+                var addressModel = new AddressModel();
                 // Conduct edit
-                am.EditAddress(a);
-
-                // TODO: Redirect to appropriate page (Add address?)
-
+                addressModel.EditAddress(address);
                 // Passes back to the view
                 return View();
             }
