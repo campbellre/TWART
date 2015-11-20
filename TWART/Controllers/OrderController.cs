@@ -13,86 +13,79 @@ namespace TWART.Controllers
         // GET: Order
         public ActionResult orderpost()
         {
-            // Ensures logged in
-            try
+            if (Session["loggedInState"] == null)
             {
-                // Checks if logged in
-                bool state = (bool)Session["loggedInState"];
-                if (state == true)
-                {
-                    // Creates a new order model
-                    OrderModel orderModel = new OrderModel();
+                Redirect("403.html");
+            }
 
-                    // Holds the order
-                    Order newOrder = new Order();
+            // Checks if logged in
+            bool state = (bool)Session["loggedInState"];
+            if (state == true)
+            {
+                // Creates a new order model
+                OrderModel orderModel = new OrderModel();
 
-                    // Stored details
-                    int userID = (int)Session["userID"];
-                    int deliveryBand = int.Parse(Request.Form[0]);
-                    String sourceAddress = Request.Form[1];
-                    String destAddress = Request.Form[2];
+                // Holds the order
+                Order newOrder = new Order();
 
-                    // List of packages from form
-                    List<Package> packageList = new List<Package>();
+                // Stored details
+                int userID = (int)Session["userID"];
+                int deliveryBand = int.Parse(Request.Form[0]);
+                int sourceID = int.Parse(Request.Form[1]);
+                int destID = int.Parse(Request.Form[2]);
 
-                    // Acquires type of account (Standard | Premium)
-                    int accountType = getAccountType(userID);
+                // List of packages from form
+                List<Package> packageList = new List<Package>();
 
-                    // Price of order
-                    int totalPrice = calcPrice(accountType, deliveryBand, packageList);
+                // Acquires type of account (Standard | Premium)
+                int accountType = getAccountType(userID);
+
+                // Price of order
+                int totalPrice = calcPrice(accountType, deliveryBand, packageList);
 
                     
                      
                     
 
-                    // Finalises the order
-                    newOrder.Placed = DateTime.Now;
-                    newOrder.OrderStatus = "Order Placed";
-                    //newOrder.SourceAddressID;
+                // Finalises the order
+                newOrder.Placed = DateTime.Now;
+                newOrder.OrderStatus = "Order Placed";
+                //newOrder.SourceAddressID;
 
-                    // Passes back to the view
-                    return View();
-                }
-                else
-                {
-                    // If not logged in
-                    return Redirect("/login.html");
-                }
-           }
-           catch (Exception e)
-           {
-               // If an error occurs
-               return Redirect("/403.html");
-           }                
+                // Passes back to the view
+                return View();
+            }
+            else
+            {
+                // If not logged in
+                return Redirect("/login.html");
+            }         
         }
 
         // Gets all orders
         public ActionResult Order()
         {
-            try
+            if (Session["loggedInState"] == null)
             {
-                bool state = (bool)Session["loggedInState"];
-                if (state == true)
-                {
-                    // Create a CustomerModel object
-                    var om = new OrderModel();
-
-                    // Call the method to get the list
-                    var ol = om.GetOrdersList();
-
-                    // Return the CustomerList
-                    return View(ol);
-                }
-                else
-                {
-                    // If not logged in
-                    return Redirect("/login.html");
-                }
+                Redirect("403.html");
             }
-            catch (Exception e)
+
+            bool state = (bool)Session["loggedInState"];
+            if (state == true)
             {
-                // If an error occurs
-                return Redirect("/403.html");
+                // Create a CustomerModel object
+                var om = new OrderModel();
+
+                // Call the method to get the list
+                var ol = om.GetOrdersList();
+
+                // Return the CustomerList
+                return View(ol);
+            }
+            else
+            {
+                // If not logged in
+                return Redirect("/login.html");
             }
         }
 
