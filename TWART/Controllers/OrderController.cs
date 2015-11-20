@@ -100,7 +100,7 @@ namespace TWART.Controllers
             AccountModel accountControl = new AccountModel();
 
             // Searches for the account
-            Account thisAccount = accountControl.GetAccount(userID);
+            Account thisAccount = accountControl.SearchAccount(userID);
 
             // Returns the account type
             return thisAccount.ID;
