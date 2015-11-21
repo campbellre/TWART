@@ -28,8 +28,8 @@
             <nav id="nav">
                 <ul>
                     <li><a href="adminIndex" id="foobar-link"><span class="icon fa-hand-o-left">Control Panel</span></a></li>
-                    <li><a href="#specification" id="specification" class="skel-layers-ignoreHref"><span class="icon fa-archive">Package Specifications</span></a></li>
-                    <li><a href="#orders" id="orders" class="skel-layers-ignoreHref"><span class="icon fa-list">Order List</span></a></li>
+                    <li><a href="#specification" id="orderSpec" class="skel-layers-ignoreHref"><span class="icon fa-archive">Package Specifications</span></a></li>
+                    <li><a href="#orders" id="ordersinfo" class="skel-layers-ignoreHref"><span class="icon fa-list">Order List</span></a></li>
                 </ul>
             </nav>
         </div>

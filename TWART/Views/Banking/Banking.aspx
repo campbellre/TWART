@@ -52,8 +52,20 @@
                 </div>
             </section>
             <!-- Controls -->
-            <section id="controls" class="middle">
-            </section>
+            <section id="controls" class="two">
+                <div class="container">
+                    <table>
+                        <% foreach (var banking in Model)
+                           { %>
+                        <tr>
+                            <td><%= Html.Encode(bank.Address) %></td>
+                            <td><%= Html.ActionLink("Edit", "edit", new { id = bank.Address_Id}) %> </td>
+                            <td><%= Html.ActionLink("Delete", "delete", new { id = bank.Address_Id})  %></td>
+                        </tr>
+                        <% } %>
+                    </table>
+                </div>
+             </section>
         </div>
     </form>
     <!-- Footer -->
