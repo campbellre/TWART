@@ -40,7 +40,7 @@ namespace TWART.Models
 
                         connect.Open();
 
-                        ret = (int)cmd.ExecuteScalar();
+                        ret = int.Parse(cmd.ExecuteScalar().ToString());
 
                         connect.Close();
                     }

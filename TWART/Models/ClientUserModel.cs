@@ -37,7 +37,7 @@ namespace TWART.Models
                         cmd.Parameters.AddWithValue("pName", user.Name);
 
 
-                        ret = (int)cmd.ExecuteScalar();
+                        ret = int.Parse(cmd.ExecuteScalar().ToString());
 
                         transaction.Commit();
 

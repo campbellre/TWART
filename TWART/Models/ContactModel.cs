@@ -39,7 +39,7 @@ namespace TWART.Models
                         cmd.Parameters.AddWithValue("TelNumber", c.PhoneNumber);
 
 
-                        ret = (int)cmd.ExecuteScalar();
+                        ret = int.Parse(cmd.ExecuteScalar().ToString());
 
                         transaction.Commit();
 

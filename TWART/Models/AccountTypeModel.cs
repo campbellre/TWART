@@ -37,7 +37,7 @@ namespace TWART.Models
                         cmd.Parameters.AddWithValue("PBenifit", a.Benefit);
                         cmd.Parameters.AddWithValue("PCost", a.Cost);
 
-                        ret = (int)cmd.ExecuteScalar();
+                        ret = int.Parse(cmd.ExecuteScalar().ToString());
 
                         transaction.Commit();
 
