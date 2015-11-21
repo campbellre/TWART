@@ -59,6 +59,8 @@
                            { %>
                         <tr>
                             <td><%= Html.Encode(bank.Address_ID) %></td>
+                            <td><%= Html.Encode(bank.SortCode) %></td>
+                            <td><%= Html.Encode(bank.AccountNumber) %></td>
                             <td><%= Html.ActionLink("Edit", "edit", new { id = bank.ID}) %> </td>
                             <td><%= Html.ActionLink("Delete", "delete", new { id = bank.ID})  %></td>
                         </tr>
