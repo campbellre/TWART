@@ -20,7 +20,7 @@
             <!-- Logo -->
             <div id="logo">
                 <span class="image avatar48">
-                    <img src="images/avatar.jpg" alt="" /></span>
+                    <img src="/images/avatar.jpg" alt="" /></span>
                 <h1 id="title">TWART Shipping Corporation</h1>
                 <p id="session">Welcome <%=Session["username"].ToString() %></p>
             </div>
@@ -56,7 +56,7 @@
             <!-- New -->
             <section id="newClient" class="three">
                 <div class="container">
-                    <a href="newCustomer">Create a new Client</a>
+                    <a href="create">Create a new Client</a>
                     <p>Use this control to create a our client on our system.</p>
                 </div>
             </section>

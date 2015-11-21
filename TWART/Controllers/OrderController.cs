@@ -93,7 +93,9 @@ namespace TWART.Controllers
             }
             else
             {
-                return View();
+                var am = new AddressModel();
+                var al = am.GetAddressesList();
+                return View(al);
             }
         }
 
