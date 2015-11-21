@@ -171,23 +171,6 @@ namespace TWART.Controllers
                 return View();
             }
         }
-        public ActionResult EditCustomer()
-        {
-            if (Session["loggedInState"] == null)
-            {
-                return Redirect("/403.html");
-            }
-            else
-            {
-                var c = new Customer();
-                c.ID = int.Parse(Request.Form["id"]);
-                c.Name = Request.Form["name"].ToString();
-                c.Address_ID = int.Parse(Request.Form["addressid"]);
-                var cm = new CustomerModel();
-                cm.EditCustomer(c);
-                return Redirect("Customer");
-            }
-        }
         public ActionResult CreateUser()
         {
             String username = Request.Form["username"].ToString();

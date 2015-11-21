@@ -10,6 +10,15 @@
 namespace TWART.Views.Admin {
     
     
-    public partial class Edit {
+    public partial class OLDCustomerView {
+        
+        /// <summary>
+        /// customerForm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlForm customerForm;
     }
 }

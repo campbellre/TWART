@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace TWART.Views.Admin
 {
-    public partial class delete : System.Web.Mvc.ViewPage
+    public partial class OLDdelete : System.Web.Mvc.ViewPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

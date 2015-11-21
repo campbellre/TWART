@@ -11,7 +11,7 @@ namespace TWART.Controllers
     public class CustomerController : System.Web.Mvc.Controller
     {
         // GET: Customer
-        public ActionResult GetCustomers()
+        public ActionResult Customer()
         {
             // Null handling
             if (Session["loggedInState"] == null)
@@ -51,7 +51,26 @@ namespace TWART.Controllers
                 return Redirect("/403.html");
             }
         }
-        
+
+
+        public ActionResult EditCustomer()
+        {
+            if (Session["loggedInState"] == null)
+            {
+                return Redirect("/403.html");
+            }
+            else
+            {
+                var c = new Customer();
+                c.ID = int.Parse(Request.Form["id"]);
+                c.Name = Request.Form["name"].ToString();
+                c.Address_ID = int.Parse(Request.Form["addressid"]);
+                var cm = new CustomerModel();
+                cm.EditCustomer(c);
+                return Redirect("Customer");
+            }
+        }
+
         // Creates a new customer
         public ActionResult Create()
         {
@@ -94,44 +113,76 @@ namespace TWART.Controllers
         }
 
         // Allows modification of customer
-        public ActionResult EditCustomer()
+        public ActionResult viewInfo()
         {
-            // Null handling
+            //If there is no valid session, return forbidden
             if (Session["loggedInState"] == null)
             {
                 return Redirect("/403.html");
             }
-
-            // If logged in
-            bool state = (bool)Session["loggedInState"];
-            if (state == true)
+            else
             {
-                int customerID = int.Parse(Url.RequestContext.RouteData.Values["id"].ToString());
+                // Create a new AddressModel object
+                var addressModel = new AddressModel();
+                // Create a CustomerModel object
+                var customerModel = new CustomerModel();
+                // Call the method to get the list
+                var customerList = customerModel.ListCustomers();
 
-                // Creates object placeholders
-                Customer customer = new Customer();
+                // Get the ID requested
+                var p = int.Parse(Url.RequestContext.RouteData.Values["id"].ToString());
 
-                // Setup customer edit
-                customer.ID = int.Parse(Request.Form["customerID"]);
-                customer.Name = Request.Form["name"];
-                customer.Address_ID = int.Parse(Request.Form["addressID"]);
-                customer.Account_ID = int.Parse(Request.Form["accountID"]);
+                foreach (var customer in customerList)
+                {
+                    if (customer.ID == p)
+                    {
+                        Address address = addressModel.SearchAddress(customer.Address_ID);
+                        customer.Address = address;
 
-                // Establishes customer model
-                CustomerModel customerModel = new CustomerModel();
+                        return View(customer);
+                    }
+                }
+                // No match found! Change the page later...
+                return Redirect("/404.html");
+            }
+        
+        }
 
-                // Conduct edit
-                customerModel.EditCustomer(customer);
-
-                // Passes back to the view
-                return View();
+        public ActionResult edit()
+        {
+            //If there is no valid session, return forbidden
+            if (Session["loggedInState"] == null)
+            {
+                return Redirect("/403.html");
             }
             else
             {
-                // If not logged in
-                return Redirect("/login.html");
+                // Create a new AddressModel object
+                var addressModel = new AddressModel();
+                // Create a CustomerModel object
+                var customerModel = new CustomerModel();
+                // Call the method to get the list
+                var customerList = customerModel.ListCustomers();
+
+                // Get the ID requested
+                var p = int.Parse(Url.RequestContext.RouteData.Values["id"].ToString());
+
+                foreach (var customer in customerList)
+                {
+                    if (customer.ID == p)
+                    {
+                        Address address = addressModel.SearchAddress(customer.Address_ID);
+                        customer.Address = address;
+
+                        return View(customer);
+                    }
+                }
+                // No match found! Change the page later...
+                return Redirect("/404.html");
             }
+
         }
+
 
         // Allows deleting of customer
         public ActionResult Delete()
@@ -156,7 +207,7 @@ namespace TWART.Controllers
                 
                 // TODO: Confirm this is the correct return state
                 // Return to the account page
-                return Redirect("/..account");
+                return Redirect("/Customer/deleteCustomers");
             }
             else
             {

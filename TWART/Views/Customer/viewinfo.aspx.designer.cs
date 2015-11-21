@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TWART.Views.Admin {
+namespace TWART.Views.Customer {
     
     
-    public partial class delete {
+    public partial class viewinfo {
     }
 }

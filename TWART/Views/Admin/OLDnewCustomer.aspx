@@ -1,9 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="editCustomer.aspx.cs" Inherits="TWART.Views.Admin.Edit" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="OLDnewCustomer.aspx.cs" Inherits="TWART.Views.Admin.OLDnewCustomerView" %>
 
+<%@ Import Namespace="System.Web.Mvc.Html" %>
 <%@ Import Namespace="TWART.DataObjects" %>
 <!DOCTYPE html>
 <html>
-<head runat="server">
+<head>
     <title>TWART Shipping Co.</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -26,7 +27,9 @@
             <!-- Nav -->
             <nav id="nav">
                 <ul>
-                    <li><a href="../Customer" id="about-link"><span class="icon fa-home">Client Information</span></a></li>
+                    <li><a href="adminIndex" id="foobar-link"><span class="icon fa-hand-o-left">Control Panel</span></a></li>
+                    <li><a href="#newClient" id="newClientSection" class="skel-layers-ignoreHref"><span class="icon fa-plus">New Client</span></a></li>
+                    <li><a href="#clientList" id="clientListSection" class="skel-layers-ignoreHref"><span class="icon fa-list">Client List</span></a></li>
                 </ul>
             </nav>
         </div>
@@ -38,27 +41,36 @@
             </ul>
         </div>
     </div>
-    <!-- Grid Display -->
+    <!-- Main -->
     <div id="main">
-        <!-- Admin Control Panel -->
-        <section id="admin" class="top">
+        <!-- Client View -->
+        <section id="newClient" class="top">
             <div class="container">
                 <header>
-                    <h2>Change Company Name</h2>
+                    <h2>Create A New Client</h2>
                 </header>
             </div>
         </section>
-        <!-- Edit Here -->
-        <section id="edit" class="two">
+        <!-- Controls -->
+        <section id="clientList" class="two">
             <div class="container">
-                <% Customer editCustomer = (Customer)Model; %>
-                <form action="/admin/EditCustomer" method="POST">
-                    <input maxlength="49" type="text" name="name" value="<%= editCustomer.Name %>" />
-                    <input type="hidden" name="id" value="<%= editCustomer.ID %>" />
-                    <input type="hidden" name="addressid" value="<%= editCustomer.Address_ID %>" />
+                <form action="createCustomer" method="POST" runat="server">
+                    <table>
+                        <tr>
+                            <% foreach (var addresses in Model)
+                               {
+                                   //creates list items
+                                   ListItem item = new ListItem(addresses.LineOne.ToString() + ", " + addresses.LineTwo.ToString() + ", " + addresses.PostalCode.ToString());
+                                   item.Value = addresses.ID.ToString();
+                                   newAddress.Items.Add(item);
+                               } %>
+                            <asp:TextBox runat="server" ID="newClientName">Client Name</asp:TextBox>
+                            <asp:DropDownList runat="server" ID="newAddress"></asp:DropDownList>
+                        </tr>
+                    </table>
                     <div class="row">
                         <div class="12u$">
-                            <input type="submit" value="Update" />
+                            <input type="submit" value="Add" />
                         </div>
                     </div>
                 </form>

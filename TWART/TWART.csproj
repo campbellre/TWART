@@ -133,18 +133,23 @@
     <Content Include="login.html" />
     <Content Include="Views\Address\Address.aspx" />
     <Content Include="Views\Address\ViewAddress.aspx" />
-    <Content Include="Views\Admin\customer.aspx">
+    <Content Include="Views\Admin\OLDcustomer.aspx">
       <BrowseToURL>~/Admin/customer</BrowseToURL>
     </Content>
-    <Content Include="Views\Admin\editCustomer.aspx" />
-    <Content Include="Views\Admin\newCustomer.aspx" />
+    <Content Include="Views\Admin\OLDeditCustomer.aspx" />
+    <Content Include="Views\Admin\OLDnewCustomer.aspx" />
     <Content Include="Views\Admin\newSpec.aspx" />
     <Content Include="Views\Admin\orders.aspx" />
     <Content Include="Views\Admin\orderSpec.aspx" />
     <Content Include="Views\Admin\Users.aspx" />
     <Content Include="Views\Banking\Banking.aspx" />
-    <Content Include="Views\Admin\deleteCustomer.aspx" />
+    <Content Include="Views\Admin\OLDdeleteCustomer.aspx" />
     <Content Include="Views\Admin\viewinfo.aspx" />
+    <Content Include="Views\Customer\Customer.aspx" />
+    <Content Include="Views\Customer\deleteCustomer.aspx" />
+    <Content Include="Views\Customer\edit.aspx" />
+    <Content Include="Views\Customer\newCustomer.aspx" />
+    <Content Include="Views\Customer\viewinfo.aspx" />
     <Content Include="Views\Employee\Employees.aspx" />
     <Content Include="Views\Index\adminIndex.aspx" />
     <Content Include="Views\Index\clientIndex.aspx" />
@@ -235,33 +240,33 @@
     <Compile Include="Views\Address\ViewAddress.aspx.designer.cs">
       <DependentUpon>ViewAddress.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Admin\customer.aspx.cs">
-      <DependentUpon>customer.aspx</DependentUpon>
+    <Compile Include="Views\Admin\OLDcustomer.aspx.cs">
+      <DependentUpon>OLDcustomer.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Admin\customer.aspx.designer.cs">
-      <DependentUpon>customer.aspx</DependentUpon>
+    <Compile Include="Views\Admin\OLDcustomer.aspx.designer.cs">
+      <DependentUpon>OLDcustomer.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Admin\deleteCustomer.aspx.cs">
-      <DependentUpon>deleteCustomer.aspx</DependentUpon>
+    <Compile Include="Views\Admin\OLDdeleteCustomer.aspx.cs">
+      <DependentUpon>OLDdeleteCustomer.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Admin\deleteCustomer.aspx.designer.cs">
-      <DependentUpon>deleteCustomer.aspx</DependentUpon>
+    <Compile Include="Views\Admin\OLDdeleteCustomer.aspx.designer.cs">
+      <DependentUpon>OLDdeleteCustomer.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Admin\editCustomer.aspx.cs">
-      <DependentUpon>editCustomer.aspx</DependentUpon>
+    <Compile Include="Views\Admin\OLDeditCustomer.aspx.cs">
+      <DependentUpon>OLDeditCustomer.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Admin\editCustomer.aspx.designer.cs">
-      <DependentUpon>editCustomer.aspx</DependentUpon>
+    <Compile Include="Views\Admin\OLDeditCustomer.aspx.designer.cs">
+      <DependentUpon>OLDeditCustomer.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Admin\newCustomer.aspx.cs">
-      <DependentUpon>newCustomer.aspx</DependentUpon>
+    <Compile Include="Views\Admin\OLDnewCustomer.aspx.cs">
+      <DependentUpon>OLDnewCustomer.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Admin\newCustomer.aspx.designer.cs">
-      <DependentUpon>newCustomer.aspx</DependentUpon>
+    <Compile Include="Views\Admin\OLDnewCustomer.aspx.designer.cs">
+      <DependentUpon>OLDnewCustomer.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Admin\newSpec.aspx.cs">
       <DependentUpon>newSpec.aspx</DependentUpon>
@@ -289,6 +294,41 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Views\Admin\viewinfo.aspx.designer.cs">
+      <DependentUpon>viewinfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Customer\Customer.aspx.cs">
+      <DependentUpon>Customer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Customer\Customer.aspx.designer.cs">
+      <DependentUpon>Customer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Customer\deleteCustomer.aspx.cs">
+      <DependentUpon>deleteCustomer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Customer\deleteCustomer.aspx.designer.cs">
+      <DependentUpon>deleteCustomer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Customer\edit.aspx.cs">
+      <DependentUpon>edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Customer\edit.aspx.designer.cs">
+      <DependentUpon>edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Customer\newCustomer.aspx.cs">
+      <DependentUpon>newCustomer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Customer\newCustomer.aspx.designer.cs">
+      <DependentUpon>newCustomer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Customer\viewinfo.aspx.cs">
+      <DependentUpon>viewinfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Customer\viewinfo.aspx.designer.cs">
       <DependentUpon>viewinfo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Employee\Employees.aspx.cs">
@@ -357,7 +397,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Account\" />
-    <Folder Include="Views\Client\" />
     <Folder Include="Views\Contact\" />
     <Folder Include="Views\Depot\" />
     <Folder Include="Views\Message\" />

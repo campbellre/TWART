@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="deleteCustomer.aspx.cs" Inherits="TWART.Views.Admin.delete" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="OLDdeleteCustomer.aspx.cs" Inherits="TWART.Views.Admin.OLDdelete" %>
 
 <%@ Import Namespace="TWART.DataObjects" %>
 <!DOCTYPE html>

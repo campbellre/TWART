@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -8,7 +9,7 @@ using TWART.DataObjects;
 
 namespace TWART.Views.Admin
 {
-    public partial class OLDviewinfo : System.Web.Mvc.ViewPage<DataObjects.Customer>
+    public partial class OLDnewCustomerView : System.Web.Mvc.ViewPage<IEnumerable<DataObjects.Address>>
     {
         protected void Page_Load(object sender, EventArgs e)
         {

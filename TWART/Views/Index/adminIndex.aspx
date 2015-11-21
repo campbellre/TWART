@@ -60,7 +60,7 @@
             <!-- Client -->
             <section id="controls" class="two">
                 <div class="container">
-                    <a href="Customer">Client Controls</a>
+                    <a href="/Customer/Customer">Client Controls</a>
                     <p>Use this control to create, retrieve, update or delete on our client system.</p>
                 </div>
             </section>
@@ -81,7 +81,7 @@
             <!-- Address -->
             <section id="address" class="two">
                 <div class="container">
-                    <a href="../Address/Address">Address</a>
+                    <a href="/Address/Address">Address</a>
                     <p>Use this control to create, retrieve, update or delete on our address system.</p>
                 </div>
             </section>
@@ -102,7 +102,7 @@
             <!-- Employees -->
             <section id="employees" class="two">
                 <div class="container">
-                    <a href="../Employee/Employees">Employees</a>
+                    <a href="/Employee/Employees">Employees</a>
                     <p>Use this control to create, retrieve, update or delete on our employees system.</p>
                 </div>
             </section>
