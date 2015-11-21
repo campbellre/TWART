@@ -248,7 +248,17 @@ namespace TWART.Controllers
             }
 
         }
-
+        public ActionResult createCustomer()
+        {
+            if (Session["loggedInState"] == null)
+            {
+                return Redirect("/403.html");
+            }
+            else
+            {
+                return Redirect("Customer");
+            }
+        }
         public ActionResult ViewInfo()
         {
             //If there is no valid session, return forbidden
@@ -264,7 +274,6 @@ namespace TWART.Controllers
                 var customerModel = new CustomerModel();
                 // Call the method to get the list
                 var customerList = customerModel.ListCustomers();
-
 
                 // Get the ID requested
                 var p = int.Parse(Url.RequestContext.RouteData.Values["id"].ToString());

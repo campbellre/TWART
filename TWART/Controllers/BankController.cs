@@ -10,45 +10,6 @@ namespace TWART.Controllers
 {
     public class BankController : System.Web.Mvc.Controller
     {
-        // GET: Bank
-        public ActionResult Index()
-        {
-            // Null handling
-            if (Session["loggedInState"] == null)
-            {
-                return Redirect("/403.html");
-            }
-
-            // Checks if logged in
-            bool state = (bool)Session["loggedInState"];
-            if (state == true)
-            {
-
-                // Establishes bank model
-                BankingModel bankModel = new BankingModel();
-
-                // Holds the new bank details
-                Bank newBank = new Bank();
-
-                // Stored details for the bank
-                newBank.Address_ID = int.Parse(Request.Form[0]);
-                newBank.SortCode = Request.Form[1];
-                newBank.AccountNumber = int.Parse(Request.Form[1]);
-                newBank.Customer_ID = int.Parse(Request.Form[2]);
-
-                // Adds the object to the database
-                bankModel.CreateBank(newBank);
-
-                // Return the created bank to view
-                return View(newBank);
-            }
-            else
-            {
-                // If not logged in
-                return Redirect("/login.html");
-            }
-        }
-
         // Returns a list of all banks
         public ActionResult GetBanks()
         {
@@ -65,7 +26,6 @@ namespace TWART.Controllers
                 // Creates models
                 var bankModel = new BankingModel();
                 var addressModel = new AddressModel();
-                var customerModel = new CustomerModel();
                 
                 // Gets the complete list
                 var bl = bankModel.ListBanking();
@@ -81,17 +41,9 @@ namespace TWART.Controllers
                         {
                             address = addressModel.SearchAddress(bank.Address_ID);
                         }
-                        
-                        // Acquires, and adds the customer details
-                        Customer customer = null;
-                        if (bank.Customer_ID != 0)
-                        {
-                            customer = customerModel.SearchCustomers(bank.Customer_ID);
-                        }
 
                         // Appends objects to bank
                         bank.Address = address;
-                        bank.Customer = customer;
                     }
 
                     // Returns the list
