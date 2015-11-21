@@ -39,6 +39,8 @@ namespace TWART.Models
                         cmd.Parameters.AddWithValue("DestinationAddressID", o.DestinationAddressID);
                         cmd.Parameters.AddWithValue("SourceAddressID", o.SourceAddressID);
                         cmd.Parameters.AddWithValue("AccountID", o.AccountID);
+                        cmd.Parameters.AddWithValue("DesiredDeliveryDate", o.DesiredDeliveryDate);
+
 
                         ret = int.Parse(cmd.ExecuteScalar().ToString());
 
@@ -77,6 +79,8 @@ namespace TWART.Models
                         cmd.Parameters.AddWithValue("DestinationAddressID", o.DestinationAddressID);
                         cmd.Parameters.AddWithValue("SourceAddressID", o.SourceAddressID);
                         cmd.Parameters.AddWithValue("AccountID", o.AccountID);
+                        cmd.Parameters.AddWithValue("DesiredDeliveryDate", o.DesiredDeliveryDate);
+
 
                         cmd.ExecuteNonQuery();
 
@@ -147,6 +151,8 @@ namespace TWART.Models
                         o.DestinationAddressID = int.Parse(reader["Destination_Address"].ToString());
                         o.SourceAddressID = int.Parse(reader["Source_Address"].ToString());
                         o.AccountID = int.Parse(reader["Account_ID"].ToString());
+                        o.DesiredDeliveryDate = DateTime.Parse(reader["Desired_Delivery_Date"].ToString());
+
 
                         orderList.Add(o);
                     }
@@ -189,6 +195,8 @@ namespace TWART.Models
                         o.DestinationAddressID = int.Parse(reader["Destination_Address"].ToString());
                         o.SourceAddressID = int.Parse(reader["Source_Address"].ToString());
                         o.AccountID = int.Parse(reader["Account_ID"].ToString());
+                        o.DesiredDeliveryDate = DateTime.Parse(reader["Desired_Delivery_Date"].ToString());
+
 
                     }
 

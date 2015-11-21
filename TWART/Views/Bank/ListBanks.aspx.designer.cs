@@ -7,18 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TWART.Views.Admin {
+namespace TWART.Views.Bank {
     
     
-    public partial class newOrderSpec {
+    public partial class ListBanks {
         
         /// <summary>
-        /// orderSpec control.
+        /// bankingForm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm orderSpec;
+        protected global::System.Web.UI.HtmlControls.HtmlForm bankingForm;
     }
 }

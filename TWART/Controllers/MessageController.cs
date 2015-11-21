@@ -21,15 +21,15 @@ namespace TWART.Controllers
             Message newMessage = new Message();
 
             // Stored details for the customer
-            newMessage.Name = Request.Form[0];
-            newMessage.Email = Request.Form[1];
-            newMessage.MessageBody = Request.Form[2];
+            newMessage.Name = Request.Form["name"];
+            newMessage.Email = Request.Form["email"];
+            newMessage.MessageBody = Request.Form["Message"];
 
             // Creates the message
             messageModel.CreateMessage(newMessage);
 
             // Return created message to view
-            return View(newMessage);
+            return Redirect("/TWART/Index");
         }
 
         // Deletes a message
@@ -65,7 +65,7 @@ namespace TWART.Controllers
         }
 
         // Gets a list of messages
-        public ActionResult GetMessages()
+        public ActionResult ShowMessages()
         {
             // Null handling
             if (Session["loggedInState"] == null)

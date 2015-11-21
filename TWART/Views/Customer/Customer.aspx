@@ -20,7 +20,7 @@
             <!-- Logo -->
             <div id="logo">
                 <span class="image avatar48">
-                    <img src="../../images/avatar.jpg" alt="" /></span>
+                    <img src="images/avatar.jpg" alt="" /></span>
                 <h1 id="title">TWART Shipping Corporation</h1>
                 <p id="session">Welcome <%=Session["username"].ToString() %></p>
             </div>
@@ -42,7 +42,7 @@
         </div>
     </div>
     <!-- Main -->
-    <form id="customerForm" runat="server">
+    <form id="customer" runat="server">
         <div id="main">
             <!-- Client View -->
             <section id="client" class="top">

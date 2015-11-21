@@ -28,8 +28,7 @@
             <nav id="nav">
                 <ul>
                     <li><a href="adminIndex" id="foobar-link"><span class="icon fa-hand-o-left">Control Panel</span></a></li>
-                    <li><a href="#specification" id="orderSpec" class="skel-layers-ignoreHref"><span class="icon fa-archive">Package Specifications</span></a></li>
-                    <li><a href="#orders" id="ordersinfo" class="skel-layers-ignoreHref"><span class="icon fa-list">Order List</span></a></li>
+                    <li><a href="#orders" id="ordersinfo" class="skel-layers-ignoreHref"><span class="icon fa-plus">New Order</span></a></li>
                 </ul>
             </nav>
         </div>
@@ -42,7 +41,7 @@
         </div>
     </div>
     <!-- Main -->
-    <form id="orderForm" runat="server">
+    <form id="order" runat="server">
         <div id="main">
             <!-- Client View -->
             <section id="client" class="top">
@@ -54,19 +53,11 @@
             </section>
             <!-- Controls -->
 
-            <!-- Package Specification -->
-            <section id="specification" class="four">
-                <div class="container">
-                    <a href="#">Package Specifications</a>
-                    <p>Use this control to get Package Specifications for Orders.</p>
-                </div>
-            </section>
-
             <!-- User -->
             <section id="orders" class="four">
                 <div class="container">
-                    <a href="#">View Orders</a>
-                    <p>Use this control to View orders that have been created.</p>
+                    <a href="#">Create an Order</a>
+                    <p>Use this control to create a new order.</p>
                 </div>
             </section>
 

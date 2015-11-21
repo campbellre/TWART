@@ -54,8 +54,11 @@
         <!-- Controls -->
         <section id="clientList" class="two">
             <div class="container">
-                <form action="createCustomer" method="POST" runat="server">
+                <form action="/Customer/create" method="POST" runat="server">
                     <table>
+                        <tr>
+                            <asp:TextBox runat="server" ID="newClientName">Client Name</asp:TextBox>
+                        </tr>
                         <tr>
                             <% foreach (var addresses in Model)
                                {
@@ -64,8 +67,23 @@
                                    item.Value = addresses.ID.ToString();
                                    newAddress.Items.Add(item);
                                } %>
-                            <asp:TextBox runat="server" ID="newClientName">Client Name</asp:TextBox>
                             <asp:DropDownList runat="server" ID="newAddress"></asp:DropDownList>
+                        </tr>
+                        <tr>
+                            <% foreach (var bank in Model)
+                               {
+                                   //creates list items
+                                   ListItem item = new ListItem(bank);
+                                   item.Value = bank.ID.ToString();
+                                   bankList.Items.Add(item);
+                               } %>
+                            <asp:DropDownList runat="server" ID="bankList"></asp:DropDownList>
+                        </tr>
+                        <tr>
+                            <asp:DropDownList runat="server" ID="accountType">
+                                <asp:ListItem>Standard</asp:ListItem>
+                                <asp:ListItem>Premium</asp:ListItem>
+                            </asp:DropDownList>
                         </tr>
                     </table>
                     <div class="row">

@@ -138,9 +138,10 @@
     </Content>
     <Content Include="Views\Admin\OLDeditCustomer.aspx" />
     <Content Include="Views\Admin\OLDnewCustomer.aspx" />
-    <Content Include="Views\Admin\newSpec.aspx" />
+    <Content Include="Views\Admin\editCustomer.aspx" />
+    <Content Include="Views\Admin\newCustomer.aspx" />
+    <Content Include="Views\Admin\newOrder.aspx" />
     <Content Include="Views\Admin\orders.aspx" />
-    <Content Include="Views\Admin\orderSpec.aspx" />
     <Content Include="Views\Admin\Users.aspx" />
     <Content Include="Views\Banking\Banking.aspx" />
     <Content Include="Views\Admin\OLDdeleteCustomer.aspx" />
@@ -150,6 +151,7 @@
     <Content Include="Views\Customer\edit.aspx" />
     <Content Include="Views\Customer\newCustomer.aspx" />
     <Content Include="Views\Customer\viewinfo.aspx" />
+    <Content Include="Views\Employee\delete.aspx" />
     <Content Include="Views\Employee\Employees.aspx" />
     <Content Include="Views\Index\adminIndex.aspx" />
     <Content Include="Views\Index\clientIndex.aspx" />
@@ -168,7 +170,6 @@
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\DepotController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
-    <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\Register.cs" />
@@ -268,12 +269,12 @@
     <Compile Include="Views\Admin\OLDnewCustomer.aspx.designer.cs">
       <DependentUpon>OLDnewCustomer.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Admin\newSpec.aspx.cs">
-      <DependentUpon>newSpec.aspx</DependentUpon>
+    <Compile Include="Views\Admin\newOrder.aspx.cs">
+      <DependentUpon>newOrder.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Admin\newSpec.aspx.designer.cs">
-      <DependentUpon>newSpec.aspx</DependentUpon>
+    <Compile Include="Views\Admin\newOrder.aspx.designer.cs">
+      <DependentUpon>newOrder.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Admin\orders.aspx.cs">
       <DependentUpon>orders.aspx</DependentUpon>
@@ -331,6 +332,20 @@
     <Compile Include="Views\Customer\viewinfo.aspx.designer.cs">
       <DependentUpon>viewinfo.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Employee\delete.aspx.cs">
+      <DependentUpon>delete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Employee\delete.aspx.designer.cs">
+      <DependentUpon>delete.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Employee\edit.aspx.cs">
+      <DependentUpon>edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Employee\edit.aspx.designer.cs">
+      <DependentUpon>edit.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Employee\Employees.aspx.cs">
       <DependentUpon>Employees.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -381,13 +396,6 @@
     <Content Include="assets\fonts\FontAwesome.otf" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Employee\Web.config" />
-    <None Include="Views\Employee\Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="Views\Employee\Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
