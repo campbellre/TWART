@@ -35,6 +35,8 @@ namespace TWART.Models
 
                         cmd.Parameters.AddWithValue("AccountID", user.AccountID);
                         cmd.Parameters.AddWithValue("pName", user.Name);
+                        cmd.Parameters.AddWithValue("pUsername", user.AccountID);
+                        cmd.Parameters.AddWithValue("pPwd", user.Name);
 
 
                         ret = int.Parse(cmd.ExecuteScalar().ToString());
@@ -68,6 +70,8 @@ namespace TWART.Models
                         cmd.Parameters.AddWithValue("PUID", user.UserID);
                         cmd.Parameters.AddWithValue("AccountID", user.AccountID);
                         cmd.Parameters.AddWithValue("pName", user.Name);
+                        cmd.Parameters.AddWithValue("pUsername", user.AccountID);
+                        cmd.Parameters.AddWithValue("PPWD", user.Name);
     
 
 
@@ -135,6 +139,7 @@ namespace TWART.Models
                         user.UserID = int.Parse(reader["UID"].ToString());
                         user.AccountID = int.Parse(reader["Account_ID"].ToString());
                         user.Name = reader["Name"].ToString();
+                        user.Username = reader["Username"].ToString();
 
                     }
 
@@ -173,6 +178,7 @@ namespace TWART.Models
                         user.UserID = int.Parse(reader["UID "].ToString());
                         user.AccountID = int.Parse(reader["Account_ID"].ToString());
                         user.Name = reader["Name"].ToString();
+                        user.Username = reader["Username"].ToString();
 
                         userList.Add(user);
                     }
