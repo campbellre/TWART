@@ -1,11 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ListBanks.aspx.cs" Inherits="TWART.Views.Bank.ListBanks" %>
-
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="view.aspx.cs" Inherits="TWART.Views.Admin.ViewAddress" %>
 
 <%@ Import Namespace="System.Web.Mvc.Html" %>
 <%@ Import Namespace="TWART.DataObjects" %>
 <!DOCTYPE html>
 <html>
-<head>
+<head runat="server">
     <title>TWART Shipping Co.</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -28,7 +27,7 @@
             <!-- Nav -->
             <nav id="nav">
                 <ul>
-                    <li><a href="adminIndex" id="foobar-link"><span class="icon fa-hand-o-left">Control Panel</span></a></li>
+                    <li><a href="../Customer" id="about-link"><span class="icon fa-home">Client Information</span></a></li>
                 </ul>
             </nav>
         </div>
@@ -40,36 +39,38 @@
             </ul>
         </div>
     </div>
-    <!-- Main -->
-    <form id="bankingForm" runat="server">
-        <div id="main">
-            <!-- Client View -->
-            <section id="client" class="top">
-                <div class="container">
-                    <header>
-                        <h2>Title</h2>
-                    </header>
-                </div>
-            </section>
-            <!-- Controls -->
-            <section id="controls" class="two">
-                <div class="container">
-                    <table>
-                        <% foreach (var bank in Model)
-                           { %>
-                        <tr>
-                            <td><%= Html.Encode(bank.Address_ID) %></td>
-                            <td><%= Html.Encode(bank.SortCode) %></td>
-                            <td><%= Html.Encode(bank.AccountNumber) %></td>
-                            <td><%= Html.ActionLink("Edit", "edit", new { id = bank.ID}) %> </td>
-                            <td><%= Html.ActionLink("Delete", "delete", new { id = bank.ID})  %></td>
-                        </tr>
-                        <% } %>
-                    </table>
-                </div>
-             </section>
-        </div>
-    </form>
+    <!-- Grid Display -->
+    <div id="main">
+        <!-- Admin Control Panel -->
+        <section id="admin" class="top">
+            <div class="container">
+                <header>
+                    <h2>Client's Full Addresses</h2>
+                </header>
+            </div>
+        </section>
+        <!-- Full Address -->
+        <section id="controls" class="two">
+            <div class="container">
+                <table>
+
+                    <% Address viewAddress = (Address)Model; %>
+                    
+                    <tr><th><p>LINE 1</p></th><th><p>LINE 2</p></th><th><p>LINE 3</p></th><th><p>LINE 4</p></th><th><p>LINE 5</p></th><th><p>COUNTY</p></th><th><p>COUNTRY</p></th><th><p>POSTAL CODE</p></th></tr>
+                    <tr>
+                        <td><%= Html.Encode(viewAddress.LineOne) %></td>
+                        <td><%= Html.Encode(viewAddress.LineTwo) %></td>
+                        <td><%= Html.Encode(viewAddress.LineThree) %></td>
+                        <td><%= Html.Encode(viewAddress.LineFour) %></td>
+                        <td><%= Html.Encode(viewAddress.LineFive) %></td>
+                        <td><%= Html.Encode(viewAddress.County) %></td>
+                        <td><%= Html.Encode(viewAddress.Country) %></td>
+                        <td><%= Html.Encode(viewAddress.PostalCode) %></td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+    </div>
     <!-- Footer -->
     <div id="footer">
         <!-- Copyright -->
@@ -83,7 +84,7 @@
     <script src="../../assets/js/jquery.scrollzer.min.js"></script>
     <script src="../../assets/js/skel.min.js"></script>
     <script src="../../assets/js/util.js"></script>
-    <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+    <!--[if lte IE 8]><script src="../../assets/js/ie/respond.min.js"></script><![endif]-->
     <script src="../../assets/js/main.js"></script>
 </body>
 </html>

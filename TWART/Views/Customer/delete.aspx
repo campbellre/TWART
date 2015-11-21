@@ -1,6 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="viewinfo.aspx.cs" Inherits="TWART.Views.Admin.OLDviewinfo" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="delete.aspx.cs" Inherits="TWART.Views.Customer.delete" %>
 
-<%@ Import Namespace="System.Web.Mvc.Html" %>
 <%@ Import Namespace="TWART.DataObjects" %>
 <!DOCTYPE html>
 <html>
@@ -27,7 +26,7 @@
             <!-- Nav -->
             <nav id="nav">
                 <ul>
-                    <li><a href="customer" id="about-link"><span class="icon fa-home">Client Information</span></a></li>
+                    <li><a href="/Customer" id="about-link"><span class="icon fa-home">Client Information</span></a></li>
                 </ul>
             </nav>
         </div>
@@ -35,39 +34,31 @@
             <!-- Social Icons -->
             <ul class="icons">
                 <li><a href="https://github.com/campbellre/TWART" class="icon fa-github"><span class="label">Github</span></a></li>
-                <li><a href="index.html#contact" class="icon fa-envelope"><span class="label">Email</span></a></li>
+                <li><a href="#contact" class="icon fa-envelope"><span class="label">Email</span></a></li>
             </ul>
         </div>
     </div>
-    <!-- Grid Display -->
+    <!-- Delete -->
     <div id="main">
-        <!-- Admin Control Panel -->
-        <section id="admin" class="top">
+        <!-- Warning -->
+        <section id="top" class="top">
             <div class="container">
                 <header>
-                    <h2>Client's Full Addresses</h2>
+                    <h2 style="color: #ff0000">Are You Sure You Want To Delete this?</h2>
                 </header>
             </div>
         </section>
-        <!-- Full Address -->
+        <!-- Controls -->
         <section id="controls" class="two">
-            <div class="container">
-                <table>
-                    <% Customer viewCustomer = (Customer)Model; %>
-                    <tr>
-                        <td><%= Html.Encode(viewCustomer.Name) %></td>
-                        <td><%= Html.Encode(viewCustomer.Address.LineOne) %></td>
-                        <td><%= Html.Encode(viewCustomer.Address.LineTwo) %></td>
-                        <td><%= Html.Encode(viewCustomer.Address.LineThree) %></td>
-                        <td><%= Html.Encode(viewCustomer.Address.LineFour) %></td>
-                        <td><%= Html.Encode(viewCustomer.Address.LineFive) %></td>
-                        <td><%= Html.Encode(viewCustomer.Address.State) %></td>
-                        <td><%= Html.Encode(viewCustomer.Address.County) %></td>
-                        <td><%= Html.Encode(viewCustomer.Address.Country) %></td>
-                        <td><%= Html.Encode(viewCustomer.Address.PostalCode) %></td>
-                    </tr>
-                </table>
-            </div>
+            <% Customer deleteCustomer = (Customer)Model; %>
+            <form action="/customer/delete" method="POST">
+                <div class="row">
+                    <div class="12u$">
+                        <input type="hidden" name="id" value="<%= deleteCustomer.ID %>" />
+                        <input type="submit" value="Delete" />
+                    </div>
+                </div>
+            </form>
         </section>
     </div>
     <!-- Footer -->

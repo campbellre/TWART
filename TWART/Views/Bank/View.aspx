@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Banking.aspx.cs" Inherits="TWART.Views.Admin.Banking" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="view.aspx.cs" Inherits="TWART.Views.Bank.ListBanks" %>
 
 
 <%@ Import Namespace="System.Web.Mvc.Html" %>
@@ -55,12 +55,14 @@
             <section id="controls" class="two">
                 <div class="container">
                     <table>
-                        <% foreach (var banking in Model)
+                        <% foreach (var bank in Model)
                            { %>
                         <tr>
                             <td><%= Html.Encode(bank.Address_ID) %></td>
-                            <td><%= Html.ActionLink("Edit", "edit", new { id = b.Address_Id}) %> </td>
-                            <td><%= Html.ActionLink("Delete", "delete", new { id = b.Address_Id})  %></td>
+                            <td><%= Html.Encode(bank.SortCode) %></td>
+                            <td><%= Html.Encode(bank.AccountNumber) %></td>
+                            <td><%= Html.ActionLink("Edit", "edit", new { id = bank.ID}) %> </td>
+                            <td><%= Html.ActionLink("Delete", "delete", new { id = bank.ID})  %></td>
                         </tr>
                         <% } %>
                     </table>
