@@ -10,8 +10,8 @@ namespace TWART.Controllers
 {
     public class AccountController : System.Web.Mvc.Controller
     {
-        // GET: Account
-        public ActionResult Index()
+        // Creates an account
+        public ActionResult Create()
         {
             // Ensures logged in
             if (Session["loggedInState"] == null)
