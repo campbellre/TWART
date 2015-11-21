@@ -42,7 +42,7 @@ namespace TWART.Controllers
                             address = addressModel.SearchAddress(bank.Address_ID);
                         }
 
-                        // Appends objects to bank
+                        // Appends object to bank
                         bank.Address = address;
                     }
 

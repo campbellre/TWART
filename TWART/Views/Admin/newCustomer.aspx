@@ -63,9 +63,8 @@
                                    newAddress.Items.Add(item);
                                } %>
                             <asp:TextBox runat="server" ID="newClientName">Client Name</asp:TextBox>
+                    <br />
                             <asp:DropDownList runat="server" ID="newAddress"></asp:DropDownList>
-                        </tr>
-                    </table>
                     <div class="row">
                         <div class="12u$">
                             <input type="submit" value="Add" />

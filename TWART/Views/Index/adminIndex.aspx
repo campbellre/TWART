@@ -81,7 +81,7 @@
             <!-- Address -->
             <section id="address" class="two">
                 <div class="container">
-                    <a href="Address">Address</a>
+                    <a href="../Address/Address">Address</a>
                     <p>Use this control to create, retrieve, update or delete on our address system.</p>
                 </div>
             </section>

@@ -200,6 +200,8 @@ namespace TWART.Controllers
             loginMod.CreateUser(user);
             return Redirect("adminIndex");
         }
+        
+
         public ActionResult Delete()
         {
             //If there is no valid session, return forbidden

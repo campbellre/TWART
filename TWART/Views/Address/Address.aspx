@@ -47,12 +47,28 @@
             <section id="client" class="top">
                 <div class="container">
                     <header>
-                        <h2>Title</h2>
+                        <h2>Addresses</h2>
                     </header>
                 </div>
             </section>
+            
             <!-- Controls -->
-            <section id="controls" class="middle">
+            <section id="controls" class="two">
+                <div class="container">
+                    <table>
+                        <% foreach (var address in Model)
+                           { %>
+                        <tr>
+                            <td><%= Html.Encode(address.LineOne) %></td>
+                            <td><%= Html.Encode(address.LineTwo) %></td>
+                            <td><%= Html.Encode(address.PostalCode) %></td>
+                            <td><%= Html.ActionLink("View", "ViewAddress", new { id = address.ID })%></td>
+                            <td><%= Html.ActionLink("Edit", "edit", new { id = address.ID })%></td>
+                            <td><%= Html.ActionLink("Delete", "delete", new { id = address.ID })%></td>
+                        </tr>
+                        <% } %>
+                    </table>
+                </div>
             </section>
         </div>
     </form>

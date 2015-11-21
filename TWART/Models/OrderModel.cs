@@ -40,7 +40,7 @@ namespace TWART.Models
                         cmd.Parameters.AddWithValue("SourceAddressID", o.SourceAddressID);
                         cmd.Parameters.AddWithValue("AccountID", o.AccountID);
 
-                        ret = (int) cmd.ExecuteScalar();
+                        ret = int.Parse(cmd.ExecuteScalar().ToString());
 
                         transaction.Commit();
 

@@ -37,7 +37,7 @@ namespace TWART.Models
                         cmd.Parameters.AddWithValue("AccountTypeID", a.AccountTypeID);
                         cmd.Parameters.AddWithValue("BankingID", a.BankID);
 
-                        ret = (int)cmd.ExecuteScalar();
+                        ret = int.Parse(cmd.ExecuteScalar().ToString());
 
                         transaction.Commit();
 

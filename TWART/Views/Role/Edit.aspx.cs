@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace TWART.Views.Admin
+namespace TWART.Views.Role
 {
-    public partial class Address : System.Web.Mvc.ViewPage<IEnumerable<Address>>
+    public partial class Edit : System.Web.Mvc.ViewPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
