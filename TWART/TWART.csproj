@@ -132,7 +132,7 @@
     <Content Include="index.html" />
     <Content Include="login.html" />
     <Content Include="Views\Admin\Accounts.aspx" />
-    <Content Include="Views\Admin\Address.aspx" />
+    <Content Include="Views\Address\Address.aspx" />
     <Content Include="Views\Admin\Banking.aspx" />
     <Content Include="Views\Admin\customer.aspx">
       <BrowseToURL>~/Admin/customer</BrowseToURL>
@@ -141,10 +141,10 @@
     <Content Include="Views\Admin\adminIndex.aspx">
       <BrowseToURL>~/Admin/adminIndex</BrowseToURL>
     </Content>
-    <Content Include="Views\Admin\Employees.aspx" />
     <Content Include="Views\Admin\newCustomer.aspx" />
     <Content Include="Views\Admin\Orders.aspx" />
     <Content Include="Views\Admin\Users.aspx" />
+    <Content Include="Views\Address\ViewAddress.aspx" />
     <Content Include="Views\Client\clientIndex.aspx" />
     <Content Include="Views\Admin\delete.aspx" />
     <Content Include="Views\Admin\viewinfo.aspx" />
@@ -160,7 +160,7 @@
     <Compile Include="Controllers\AddressController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BankController.cs" />
-    <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\DepotController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
@@ -222,11 +222,11 @@
     <Compile Include="Views\Admin\Accounts.aspx.designer.cs">
       <DependentUpon>Accounts.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Admin\Address.aspx.cs">
+    <Compile Include="Views\Address\Address.aspx.cs">
       <DependentUpon>Address.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Admin\Address.aspx.designer.cs">
+    <Compile Include="Views\Address\Address.aspx.designer.cs">
       <DependentUpon>Address.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Admin\Banking.aspx.cs">
@@ -264,13 +264,6 @@
     <Compile Include="Views\Admin\adminIndex.aspx.designer.cs">
       <DependentUpon>adminIndex.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Admin\Employees.aspx.cs">
-      <DependentUpon>Employees.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Admin\Employees.aspx.designer.cs">
-      <DependentUpon>Employees.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Views\Admin\newCustomer.aspx.cs">
       <DependentUpon>newCustomer.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -291,6 +284,13 @@
     </Compile>
     <Compile Include="Views\Admin\Users.aspx.designer.cs">
       <DependentUpon>Users.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Address\ViewAddress.aspx.cs">
+      <DependentUpon>ViewAddress.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Address\ViewAddress.aspx.designer.cs">
+      <DependentUpon>ViewAddress.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Client\clientIndex.aspx.cs">
       <DependentUpon>clientIndex.aspx</DependentUpon>
@@ -359,6 +359,7 @@
   <ItemGroup>
     <Folder Include="Views\Account\" />
     <Folder Include="Views\Contact\" />
+    <Folder Include="Views\Customer\" />
     <Folder Include="Views\Depot\" />
     <Folder Include="Views\Transaction\" />
   </ItemGroup>

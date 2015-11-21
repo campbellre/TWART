@@ -56,6 +56,7 @@ namespace TWART.Controllers
                 return Redirect("/login.html");
             }
         }
+
         // Controller for modification of an address
         public ActionResult EditAddress()
         {
@@ -131,5 +132,67 @@ namespace TWART.Controllers
                 return Redirect("/login.html");
             }
         }
+
+        public ActionResult Address()
+        {
+            // Null handling
+            if (Session["loggedInState"] == null)
+            {
+                return Redirect("/403.html");
+            }
+
+            // Checks if logged in
+            bool state = (bool)Session["loggedInState"];
+            if (state == true)
+            {
+                // Creates an address model
+                AddressModel addressModel = new AddressModel();
+
+                // Holds the new address
+                List<Address> addressList = addressModel.GetAddressesList();
+
+
+                // Passes back to the view with address
+                return View(addressList);
+            }
+            else
+            {
+                // If not logged in
+                return Redirect("/login.html");
+            }
+        }
+
+        public ActionResult ViewAddress()
+        {
+            // Null handling
+            if (Session["loggedInState"] == null)
+            {
+                return Redirect("/403.html");
+            }
+
+            // Checks if logged in
+            bool state = (bool)Session["loggedInState"];
+            if (state == true)
+            {
+                // Creates an address model
+                AddressModel addressModel = new AddressModel();
+
+                // Get the ID as a parameter
+                var id = int.Parse(Url.RequestContext.RouteData.Values["id"].ToString());
+
+                // Holds the new address
+                Address theAddress = addressModel.SearchAddress(id);
+
+                // Passes back to the view with address
+                return View(theAddress);
+            }
+            else
+            {
+                // If not logged in
+                return Redirect("/login.html");
+            }
+        }
+
     }
+
 }
