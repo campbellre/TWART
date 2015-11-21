@@ -193,7 +193,7 @@ namespace TWART.Controllers
                 customerModel.DeleteCustomer(customerID);
 
                 // Return to the account page
-                return Redirect("/Customer/deleteCustomers");
+                return Redirect("/Customer/Customer");
             }
             else
             {
