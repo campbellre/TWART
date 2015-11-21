@@ -154,11 +154,14 @@
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AddressController.cs" />
-    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BankController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Handlers\AccountHandler.cs" />
+    <Compile Include="Handlers\AddressHandler.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Handlers\BankHandler.cs" />
+    <Compile Include="Handlers\ContactHandler.cs" />
+    <Compile Include="Handlers\CustomerHandler.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\DepotController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
@@ -168,7 +171,7 @@
     <Compile Include="Controllers\Register.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
-    <Compile Include="Controllers\TransactionController.cs" />
+    <Compile Include="Handlers\TransactionController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DataObjects\Account.cs" />
     <Compile Include="DataObjects\Account_Type.cs" />

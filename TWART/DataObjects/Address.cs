@@ -17,7 +17,5 @@ namespace TWART.DataObjects
         public String County { get; set; }
         public String Country { get; set; }
         public String PostalCode { get; set; }
-
-
     }
 }
