@@ -34,7 +34,6 @@ namespace TWART.Models
 
                         cmd.Parameters.AddWithValue("ItemName", g.Name);
                         cmd.Parameters.AddWithValue("TransportationID", g.Name);
-                        cmd.Parameters.AddWithValue("DesiredDeliveryDate", g.Name);
                         cmd.Parameters.AddWithValue("HandlingRequirements", g.Name);
 
 
@@ -69,7 +68,6 @@ namespace TWART.Models
 
                         cmd.Parameters.AddWithValue("GoodsID", g.ID);
                         cmd.Parameters.AddWithValue("TransportationID", g.TransportID);
-                        cmd.Parameters.AddWithValue("DesiredDeliveryDate", g.DesiredDeliveryDate);
                         cmd.Parameters.AddWithValue("HandlingRequirements", g.HandlingRequirments);
 
                         cmd.ExecuteNonQuery();
@@ -136,7 +134,6 @@ namespace TWART.Models
                         goods.ID = int.Parse(reader["Goods_ID"].ToString());
                         goods.Name = reader["Item_Name"].ToString();
                         goods.TransportID = int.Parse(reader["Transportation_ID"].ToString());
-                        goods.DesiredDeliveryDate = DateTime.Parse(reader["Desired_Delivery_Date"].ToString());
                         goods.HandlingRequirments = reader["Handling_requirements"].ToString();
 
 
@@ -177,7 +174,6 @@ namespace TWART.Models
                         goods.ID = int.Parse(reader["Goods_ID "].ToString());
                         goods.Name = reader["Item_Name"].ToString();
                         goods.HandlingRequirments = reader["Handling_requirements"].ToString();
-                        goods.DesiredDeliveryDate = DateTime.Parse(reader["Desired_Delivery_Date"].ToString());
                         goods.TransportID = int.Parse(reader["Transportation_ID "].ToString());
 
                         goodsList.Add(goods);
