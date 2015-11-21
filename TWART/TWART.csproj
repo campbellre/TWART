@@ -136,6 +136,7 @@
     <Content Include="Views\Employee\edit.aspx" />
     <Content Include="Views\Order\create.aspx" />
     <Content Include="Views\Order\orders.aspx" />
+    <Content Include="Views\User\CreateEmployee.aspx" />
     <Content Include="Views\User\Users.aspx" />
     <Content Include="Views\Customer\view.aspx" />
     <Content Include="Views\Bank\Bank.aspx" />
@@ -253,6 +254,13 @@
     </Compile>
     <Compile Include="Views\Order\orders.aspx.designer.cs">
       <DependentUpon>orders.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\CreateEmployee.aspx.cs">
+      <DependentUpon>CreateEmployee.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\User\CreateEmployee.aspx.designer.cs">
+      <DependentUpon>CreateEmployee.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\User\Users.aspx.cs">
       <DependentUpon>Users.aspx</DependentUpon>
