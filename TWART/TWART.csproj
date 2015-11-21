@@ -134,17 +134,17 @@
     <Content Include="Views\Account\Accounts.aspx" />
     <Content Include="Views\Address\Address.aspx" />
     <Content Include="Views\Address\ViewAddress.aspx" />
-    <Content Include="Views\Admin\Admin.aspx" />
     <Content Include="Views\Admin\customer.aspx">
       <BrowseToURL>~/Admin/customer</BrowseToURL>
     </Content>
-    <Content Include="Views\Admin\Edit.aspx" />
+    <Content Include="Views\Admin\editCustomer.aspx" />
     <Content Include="Views\Admin\newCustomer.aspx" />
-    <Content Include="Views\Admin\Orders.aspx" />
+    <Content Include="Views\Admin\newSpec.aspx" />
+    <Content Include="Views\Admin\orders.aspx" />
     <Content Include="Views\Admin\orderSpec.aspx" />
     <Content Include="Views\Admin\Users.aspx" />
     <Content Include="Views\Banking\Banking.aspx" />
-    <Content Include="Views\Admin\delete.aspx" />
+    <Content Include="Views\Admin\deleteCustomer.aspx" />
     <Content Include="Views\Admin\viewinfo.aspx" />
     <Content Include="Views\Employee\Employees.aspx" />
     <Content Include="Views\Index\adminIndex.aspx" />
@@ -238,13 +238,6 @@
     <Compile Include="Views\Address\ViewAddress.aspx.designer.cs">
       <DependentUpon>ViewAddress.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Admin\Admin.aspx.cs">
-      <DependentUpon>Admin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Admin\Admin.aspx.designer.cs">
-      <DependentUpon>Admin.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Views\Admin\customer.aspx.cs">
       <DependentUpon>customer.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -252,19 +245,19 @@
     <Compile Include="Views\Admin\customer.aspx.designer.cs">
       <DependentUpon>customer.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Admin\delete.aspx.cs">
-      <DependentUpon>delete.aspx</DependentUpon>
+    <Compile Include="Views\Admin\deleteCustomer.aspx.cs">
+      <DependentUpon>deleteCustomer.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Admin\delete.aspx.designer.cs">
-      <DependentUpon>delete.aspx</DependentUpon>
+    <Compile Include="Views\Admin\deleteCustomer.aspx.designer.cs">
+      <DependentUpon>deleteCustomer.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Admin\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
+    <Compile Include="Views\Admin\editCustomer.aspx.cs">
+      <DependentUpon>editCustomer.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Admin\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
+    <Compile Include="Views\Admin\editCustomer.aspx.designer.cs">
+      <DependentUpon>editCustomer.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Admin\newCustomer.aspx.cs">
       <DependentUpon>newCustomer.aspx</DependentUpon>
@@ -273,12 +266,19 @@
     <Compile Include="Views\Admin\newCustomer.aspx.designer.cs">
       <DependentUpon>newCustomer.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Admin\Orders.aspx.cs">
-      <DependentUpon>Orders.aspx</DependentUpon>
+    <Compile Include="Views\Admin\newSpec.aspx.cs">
+      <DependentUpon>newSpec.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Admin\Orders.aspx.designer.cs">
-      <DependentUpon>Orders.aspx</DependentUpon>
+    <Compile Include="Views\Admin\newSpec.aspx.designer.cs">
+      <DependentUpon>newSpec.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\orders.aspx.cs">
+      <DependentUpon>orders.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\orders.aspx.designer.cs">
+      <DependentUpon>orders.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Admin\orderSpec.aspx.cs">
       <DependentUpon>orderSpec.aspx</DependentUpon>
