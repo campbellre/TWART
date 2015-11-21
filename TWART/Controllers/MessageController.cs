@@ -81,7 +81,7 @@ namespace TWART.Controllers
                 MessageModel messageModel = new MessageModel();
 
                 // Gets a complete list of messages
-                var messageList = messageModel.MessageList();
+                var messageList = messageModel.ListMessages();
 
                 // Returns the message list
                 return View(messageList);
