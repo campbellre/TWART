@@ -34,7 +34,7 @@
                     <li><a href="#banking" id="banking-link" class="skel-layers-ignoreHref"><span class="icon fa-credit-card">Banking System</span></a></li>
                     <li><a href="#accounts" id="accounts-link" class="skel-layers-ignoreHref"><span class="icon fa-clone">Accounts System</span></a></li>
                     <li><a href="#employees" id="employees-link" class="skel-layers-ignoreHref"><span class="icon fa-industry">Employees System</span></a></li>
-                    <li><a href="Logout" id="logout"><span class="icon fa-hand-o-left">Log Out</span></a></li>
+                    <li><a href="/Admin/Logout" id="logout"><span class="icon fa-hand-o-left">Log Out</span></a></li>
                 </ul>
             </nav>
         </div>
@@ -88,7 +88,7 @@
             <!-- Banking -->
             <section id="banking" class="three">
                 <div class="container">
-                    <a href="/Bank/ListBanks">Banking</a>
+                    <a href="/Bank/view">Banking</a>
                     <p>Use this control to create, retrieve, update or delete on our banking system.</p>
                 </div>
             </section>
