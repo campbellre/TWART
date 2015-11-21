@@ -254,9 +254,13 @@ namespace TWART.Controllers
             }
             else
             {
-
-                var c = new Employee();
-
+                int id = int.Parse(Request.Form["newAddress"]);
+                String name = Request.Form["newClientName"];
+                Customer client = new Customer();
+                client.Name = name;
+                client.Address_ID = id;
+                var cm = new CustomerModel();
+                cm.CreateCustomer(client);
                 return Redirect("Customer");
             }
         }
