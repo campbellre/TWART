@@ -221,12 +221,14 @@
     </Compile>
     <Compile Include="Views\Address\Address.aspx.cs">
       <DependentUpon>Address.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Views\Address\Address.aspx.designer.cs">
       <DependentUpon>Address.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Address\ViewAddress.aspx.cs">
       <DependentUpon>ViewAddress.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Views\Address\ViewAddress.aspx.designer.cs">
       <DependentUpon>ViewAddress.aspx</DependentUpon>
