@@ -97,7 +97,6 @@ namespace TWART.Controllers
                 // Stored details for the customer
                 newCustomer.Name = Request.Form[0];
                 newCustomer.Address_ID = addressID;
-                newCustomer.Account_ID = int.Parse(Request.Form[1]);
                 
                 // Creates the customer
                 customerModel.CreateCustomer(newCustomer);
@@ -207,7 +206,7 @@ namespace TWART.Controllers
                 
                 // TODO: Confirm this is the correct return state
                 // Return to the account page
-                return Redirect("/Customer/deleteCustomers");
+                return Redirect("/Customer/Customer");
             }
             else
             {

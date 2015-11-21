@@ -66,15 +66,13 @@ namespace TWART.Controllers
         }
 
         // Gets all orders
-        public ActionResult Order()
+        public ActionResult Orders()
         {
             if (Session["loggedInState"] == null)
             {
-                Redirect("/403.html");
+                return Redirect("/403.html");
             }
-
-            bool state = (bool)Session["loggedInState"];
-            if (state == true)
+            else
             {
                 // Create a OrderModel object
                 var om = new OrderModel();
@@ -84,11 +82,6 @@ namespace TWART.Controllers
 
                 // Return the OrderList
                 return View(ol);
-            }
-            else
-            {
-                // If not logged in
-                return Redirect("/login.html");
             }
         }
 

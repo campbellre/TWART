@@ -7,18 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TWART.Views.Admin {
+namespace TWART.Views.Order {
     
     
-    public partial class OLDCustomerView {
+    public partial class OrderView {
         
         /// <summary>
-        /// customerForm control.
+        /// order control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm customerForm;
+        protected global::System.Web.UI.HtmlControls.HtmlForm order;
     }
 }

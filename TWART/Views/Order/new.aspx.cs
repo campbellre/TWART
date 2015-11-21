@@ -4,11 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using TWART.DataObjects;
 
-namespace TWART.Views.Admin
+namespace TWART.Views.Order
 {
-    public partial class OrderView : System.Web.Mvc.ViewPage<IEnumerable<Order>>
+    public partial class newOrder : System.Web.Mvc.ViewPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

@@ -8,12 +8,6 @@ namespace TWART.Controllers
 {
     public class IndexController : System.Web.Mvc.Controller
     {
-        //
-        // GET: /Index/
-        public ActionResult Index()
-        {
-            return View();
-        }
 
         public ActionResult AdminIndex()
         {

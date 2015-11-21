@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="OLDcustomer.aspx.cs" Inherits="TWART.Views.Admin.OLDCustomerView" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="orders.aspx.cs" Inherits="TWART.Views.Order.OrderView" %>
 
 <%@ Import Namespace="System.Web.Mvc.Html" %>
 <%@ Import Namespace="TWART.DataObjects" %>
@@ -20,16 +20,15 @@
             <!-- Logo -->
             <div id="logo">
                 <span class="image avatar48">
-                    <img src="../../images/avatar.jpg" alt="" /></span>
+                    <img src="/images/avatar.jpg" alt="" /></span>
                 <h1 id="title">TWART Shipping Corporation</h1>
                 <p id="session">Welcome <%=Session["username"].ToString() %></p>
             </div>
             <!-- Nav -->
             <nav id="nav">
                 <ul>
-                    <li><a href="adminIndex" id="control"><span class="icon fa-hand-o-left">Control Panel</span></a></li>
-                    <li><a href="#clientList" id="clientList" class="skel-layers-ignoreHref"><span class="icon fa-users">Client List</span></a></li>
-                    <li><a href="#newClient" id="new" class="skel-layers-ignoreHref"><span class="icon fa-plus">New Client</span></a></li>
+                    <li><a href="adminIndex" id="foobar-link"><span class="icon fa-hand-o-left">Control Panel</span></a></li>
+                    <li><a href="#orders" id="ordersinfo" class="skel-layers-ignoreHref"><span class="icon fa-plus">New Order</span></a></li>
                 </ul>
             </nav>
         </div>
@@ -37,47 +36,31 @@
             <!-- Social Icons -->
             <ul class="icons">
                 <li><a href="https://github.com/campbellre/TWART" class="icon fa-github"><span class="label">Github</span></a></li>
-                <li><a href="/index.html#contact" class="icon fa-envelope"><span class="label">Email</span></a></li>
+                <li><a href="#contact" class="icon fa-envelope"><span class="label">Email</span></a></li>
             </ul>
         </div>
     </div>
     <!-- Main -->
-    <form id="customerForm" runat="server">
+    <form id="order" runat="server">
         <div id="main">
             <!-- Client View -->
             <section id="client" class="top">
                 <div class="container">
                     <header>
-                        <h2>Client Information</h2>
+                        <h2>Order Service</h2>
                     </header>
                 </div>
             </section>
             <!-- Controls -->
-            <!-- New -->
-            <section id="newClient" class="three">
+
+            <!-- User -->
+            <section id="orders" class="four">
                 <div class="container">
-                    <a href="newCustomer">Create a new Client</a>
-                    <p>Use this control to create a our client on our system.</p>
+                    <a href="#">Create an Order</a>
+                    <p>Use this control to create a new order.</p>
                 </div>
             </section>
-            <!-- View -->
-            <section id="controls" class="two">
-                <div class="container">
-                    <table>
-                        <% foreach (var customer in Model)
-                           { %>
-                        <tr>
-                            <td><%= Html.Encode(customer.Name) %></td>
-                            <td><%= Html.Encode(customer.Address.LineOne) %></td>
-                            <td><%= Html.Encode(customer.Address.LineTwo) %></td>
-                            <td><%= Html.ActionLink("View", "viewinfo", new { id = customer.ID })%></td>
-                            <td><%= Html.ActionLink("Edit", "edit", new { id = customer.ID })%></td>
-                            <td><%= Html.ActionLink("Delete", "delete", new { id = customer.ID })%></td>
-                        </tr>
-                        <% } %>
-                    </table>
-                </div>
-            </section>
+
         </div>
     </form>
     <!-- Footer -->

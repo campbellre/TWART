@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="clientIndex.aspx.cs" Inherits="TWART.Views.Client.IndexView" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Users.aspx.cs" Inherits="TWART.Views.User.Users" %>
+
 
 <%@ Import Namespace="System.Web.Mvc.Html" %>
 <%@ Import Namespace="TWART.DataObjects" %>
@@ -27,8 +28,7 @@
             <!-- Nav -->
             <nav id="nav">
                 <ul>
-                    <li><a href="customer.aspx" class="skel-layers-ignoreHref" id="foobar-link"><span class="icon fa-hand-o-right">Our Clients</span></a></li>
-                    <li><a href="login.html" class="skel-layers-ignoreHref" id="foobar-link"><span class="icon fa-hand-o-right">Log Out</span></a></li>
+                    <li><a href="adminIndex" id="foobar-link"><span class="icon fa-hand-o-left">Control Panel</span></a></li>
                 </ul>
             </nav>
         </div>
@@ -36,26 +36,36 @@
             <!-- Social Icons -->
             <ul class="icons">
                 <li><a href="https://github.com/campbellre/TWART" class="icon fa-github"><span class="label">Github</span></a></li>
-                <li><a href="#contact" class="icon fa-envelope"><span class="label">Email</span></a></li>
+                <li><a href="../../index.html#contact" class="icon fa-envelope"><span class="label">Email</span></a></li>
             </ul>
         </div>
     </div>
     <!-- Main -->
-    <form id="customerForm" runat="server">
-        <div id="main">
-            <!-- Client View -->
-            <section id="client" class="top">
-                <div class="container">
-                    <header>
-                        <h2 style="color: #ff0000">Administrator's Control Panel</h2>
-                    </header>
-                </div>
-            </section>
-            <!-- Controls -->
-            <section id="controls" class="middle">
-            </section>
-        </div>
-    </form>
+    <div id="main">
+        <!-- Client View -->
+        <section id="client" class="top">
+            <div class="container">
+                <header>
+                    <h2>Add a new Admin User</h2>
+                </header>
+            </div>
+        </section>
+        <!-- Edit Here -->
+        <section id="edit" class="two">
+            <div class="container">
+                <form action="/admin/CreateCustomer" method="POST">
+                    <div class="row">
+                        <div class="12u$">
+                            <input type="text" name="username" placeholder="Username" /><br/>
+                            <input type="password" name="password" placeholder="Password" /><br/>
+                            <input type="password" name="confirmPassword" placeholder="Confirm Password" /><br/>
+                            <input type="submit" value="Update" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
     <!-- Footer -->
     <div id="footer">
         <!-- Copyright -->

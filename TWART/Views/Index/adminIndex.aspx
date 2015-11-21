@@ -67,14 +67,14 @@
             <!-- Order -->
             <section id="order" class="three">
                 <div class="container">
-                    <a href="Orders">Order Controls</a>
+                    <a href="/Order/Orders">Order Controls</a>
                     <p>Use this control to create, retrieve, update or delete on our order system.</p>
                 </div>
             </section>
             <!-- User -->
             <section id="user" class="four">
                 <div class="container">
-                    <a href="Users">Create New Admin User</a>
+                    <a href="/User/Users">Create New Admin User</a>
                     <p>Use this control to create, retrieve, update or delete on our user system.</p>
                 </div>
             </section>

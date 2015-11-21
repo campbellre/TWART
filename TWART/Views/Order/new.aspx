@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="newOrder.aspx.cs" Inherits="TWART.Views.Admin.newOrder" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="new.aspx.cs" Inherits="TWART.Views.Admin.newOrder" %>
 
 <%@ Import Namespace="System.Web.Mvc.Html" %>
 <%@ Import Namespace="TWART.DataObjects" %>

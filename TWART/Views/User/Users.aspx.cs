@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace TWART.Views.Admin
+namespace TWART.Views.User
 {
-    public partial class OLDdelete : System.Web.Mvc.ViewPage
+    public partial class Users : System.Web.Mvc.ViewPage<IEnumerable<Users>>
     {
         protected void Page_Load(object sender, EventArgs e)
         {
