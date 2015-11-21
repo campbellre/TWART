@@ -22,7 +22,7 @@
                 <span class="image avatar48">
                     <img src="../../images/avatar.jpg" alt="" /></span>
                 <h1 id="title">TWART Shipping Corporation</h1>
-                <p id="title">Welcome <%=Session["username"].ToString() %></p>
+                <p id="session">Welcome <%=Session["username"].ToString() %></p>
             </div>
             <!-- Nav -->
             <nav id="nav">
@@ -81,7 +81,7 @@
             <!-- Address -->
             <section id="address" class="two">
                 <div class="container">
-                    <a href="Address">Address</a>
+                    <a href="../Address/Address">Address</a>
                     <p>Use this control to create, retrieve, update or delete on our address system.</p>
                 </div>
             </section>

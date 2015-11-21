@@ -188,7 +188,7 @@ namespace TWART.Controllers
                 return Redirect("Customer");
             }
         }
-        public ActionResult CreateCustomer()
+        public ActionResult CreateUser()
         {
             String username = Request.Form["username"].ToString();
             String password = Request.Form["password"].ToString();
@@ -200,6 +200,8 @@ namespace TWART.Controllers
             loginMod.CreateUser(user);
             return Redirect("adminIndex");
         }
+        
+
         public ActionResult Delete()
         {
             //If there is no valid session, return forbidden
@@ -246,7 +248,24 @@ namespace TWART.Controllers
             }
 
         }
-
+        public ActionResult createCustomer()
+        {
+            if (Session["loggedInState"] == null)
+            {
+                return Redirect("/403.html");
+            }
+            else
+            {
+                int id = int.Parse(Request.Form["newAddress"]);
+                String name = Request.Form["newClientName"];
+                Customer client = new Customer();
+                client.Name = name;
+                client.Address_ID = id;
+                var cm = new CustomerModel();
+                cm.CreateCustomer(client);
+                return Redirect("Customer");
+            }
+        }
         public ActionResult ViewInfo()
         {
             //If there is no valid session, return forbidden
@@ -262,7 +281,6 @@ namespace TWART.Controllers
                 var customerModel = new CustomerModel();
                 // Call the method to get the list
                 var customerList = customerModel.ListCustomers();
-
 
                 // Get the ID requested
                 var p = int.Parse(Url.RequestContext.RouteData.Values["id"].ToString());

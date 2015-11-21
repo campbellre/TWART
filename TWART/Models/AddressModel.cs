@@ -43,7 +43,7 @@ namespace TWART.Models
                         cmd.Parameters.AddWithValue("Pcountry", a.Country);
                         cmd.Parameters.AddWithValue("postalCode", a.PostalCode);
 
-                        ret = (int)cmd.ExecuteScalar();
+                        ret = int.Parse(cmd.ExecuteScalar().ToString());
 
                         transaction.Commit();
 

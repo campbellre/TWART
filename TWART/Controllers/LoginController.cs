@@ -35,7 +35,6 @@ namespace TWART.Controllers
             // get Account Type / Access levels from Database
             LoggedIn logState = loginModel.Login(thisUser);
 
-
             // Sets the Session variables
             Session["loggedInState"] = logState.State;
             Session["username"] = thisUser.username;

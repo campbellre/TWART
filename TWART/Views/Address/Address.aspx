@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Employees.aspx.cs" Inherits="TWART.Views.Admin.Employees" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Address.aspx.cs" Inherits="TWART.Views.Admin.Address" %>
 
 
 <%@ Import Namespace="System.Web.Mvc.Html" %>
@@ -23,7 +23,7 @@
                 <span class="image avatar48">
                     <img src="../../images/avatar.jpg" alt="" /></span>
                 <h1 id="title">TWART Shipping Corporation</h1>
-                <p id="title">Welcome <%=Session["username"].ToString() %></p>
+                <p id="session">Welcome <%=Session["username"].ToString() %></p>
             </div>
             <!-- Nav -->
             <nav id="nav">
@@ -41,28 +41,30 @@
         </div>
     </div>
     <!-- Main -->
-    <form id="employeesForm" runat="server">
+    <form id="addressForm" runat="server">
         <div id="main">
             <!-- Client View -->
             <section id="client" class="top">
                 <div class="container">
                     <header>
-                        <h2>Title</h2>
+                        <h2>Addresses</h2>
                     </header>
                 </div>
             </section>
+            
             <!-- Controls -->
             <section id="controls" class="two">
                 <div class="container">
                     <table>
-                        <% foreach (var employee in Model)
+                        <% foreach (var address in Model)
                            { %>
                         <tr>
-                            <td><%= Html.Encode(employee.Firstname + ", " + employee.Lastname) %></td>
-                            <td><%= Html.Encode(employee.Department) %></td>
-                            <td><%= Html.Encode(employee.RoleO) %></td>
-                            <td><%= Html.ActionLink("Edit", "edit", new { id = employee.Id })%></td>
-                            <td><%= Html.ActionLink("Delete", "delete", new { id = employee.Id })%></td>
+                            <td><%= Html.Encode(address.LineOne) %></td>
+                            <td><%= Html.Encode(address.LineTwo) %></td>
+                            <td><%= Html.Encode(address.PostalCode) %></td>
+                            <td><%= Html.ActionLink("View", "ViewAddress", new { id = address.ID })%></td>
+                            <td><%= Html.ActionLink("Edit", "edit", new { id = address.ID })%></td>
+                            <td><%= Html.ActionLink("Delete", "delete", new { id = address.ID })%></td>
                         </tr>
                         <% } %>
                     </table>

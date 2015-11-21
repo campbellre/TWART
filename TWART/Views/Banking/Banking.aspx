@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Accounts.aspx.cs" Inherits="TWART.Views.Admin.Accounts" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Banking.aspx.cs" Inherits="TWART.Views.Admin.Banking" %>
+
 
 <%@ Import Namespace="System.Web.Mvc.Html" %>
 <%@ Import Namespace="TWART.DataObjects" %>
@@ -22,7 +23,7 @@
                 <span class="image avatar48">
                     <img src="../../images/avatar.jpg" alt="" /></span>
                 <h1 id="title">TWART Shipping Corporation</h1>
-                <p id="title">Welcome <%=Session["username"].ToString() %></p>
+                <p id="session">Welcome <%=Session["username"].ToString() %></p>
             </div>
             <!-- Nav -->
             <nav id="nav">
@@ -40,7 +41,7 @@
         </div>
     </div>
     <!-- Main -->
-    <form id="accountsForm" runat="server">
+    <form id="bankingForm" runat="server">
         <div id="main">
             <!-- Client View -->
             <section id="client" class="top">
@@ -51,8 +52,20 @@
                 </div>
             </section>
             <!-- Controls -->
-            <section id="controls" class="middle">
-            </section>
+            <section id="controls" class="two">
+                <div class="container">
+                    <table>
+                        <% foreach (var banking in Model)
+                           { %>
+                        <tr>
+                            <td><%= Html.Encode(bank.Address) %></td>
+                            <td><%= Html.ActionLink("Edit", "edit", new { id = bank.Address_Id}) %> </td>
+                            <td><%= Html.ActionLink("Delete", "delete", new { id = bank.Address_Id})  %></td>
+                        </tr>
+                        <% } %>
+                    </table>
+                </div>
+             </section>
         </div>
     </form>
     <!-- Footer -->

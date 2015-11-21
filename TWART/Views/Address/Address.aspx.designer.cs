@@ -10,7 +10,7 @@
 namespace TWART.Views.Admin {
     
     
-    public partial class Address {
+    public partial class IndexView {
         
         /// <summary>
         /// addressForm control.

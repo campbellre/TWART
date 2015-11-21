@@ -11,7 +11,7 @@ namespace TWART.Controllers
     public class RoleController : System.Web.Mvc.Controller
     {
         // GET: Role
-        public ActionResult Index()
+        public ActionResult Create()
         {
             // Ensures logged in
             if (Session["loggedInState"] == null)
@@ -45,6 +45,19 @@ namespace TWART.Controllers
             }
         }
 
+
+        public ActionResult Edit()
+        {
+            int id = int.Parse(RouteData.Values["ID"].ToString());
+
+            var roleEditor = new RoleModel();
+
+            Role editingRole = roleEditor.SearchRoles(id);
+
+            return View(editingRole);
+        }
+
+
         // Controller for modification of a role
         public ActionResult EditRole()
         {
@@ -72,7 +85,7 @@ namespace TWART.Controllers
                 roleModel.EditRole(role);
 
                 // Passes back to the view
-                return View();
+                return Redirect("/Role/");
             }
             else
             {
@@ -112,7 +125,7 @@ namespace TWART.Controllers
         }
 
         // Lists all roles
-        public ActionResult ListRoles()
+        public ActionResult Index()
         {
             // Null handling
             if (Session["loggedInState"] == null)

@@ -22,7 +22,7 @@
                 <span class="image avatar48">
                     <img src="../../images/avatar.jpg" alt="" /></span>
                 <h1 id="title">TWART Shipping Corporation</h1>
-                <p id="title">Welcome <%=Session["username"].ToString() %></p>
+                <p id="session">Welcome <%=Session["username"].ToString() %></p>
             </div>
             <!-- Nav -->
             <nav id="nav">
@@ -52,18 +52,19 @@
         <!-- Controls -->
         <section id="controls" class="two">
             <div class="container">
-                <form action="newCustomer" method="POST" runat="server">
+                <form action="createCustomer" method="POST" runat="server">
                     <table>
                         <tr>
                             <% foreach (var addresses in Model)
                                {
-                                   ListItem item = new ListItem(addresses.LineOne.ToString() + ", " + addresses.LineTwo.ToString() + ", " + addresses.PostalCode.ToString());
+                                   //creates list items
+                                   ListItem item = new ListItem(addresses.ID + ", " + addresses.LineOne.ToString() + ", " + addresses.LineTwo.ToString() + ", " + addresses.PostalCode.ToString());
+                                   item.Value = addresses.ID.ToString();
                                    newAddress.Items.Add(item);
                                } %>
                             <asp:TextBox runat="server" ID="newClientName">Client Name</asp:TextBox>
+                    <br />
                             <asp:DropDownList runat="server" ID="newAddress"></asp:DropDownList>
-                        </tr>
-                    </table>
                     <div class="row">
                         <div class="12u$">
                             <input type="submit" value="Add" />

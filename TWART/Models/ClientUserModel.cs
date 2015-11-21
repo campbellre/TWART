@@ -4,23 +4,23 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using MySql.Data.MySqlClient;
-using MySql.Data.MySqlClient.Memcached;
 using TWART.DataObjects;
 using TWART.Properties;
 
 namespace TWART.Models
 {
-    public class ContactModel
+    public class ClientUserModel
     {
+
         private MySqlConnection connect;
         private string _connectionString;
 
-        public ContactModel()
+        public ClientUserModel()
         {
             _connectionString = Resource1.ConnectionString;
         }
 
-        public int CreateContact(Contact c)
+        public int CreateClientUser(ClientUser user)
         {
             int ret = 0;
             using (connect = new MySqlConnection(_connectionString))
@@ -30,13 +30,11 @@ namespace TWART.Models
                 {
                     try
                     {
-                        string query = "NewContact";
+                        string query = "NewClientUser";
                         var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
 
-                        cmd.Parameters.AddWithValue("PForename", c.Forename);
-                        cmd.Parameters.AddWithValue("PSurname", c.Surname);
-                        cmd.Parameters.AddWithValue("JobTitle", c.Position);
-                        cmd.Parameters.AddWithValue("TelNumber", c.PhoneNumber);
+                        cmd.Parameters.AddWithValue("AccountID", user.AccountID);
+                        cmd.Parameters.AddWithValue("pName", user.Name);
 
 
                         ret = int.Parse(cmd.ExecuteScalar().ToString());
@@ -55,7 +53,7 @@ namespace TWART.Models
             return ret;
         }
 
-        public void EditContact(Contact c)
+        public void EditClientUser(ClientUser user)
         {
             using (connect = new MySqlConnection(_connectionString))
             {
@@ -64,15 +62,43 @@ namespace TWART.Models
                 {
                     try
                     {
-                        string query = "EditContact";
+                        string query = "EditClientUser";
                         var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
 
-                        cmd.Parameters.AddWithValue("ContactID", c.ID);
-                        cmd.Parameters.AddWithValue("PForename", c.Forename);
-                        cmd.Parameters.AddWithValue("PSurname", c.Surname);
-                        cmd.Parameters.AddWithValue("JobTitle", c.Position);
-                        cmd.Parameters.AddWithValue("TelNumber", c.PhoneNumber);
+                        cmd.Parameters.AddWithValue("PUID", user.UserID);
+                        cmd.Parameters.AddWithValue("AccountID", user.AccountID);
+                        cmd.Parameters.AddWithValue("pName", user.Name);
+    
 
+
+                        cmd.ExecuteNonQuery();
+                         
+                        transaction.Commit();
+
+                        connect.Close();
+                    }
+                    catch (InvalidOperationException ioException)
+                    {
+                        transaction.Rollback();
+                        connect.Close();
+                    }
+                }
+            }
+        }
+
+        public void DeleteClientUser(int ID)
+        {
+            using (connect = new MySqlConnection(_connectionString))
+            {
+                connect.Open();
+                using (MySqlTransaction transaction = connect.BeginTransaction())
+                {
+                    try
+                    {
+                        string query = "DeleteClientUser";
+                        var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
+
+                        cmd.Parameters.AddWithValue("PUID", ID);
 
                         cmd.ExecuteNonQuery();
 
@@ -89,62 +115,27 @@ namespace TWART.Models
             }
         }
 
-
-        public void DeleteContact(int ID) 
+        // The main method to get a user account.
+        public ClientUser SearchClientUser(int ID)
         {
-            using (connect = new MySqlConnection(_connectionString))
-            {
-                connect.Open();
-                using (MySqlTransaction transaction = connect.BeginTransaction())
-                {
-                    try
-                    {
-                        string query = "DeleteContact";
-                        var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
-
-                        cmd.Parameters.AddWithValue("ContactID", ID);
-
-
-                        cmd.ExecuteNonQuery();
-
-                        transaction.Commit();
-
-                        connect.Close();
-                    }
-                    catch (InvalidOperationException ioException)
-                    {
-                        transaction.Rollback();
-                        connect.Close();
-                    }
-                }
-            }
-        }
-
-        
-        // Main method for getting a customer
-        public Contact SearchContact(int ID)
-        {
-            var contact = new Contact();
+            var user = new ClientUser();
 
             using (connect = new MySqlConnection(_connectionString))
             {
                 try
                 {
-                    string query = "GetContact";
+                    string query = "GetClientUser";
                     var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
-
-                    cmd.Parameters.AddWithValue("ContactID", ID);
 
                     connect.Open();
 
                     var reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
-                        contact.ID = (int)reader["Contact_ID"];
-                        contact.Forename = reader["Forename"].ToString();
-                        contact.Surname = reader["Surname"].ToString();
-                        contact.Position = reader["Job_Title"].ToString();
-                        contact.PhoneNumber = reader["Tel_Number"].ToString();
+                        user.UserID = int.Parse(reader["UID"].ToString());
+                        user.AccountID = int.Parse(reader["Account_ID"].ToString());
+                        user.Name = reader["Name"].ToString();
+
                     }
 
                     connect.Close();
@@ -154,26 +145,23 @@ namespace TWART.Models
                     connect.Close();
                 }
 
-                return contact;
+                return user;
             }
         }
 
-        // Calls main method for getting a customer
-        public Contact SearchContact(Contact c)
+        public ClientUser SearchClientUser(ClientUser user)
         {
-            return SearchContact(c.ID);
+            return SearchClientUser(user.UserID);
         }
-
-        // List all customers
-        public List<Contact> ListContacts()
+        public List<ClientUser> ListAccounts()
         {
-            var contactList = new List<Contact>();
+            var userList = new List<ClientUser>();
 
             using (connect = new MySqlConnection(_connectionString))
             {
                 try
                 {
-                    string query = "ListContact";
+                    string query = "ListClientUser";
                     var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
 
                     connect.Open();
@@ -181,14 +169,12 @@ namespace TWART.Models
                     var reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
-                        var contact = new Contact();
-                        contact.ID = (int)reader["Contact_ID"];
-                        contact.Forename = reader["Forename"].ToString();
-                        contact.Surname = reader["Surname"].ToString();
-                        contact.Position = reader["Job_Title"].ToString();
-                        contact.PhoneNumber = reader["Tel_Number"].ToString();
+                        var user = new ClientUser();
+                        user.UserID = int.Parse(reader["UID "].ToString());
+                        user.AccountID = int.Parse(reader["Account_ID"].ToString());
+                        user.Name = reader["Name"].ToString();
 
-                        contactList.Add(contact);
+                        userList.Add(user);
                     }
 
                     connect.Close();
@@ -198,10 +184,9 @@ namespace TWART.Models
                     connect.Close();
                 }
 
-                return contactList;
+                return userList;
             }
         }
-
 
     }
 }

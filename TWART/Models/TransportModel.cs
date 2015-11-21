@@ -37,7 +37,7 @@ namespace TWART.Models
                         cmd.Parameters.AddWithValue("TransportationType", t.Type);
 
 
-                        ret = (int)cmd.ExecuteScalar();
+                        ret = int.Parse(cmd.ExecuteScalar().ToString());
 
                         transaction.Commit();
 
@@ -53,7 +53,7 @@ namespace TWART.Models
             return ret;
         }
 
-        public void EditAccount(Transport t)
+        public void EditTransport(Transport t)
         {
             using (connect = new MySqlConnection(_connectionString))
             {
@@ -84,7 +84,7 @@ namespace TWART.Models
             }
         }
 
-        public void DeleteAccount(int ID)
+        public void DeleteTransport(int ID)
         {
             using (connect = new MySqlConnection(_connectionString))
             {
@@ -114,7 +114,7 @@ namespace TWART.Models
         }
 
         // The main method to get a user account.
-        public Transport SearchAccount(int ID)
+        public Transport SearchTransport(int ID)
         {
             var transport = new Transport();
 
@@ -146,11 +146,11 @@ namespace TWART.Models
             }
         }
 
-        public Transport SearchAccount(Transport a)
+        public Transport SearchTransportt(Transport a)
         {
-            return SearchAccount(a.ID);
+            return SearchTransport(a.ID);
         }
-        public List<Transport> ListAccounts()
+        public List<Transport> ListTransports()
         {
             var transportList = new List<Transport>();
 
