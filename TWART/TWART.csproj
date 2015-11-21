@@ -142,9 +142,10 @@
     <Content Include="Views\Admin\orders.aspx" />
     <Content Include="Views\Admin\orderSpec.aspx" />
     <Content Include="Views\Admin\Users.aspx" />
-    <Content Include="Views\Banking\Banking.aspx" />
+    <Content Include="Views\Bank\Banking.aspx" />
     <Content Include="Views\Admin\deleteCustomer.aspx" />
     <Content Include="Views\Admin\viewinfo.aspx" />
+    <Content Include="Views\Bank\ListBanks.aspx" />
     <Content Include="Views\Employee\Employees.aspx" />
     <Content Include="Views\Index\adminIndex.aspx" />
     <Content Include="Views\Index\clientIndex.aspx" />
@@ -290,6 +291,13 @@
     </Compile>
     <Compile Include="Views\Admin\viewinfo.aspx.designer.cs">
       <DependentUpon>viewinfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Bank\ListBanks.aspx.cs">
+      <DependentUpon>ListBanks.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Bank\ListBanks.aspx.designer.cs">
+      <DependentUpon>ListBanks.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Employee\Employees.aspx.cs">
       <DependentUpon>Employees.aspx</DependentUpon>

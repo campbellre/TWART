@@ -88,7 +88,7 @@
             <!-- Banking -->
             <section id="banking" class="three">
                 <div class="container">
-                    <a href="Banking">Banking</a>
+                    <a href="/Bank/ListBanks">Banking</a>
                     <p>Use this control to create, retrieve, update or delete on our banking system.</p>
                 </div>
             </section>
