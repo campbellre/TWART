@@ -12,5 +12,8 @@ namespace TWART.DataObjects
         public String password { get; set; }
         public String email { get; set; }
         public String AccessLevel { get; set; }
+        public int EmployeeID { get; set; }
+
+	
     }
 }

@@ -20,6 +20,42 @@ namespace TWART.Models
             _connectionString = Resource1.ConnectionString;
         }
 
+
+        public LoggedIn Login(ClientUser u)
+        {
+            var l = new LoggedIn();
+
+            using (connect = new MySqlConnection(_connectionString))
+            {
+                try
+                {
+                    string query = "LoggingIn";
+                    var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
+
+                    cmd.Parameters.AddWithValue("UsersName", u.Username);
+                    cmd.Parameters.AddWithValue("UserPass", u.Password);
+
+                    connect.Open();
+
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        l.State = reader["login"].Equals(1);
+                        l.UserID = (int)reader["UID"];
+                        l.AccountID = int.Parse(reader["Account_ID"].ToString());
+                    }
+
+                    connect.Close();
+                }
+                catch (InvalidOperationException ioException)
+                {
+                    connect.Close();
+                }
+            }
+
+            return l;
+        }
+
         public int CreateClientUser(ClientUser user)
         {
             int ret = 0;

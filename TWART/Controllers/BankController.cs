@@ -11,7 +11,7 @@ namespace TWART.Controllers
     public class BankController : System.Web.Mvc.Controller
     {
         // Returns a list of all banks
-        public ActionResult GetBanks()
+        public ActionResult ListBanks()
         {
             // Null handling
             if (Session["loggedInState"] == null)
