@@ -51,13 +51,15 @@
         <!-- Controls -->
         <section id="controls" class="two">
             <div class="container">
-                <form action="newCustomer" method="POST" runat="server">
+                <form action="createCustomer" method="POST" runat="server">
                     <table>
                         <tr>
                             <% foreach (var addresses in Model)
                                {
-                                   ListItem item = new ListItem(addresses.LineOne.ToString() + ", " + addresses.LineTwo.ToString() + ", " + addresses.PostalCode.ToString());
+                                   ListItem item = new ListItem(addresses.ToString());
+                                   var addressid = addresses.ID;
                                    newAddress.Items.Add(item);
+                                   newAddress.SelectedValue = addressid.ToString();
                                } %>
                             <asp:TextBox runat="server" ID="newClientName">Client Name</asp:TextBox>
                             <asp:DropDownList runat="server" ID="newAddress"></asp:DropDownList>
