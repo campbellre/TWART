@@ -53,17 +53,14 @@
         <section id="controls" class="two">
             <div class="container">
                 <form action="newCustomer" method="POST" runat="server">
-                    <table>
-                        <tr>
                             <% foreach (var addresses in Model)
                                {
                                    ListItem item = new ListItem(addresses.LineOne.ToString() + ", " + addresses.LineTwo.ToString() + ", " + addresses.PostalCode.ToString());
                                    newAddress.Items.Add(item);
                                } %>
                             <asp:TextBox runat="server" ID="newClientName">Client Name</asp:TextBox>
+                    <br />
                             <asp:DropDownList runat="server" ID="newAddress"></asp:DropDownList>
-                        </tr>
-                    </table>
                     <div class="row">
                         <div class="12u$">
                             <input type="submit" value="Add" />
