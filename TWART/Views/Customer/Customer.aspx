@@ -70,8 +70,8 @@
                             <td><%= Html.Encode(customer.Name) %></td>
                             <td><%= Html.Encode(customer.Address.LineOne) %></td>
                             <td><%= Html.Encode(customer.Address.LineTwo) %></td>
-                            <td><%= Html.ActionLink("View", "viewinfo", new { id = customer.ID })%></td>
-                            <td><%= Html.ActionLink("Edit", "edit", new { id = customer.ID })%></td>
+                            <td><%= Html.ActionLink("View", "view", new { id = customer.ID })%></td>
+                            <td><%= Html.ActionLink("Edit", "editPage", new { id = customer.ID })%></td>
                             <td><%= Html.ActionLink("Delete", "delete", new { id = customer.ID })%></td>
                         </tr>
                         <% } %>
