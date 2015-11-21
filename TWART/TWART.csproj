@@ -149,6 +149,8 @@
     <Content Include="Views\Admin\delete.aspx" />
     <Content Include="Views\Admin\viewinfo.aspx" />
     <Content Include="Views\Employee\Employees.aspx" />
+    <Content Include="Views\Role\Edit.aspx" />
+    <Content Include="Views\Role\Index.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -311,6 +313,20 @@
     <Compile Include="Views\Employee\Employees.aspx.designer.cs">
       <DependentUpon>Employees.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Role\Edit.aspx.cs">
+      <DependentUpon>Edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Role\Edit.aspx.designer.cs">
+      <DependentUpon>Edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Role\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Role\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -344,7 +360,6 @@
     <Folder Include="Views\Account\" />
     <Folder Include="Views\Contact\" />
     <Folder Include="Views\Depot\" />
-    <Folder Include="Views\Role\" />
     <Folder Include="Views\Transaction\" />
   </ItemGroup>
   <ItemGroup>
