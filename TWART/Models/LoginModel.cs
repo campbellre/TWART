@@ -36,8 +36,7 @@ namespace TWART.Models
 
                         cmd.Parameters.AddWithValue("PUsername", u.username);
                         cmd.Parameters.AddWithValue("PPWD", u.password);
-                        cmd.Parameters.AddWithValue("PAccessLevel", u.AccessLevel);
-
+                        cmd.Parameters.AddWithValue("EmployeeID", u.EmployeeID);
 
                         ret = int.Parse(cmd.ExecuteScalar().ToString());
 

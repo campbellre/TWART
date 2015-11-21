@@ -18,5 +18,9 @@ namespace TWART.DataObjects
         {
             return State;
         }
+
+        // Same object of both client and employee 
+        // cause why not 
+        public int AccountID { get; set; }
     }
 }

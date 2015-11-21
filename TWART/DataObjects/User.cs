@@ -15,6 +15,7 @@ namespace TWART.DataObjects
         public String surname { get; set; }
         public String companyName { get; set; }
         public String AccessLevel { get; set; }
+        public int EmployeeID { get; set; }
 
     }
 }
