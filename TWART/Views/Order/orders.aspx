@@ -56,7 +56,7 @@
             <!-- User -->
             <section id="orders" class="four">
                 <div class="container">
-                    <a href="#">Create an Order</a>
+                    <a href="create">Create an Order</a>
                     <p>Use this control to create a new order.</p>
                 </div>
             </section>
