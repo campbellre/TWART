@@ -33,6 +33,7 @@ namespace TWART.Controllers
                 // Returns the customer list
                 return View(customerList);
             }
+
             else
             {
                 // If not logged in
@@ -107,11 +108,6 @@ namespace TWART.Controllers
                 // Creates an department placeholder
                 Customer customer = new Customer();
 
-        // Function to get a list of all customers
-        public ActionResult Customer()
-        {
-            //If there is no valid session, return forbidden
-
                 // Establish customer model
                 CustomerModel customerModel = new CustomerModel();
 
@@ -133,6 +129,7 @@ namespace TWART.Controllers
             }
         }
 
+
         // Allows deleting of customer
         public ActionResult delete()
         {
@@ -141,23 +138,6 @@ namespace TWART.Controllers
             {
                 return Redirect("/403.html");
             }
-            else
-            {
-                // Create a new AddressModel object
-                var addressModel = new AddressModel();
-                // Create a CustomerModel object
-                var customerModel = new CustomerModel();
-                // Call the method to get the list
-                var customerList = customerModel.ListCustomers();
-                foreach (var customer in customerList)
-                {
-                    Address address = addressModel.SearchAddress(customer.Address_ID);
-                    customer.Address = address;
-                }
-                // Return the CustomerList
-                return View(customerList);
-            }
-        }
 
             // Checks if logged in
             bool state = (bool)Session["loggedInState"];
