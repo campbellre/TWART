@@ -134,5 +134,33 @@ namespace TWART.Controllers
     //        }
     //    }
 
+
+        // Function to get a list of all customers
+        public ActionResult Customer()
+        {
+            //If there is no valid session, return forbidden
+            if (Session["loggedInState"] == null)
+            {
+                return Redirect("/403.html");
+            }
+            else
+            {
+                // Create a new AddressModel object
+                var addressModel = new AddressModel();
+                // Create a CustomerModel object
+                var customerModel = new CustomerModel();
+                // Call the method to get the list
+                var customerList = customerModel.ListCustomers();
+                foreach (var customer in customerList)
+                {
+                    Address address = addressModel.SearchAddress(customer.Address_ID);
+                    customer.Address = address;
+                }
+                // Return the CustomerList
+                return View(customerList);
+            }
+        }
+
+
     }
 }

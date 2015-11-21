@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TWART.Views.Admin {
+namespace TWART.Views.Order {
     
     
     public partial class newOrder {

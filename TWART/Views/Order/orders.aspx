@@ -27,7 +27,7 @@
             <!-- Nav -->
             <nav id="nav">
                 <ul>
-                    <li><a href="adminIndex" id="foobar-link"><span class="icon fa-hand-o-left">Control Panel</span></a></li>
+                    <li><a href="/admin" id="foobar-link"><span class="icon fa-hand-o-left">Control Panel</span></a></li>
                     <li><a href="#orders" id="ordersinfo" class="skel-layers-ignoreHref"><span class="icon fa-plus">New Order</span></a></li>
                 </ul>
             </nav>
