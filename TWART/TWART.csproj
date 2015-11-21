@@ -131,7 +131,6 @@
     <Content Include="images\pic07.jpg" />
     <Content Include="index.html" />
     <Content Include="login.html" />
-    <Content Include="Views\Account\Accounts.aspx" />
     <Content Include="Views\Address\Address.aspx" />
     <Content Include="Views\Address\ViewAddress.aspx" />
     <Content Include="Views\Admin\customer.aspx">
@@ -145,10 +144,24 @@
     <Content Include="Views\Admin\Users.aspx" />
     <Content Include="Views\Banking\Banking.aspx" />
     <Content Include="Views\Admin\deleteCustomer.aspx" />
+    <Content Include="Views\Admin\Accounts.aspx" />
+    <Content Include="Views\Admin\Address.aspx" />
+    <Content Include="Views\Admin\Banking.aspx" />
+    <Content Include="Views\Admin\customer.aspx">
+      <BrowseToURL>~/Admin/customer</BrowseToURL>
+    </Content>
+    <Content Include="Views\Admin\Edit.aspx" />
+    <Content Include="Views\Admin\adminIndex.aspx">
+      <BrowseToURL>~/Admin/adminIndex</BrowseToURL>
+    </Content>
+    <Content Include="Views\Admin\Employees.aspx" />
+    <Content Include="Views\Admin\newCustomer.aspx" />
+    <Content Include="Views\Admin\Orders.aspx" />
+    <Content Include="Views\Admin\Users.aspx" />
+    <Content Include="Views\Client\clientIndex.aspx" />
+    <Content Include="Views\Admin\delete.aspx" />
     <Content Include="Views\Admin\viewinfo.aspx" />
     <Content Include="Views\Employee\Employees.aspx" />
-    <Content Include="Views\Index\adminIndex.aspx" />
-    <Content Include="Views\Index\clientIndex.aspx" />
     <Content Include="Views\Role\Edit.aspx" />
     <Content Include="Views\Role\Index.aspx" />
     <Content Include="Web.config" />
@@ -164,11 +177,13 @@
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\DepotController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
+    <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\Register.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\TransactionController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DataObjects\Account.cs" />
     <Compile Include="DataObjects\Account_Type.cs" />
     <Compile Include="DataObjects\Address.cs" />
@@ -180,6 +195,7 @@
     <Compile Include="DataObjects\Depot.cs" />
     <Compile Include="DataObjects\Goods.cs" />
     <Compile Include="DataObjects\LoggedIn.cs" />
+    <Compile Include="DataObjects\Message.cs" />
     <Compile Include="DataObjects\Order.cs" />
     <Compile Include="DataObjects\Package.cs" />
     <Compile Include="DataObjects\OrderDateType.cs" />
@@ -200,6 +216,7 @@
     <Compile Include="Models\DepotModel.cs" />
     <Compile Include="Models\GoodsModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\MessageModel.cs" />
     <Compile Include="Models\OrderModel.cs" />
     <Compile Include="Models\RoleModel.cs" />
     <Compile Include="Models\PackageModel.cs" />
@@ -217,13 +234,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource1.resx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Account\Accounts.aspx.cs">
-      <DependentUpon>Accounts.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Account\Accounts.aspx.designer.cs">
-      <DependentUpon>Accounts.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Views\Address\Address.aspx.cs">
       <DependentUpon>Address.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -237,6 +247,27 @@
     </Compile>
     <Compile Include="Views\Address\ViewAddress.aspx.designer.cs">
       <DependentUpon>ViewAddress.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\Accounts.aspx.cs">
+      <DependentUpon>Accounts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\Accounts.aspx.designer.cs">
+      <DependentUpon>Accounts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\Address.aspx.cs">
+      <DependentUpon>Address.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\Address.aspx.designer.cs">
+      <DependentUpon>Address.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\Banking.aspx.cs">
+      <DependentUpon>Banking.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\Banking.aspx.designer.cs">
+      <DependentUpon>Banking.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Admin\customer.aspx.cs">
       <DependentUpon>customer.aspx</DependentUpon>
@@ -259,6 +290,20 @@
     <Compile Include="Views\Admin\editCustomer.aspx.designer.cs">
       <DependentUpon>editCustomer.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Admin\adminIndex.aspx.cs">
+      <DependentUpon>adminIndex.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\adminIndex.aspx.designer.cs">
+      <DependentUpon>adminIndex.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\Employees.aspx.cs">
+      <DependentUpon>Employees.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\Employees.aspx.designer.cs">
+      <DependentUpon>Employees.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Admin\newCustomer.aspx.cs">
       <DependentUpon>newCustomer.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -280,13 +325,6 @@
     <Compile Include="Views\Admin\orders.aspx.designer.cs">
       <DependentUpon>orders.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Admin\orderSpec.aspx.cs">
-      <DependentUpon>orderSpec.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Admin\orderSpec.aspx.designer.cs">
-      <DependentUpon>orderSpec.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Views\Admin\Users.aspx.cs">
       <DependentUpon>Users.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -294,12 +332,12 @@
     <Compile Include="Views\Admin\Users.aspx.designer.cs">
       <DependentUpon>Users.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Banking\Banking.aspx.cs">
-      <DependentUpon>Banking.aspx</DependentUpon>
+    <Compile Include="Views\Client\clientIndex.aspx.cs">
+      <DependentUpon>clientIndex.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Banking\Banking.aspx.designer.cs">
-      <DependentUpon>Banking.aspx</DependentUpon>
+    <Compile Include="Views\Client\clientIndex.aspx.designer.cs">
+      <DependentUpon>clientIndex.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Admin\viewinfo.aspx.cs">
       <DependentUpon>viewinfo.aspx</DependentUpon>
@@ -314,20 +352,6 @@
     </Compile>
     <Compile Include="Views\Employee\Employees.aspx.designer.cs">
       <DependentUpon>Employees.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Index\adminIndex.aspx.cs">
-      <DependentUpon>adminIndex.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Index\adminIndex.aspx.designer.cs">
-      <DependentUpon>adminIndex.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Index\clientIndex.aspx.cs">
-      <DependentUpon>clientIndex.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Index\clientIndex.aspx.designer.cs">
-      <DependentUpon>clientIndex.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Role\Edit.aspx.cs">
       <DependentUpon>Edit.aspx</DependentUpon>
@@ -373,10 +397,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Client\" />
+    <Folder Include="Views\Account\" />
     <Folder Include="Views\Contact\" />
     <Folder Include="Views\Depot\" />
+    <Folder Include="Views\Message\" />
     <Folder Include="Views\Transaction\" />
+    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resource1.resx">

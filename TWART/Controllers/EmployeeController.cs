@@ -24,7 +24,7 @@ namespace TWART.Controllers
             if (state == true)
             {
                 // Establishes employee model
-                EmployeesModel employeeModel = new EmployeesModel();
+                EmployeeModel employeeModel = new EmployeeModel();
 
                 // Holds the new employee
                 Employee newEmployee = new Employee();
@@ -80,7 +80,7 @@ namespace TWART.Controllers
                 employee.Role = int.Parse(Request.Form["role"]);
 
                 // Establish an employee model
-                var employeeModel = new EmployeesModel();
+                var employeeModel = new EmployeeModel();
 
                 // Conduct edit
                 employeeModel.EditEmployee(employee);
@@ -111,7 +111,7 @@ namespace TWART.Controllers
                 int employeeID = int.Parse(RouteData.Values["id"].ToString());
 
                 // Establishes employee model
-                EmployeesModel employeeModel = new EmployeesModel();
+                EmployeeModel employeeModel = new EmployeeModel();
 
                 // Deletes the employee from the database using the ID
                 employeeModel.DeleteEmployee(employeeID);
@@ -141,7 +141,7 @@ namespace TWART.Controllers
             if (state == true)
             {
                 // Creates models
-                var employeeModel = new EmployeesModel();
+                var employeeModel = new EmployeeModel();
                 var departmentModel = new DepartmentModel();
                 var roleModel = new RoleModel();
                 var depotModel = new DepotModel();
