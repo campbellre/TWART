@@ -178,10 +178,7 @@
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\Register.cs" />
     <Compile Include="Controllers\RoleController.cs" />
-    <Compile Include="Handlers\DepartmentHandler.cs" />
-    <Compile Include="Handlers\DepotHandler.cs" />
     <Compile Include="Handlers\EmployeeHandler.cs" />
-    <Compile Include="Handlers\RoleHandler.cs" />
     <Compile Include="Handlers\TransactionController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DataObjects\Account.cs" />

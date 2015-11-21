@@ -131,9 +131,6 @@ namespace TWART.Controllers
 
                 // Establishes handlers
                 EmployeeHandler emHandler = new EmployeeHandler();
-                DepartmentHandler deptHandler = new DepartmentHandler();
-                DepotHandler depoHandler = new DepotHandler();
-                RoleHandler roleHandler = new RoleHandler();
                 
                 // Extract for department details
                 int accountType = int.Parse(Request.Form["accountType"]);
