@@ -12,7 +12,5 @@ namespace TWART.DataObjects
         public int Address_ID { get; set; }
         public String SortCode { get; set; }
         public int AccountNumber { get; set; }
-        public Customer Customer { get; set; }
-        public int Customer_ID { get; set; }
     }
 }

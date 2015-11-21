@@ -27,17 +27,24 @@ namespace TWART.Controllers
                 AccountModel accountModel = new AccountModel();
                 AccountTypeModel accountTypeModel = new AccountTypeModel();
                 ContactModel contactModel = new ContactModel();
+                BankingModel bankModel = new BankingModel();
 
                 // Holds the new account
                 Account newAccount = new Account();
                 Account_Type accountType = new Account_Type();
                 Contact newContact = new Contact();
+                Bank newBank = new Bank();
 
-                // Get the account type int
+                // Gets the account type
                 int accountTypeID = int.Parse(Request.Form["accountTypeID"]);
 
                 // Stored details for the account type
                 accountType = accountTypeModel.SearchAccountType(accountTypeID);
+
+                // Stored details for the bank
+                newBank.Address_ID = int.Parse(Request.Form[0]);
+                newBank.SortCode = Request.Form[1];
+                newBank.AccountNumber = int.Parse(Request.Form[1]);
 
                 // Stored details for the contact
                 newContact.Forename = Request.Form[2];
@@ -45,14 +52,15 @@ namespace TWART.Controllers
                 newContact.Position = Request.Form[4];
                 newContact.PhoneNumber = Request.Form[5];
 
-                // Commences save to database
+                // Acquires needed IDs
                 int contactID = contactModel.CreateContact(newContact);
+                int bankID = bankModel.CreateBank(newBank);
 
                 // Stored details for the account
                 newAccount.CustomerID = int.Parse(Request.Form[0]);
                 newAccount.ContactID = contactID;
                 newAccount.AccountTypeID = accountTypeID;
-                newAccount.BankID = int.Parse(Request.Form[1]);
+                newAccount.BankID = bankID;
                 
                 // Creates the account
                 accountModel.CreateAccount(newAccount);
@@ -192,7 +200,7 @@ namespace TWART.Controllers
                     Account_Type accountType = null;
                     if (account.AccountTypeID != 0)
                     {
-                        accountType = accountTypeModel.SearchAccountTypeModel(accountTypeID);
+                        accountType = accountTypeModel.SearchAccountType(account.AccountTypeID);
                     }
 
                     // Acquires customer from customerID

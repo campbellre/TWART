@@ -7,7 +7,6 @@ namespace TWART.DataObjects
 {
     public class Account
     {
-        // accessors and mutators
         public int ID { get; set; }
         public Contact Contact { get; set; }
         public int ContactID { get; set; }
