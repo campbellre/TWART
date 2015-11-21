@@ -148,6 +148,7 @@
     <Content Include="Views\Employee\Employees.aspx" />
     <Content Include="Views\Index\adminIndex.aspx" />
     <Content Include="Views\Index\clientIndex.aspx" />
+    <Content Include="Views\Message\ShowMessages.aspx" />
     <Content Include="Views\Role\Edit.aspx" />
     <Content Include="Views\Role\Index.aspx" />
     <Content Include="Web.config" />
@@ -311,6 +312,13 @@
     </Compile>
     <Compile Include="Views\Index\clientIndex.aspx.designer.cs">
       <DependentUpon>clientIndex.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Message\ShowMessages.aspx.cs">
+      <DependentUpon>ShowMessages.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Message\ShowMessages.aspx.designer.cs">
+      <DependentUpon>ShowMessages.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Role\Edit.aspx.cs">
       <DependentUpon>Edit.aspx</DependentUpon>
