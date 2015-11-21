@@ -106,7 +106,7 @@ namespace TWART.Controllers
 
                 // Establishes models
                 DepartmentModel departmentModel = new DepartmentModel();
-                EmployeesModel employeeModel = new EmployeesModel();
+                EmployeeModel employeeModel = new EmployeeModel();
 
                 // Gets list of all employees
                 var employeeList = employeeModel.GetEmployeesList();

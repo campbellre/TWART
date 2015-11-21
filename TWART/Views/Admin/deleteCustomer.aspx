@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Delete.aspx.cs" Inherits="TWART.Views.Admin.delete" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="deleteCustomer.aspx.cs" Inherits="TWART.Views.Admin.delete" %>
 
 <%@ Import Namespace="TWART.DataObjects" %>
 <!DOCTYPE html>
@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-    <link rel="stylesheet" href="../../assets/css/main.css" />
+    <link rel="stylesheet" href="/assets/css/main.css" />
     <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
     <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 </head>
@@ -19,14 +19,14 @@
             <!-- Logo -->
             <div id="logo">
                 <span class="image avatar48">
-                    <img src="../../images/avatar.jpg" alt="" /></span>
+                    <img src="/images/avatar.jpg" alt="" /></span>
                 <h1 id="title">TWART Shipping Corporation</h1>
                 <p id="session">Welcome <%=Session["username"].ToString() %></p>
             </div>
             <!-- Nav -->
             <nav id="nav">
                 <ul>
-                    <li><a href="../Customer" id="about-link"><span class="icon fa-home">Client Information</span></a></li>
+                    <li><a href="/Customer" id="about-link"><span class="icon fa-home">Client Information</span></a></li>
                 </ul>
             </nav>
         </div>
@@ -50,7 +50,7 @@
         </section>
         <!-- Controls -->
         <section id="controls" class="two">
-             <% Customer deleteCustomer = (Customer)Model; %>
+            <% Customer deleteCustomer = (Customer)Model; %>
             <form action="/admin/deleteThis" method="POST">
                 <div class="row">
                     <div class="12u$">
@@ -69,12 +69,12 @@
         </ul>
     </div>
     <!-- Scripts -->
-    <script src="../../assets/js/jquery.min.js"></script>
-    <script src="../../assets/js/jquery.scrolly.min.js"></script>
-    <script src="../../assets/js/jquery.scrollzer.min.js"></script>
-    <script src="../../assets/js/skel.min.js"></script>
-    <script src="../../assets/js/util.js"></script>
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/jquery.scrolly.min.js"></script>
+    <script src="/assets/js/jquery.scrollzer.min.js"></script>
+    <script src="/assets/js/skel.min.js"></script>
+    <script src="/assets/js/util.js"></script>
     <!--[if lte IE 8]><script src="../../assets/js/ie/respond.min.js"></script><![endif]-->
-    <script src="../../assets/js/main.js"></script>
+    <script src="/assets/js/main.js"></script>
 </body>
 </html>

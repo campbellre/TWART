@@ -8,12 +8,12 @@ using TWART.Properties;
 
 namespace TWART.Models
 { 
-    public class EmployeesModel
+    public class EmployeeModel
     {
         private MySqlConnection connect;
         private string _connectionString;
 
-        public EmployeesModel()
+        public EmployeeModel()
         {
             _connectionString = Resource1.ConnectionString;
         }
