@@ -1,0 +1,95 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using TWART.Models;
+using TWART.DataObjects;
+
+
+namespace TWART.Controllers
+{
+    public class MessageController : System.Web.Mvc.Controller
+    {
+        // Creates new message
+        public ActionResult Create()
+        {
+            // Creates models
+            MessageModel messageModel = new MessageModel();
+            
+            // Holds message placeholder
+            Message newMessage = new Message();
+
+            // Stored details for the customer
+            newMessage.Name = Request.Form[0];
+            newMessage.Email = Request.Form[1];
+            newMessage.MessageBody = Request.Form[2];
+
+            // Creates the message
+            messageModel.CreateMessage(newMessage);
+
+            // Return created message to view
+            return View(newMessage);
+        }
+
+        // Deletes a message
+        public ActionResult Delete()
+        {
+            // Null handling
+            if (Session["loggedInState"] == null)
+            {
+                return Redirect("/403.html");
+            }
+
+            // Checks if logged in
+            bool state = (bool)Session["loggedInState"];
+            if (state == true)
+            {
+                // Acquires the ID of the message
+                int messageID = int.Parse(RouteData.Values["id"].ToString());
+
+                // Establishes message model
+                MessageModel messageModel = new MessageModel();
+
+                // Deletes the message
+                messageModel.DeleteMessage(messageID);
+
+                // Return to the message page
+                return Redirect("/..message");
+            }
+            else
+            {
+                // If not logged in
+                return Redirect("/login.html");
+            }
+        }
+
+        // Gets a list of messages
+        public ActionResult GetMessages()
+        {
+            // Null handling
+            if (Session["loggedInState"] == null)
+            {
+                return Redirect("/403.html");
+            }
+
+            // If logged in
+            bool state = (bool)Session["loggedInState"];
+            if (state == true)
+            {
+                // Establishes message model
+                MessageModel messageModel = new MessageModel();
+
+                // Gets a complete list of messages
+                var messageList = messageModel.MessageList();
+
+                // Returns the message list
+                return View(messageList);
+            }
+            else
+            {
+                return Redirect("/403.html");
+            }
+        }
+    }
+}
