@@ -254,6 +254,9 @@ namespace TWART.Controllers
             }
             else
             {
+
+                var c = new Employee();
+
                 return Redirect("Customer");
             }
         }
