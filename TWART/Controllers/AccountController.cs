@@ -23,27 +23,38 @@ namespace TWART.Controllers
             bool state = (bool)Session["loggedInState"];
             if (state == true)
             {
-                // Establishes an account model
+                // Establishes models
                 AccountModel accountModel = new AccountModel();
-                // AccountTypeModel accountTypeModel = new AccountTypeModel();
+                AccountTypeModel accountTypeModel = new AccountTypeModel();
+                ContactModel contactModel = new ContactModel();
 
                 // Holds the new account
                 Account newAccount = new Account();
                 Account_Type accountType = new Account_Type();
+                Contact newContact = new Contact();
 
                 // Get the account type int
                 int accountTypeID = int.Parse(Request.Form["accountTypeID"]);
 
                 // Stored details for the account type
-                // accountType = accountTypeModel.SearchAccountType(accountTypeID);
+                accountType = accountTypeModel.SearchAccountType(accountTypeID);
 
-                // Stored details for the account
-                newAccount.ContactID = int.Parse(Request.Form[0]);
-                newAccount.CustomerID = int.Parse(Request.Form[1]);
-                newAccount.AccountTypeID = accountTypeID;
-                newAccount.BankID = int.Parse(Request.Form[2]);
+                // Stored details for the contact
+                newContact.Forename = Request.Form[2];
+                newContact.Surname = Request.Form[3];
+                newContact.Position = Request.Form[4];
+                newContact.PhoneNumber = Request.Form[5];
 
                 // Commences save to database
+                int contactID = contactModel.CreateContact(newContact);
+
+                // Stored details for the account
+                newAccount.CustomerID = int.Parse(Request.Form[0]);
+                newAccount.ContactID = contactID;
+                newAccount.AccountTypeID = accountTypeID;
+                newAccount.BankID = int.Parse(Request.Form[1]);
+                
+                // Creates the account
                 accountModel.CreateAccount(newAccount);
 
                 // Return created department to view
@@ -70,20 +81,30 @@ namespace TWART.Controllers
             bool state = (bool)Session["loggedInState"];
             if (state == true)
             {
-                // Creates an account placeholder
+                // Creates object placeholders
                 var account = new Account();
+                var contact = new Contact();
 
-                // Setup address edit
+                // Setup contact edit
+                contact.ID = int.Parse(Request.Form["id"]);
+                contact.Forename = Request.Form["forename"];
+                contact.Surname = Request.Form["surname"];
+                contact.Position = Request.Form["position"];
+                contact.PhoneNumber = Request.Form["phoneNumber"];
+
+                // Setup account edit
                 account.ID = int.Parse(Request.Form["id"]);
                 account.ContactID = int.Parse(Request.Form["contactID"]);
                 account.CustomerID = int.Parse(Request.Form["customerID"]);
                 account.AccountTypeID = int.Parse(Request.Form["accountTypeID"]);
                 account.BankID = int.Parse(Request.Form["bankID"]);
 
-                // Establish address model
+                // Establish models
                 var accountModel = new AccountModel();
+                var contactModel = new ContactModel();
 
                 // Conduct edit
+                contactModel.EditContact(contact);
                 accountModel.EditAccount(account);
 
                 // Passes back to the view
@@ -112,9 +133,15 @@ namespace TWART.Controllers
                 int accountID = int.Parse(RouteData.Values["id"].ToString());
 
                 // Establishes account model
+                ContactModel contactModel = new ContactModel();
                 AccountModel accountModel = new AccountModel();
 
-                // Deletes the account from the database using the ID
+                // Acquires the contactID
+                Account toDelete = accountModel.SearchAccount(accountID);
+                int contactID = toDelete.ContactID;
+
+                // Deletes the account, and contact from the database using the ID
+                contactModel.DeleteContact(contactID);
                 accountModel.DeleteAccount(accountID);
 
                 // TODO: Confirm this is the correct return state
@@ -144,7 +171,7 @@ namespace TWART.Controllers
                 // Establishes list of models
                 var accountModel = new AccountModel();
                 var contactModel = new ContactModel();
-                // var accountTypeModel = new AccountTypeModel();
+                var accountTypeModel = new AccountTypeModel();
                 var customerModel = new CustomerModel();
                 var bankModel = new BankingModel();
 
@@ -165,7 +192,7 @@ namespace TWART.Controllers
                     Account_Type accountType = null;
                     if (account.AccountTypeID != 0)
                     {
-                        // accountType = accountTypeModel.SearchAccountTypeModel(accountTypeID);
+                        accountType = accountTypeModel.SearchAccountTypeModel(accountTypeID);
                     }
 
                     // Acquires customer from customerID
