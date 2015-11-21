@@ -158,6 +158,7 @@
     <Compile Include="Controllers\AddressController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BankController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\DepotController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
@@ -342,6 +343,7 @@
   <ItemGroup>
     <Folder Include="Views\Account\" />
     <Folder Include="Views\Contact\" />
+    <Folder Include="Views\Customer\" />
     <Folder Include="Views\Depot\" />
     <Folder Include="Views\Role\" />
     <Folder Include="Views\Transaction\" />
