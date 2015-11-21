@@ -20,14 +20,14 @@
             <!-- Logo -->
             <div id="logo">
                 <span class="image avatar48">
-                    <img src="images/avatar.jpg" alt="" /></span>
+                    <img src="/images/avatar.jpg" alt="" /></span>
                 <h1 id="title">TWART Shipping Corporation</h1>
                 <p id="session">Welcome <%=Session["username"].ToString() %></p>
             </div>
             <!-- Nav -->
             <nav id="nav">
                 <ul>
-                    <li><a href="adminIndex" id="control"><span class="icon fa-hand-o-left">Control Panel</span></a></li>
+                    <li><a href="/admin" id="control"><span class="icon fa-hand-o-left">Control Panel</span></a></li>
                     <li><a href="#clientList" id="clientList" class="skel-layers-ignoreHref"><span class="icon fa-users">Client List</span></a></li>
                     <li><a href="#newClient" id="new" class="skel-layers-ignoreHref"><span class="icon fa-plus">New Client</span></a></li>
                 </ul>
@@ -48,7 +48,7 @@
             <section id="client" class="top">
                 <div class="container">
                     <header>
-                        <h2>Client Informations and Stuff</h2>
+                        <h2>Client Information</h2>
                     </header>
                 </div>
             </section>
@@ -56,7 +56,7 @@
             <!-- New -->
             <section id="newClient" class="three">
                 <div class="container">
-                    <a href="newCustomer">Create a new Client</a>
+                    <a href="create">Create a new Client</a>
                     <p>Use this control to create a our client on our system.</p>
                 </div>
             </section>
@@ -70,8 +70,8 @@
                             <td><%= Html.Encode(customer.Name) %></td>
                             <td><%= Html.Encode(customer.Address.LineOne) %></td>
                             <td><%= Html.Encode(customer.Address.LineTwo) %></td>
-                            <td><%= Html.ActionLink("View", "viewinfo", new { id = customer.ID })%></td>
-                            <td><%= Html.ActionLink("Edit", "edit", new { id = customer.ID })%></td>
+                            <td><%= Html.ActionLink("View", "view", new { id = customer.ID })%></td>
+                            <td><%= Html.ActionLink("Edit", "editPage", new { id = customer.ID })%></td>
                             <td><%= Html.ActionLink("Delete", "delete", new { id = customer.ID })%></td>
                         </tr>
                         <% } %>

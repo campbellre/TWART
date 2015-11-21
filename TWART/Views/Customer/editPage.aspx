@@ -52,10 +52,10 @@
         <section id="edit" class="two">
             <div class="container">
                 <% Customer editCustomer = (Customer)Model; %>
-                <form action="/Customer/EditCustomer" method="POST">
-                    <input maxlength="49" type="text" name="name" value="<%= editCustomer.Name %>" />
+                <form action="/Customer/edit" method="POST">
+                    <input maxlength="49" type="text" name="customerName" value="<%= editCustomer.Name %>" />
                     <input type="hidden" name="id" value="<%= editCustomer.ID %>" />
-                    <input type="hidden" name="addressid" value="<%= editCustomer.Address_ID %>" />
+                    <input type="hidden" name="addressID" value="<%= editCustomer.Address_ID %>" />
                     <div class="row">
                         <div class="12u$">
                             <input type="submit" value="Update" />

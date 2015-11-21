@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TWART.Views.Admin {
+namespace TWART.Views.Order {
     
     
-    public partial class newOrder {
+    public partial class newOrderVeiw {
         
         /// <summary>
         /// address1 control.

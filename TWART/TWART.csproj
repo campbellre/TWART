@@ -138,13 +138,14 @@
     <Content Include="Views\Employee\edit.aspx" />
     <Content Include="Views\Order\create.aspx" />
     <Content Include="Views\Order\orders.aspx" />
+    <Content Include="Views\User\CreateEmployee.aspx" />
     <Content Include="Views\User\Users.aspx" />
     <Content Include="Views\Customer\view.aspx" />
     <Content Include="Views\Bank\Bank.aspx" />
     <Content Include="Views\Bank\view.aspx" />
     <Content Include="Views\Customer\Customer.aspx" />
     <Content Include="Views\Customer\delete.aspx" />
-    <Content Include="Views\Customer\edit.aspx" />
+    <Content Include="Views\Customer\editPage.aspx" />
     <Content Include="Views\Customer\create.aspx" />
     <Content Include="Views\Employee\delete.aspx" />
     <Content Include="Views\Employee\Employees.aspx" />
@@ -157,6 +158,7 @@
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AddressController.cs" />
     <Compile Include="Controllers\BankController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\LoginController.cs">
@@ -176,6 +178,10 @@
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\Register.cs" />
     <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Handlers\DepartmentHandler.cs" />
+    <Compile Include="Handlers\DepotHandler.cs" />
+    <Compile Include="Handlers\EmployeeHandler.cs" />
+    <Compile Include="Handlers\RoleHandler.cs" />
     <Compile Include="Handlers\TransactionController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DataObjects\Account.cs" />
@@ -270,6 +276,13 @@
     <Compile Include="Views\Order\orders.aspx.designer.cs">
       <DependentUpon>orders.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\User\CreateEmployee.aspx.cs">
+      <DependentUpon>CreateEmployee.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\User\CreateEmployee.aspx.designer.cs">
+      <DependentUpon>CreateEmployee.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\User\Users.aspx.cs">
       <DependentUpon>Users.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -312,12 +325,12 @@
     <Compile Include="Views\Customer\delete.aspx.designer.cs">
       <DependentUpon>delete.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Customer\edit.aspx.cs">
-      <DependentUpon>edit.aspx</DependentUpon>
+    <Compile Include="Views\Customer\editPage.aspx.cs">
+      <DependentUpon>editPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Customer\edit.aspx.designer.cs">
-      <DependentUpon>edit.aspx</DependentUpon>
+    <Compile Include="Views\Customer\editPage.aspx.designer.cs">
+      <DependentUpon>editPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Customer\create.aspx.cs">
       <DependentUpon>create.aspx</DependentUpon>
@@ -421,7 +434,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>3769</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

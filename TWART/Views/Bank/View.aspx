@@ -28,7 +28,7 @@
             <!-- Nav -->
             <nav id="nav">
                 <ul>
-                    <li><a href="adminIndex" id="foobar-link"><span class="icon fa-hand-o-left">Control Panel</span></a></li>
+                    <li><a href="/admin" id="foobar-link"><span class="icon fa-hand-o-left">Control Panel</span></a></li>
                 </ul>
             </nav>
         </div>
@@ -47,7 +47,7 @@
             <section id="client" class="top">
                 <div class="container">
                     <header>
-                        <h2>Title</h2>
+                        <h2>Bank Details</h2>
                     </header>
                 </div>
             </section>

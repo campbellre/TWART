@@ -27,7 +27,7 @@
             <!-- Nav -->
             <nav id="nav">
                 <ul>
-                    <li><a href="adminIndex" id="foobar-link"><span class="icon fa-hand-o-left">Control Panel</span></a></li>
+                    <li><a href="/admin" id="foobar-link"><span class="icon fa-hand-o-left">Control Panel</span></a></li>
                     <li><a href="#orders" id="ordersinfo" class="skel-layers-ignoreHref"><span class="icon fa-plus">New Order</span></a></li>
                 </ul>
             </nav>
@@ -56,7 +56,7 @@
             <!-- User -->
             <section id="orders" class="four">
                 <div class="container">
-                    <a href="#">Create an Order</a>
+                    <a href="create">Create an Order</a>
                     <p>Use this control to create a new order.</p>
                 </div>
             </section>

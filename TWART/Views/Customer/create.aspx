@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="create.aspx.cs" Inherits="TWART.Views.Customer.new" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="create.aspx.cs" Inherits="TWART.Views.Customer.newCustomerView" %>
 
 <%@ Import Namespace="System.Web.Mvc.Html" %>
 <%@ Import Namespace="TWART.DataObjects" %>
@@ -81,7 +81,7 @@
                         </tr>
                         <tr>
                             <asp:DropDownList runat="server" ID="accountType">
-                                <asp:ListItem>Standard</asp:ListItem>
+                                <asp:Li<%--stItem>Standard</asp:ListItem--%>>
                                 <asp:ListItem>Premium</asp:ListItem>
                             </asp:DropDownList>
                         </tr>

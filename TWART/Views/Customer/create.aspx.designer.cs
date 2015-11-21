@@ -8,9 +8,10 @@
 //------------------------------------------------------------------------------
 
 namespace TWART.Views.Customer {
-    
-    
-    public partial class @new {
+
+
+    public partial class newCustomerView
+    {
         
         /// <summary>
         /// newClientName control.
