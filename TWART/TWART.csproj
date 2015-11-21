@@ -146,6 +146,8 @@
     <Content Include="Views\Admin\deleteCustomer.aspx" />
     <Content Include="Views\Admin\viewinfo.aspx" />
     <Content Include="Views\Employee\Employees.aspx" />
+    <Content Include="Views\Index\adminIndex.aspx" />
+    <Content Include="Views\Index\clientIndex.aspx" />
     <Content Include="Views\Role\Edit.aspx" />
     <Content Include="Views\Role\Index.aspx" />
     <Content Include="Web.config" />
@@ -161,6 +163,7 @@
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\DepotController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
+    <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\Register.cs" />
@@ -294,6 +297,20 @@
     </Compile>
     <Compile Include="Views\Employee\Employees.aspx.designer.cs">
       <DependentUpon>Employees.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Index\adminIndex.aspx.cs">
+      <DependentUpon>adminIndex.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Index\adminIndex.aspx.designer.cs">
+      <DependentUpon>adminIndex.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Index\clientIndex.aspx.cs">
+      <DependentUpon>clientIndex.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Index\clientIndex.aspx.designer.cs">
+      <DependentUpon>clientIndex.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Role\Edit.aspx.cs">
       <DependentUpon>Edit.aspx</DependentUpon>
