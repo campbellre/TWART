@@ -26,7 +26,7 @@
             <!-- Nav -->
             <nav id="nav">
                 <ul>
-                    <li><a href="../Customer" id="about-link"><span class="icon fa-home">Client Information</span></a></li>
+                    <li><a href="Customer" id="about-link"><span class="icon fa-home">Client Information</span></a></li>
                 </ul>
             </nav>
         </div>
@@ -52,7 +52,7 @@
         <section id="edit" class="two">
             <div class="container">
                 <% Customer editCustomer = (Customer)Model; %>
-                <form action="/admin/EditCustomer" method="POST">
+                <form action="/Customer/edit" method="POST">
                     <input maxlength="49" type="text" name="name" value="<%= editCustomer.Name %>" />
                     <input type="hidden" name="id" value="<%= editCustomer.ID %>" />
                     <input type="hidden" name="addressid" value="<%= editCustomer.Address_ID %>" />

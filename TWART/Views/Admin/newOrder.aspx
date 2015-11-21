@@ -42,7 +42,7 @@
     </div>
     <!-- Main -->
     <div id="main">
-        <form action="createOrder" method="POST" runat="server">
+        <form action="/order/create" method="POST" runat="server">
             <!-- Client View -->
             <section id="newClient" class="top">
                 <div class="container">
@@ -89,9 +89,9 @@
                         <tr>
                             <asp:DropDownList runat="server" ID="deliveryBands">
                                 <asp:ListItem>Next Day Delivery</asp:ListItem>
-                                <asp:ListItem>First Class (Express 1-2 Days)</asp:ListItem>
-                                <asp:ListItem>Second Class (Standard 2-3 Days)</asp:ListItem>
-                                <asp:ListItem>Cheapest (5-10 Days)</asp:ListItem>
+                                <asp:ListItem>Express 1-2 Days</asp:ListItem>
+                                <asp:ListItem>Standard 3-5 Days</asp:ListItem>
+                                <asp:ListItem>Basic 5-10 Days</asp:ListItem>
                             </asp:DropDownList>
                         </tr>
                     </table>

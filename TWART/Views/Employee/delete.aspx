@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="deleteCustomer.aspx.cs" Inherits="TWART.Views.Admin.delete" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="delete.aspx.cs" Inherits="TWART.Views.Admin.delete" %>
 
 <%@ Import Namespace="TWART.DataObjects" %>
 <!DOCTYPE html>
@@ -26,7 +26,7 @@
             <!-- Nav -->
             <nav id="nav">
                 <ul>
-                    <li><a href="/Customer" id="about-link"><span class="icon fa-home">Client Information</span></a></li>
+                    <li><a href="Employee" id="about-link"><span class="icon fa-home">Employee Information</span></a></li>
                 </ul>
             </nav>
         </div>
@@ -50,11 +50,11 @@
         </section>
         <!-- Controls -->
         <section id="controls" class="two">
-            <% Customer deleteCustomer = (Customer)Model; %>
-            <form action="/admin/deleteThis" method="POST">
+            <% Customer deleteEmployee = (Customer)Model; %>
+            <form action="/employee/delete" method="POST">
                 <div class="row">
                     <div class="12u$">
-                        <input type="hidden" name="id" value="<%= deleteCustomer.ID %>" />
+                        <input type="hidden" name="id" value="<%= deleteEmployee.ID %>" />
                         <input type="submit" value="Delete" />
                     </div>
                 </div>
