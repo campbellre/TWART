@@ -22,7 +22,7 @@
                 <span class="image avatar48">
                     <img src="../../images/avatar.jpg" alt="" /></span>
                 <h1 id="title">TWART Shipping Corporation</h1>
-                <p id="title">Welcome <%=Session["username"].ToString() %></p>
+                <p id="session">Welcome <%=Session["username"].ToString() %></p>
             </div>
             <!-- Nav -->
             <nav id="nav">
@@ -57,8 +57,9 @@
                         <tr>
                             <% foreach (var addresses in Model)
                                {
-                                   ListItem item = new ListItem(addresses.ToString());
-                                   var addressid = addresses.ID;
+                                   //creates list items
+                                   ListItem item = new ListItem(addresses.ID + ", " + addresses.LineOne.ToString() + ", " + addresses.LineTwo.ToString() + ", " + addresses.PostalCode.ToString());
+                                   item.Value = addresses.ID.ToString();
                                    newAddress.Items.Add(item);
                                } %>
                             <asp:TextBox runat="server" ID="newClientName">Client Name</asp:TextBox>

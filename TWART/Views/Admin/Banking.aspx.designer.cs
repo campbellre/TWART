@@ -10,24 +10,15 @@
 namespace TWART.Views.Admin {
     
     
-    public partial class newCustomer {
+    public partial class Banking {
         
         /// <summary>
-        /// newCustomerForm control.
+        /// bankingForm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm newCustomerForm;
-        
-        /// <summary>
-        /// addresses control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList addresses;
+        protected global::System.Web.UI.HtmlControls.HtmlForm bankingForm;
     }
 }
