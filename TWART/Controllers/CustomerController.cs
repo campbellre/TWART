@@ -11,7 +11,7 @@ namespace TWART.Controllers
     public class CustomerController : System.Web.Mvc.Controller
     {
         // Gets list of customers
-        public ActionResult viewAll()
+        public ActionResult Customer()
         {
             // Null handling
             if (Session["loggedInState"] == null)
@@ -30,6 +30,16 @@ namespace TWART.Controllers
                 // Call the method to get the list
                 var customerList = customerModel.ListCustomers();
 
+                // For each customer in the list
+                foreach (var customer in customerList)
+                {
+                    // Find associated address
+                    Address address = addressModel.SearchAddress(customer.Address_ID);
+
+                    // Append address to customer object
+                    customer.Address = address;
+                }
+
                 // Returns the customer list
                 return View(customerList);
             }
@@ -43,7 +53,7 @@ namespace TWART.Controllers
         }
 
         // View individual customer details
-        public ActionResult viewSingle()
+        public ActionResult view()
         {
             // Null handling
             if (Session["loggedInState"] == null)
@@ -92,6 +102,37 @@ namespace TWART.Controllers
             return Redirect("/404.html");
         }
 
+
+        // View individual customer details
+        public ActionResult editPage()
+        {
+            // Null handling
+            if (Session["loggedInState"] == null)
+            {
+                return Redirect("/403.html");
+            }
+
+
+            // Get the ID requested
+            int id = int.Parse(Url.RequestContext.RouteData.Values["id"].ToString());
+
+            CustomerModel customerModel = new CustomerModel();
+            Customer customer = customerModel.SearchCustomers(id);
+
+            // If logged in
+            bool state = (bool)Session["loggedInState"];
+            if (state == true)
+            {
+                // Return customer object
+                return View(customer);
+            }
+            else
+            {
+                // If not logged in
+                return Redirect("/login.html");
+            }
+        }
+
         // Allows editing of a customer
         public ActionResult edit()
         {
@@ -112,7 +153,7 @@ namespace TWART.Controllers
                 CustomerModel customerModel = new CustomerModel();
 
                 // Setup address edit
-                customer.ID = int.Parse(Request.Form["customerID"]);
+                customer.ID = int.Parse(Request.Form["id"]);
                 customer.Address_ID = int.Parse(Request.Form["addressID"]);
                 customer.Name = Request.Form["customerName"];
 
@@ -120,7 +161,7 @@ namespace TWART.Controllers
                 customerModel.EditCustomer(customer);
 
                 // Passes back to the view
-                return View();
+                return Redirect("/Customer/Customer");
             }
             else
             {
