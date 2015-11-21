@@ -81,7 +81,7 @@
                         </tr>
                         <tr>
                             <asp:DropDownList runat="server" ID="accountType">
-                                <asp:ListItem>Standard</asp:ListItem>
+                                <asp:Li<%--stItem>Standard</asp:ListItem--%>>
                                 <asp:ListItem>Premium</asp:ListItem>
                             </asp:DropDownList>
                         </tr>

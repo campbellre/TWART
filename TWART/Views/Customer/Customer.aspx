@@ -27,7 +27,7 @@
             <!-- Nav -->
             <nav id="nav">
                 <ul>
-                    <li><a href="adminIndex" id="control"><span class="icon fa-hand-o-left">Control Panel</span></a></li>
+                    <li><a href="/admin" id="control"><span class="icon fa-hand-o-left">Control Panel</span></a></li>
                     <li><a href="#clientList" id="clientList" class="skel-layers-ignoreHref"><span class="icon fa-users">Client List</span></a></li>
                     <li><a href="#newClient" id="new" class="skel-layers-ignoreHref"><span class="icon fa-plus">New Client</span></a></li>
                 </ul>
@@ -48,7 +48,7 @@
             <section id="client" class="top">
                 <div class="container">
                     <header>
-                        <h2>Client Informations and Stuff</h2>
+                        <h2>Client Information</h2>
                     </header>
                 </div>
             </section>

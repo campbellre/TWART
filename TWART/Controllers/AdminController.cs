@@ -67,7 +67,7 @@ namespace TWART.Controllers
             bool state = (bool)Session["loggedInState"];
             if (state == true)
             {
-                return Redirect("/Admin/adminIndex");
+                return Redirect("/Index/adminIndex");
             }
             else
             {

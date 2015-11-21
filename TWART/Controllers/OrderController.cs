@@ -85,6 +85,18 @@ namespace TWART.Controllers
             }
         }
 
+        public ActionResult Create()
+        {
+            if (Session["loggedInState"] == null)
+            {
+                return Redirect("/403.html");
+            }
+            else
+            {
+                return View();
+            }
+        }
+
         #region Internal calculations
         // Calculates the account type
         private int getAccountType(int userID)
