@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="newCustomer.aspx.cs" Inherits="TWART.Views.Admin.newCustomerView" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="orderSpec.aspx.cs" Inherits="TWART.Views.Admin.newOrderSpec" %>
 
 <%@ Import Namespace="System.Web.Mvc.Html" %>
 <%@ Import Namespace="TWART.DataObjects" %>
@@ -45,34 +45,34 @@
         <section id="client" class="top">
             <div class="container">
                 <header>
-                    <h2>Create a new Customer</h2>
+                    <h2>Package Specifications</h2>
                 </header>
             </div>
         </section>
-        <!-- Controls -->
-        <section id="controls" class="two">
-            <div class="container">
-                <form action="createCustomer" method="POST" runat="server">
+        <!-- New Package -->
+        <section id="newpackage" class="two">
+                <div class="container">
+                    <a href="newSpec">Create a new Package Specification</a>
+                    <p>Use this control to create a new kind of package.</p>
+                </div>
+        </section>
+         <!-- Packages -->
+        <section id="existingpackages" class="two">
+             <div class="container">
                     <table>
+                        <% foreach (var specs in Model)
+                           { %>
                         <tr>
-                            <% foreach (var addresses in Model)
-                               {
-                                   //creates list items
-                                   ListItem item = new ListItem(addresses.LineOne.ToString() + ", " + addresses.LineTwo.ToString() + ", " + addresses.PostalCode.ToString());
-                                   item.Value = addresses.ID.ToString();
-                                   newAddress.Items.Add(item);
-                               } %>
-                            <asp:TextBox runat="server" ID="newClientName">Client Name</asp:TextBox>
-                            <asp:DropDownList runat="server" ID="newAddress"></asp:DropDownList>
+                            <td><%= Html.Encode(specs.Weight + "Grams") %></td>
+                            <td><%= Html.Encode(specs.Dimension_Height + "H") %></td>
+                            <td><%= Html.Encode(specs.Dimension_Width + "W") %></td>
+                            <td><%= Html.Encode(specs.Dimension_Length + "L") %></td>
+                            <td><%= Html.ActionLink("Edit", "edit", new { id = specs.Specification_ID })%></td>
+                            <td><%= Html.ActionLink("Delete", "delete", new { id = customer.Specification_ID })%></td>
                         </tr>
+                        <% } %>
                     </table>
-                    <div class="row">
-                        <div class="12u$">
-                            <input type="submit" value="Add" />
-                        </div>
-                    </div>
-                </form>
-            </div>
+                </div>
         </section>
     </div>
     <!-- Footer -->

@@ -53,6 +53,14 @@
                 </div>
             </section>
             <!-- Controls -->
+            <!-- New -->
+            <section id="newClient" class="three">
+                <div class="container">
+                    <a href="newCustomer">Create a new Client</a>
+                    <p>Use this control to create a our client on our system.</p>
+                </div>
+            </section>
+            <!-- View -->
             <section id="controls" class="two">
                 <div class="container">
                     <table>
@@ -68,13 +76,6 @@
                         </tr>
                         <% } %>
                     </table>
-                </div>
-            </section>
-            <!-- New -->
-            <section id="newClient" class="three">
-                <div class="container">
-                    <a href="newCustomer">Create a new Client</a>
-                    <p>Use this control to create a our client on our system.</p>
                 </div>
             </section>
         </div>
