@@ -1,10 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="orders.aspx.cs" Inherits="TWART.Views.Admin.OrderView" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="deleteCustomer.aspx.cs" Inherits="TWART.Views.Admin.delete" %>
 
-<%@ Import Namespace="System.Web.Mvc.Html" %>
 <%@ Import Namespace="TWART.DataObjects" %>
 <!DOCTYPE html>
 <html>
-<head>
+<head runat="server">
     <title>TWART Shipping Co.</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -27,8 +26,7 @@
             <!-- Nav -->
             <nav id="nav">
                 <ul>
-                    <li><a href="adminIndex" id="foobar-link"><span class="icon fa-hand-o-left">Control Panel</span></a></li>
-                    <li><a href="#orders" id="ordersinfo" class="skel-layers-ignoreHref"><span class="icon fa-plus">New Order</span></a></li>
+                    <li><a href="/Customer" id="about-link"><span class="icon fa-home">Client Information</span></a></li>
                 </ul>
             </nav>
         </div>
@@ -40,29 +38,29 @@
             </ul>
         </div>
     </div>
-    <!-- Main -->
-    <form id="order" runat="server">
-        <div id="main">
-            <!-- Client View -->
-            <section id="client" class="top">
-                <div class="container">
-                    <header>
-                        <h2>Order Service</h2>
-                    </header>
+    <!-- Delete -->
+    <div id="main">
+        <!-- Warning -->
+        <section id="top" class="top">
+            <div class="container">
+                <header>
+                    <h2 style="color: #ff0000">Are You Sure You Want To Delete this?</h2>
+                </header>
+            </div>
+        </section>
+        <!-- Controls -->
+        <section id="controls" class="two">
+            <% Customer deleteCustomer = (Customer)Model; %>
+            <form action="/admin/deleteThis" method="POST">
+                <div class="row">
+                    <div class="12u$">
+                        <input type="hidden" name="id" value="<%= deleteCustomer.ID %>" />
+                        <input type="submit" value="Delete" />
+                    </div>
                 </div>
-            </section>
-            <!-- Controls -->
-
-            <!-- User -->
-            <section id="orders" class="four">
-                <div class="container">
-                    <a href="#">Create an Order</a>
-                    <p>Use this control to create a new order.</p>
-                </div>
-            </section>
-
-        </div>
-    </form>
+            </form>
+        </section>
+    </div>
     <!-- Footer -->
     <div id="footer">
         <!-- Copyright -->
@@ -76,7 +74,7 @@
     <script src="/assets/js/jquery.scrollzer.min.js"></script>
     <script src="/assets/js/skel.min.js"></script>
     <script src="/assets/js/util.js"></script>
-    <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+    <!--[if lte IE 8]><script src="../../assets/js/ie/respond.min.js"></script><![endif]-->
     <script src="/assets/js/main.js"></script>
 </body>
 </html>

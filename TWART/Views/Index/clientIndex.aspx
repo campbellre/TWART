@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="clientIndex.aspx.cs" Inherits="TWART.Views.Client.IndexView" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="clientIndex.aspx.cs" Inherits="TWART.Views.Admin.clientView" %>
 
 <%@ Import Namespace="System.Web.Mvc.Html" %>
 <%@ Import Namespace="TWART.DataObjects" %>
@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-    <link rel="stylesheet" href="../../assets/css/main.css" />
+    <link rel="stylesheet" href="/assets/css/main.css" />
     <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
     <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 </head>
@@ -20,15 +20,17 @@
             <!-- Logo -->
             <div id="logo">
                 <span class="image avatar48">
-                    <img src="../../images/avatar.jpg" alt="" /></span>
+                    <img src="/images/avatar.jpg" alt="" /></span>
                 <h1 id="title">TWART Shipping Corporation</h1>
                 <p id="session">Welcome <%=Session["username"].ToString() %></p>
             </div>
             <!-- Nav -->
             <nav id="nav">
                 <ul>
-                    <li><a href="customer.aspx" class="skel-layers-ignoreHref" id="foobar-link"><span class="icon fa-hand-o-right">Our Clients</span></a></li>
-                    <li><a href="login.html" class="skel-layers-ignoreHref" id="foobar-link"><span class="icon fa-hand-o-right">Log Out</span></a></li>
+                    <li><a href="#order" id="order-link" class="skel-layers-ignoreHref"><span class="icon fa-sort">Order System</span></a></li>
+                    <li><a href="#address" id="address-link" class="skel-layers-ignoreHref"><span class="icon fa-map-marker">Address System</span></a></li>
+                    <li><a href="#banking" id="banking-link" class="skel-layers-ignoreHref"><span class="icon fa-credit-card">Banking System</span></a></li>
+                    <li><a href="Logout" id="logout"><span class="icon fa-hand-o-left">Log Out</span></a></li>
                 </ul>
             </nav>
         </div>
@@ -36,23 +38,41 @@
             <!-- Social Icons -->
             <ul class="icons">
                 <li><a href="https://github.com/campbellre/TWART" class="icon fa-github"><span class="label">Github</span></a></li>
-                <li><a href="#contact" class="icon fa-envelope"><span class="label">Email</span></a></li>
+                <li><a href="/index.html#contact" class="icon fa-envelope"><span class="label">Email</span></a></li>
             </ul>
         </div>
     </div>
-    <!-- Main -->
-    <form id="customerForm" runat="server">
+    <form id="adminForm" runat="server">
+        <!-- Main -->
         <div id="main">
-            <!-- Client View -->
+            <!-- Controls -->
             <section id="client" class="top">
                 <div class="container">
                     <header>
-                        <h2 style="color: #ff0000">Administrator's Control Panel</h2>
+                        <h2><strong style="color: #ff0000">Welcome to TWART Shipping Co.</strong></h2>
                     </header>
                 </div>
             </section>
-            <!-- Controls -->
-            <section id="controls" class="middle">
+            <!-- Order -->
+            <section id="order" class="three">
+                <div class="container">
+                    <a href="Orders">Order Controls</a>
+                    <p>Use this control to create, retrieve, update or delete on our order system.</p>
+                </div>
+            </section>
+            <!-- Address -->
+            <section id="address" class="two">
+                <div class="container">
+                    <a href="Address">Address</a>
+                    <p>Use this control to create, retrieve, update or delete on our address system.</p>
+                </div>
+            </section>
+            <!-- Banking -->
+            <section id="banking" class="three">
+                <div class="container">
+                    <a href="Banking">Banking</a>
+                    <p>Use this control to create, retrieve, update or delete on our banking system.</p>
+                </div>
             </section>
         </div>
     </form>
@@ -64,12 +84,12 @@
         </ul>
     </div>
     <!-- Scripts -->
-    <script src="../../assets/js/jquery.min.js"></script>
-    <script src="../../assets/js/jquery.scrolly.min.js"></script>
-    <script src="../../assets/js/jquery.scrollzer.min.js"></script>
-    <script src="../../assets/js/skel.min.js"></script>
-    <script src="../../assets/js/util.js"></script>
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/jquery.scrolly.min.js"></script>
+    <script src="/assets/js/jquery.scrollzer.min.js"></script>
+    <script src="/assets/js/skel.min.js"></script>
+    <script src="/assets/js/util.js"></script>
     <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-    <script src="../../assets/js/main.js"></script>
+    <script src="/assets/js/main.js"></script>
 </body>
 </html>

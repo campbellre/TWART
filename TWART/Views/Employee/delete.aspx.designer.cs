@@ -10,15 +10,6 @@
 namespace TWART.Views.Admin {
     
     
-    public partial class newOrderSpec {
-        
-        /// <summary>
-        /// orderSpec control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm orderSpec;
+    public partial class delete {
     }
 }
