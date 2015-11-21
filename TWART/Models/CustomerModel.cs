@@ -32,12 +32,11 @@ namespace TWART.Models
                     {
                         string query = "NewCustomer";
                         var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
-
-                        cmd.Parameters.AddWithValue("CustomerName", c.Name);
+                        cmd.Parameters.AddWithValue("CompanyName", c.Name);
                         cmd.Parameters.AddWithValue("AddressID", c.Address_ID);
 
 
-                        ret = (int)cmd.ExecuteScalar();
+                        ret = int.Parse(cmd.ExecuteScalar().ToString());
 
                         transaction.Commit();
 
