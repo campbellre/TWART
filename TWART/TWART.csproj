@@ -164,6 +164,7 @@
     <Compile Include="Controllers\LoginController.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controllers\TransactionController.cs" />
     <Compile Include="Handlers\AccountHandler.cs" />
     <Compile Include="Handlers\AddressHandler.cs" />
     <Compile Include="Controllers\AdminController.cs" />
@@ -179,7 +180,10 @@
     <Compile Include="Controllers\Register.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Handlers\EmployeeHandler.cs" />
-    <Compile Include="Handlers\TransactionController.cs" />
+    <Compile Include="Handlers\GoodsHandler.cs" />
+    <Compile Include="Handlers\PackageHandler.cs" />
+    <Compile Include="Handlers\SpecificationHandler.cs" />
+    <Compile Include="Handlers\TransactionHandler.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DataObjects\Account.cs" />
     <Compile Include="DataObjects\Account_Type.cs" />
