@@ -40,10 +40,13 @@ namespace TWART.Models
 
                         ret = int.Parse(cmd.ExecuteScalar().ToString());
 
+                        transaction.Commit();;
+
                         connect.Close();
                     }
                     catch (InvalidOperationException ioException)
                     {
+                        transaction.Rollback();
                         connect.Close();
                     }
                 }
