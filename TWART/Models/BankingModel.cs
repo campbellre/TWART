@@ -37,11 +37,14 @@ namespace TWART.Models
                         cmd.Parameters.AddWithValue("AccountNumber", b.ID);
 
                         ret = int.Parse(cmd.ExecuteScalar().ToString());
-
+                        
+                        transaction.Commit();
+                        
                         connect.Close();
                     }
                     catch (InvalidOperationException ioException)
                     {
+                        transaction.RollBack();
                         connect.Close();
                     }
                 }
