@@ -46,7 +46,7 @@
     <!-- Main -->
     <div id="main">
         <!-- Controls -->
-        <form action="/User/create" method="POST" runat="server">
+        <form action="/User/CreateClient" method="POST" runat="server">
             <section id="clientList" class="top">
                 <div class="container">
                     <header>

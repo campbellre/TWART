@@ -104,7 +104,7 @@ namespace TWART.Controllers
                 int clientID = cModel.CreateClientUser(newClient);
 
                 // Return created department to view
-                return View(newClient);
+                return Redirect("Customer/Customer");
             }
             else
             {
