@@ -4,18 +4,17 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TWART.DataObjects;
+using TWART.Handlers;
 using TWART.Models;
 
 namespace TWART.Controllers
 {
     public class OrderController : System.Web.Mvc.Controller
     {
-        // TODO: Implement package breakdown
-        // TODO: Acquire package band (dimensions)
-
         // GET: Order
-        public ActionResult DoOrder()
+        public ActionResult create()
         {
+            // Null handling
             if (Session["loggedInState"] == null)
             {
                 Redirect("/403.html");
@@ -25,38 +24,68 @@ namespace TWART.Controllers
             bool state = (bool)Session["loggedInState"];
             if (state == true)
             {
-                // Creates a new order model
+                // Creates handlers for order creating
+                GoodsHandler goodsHand = new GoodsHandler();
+                SpecificationHandler specHand = new SpecificationHandler();
+                PackageHandler packHand = new PackageHandler();
+                TransactionHandler tranHandler = new TransactionHandler();
+
+                // Necessary models
+                ClientUserModel cuModel = new ClientUserModel();
                 OrderModel orderModel = new OrderModel();
 
-                // Holds the order
+                // Stored details for package specification
+                int weight = int.Parse(Request.Form["weight"]);
+                int height = int.Parse(Request.Form["height"]);
+                int length = int.Parse(Request.Form["length"]);
+                int width = int.Parse(Request.Form["width"]);
+
+                // Stored details for package
+                String name = Request.Form["goodsDescriptor"];
+                String handling = Request.Form["options"];
+
+                // Stored details for order
+                int deliveryBand = int.Parse(Request.Form["deliveryBand"]);
+
+                // Holds the order objects
                 Order newOrder = new Order();
 
-                // Stored details
-                int userID = (int)Session["userID"];
-                int deliveryBand = int.Parse(Request.Form[0]);
-                int sourceID = int.Parse(Request.Form[1]);
-                int destID = int.Parse(Request.Form[2]);
+                // Creates the foreign objects, and gets the IDs
+                int goodsID = goodsHand.create(name, handling);
+                int specID = specHand.create(weight, height, length, width);
+                int packID = packHand.create(goodsID, specID);
 
-                // List of packages from form
-                List<Package> packageList = new List<Package>();
+                // Acquires client data
+                ClientUser thisUser = cuModel.SearchClientUser(int.Parse(Session["userID"].ToString()));
 
-                // Acquires type of account (Standard | Premium)
-                int accountType = getAccountType(userID);
+                // Acquires account type (Standard | Premium)
+                AccountModel accModel = new AccountModel();
+                Account thisAccount = accModel.SearchAccount(thisUser.AccountID);
+                int accountType = thisAccount.AccountTypeID;
+
+                // Sets up the order
+                newOrder.AccountID = thisUser.AccountID;
+                newOrder.DestinationAddressID = int.Parse(Request.Form["address2"]);
+                newOrder.SourceAddressID = int.Parse(Request.Form["address1"]);
+                newOrder.Placed = DateTime.Now;
+                newOrder.OrderStatus = "Placed";
+                
+                // Calculate desired delivery date
+                newOrder.DesiredDeliveryDate = calcDesiredDeliveryDate(deliveryBand, newOrder.Placed);
 
                 // Price of order
-                int totalPrice = calcPrice(accountType, deliveryBand, packageList);
+                PackageModel packageModel = new PackageModel();
+                Package thisPackage = packageModel.SearchPackage(packID);
+                int totalPrice = calcPrice(accountType, deliveryBand, thisPackage);
 
+                // Creates the order
+                int orderID = orderModel.CreateOrder(newOrder);
 
-                // EVERYTHING MUST CHANGE
-
-
-                // Finalises the order
-                newOrder.Placed = DateTime.Now;
-                newOrder.OrderStatus = "Order Placed";
-                //newOrder.SourceAddressID;
+                // Sets up a transaction
+                tranHandler.create(orderID, thisAccount.CustomerID, thisAccount.BankID);
 
                 // Passes back to the view
-                return View();
+                return View(newOrder);
             }
             else
             {
@@ -85,38 +114,11 @@ namespace TWART.Controllers
             }
         }
 
-        public ActionResult Create()
-        {
-            if (Session["loggedInState"] == null)
-            {
-                return Redirect("/403.html");
-            }
-            else
-            {
-                var am = new AddressModel();
-                var al = am.GetAddressesList();
-                return View(al);
-            }
-        }
-
         #region Internal calculations
-        // Calculates the account type
-        private int getAccountType(int userID)
-        {
-            // Establishes the account model
-            AccountModel accountControl = new AccountModel();
-
-            // Searches for the account
-            Account thisAccount = accountControl.SearchAccount(userID);
-
-            // Returns the account type
-            return thisAccount.ID;
-        }
-
         // Calculates the total cost of the order
-        private int calcPrice(int accountType, int deliveryBand, List<Package> packageList)
+        private int calcPrice(int accountType, int deliveryBand, Package thisPackage)
         {
-            int runningTotal = calcBaseCost(packageList);
+            int runningTotal = calcBaseCost(thisPackage);
             float modifier = 0f;
 
             // Determines account benefit modifier
@@ -153,41 +155,59 @@ namespace TWART.Controllers
         }
 
         // Calculates the base cost of the package based on dimensions / weight
-        private int calcBaseCost(List<Package> packageList)
+        private int calcBaseCost(Package thisPackage)
         {
             // In pence
             int runningCost = 0;
 
             // Iterates through the packages in the list
-            foreach (Package p in packageList)
-            {
-                Specification thisSpec = p.Specification;
+            Specification thisSpec = thisPackage.Specification;
 
-                if (thisSpec.Length <= 42 && thisSpec.Width <= 34 && thisSpec.Height <= 27 && thisSpec.Weight <= 10)
-                {
-                    runningCost += 1500;
-                }
-                else if (thisSpec.Length <= 50 && thisSpec.Width <= 45 && thisSpec.Height <= 34 && thisSpec.Weight <= 25)
-                {
-                    runningCost += 2100;
-                }
-                else if (thisSpec.Length <= 60 && thisSpec.Width <= 54 && thisSpec.Height <= 41 && thisSpec.Weight <= 40)
-                {
-                    runningCost += 3000;
-                }
-                else if (thisSpec.Length <= 96 && thisSpec.Width <= 15 && thisSpec.Height <= 15)
-                {
-                    runningCost += 1750;
-                }
-                else // Catch
-                {
-                    // Outwith package band fee
-                    runningCost += 3500;
-                }
+            // Works out delivery band
+            if (thisSpec.Length <= 42 && thisSpec.Width <= 34 && thisSpec.Height <= 27 && thisSpec.Weight <= 10)
+            {
+                runningCost += 1500;
+            }
+            else if (thisSpec.Length <= 50 && thisSpec.Width <= 45 && thisSpec.Height <= 34 && thisSpec.Weight <= 25)
+            {
+                runningCost += 2100;
+            }
+            else if (thisSpec.Length <= 60 && thisSpec.Width <= 54 && thisSpec.Height <= 41 && thisSpec.Weight <= 40)
+            {
+                runningCost += 3000;
+            }
+            else if (thisSpec.Length <= 96 && thisSpec.Width <= 15 && thisSpec.Height <= 15)
+            {
+                runningCost += 1750;
+            }
+            else // Catch
+            {
+                // Outwith package band fee
+                runningCost += 3500;
             }
 
             // Returns the collective running cost
             return runningCost;
+        }
+
+        // Calculates the desired delvery date (maximum range)
+        private DateTime calcDesiredDeliveryDate(int deliveryBand, DateTime baseDate)
+        {
+            // Adds to the base date based on delivery band
+            switch (deliveryBand)
+            {
+                case 1: baseDate.AddHours(24);
+                    break;
+                case 2: baseDate.AddDays(2);
+                    break;
+                case 3: baseDate.AddDays(5);
+                    break;
+                case 4: baseDate.AddDays(10);
+                    break;
+            }
+
+            // Returns the base date
+            return baseDate;
         }
         #endregion
     }

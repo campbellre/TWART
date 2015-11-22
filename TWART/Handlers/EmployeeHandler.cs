@@ -7,6 +7,7 @@ using TWART.Models;
 
 namespace TWART.Handlers
 {
+    // Allows creation of employee
     public class EmployeeHandler
     {
         // Constructor

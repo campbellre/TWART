@@ -38,6 +38,7 @@ namespace TWART.Models
                         cmd.Parameters.AddWithValue("GoodsID", o.GoodsID);
                         cmd.Parameters.AddWithValue("DestinationAddressID", o.DestinationAddressID);
                         cmd.Parameters.AddWithValue("SourceAddressID", o.SourceAddressID);
+                        cmd.Parameters.AddWithValue("TotalCost", o.TotalCost);
                         cmd.Parameters.AddWithValue("AccountID", o.AccountID);
                         cmd.Parameters.AddWithValue("DesiredDeliveryDate", o.DesiredDeliveryDate);
 
@@ -76,6 +77,7 @@ namespace TWART.Models
                         cmd.Parameters.AddWithValue("DateReceived", o.Received);
                         cmd.Parameters.AddWithValue("DateDelivered", o.Delivered);
                         cmd.Parameters.AddWithValue("GoodsID", o.GoodsID);
+                        cmd.Parameters.AddWithValue("TotalCost", o.TotalCost);
                         cmd.Parameters.AddWithValue("DestinationAddressID", o.DestinationAddressID);
                         cmd.Parameters.AddWithValue("SourceAddressID", o.SourceAddressID);
                         cmd.Parameters.AddWithValue("AccountID", o.AccountID);
@@ -147,6 +149,7 @@ namespace TWART.Models
                         o.Placed = DateTime.Parse(reader["Date_Placed"].ToString());
                         o.Received = DateTime.Parse(reader["Date_Received"].ToString());
                         o.Delivered = DateTime.Parse(reader["Date_Delivered"].ToString());
+                        o.TotalCost = Decimal.Parse(reader["Total_Cost"].ToString());
                         o.GoodsID = int.Parse(reader["Goods_ID"].ToString());
                         o.DestinationAddressID = int.Parse(reader["Destination_Address"].ToString());
                         o.SourceAddressID = int.Parse(reader["Source_Address"].ToString());
@@ -191,6 +194,7 @@ namespace TWART.Models
                         o.Placed = DateTime.Parse(reader["Date_Placed"].ToString());
                         o.Received = DateTime.Parse(reader["Date_Received"].ToString());
                         o.Delivered = DateTime.Parse(reader["Date_Delivered"].ToString());
+                        o.TotalCost = Decimal.Parse(reader["Total_Cost"].ToString());
                         o.GoodsID = int.Parse(reader["Goods_ID"].ToString());
                         o.DestinationAddressID = int.Parse(reader["Destination_Address"].ToString());
                         o.SourceAddressID = int.Parse(reader["Source_Address"].ToString());
