@@ -118,10 +118,10 @@
                         <asp:DropDownList runat="server" ID="accountTypes">
                             <asp:ListItem>Standard</asp:ListItem>
                             <asp:ListItem>Premium</asp:ListItem>
-                            <br />
                         </asp:DropDownList>
                         <% int accountType = accountTypes.SelectedIndex; %>
                         <div class="12u$">
+                            <br />
                             <input type="submit" value="Create Client" />
                         </div>
                     </footer>
