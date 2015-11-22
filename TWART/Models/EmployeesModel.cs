@@ -103,6 +103,31 @@ namespace TWART.Models
             using (connect = new MySqlConnection(_connectionString))
             {
                 connect.Open();
+
+
+                using (MySqlTransaction transaction = connect.BeginTransaction())
+                {
+
+                    try
+                    {
+                        string query = "DeleteUserWhereEmployee";
+                        var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
+
+                        cmd.Parameters.AddWithValue("EmployeeID", ID);
+
+                        cmd.ExecuteNonQuery();
+                        transaction.Commit();
+
+                        connect.Close();
+                    }
+                    catch (InvalidOperationException ioException)
+                    {
+                        transaction.Rollback();
+                        connect.Close();
+                    }
+                }
+
+
                 using (MySqlTransaction transaction = connect.BeginTransaction())
                 {
 
