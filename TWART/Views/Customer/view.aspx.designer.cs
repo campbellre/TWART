@@ -10,6 +10,6 @@
 namespace TWART.Views.Admin {
     
     
-    public partial class OLDviewinfo {
+    public partial class viewinfo {
     }
 }

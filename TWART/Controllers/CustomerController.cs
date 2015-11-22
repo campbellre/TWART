@@ -66,31 +66,19 @@ namespace TWART.Controllers
             if (state == true)
             {
                 // Establishes models
-                CustomerModel customerModel = new CustomerModel();
+                ClientUserModel clientModel = new ClientUserModel();
                 AddressModel addressModel = new AddressModel();
+                ClientUser theClient = new ClientUser();
 
                 // Call the method to get the list
-                var customerList = customerModel.ListCustomers();
+                var clientList = clientModel.ListAccounts();
 
                 // Get the ID requested
-                int customerID = int.Parse(Url.RequestContext.RouteData.Values["id"].ToString());
+                int theID = int.Parse(Url.RequestContext.RouteData.Values["id"].ToString());
 
-                // For each customer in the list
-                foreach (var customer in customerList)
-                {
-                    // If their ID matches
-                    if (customer.ID == customerID)
-                    {
-                        // Find associated address
-                        Address address = addressModel.SearchAddress(customer.Address_ID);
+                theClient = clientModel.SearchClientUser(theID);
 
-                        // Append address to customer object
-                        customer.Address = address;
-
-                        // Return customer object
-                        return View(customer);
-                    }
-                }
+                return View();
             }
             else
             {

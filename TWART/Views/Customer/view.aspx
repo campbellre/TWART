@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="view.aspx.cs" Inherits="TWART.Views.Admin.OLDviewinfo" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="view.aspx.cs" Inherits="TWART.Views.Admin.viewinfo" %>
 
 <%@ Import Namespace="System.Web.Mvc.Html" %>
 <%@ Import Namespace="TWART.DataObjects" %>
@@ -53,19 +53,21 @@
         <section id="controls" class="two">
             <div class="container">
                 <table>
-                    <% Customer viewCustomer = (Customer)Model; %>
+                    <% ClientUser viewCustomer = (ClientUser)Model; %>
+                    <!-- name -->
                     <tr>
                         <td><%= Html.Encode(viewCustomer.Name) %></td>
+
+                    </tr>
+                    
+                    <!-- Customer Address -->
+                    <tr>
                         <td><%= Html.Encode(viewCustomer.Address.LineOne) %></td>
                         <td><%= Html.Encode(viewCustomer.Address.LineTwo) %></td>
-                        <td><%= Html.Encode(viewCustomer.Address.LineThree) %></td>
-                        <td><%= Html.Encode(viewCustomer.Address.LineFour) %></td>
-                        <td><%= Html.Encode(viewCustomer.Address.LineFive) %></td>
-                        <td><%= Html.Encode(viewCustomer.Address.State) %></td>
-                        <td><%= Html.Encode(viewCustomer.Address.County) %></td>
-                        <td><%= Html.Encode(viewCustomer.Address.Country) %></td>
                         <td><%= Html.Encode(viewCustomer.Address.PostalCode) %></td>
+                        <td><%= Html.ActionLink("View", "view", new { id = viewCustomer.Address.ID })%></td> <!-- view all -->
                     </tr>
+                    
                 </table>
             </div>
         </section>
