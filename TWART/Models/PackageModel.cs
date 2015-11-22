@@ -36,7 +36,6 @@ namespace TWART.Models
                         cmd.Parameters.AddWithValue("SpecificationID", p.Specification);
                         cmd.Parameters.AddWithValue("GoodsID", p.Goods);
 
-
                         ret = int.Parse(cmd.ExecuteScalar().ToString());
 
                         transaction.Commit();
@@ -68,7 +67,6 @@ namespace TWART.Models
                         cmd.Parameters.AddWithValue("PackageID", p.ID);
                         cmd.Parameters.AddWithValue("SpecificationID", p.Specification);
                         cmd.Parameters.AddWithValue("GoodsID", p.Goods);
-
 
                         cmd.ExecuteNonQuery();
 

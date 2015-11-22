@@ -36,8 +36,6 @@ namespace TWART.Models
                         cmd.Parameters.AddWithValue("mEmail", message.Email);
                         cmd.Parameters.AddWithValue("mName", message.Name);
 
-
-
                         ret = int.Parse(cmd.ExecuteScalar().ToString());
 
                         transaction.Commit();

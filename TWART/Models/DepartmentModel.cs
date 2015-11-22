@@ -80,8 +80,6 @@ namespace TWART.Models
                         cmd.Parameters.AddWithValue("AddressID", department.Address);
                         cmd.Parameters.AddWithValue("DepartmentHead", department.Head);
 
-                        connect.Open();
-
                         ret = int.Parse(cmd.ExecuteScalar().ToString());
 
                         transaction.Commit();
@@ -116,8 +114,6 @@ namespace TWART.Models
                         cmd.Parameters.AddWithValue("AddressID", d.Address);
                         cmd.Parameters.AddWithValue("DepartmentHead", d.Head);
 
-                        connect.Open();
-
                         cmd.ExecuteNonQuery();
                         transaction.Commit();
                         connect.Close();
@@ -146,8 +142,6 @@ namespace TWART.Models
 
                         cmd.Parameters.AddWithValue("DepartmentID", ID);
 
-
-                        connect.Open();
 
                         cmd.ExecuteNonQuery();
 

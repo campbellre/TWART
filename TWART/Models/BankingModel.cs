@@ -37,8 +37,6 @@ namespace TWART.Models
                         cmd.Parameters.AddWithValue("SortCode", b.SortCode);
                         cmd.Parameters.AddWithValue("AccountNumber", b.ID);
 
-                        connect.Open();
-
                         ret = int.Parse(cmd.ExecuteScalar().ToString());
 
                         connect.Close();
@@ -79,7 +77,6 @@ namespace TWART.Models
                         b.Address_ID = int.Parse(reader["Address_ID"].ToString());
                         b.SortCode = reader["Sort_Code"].ToString();
                         b.AccountNumber = int.Parse(reader["Account_Number"].ToString());
-
 
 
                         bankList.Add(b);

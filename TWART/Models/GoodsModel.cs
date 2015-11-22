@@ -33,10 +33,7 @@ namespace TWART.Models
                         var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
 
                         cmd.Parameters.AddWithValue("ItemName", g.Name);
-                        cmd.Parameters.AddWithValue("TransportationID", g.Name);
                         cmd.Parameters.AddWithValue("HandlingRequirements", g.Name);
-
-
 
                         ret = int.Parse(cmd.ExecuteScalar().ToString());
 
@@ -67,7 +64,6 @@ namespace TWART.Models
                         var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
 
                         cmd.Parameters.AddWithValue("GoodsID", g.ID);
-                        cmd.Parameters.AddWithValue("TransportationID", g.TransportID);
                         cmd.Parameters.AddWithValue("HandlingRequirements", g.HandlingRequirments);
 
                         cmd.ExecuteNonQuery();
@@ -133,7 +129,6 @@ namespace TWART.Models
                     {
                         goods.ID = int.Parse(reader["Goods_ID"].ToString());
                         goods.Name = reader["Item_Name"].ToString();
-                        goods.TransportID = int.Parse(reader["Transportation_ID"].ToString());
                         goods.HandlingRequirments = reader["Handling_requirements"].ToString();
 
 
@@ -174,7 +169,6 @@ namespace TWART.Models
                         goods.ID = int.Parse(reader["Goods_ID "].ToString());
                         goods.Name = reader["Item_Name"].ToString();
                         goods.HandlingRequirments = reader["Handling_requirements"].ToString();
-                        goods.TransportID = int.Parse(reader["Transportation_ID "].ToString());
 
                         goodsList.Add(goods);
                     }

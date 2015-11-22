@@ -143,7 +143,7 @@ namespace TWART.Controllers
                 String username = Request.Form["username"];
                 String password = Request.Form["password"];
                 String email = Request.Form["email"];
-                String accessLevel = Request.Form["accessLevel"];
+                
 
                 // Establishes handlers
                 EmployeeHandler emHandler = new EmployeeHandler();
@@ -158,7 +158,6 @@ namespace TWART.Controllers
                 newUser.username = username;
                 newUser.password = password;
                 newUser.email = email;
-                newUser.AccessLevel = accessLevel;
 
                 // Return created department to view
                 return View(newUser);

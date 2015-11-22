@@ -52,21 +52,35 @@ namespace TWART.Controllers
             }
         }
 
-        // Controller to redirect to the edit page - ANDREW DID THIS
-        public ActionResult edit() {
+        // Controller to redirect to the edit page - ANDREW DID THIS - TRISTAN FIXED THIS
+        public ActionResult edit()
+        {
             // Null handling
             if (Session["loggedInState"] == null)
             {
                 return Redirect("/403.html");
             }
-            else {
+
+            // Checks if logged in
+            bool state = (bool)Session["loggedInState"];
+            if (state == true)
+            {
                 // Get the employee ID
                 int employeeID = int.Parse(RouteData.Values["id"].ToString());
+
                 // Create a new EmployeeModel
                 EmployeeModel employeeModel = new EmployeeModel();
+
+                // Finds employee
                 Employee employee = employeeModel.SearchEmployee(employeeID);
 
+                // Return employee to view
                 return View(employee);
+            }
+            else
+            {
+                // If not logged in
+                return Redirect("/login.html");
             }
         }
 
@@ -136,7 +150,6 @@ namespace TWART.Controllers
                 // Deletes the employee from the database using the ID
                 employeeModel.DeleteEmployee(employeeID);
 
-                // TODO: Confirm this is the correct return state
                 // Return to the employee page
                 return Redirect("/Employee/Employees");
             }
