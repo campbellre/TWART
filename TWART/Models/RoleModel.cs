@@ -34,6 +34,7 @@ namespace TWART.Models
                         var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
 
                         cmd.Parameters.AddWithValue("RoleTile", r.Title);
+                        cmd.Parameters.AddWithValue("AccessLevel", r.AccessLevel);
 
 
                         connect.Open();
@@ -69,6 +70,7 @@ namespace TWART.Models
 
                         cmd.Parameters.AddWithValue("RoleID", r.Id);
                         cmd.Parameters.AddWithValue("RoleTitle", r.Title);
+                        cmd.Parameters.AddWithValue("AccessLevel", r.AccessLevel);
 
                         cmd.ExecuteNonQuery();
 
@@ -142,6 +144,8 @@ namespace TWART.Models
                         {
                             r.Id = int.Parse(reader["Role_ID"].ToString());
                             r.Title = reader["Role_Title"].ToString();
+                            r.AccessLevel = reader["Access_Level"].ToString();
+
                         }catch(Exception e){}
                     }
 
@@ -182,6 +186,7 @@ namespace TWART.Models
 
                         role.Id = (int)reader["Role_ID"];
                         role.Title = reader["Role_Title"].ToString();
+                        role.AccessLevel = reader["Access_Level"].ToString();
 
 
                         roleList.Add(role);

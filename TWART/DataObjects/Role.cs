@@ -9,5 +9,6 @@ namespace TWART.DataObjects
     {
         public int Id { get; set; }
         public String Title { get; set; }
+        public String AccessLevel { get; set; }
     }
 }
