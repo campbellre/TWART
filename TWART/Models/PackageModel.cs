@@ -211,10 +211,6 @@ namespace TWART.Models
         }
 
         // This method is to get packages that match on elements included in the trasport object.
-        public List<Package> SearchPackage(Transport t)
-        {
-            throw new NotImplementedException();
-        }
 
         // This method is to get all packages with a placed, received or delivered date
         // between the start and end dates.

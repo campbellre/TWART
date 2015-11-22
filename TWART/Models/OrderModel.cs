@@ -239,10 +239,6 @@ namespace TWART.Models
         }
 
         // This method is to get orders that match on elements included in the trasport object.
-        public List<Order> SearchOrder(Transport t)
-        {
-            throw new NotImplementedException();
-        }
 
         // This method is to get all orders with a placed, received or delivered date
         // between the start and end dates.

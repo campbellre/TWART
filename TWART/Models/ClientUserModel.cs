@@ -108,8 +108,6 @@ namespace TWART.Models
                         cmd.Parameters.AddWithValue("pName", user.Name);
                         cmd.Parameters.AddWithValue("pUsername", user.AccountID);
                         cmd.Parameters.AddWithValue("PPWD", user.Name);
-    
-
 
                         cmd.ExecuteNonQuery();
                          
