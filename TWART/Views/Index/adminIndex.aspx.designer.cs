@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TWART.Views.Admin {
+namespace TWART.Views.Index {
     
     
     public partial class IndexView {

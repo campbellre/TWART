@@ -6,9 +6,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using TWART.DataObjects;
 
-namespace TWART.Views.Admin
+namespace TWART.Views.Address
 {
-    public partial class ViewAddress : System.Web.Mvc.ViewPage<DataObjects.Address>
+    public partial class EditAddress : System.Web.Mvc.ViewPage<DataObjects.Address>
     {
         protected void Page_Load(object sender, EventArgs e)
         {

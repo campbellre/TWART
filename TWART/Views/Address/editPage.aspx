@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="view.aspx.cs" Inherits="TWART.Views.Address.ViewAddress" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="editPage.aspx.cs" Inherits="TWART.Views.Address.ViewAddress" %>
 
 <%@ Import Namespace="System.Web.Mvc.Html" %>
 <%@ Import Namespace="TWART.DataObjects" %>
@@ -45,7 +45,7 @@
         <section id="admin" class="top">
             <div class="container">
                 <header>
-                    <h2>All Addresses</h2>
+                    <h2>Edit Addresses</h2>
                 </header>
             </div>
         </section>

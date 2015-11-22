@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="clientIndex.aspx.cs" Inherits="TWART.Views.Admin.clientView" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="clientIndex.aspx.cs" Inherits="TWART.Views.Index.ClientIndex" %>
 
 <%@ Import Namespace="System.Web.Mvc.Html" %>
 <%@ Import Namespace="TWART.DataObjects" %>
@@ -22,7 +22,7 @@
                 <span class="image avatar48">
                     <img src="/images/avatar.jpg" alt="" /></span>
                 <h1 id="title">TWART Shipping Corporation</h1>
-                <p id="session">Welcome <%=Session["username"].ToString() %></p>
+                <p id="session">Welcome <%=Session["username"] == null ? "" : Session["username"].ToString() %></p>
             </div>
             <!-- Nav -->
             <nav id="nav">

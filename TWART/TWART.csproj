@@ -132,6 +132,7 @@
     <Content Include="index.html" />
     <Content Include="login.html" />
     <Content Include="Views\Address\Address.aspx" />
+    <Content Include="Views\Address\editPage.aspx" />
     <Content Include="Views\Address\view.aspx" />
     <Content Include="Views\Bank\bankdelete.aspx" />
     <Content Include="Views\Bank\bankedit.aspx" />
@@ -237,6 +238,13 @@
     </Compile>
     <Compile Include="Views\Address\Address.aspx.designer.cs">
       <DependentUpon>Address.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Address\editPage.aspx.cs">
+      <DependentUpon>editPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Address\editPage.aspx.designer.cs">
+      <DependentUpon>editPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Address\view.aspx.cs">
       <DependentUpon>view.aspx</DependentUpon>

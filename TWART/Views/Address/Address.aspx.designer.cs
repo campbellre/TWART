@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TWART.Views.Admin {
+namespace TWART.Views.Address {
     
     
     public partial class Address {
