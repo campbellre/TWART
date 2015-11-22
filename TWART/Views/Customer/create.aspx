@@ -27,9 +27,11 @@
             <!-- Nav -->
             <nav id="nav">
                 <ul>
-                    <li><a href="adminIndex" id="foobar-link"><span class="icon fa-hand-o-left">Control Panel</span></a></li>
-                    <li><a href="#newClient" id="newClientSection" class="skel-layers-ignoreHref"><span class="icon fa-plus">New Client</span></a></li>
-                    <li><a href="#clientList" id="clientListSection" class="skel-layers-ignoreHref"><span class="icon fa-list">Client List</span></a></li>
+                    <li><a href="Customer" id="newClientSection" class="skel-layers-ignoreHref"><span class="icon fa-backward">Client System</span></a></li>
+                    <li><a href="#clientList" id="clientInfo" class="skel-layers-ignoreHref"><span class="icon fa-plus">Client Information</span></a></li>
+                    <li><a href="#contactInfo" id="contactnav" class="skel-layers-ignoreHref"><span class="icon fa-plus">Contact Details</span></a></li>
+                    <li><a href="#customerAddress" id="addressnav" class="skel-layers-ignoreHref"><span class="icon fa-plus">Address Information</span></a></li>
+                    <li><a href="#accountType" id="accountypenav" class="skel-layers-ignoreHref"><span class="icon fa-plus">Account Type</span></a></li>
                 </ul>
             </nav>
         </div>
@@ -44,7 +46,7 @@
     <!-- Main -->
     <div id="main">
         <!-- Controls -->
-        <form action="/Customer/create" method="POST" runat="server">
+        <form action="/User/create" method="POST" runat="server">
             <section id="clientList" class="top">
                 <div class="container">
                     <header>

@@ -27,8 +27,8 @@
             <!-- Nav -->
             <nav id="nav">
                 <ul>
-                    <li><a href="/admin" id="control"><span class="icon fa-hand-o-left">Control Panel</span></a></li>
-                    <li><a href="#newClient" id="new" class="skel-layers-ignoreHref"><span class="icon fa-plus">New Client</span></a></li>
+                    <li><a href="/Index/adminIndex" id="control"><span class="icon fa-hand-o-left">Control Panel</span></a></li>
+                    <li><a href="#newlient" id="new" class="skel-layers-ignoreHref"><span class="icon fa-plus">New Client</span></a></li>
                     <li><a href="#clientList" id="clientList" class="skel-layers-ignoreHref"><span class="icon fa-users">Client List</span></a></li>
                 </ul>
             </nav>

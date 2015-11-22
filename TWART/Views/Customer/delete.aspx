@@ -26,7 +26,7 @@
             <!-- Nav -->
             <nav id="nav">
                 <ul>
-                    <li><a href="/Customer" id="about-link"><span class="icon fa-home">Client Information</span></a></li>
+                    <li><a href="/Customer" id="about-link"><span class="icon fa-home">Client System</span></a></li>
                 </ul>
             </nav>
         </div>
