@@ -104,13 +104,15 @@ namespace TWART.Controllers
             else
             {
                 // Create a OrderModel object
-                var om = new OrderModel();
+                var transactionModel = new TransactionModel();
 
                 // Call the method to get the list
-                var ol = om.GetOrdersList();
+                List<Transaction> listTransactions = transactionModel.ListTransactions();
+
+
 
                 // Return the OrderList
-                return View(ol);
+                return View(listTransactions);
             }
         }
 
