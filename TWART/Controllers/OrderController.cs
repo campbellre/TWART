@@ -160,15 +160,15 @@ namespace TWART.Controllers
             Specification thisSpec = thisPackage.Specification;
 
             // Works out delivery band
-            if (thisSpec.Length <= 42 && thisSpec.Width <= 34 && thisSpec.Height <= 27 && thisSpec.Weight <= 10)
+            if (thisSpec.Length <= 42 && thisSpec.Width <= 34 && thisSpec.Height <= 27 && thisSpec.Weight <= 100)
             {
                 runningCost += 1500;
             }
-            else if (thisSpec.Length <= 50 && thisSpec.Width <= 45 && thisSpec.Height <= 34 && thisSpec.Weight <= 25)
+            else if (thisSpec.Length <= 50 && thisSpec.Width <= 45 && thisSpec.Height <= 34 && thisSpec.Weight <= 250)
             {
                 runningCost += 2100;
             }
-            else if (thisSpec.Length <= 60 && thisSpec.Width <= 54 && thisSpec.Height <= 41 && thisSpec.Weight <= 40)
+            else if (thisSpec.Length <= 60 && thisSpec.Width <= 54 && thisSpec.Height <= 41 && thisSpec.Weight <= 400)
             {
                 runningCost += 3000;
             }
