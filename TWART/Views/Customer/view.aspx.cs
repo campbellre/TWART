@@ -8,7 +8,7 @@ using TWART.DataObjects;
 
 namespace TWART.Views.Admin
 {
-    public partial class viewinfo : System.Web.Mvc.ViewPage<DataObjects.ClientUser>
+    public partial class viewinfo : System.Web.Mvc.ViewPage<IEnumerable<DataObjects.Account>>
     {
         protected void Page_Load(object sender, EventArgs e)
         {

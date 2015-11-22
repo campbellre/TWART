@@ -52,21 +52,29 @@
         <!-- Full Address -->
         <section id="controls" class="two">
             <div class="container">
+                
                 <table>
-                    <% ClientUser viewCustomer = (ClientUser)Model; %>
-                    <!-- name -->
-                    <tr>
-                        <td><%= Html.Encode(viewCustomer.Name) %></td>
+                    <% List<Account> viewCustomer = (List<Account>)Model;
 
-                    </tr>
+                       if (viewCustomer.Count > 0)
+                       {
+
+                           foreach (var account in Model)
+                           { %>
+
+                            <!-- name -->
+                            <tr>
+                                <td><%= Html.Encode(account.Customer.Name)%></td>
+                            </tr>
+                            <% }
                     
-                    <!-- Customer Address -->
+                    }else{ %>
+
                     <tr>
-                        <td><%= Html.Encode(viewCustomer.Address.LineOne) %></td>
-                        <td><%= Html.Encode(viewCustomer.Address.LineTwo) %></td>
-                        <td><%= Html.Encode(viewCustomer.Address.PostalCode) %></td>
-                        <td><%= Html.ActionLink("View", "view", new { id = viewCustomer.Address.ID })%></td> <!-- view all -->
+                        <td><%= Html.Encode("No Account Associated with this Client")%></td>
                     </tr>
+                    }    
+                    %>
                     
                 </table>
             </div>

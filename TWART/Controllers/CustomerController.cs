@@ -66,19 +66,18 @@ namespace TWART.Controllers
             if (state == true)
             {
                 // Establishes models
-                ClientUserModel clientModel = new ClientUserModel();
-                AddressModel addressModel = new AddressModel();
-                ClientUser theClient = new ClientUser();
-
-                // Call the method to get the list
-                var clientList = clientModel.ListAccounts();
-
+                AccountModel clientModel = new AccountModel();
+                List<Account> accountList = new List<Account>();
+                
                 // Get the ID requested
                 int theID = int.Parse(Url.RequestContext.RouteData.Values["id"].ToString());
 
-                theClient = clientModel.SearchClientUser(theID);
+                Customer customer = new Customer();
+                customer.ID = theID;
 
-                return View();
+                accountList = clientModel.SearchAccounts(customer);
+
+                return View(accountList);
             }
             else
             {
@@ -86,8 +85,6 @@ namespace TWART.Controllers
                 return Redirect("/login.html");
             }
 
-            // Something went wrong
-            return Redirect("/404.html");
         }
 
 
