@@ -230,5 +230,40 @@ namespace TWART.Models
             }
         }
 
+
+        public void ChangePassword(ClientUser u, String password)
+        {
+            using (connect = new MySqlConnection(_connectionString))
+            {
+                connect.Open();
+                using (MySqlTransaction transaction = connect.BeginTransaction())
+                {
+
+                    try
+                    {
+                        string query = "ChangeClientPassword";
+                        var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
+
+                        cmd.Parameters.AddWithValue("pUID", u.Username);
+                        cmd.Parameters.AddWithValue("pPwd", password);
+
+                        cmd.ExecuteNonQuery();
+
+                        transaction.Commit();
+
+
+                        connect.Close();
+                    }
+                    catch (InvalidOperationException ioException)
+                    {
+                        transaction.Rollback();
+
+                        connect.Close();
+                    }
+                }
+            }
+        }
+
+
     }
 }

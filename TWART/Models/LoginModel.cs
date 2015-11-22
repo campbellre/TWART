@@ -93,7 +93,35 @@ namespace TWART.Models
 
         public void ChangePassword(User u, String password)
         {
-            throw new NotImplementedException();
+            using (connect = new MySqlConnection(_connectionString))
+            {
+                connect.Open();
+                using (MySqlTransaction transaction = connect.BeginTransaction())
+                {
+
+                    try
+                    {
+                        string query = "ChangePassword";
+                        var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
+
+                        cmd.Parameters.AddWithValue("pUID", u.username);
+                        cmd.Parameters.AddWithValue("pPwd", password);
+
+                        cmd.ExecuteNonQuery();
+
+                        transaction.Commit();
+
+
+                        connect.Close();
+                    }
+                    catch (InvalidOperationException ioException)
+                    {
+                        transaction.Rollback();
+
+                        connect.Close();
+                    }
+                }
+            }
         }
 
         // Main method to search users. 
