@@ -104,6 +104,8 @@ namespace TWART.Models
                     string query = "GetBank";
                     var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
 
+                    cmd.Parameters.AddWithValue("BankID", ID);
+
                     connect.Open();
 
                     var reader = cmd.ExecuteReader();

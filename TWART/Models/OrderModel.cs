@@ -35,6 +35,8 @@ namespace TWART.Models
 
                         cmd.Parameters.AddWithValue("OrderStatus", o.OrderStatus);
                         cmd.Parameters.AddWithValue("DatePlaced", o.Placed);
+                        cmd.Parameters.AddWithValue("DateReceived", o.Received);
+                        cmd.Parameters.AddWithValue("DateDelivered", o.Delivered);
                         cmd.Parameters.AddWithValue("GoodsID", o.GoodsID);
                         cmd.Parameters.AddWithValue("DestinationAddressID", o.DestinationAddressID);
                         cmd.Parameters.AddWithValue("SourceAddressID", o.SourceAddressID);
@@ -189,7 +191,7 @@ namespace TWART.Models
                     var reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
-                        o.AccountID = int.Parse(reader["Purchace_ID"].ToString());
+                        o.AccountID = int.Parse(reader["Purchase_ID"].ToString());
                         o.OrderStatus = reader["Order_Status"].ToString();
                         o.Placed = DateTime.Parse(reader["Date_Placed"].ToString());
                         o.Received = DateTime.Parse(reader["Date_Received"].ToString());

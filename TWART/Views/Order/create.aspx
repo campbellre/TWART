@@ -60,7 +60,10 @@
                            {
                                //creates list items
                                ListItem item = new ListItem(addresses.LineOne.ToString() + ", " + addresses.LineTwo.ToString() + ", " + addresses.PostalCode.ToString());
+                               item.Value = addresses.ID.ToString();
                                address1.Items.Add(item);
+                               ListItem item2 = new ListItem(addresses.LineOne.ToString() + ", " + addresses.LineTwo.ToString() + ", " + addresses.PostalCode.ToString());
+                               item2.Value = addresses.ID.ToString();
                                address2.Items.Add(item);
                            } %>
                         <tr title="Source Address:">
@@ -69,6 +72,7 @@
                         <tr title="Destination Address:">
                             <asp:DropDownList runat="server" ID="address2"></asp:DropDownList>
                         </tr>
+
                         <tr>
                             <asp:TextBox runat="server" ID="weight">Weight (Grams)</asp:TextBox>
                             <asp:RegularExpressionValidator ID="weightConfirm" ControlToValidate="weight" BackColor="Red" runat="server" ErrorMessage="Invalid Weight" ValidationExpression="\d+"></asp:RegularExpressionValidator>

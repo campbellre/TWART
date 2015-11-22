@@ -167,7 +167,7 @@ namespace TWART.Models
                     var reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
-                        p.ID = int.Parse(reader["Package_ID "].ToString());
+                        p.ID = int.Parse(reader["Package_ID"].ToString());
                         p.SpecificationID = int.Parse(reader["Specification_ID"].ToString());
                         p.GoodsID = int.Parse(reader["Goods_ID"].ToString());
 

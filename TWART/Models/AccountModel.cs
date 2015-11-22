@@ -127,6 +127,8 @@ namespace TWART.Models
                     string query = "GetAccount";
                     var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
 
+                    cmd.Parameters.AddWithValue("AccountID", ID);
+
                     connect.Open();
 
                     var reader = cmd.ExecuteReader();
@@ -135,7 +137,7 @@ namespace TWART.Models
                         account.ID = int.Parse(reader["Account_ID"].ToString());
                         account.ContactID = int.Parse(reader["Contact_ID"].ToString());
                         account.CustomerID = int.Parse(reader["Customer_ID"].ToString());
-                        account.AccountTypeID = int.Parse(reader["Account_Type_ID "].ToString());
+                        account.AccountTypeID = int.Parse(reader["Account_Type_ID"].ToString());
                         account.BankID = int.Parse(reader["Banking_ID"].ToString());
                     }
 

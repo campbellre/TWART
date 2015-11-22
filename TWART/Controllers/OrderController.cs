@@ -101,8 +101,8 @@ namespace TWART.Controllers
 
                 // Sets up the order
                 newOrder.AccountID = thisUser.AccountID;
-                newOrder.DestinationAddressID = int.Parse(Request.Form["address2"]);
-                newOrder.SourceAddressID = int.Parse(Request.Form["address1"]);
+                newOrder.DestinationAddressID = int.Parse(Request.Form["address1"]);
+                newOrder.SourceAddressID = int.Parse(Request.Form["address2"]);
                 newOrder.Placed = DateTime.Now;
                 newOrder.OrderStatus = "Placed";
                 newOrder.GoodsID = goodsID;
@@ -122,7 +122,7 @@ namespace TWART.Controllers
                 tranHandler.create(orderID, thisAccount.CustomerID, thisAccount.BankID);
 
                 // Passes back to the view
-                return View(newOrder);
+                return Redirect("/Transaction/transactions");
             }
             else
             {
@@ -177,8 +177,10 @@ namespace TWART.Controllers
             // In pence
             int runningCost = 0;
 
+            SpecificationModel specModel = new SpecificationModel();            
+
             // Iterates through the packages in the list
-            Specification thisSpec = thisPackage.Specification;
+            Specification thisSpec = specModel.SearchSpecification(thisPackage.SpecificationID);
 
             // Works out delivery band
             if (thisSpec.Length <= 42 && thisSpec.Width <= 34 && thisSpec.Height <= 27 && thisSpec.Weight <= 100)
