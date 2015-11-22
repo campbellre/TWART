@@ -167,6 +167,8 @@ namespace TWART.Models
                     string query = "GetClientUser";
                     var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
 
+                    cmd.Parameters.AddWithValue("PUID", ID);
+
                     connect.Open();
 
                     var reader = cmd.ExecuteReader();
