@@ -105,6 +105,7 @@ namespace TWART.Controllers
                 newOrder.SourceAddressID = int.Parse(Request.Form["address1"]);
                 newOrder.Placed = DateTime.Now;
                 newOrder.OrderStatus = "Placed";
+                newOrder.GoodsID = goodsID;
 
                 // Calculate desired delivery date
                 newOrder.DesiredDeliveryDate = calcDesiredDeliveryDate(deliveryBand, newOrder.Placed);

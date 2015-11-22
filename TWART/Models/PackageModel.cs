@@ -33,8 +33,8 @@ namespace TWART.Models
                         string query = "NewPackage";
                         var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
 
-                        cmd.Parameters.AddWithValue("SpecificationID", p.Specification);
-                        cmd.Parameters.AddWithValue("GoodsID", p.Goods);
+                        cmd.Parameters.AddWithValue("SpecificationID", p.SpecificationID);
+                        cmd.Parameters.AddWithValue("GoodsID", p.GoodsID);
 
                         ret = int.Parse(cmd.ExecuteScalar().ToString());
 
