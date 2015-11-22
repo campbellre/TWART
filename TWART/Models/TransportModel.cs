@@ -36,7 +36,6 @@ namespace TWART.Models
 
                         cmd.Parameters.AddWithValue("TransportationType", t.Type);
 
-
                         ret = int.Parse(cmd.ExecuteScalar().ToString());
 
                         transaction.Commit();
@@ -67,7 +66,6 @@ namespace TWART.Models
 
                         cmd.Parameters.AddWithValue("TransportationID", t.ID);
                         cmd.Parameters.AddWithValue("TransportationType", t.Type);
-
 
                         cmd.ExecuteNonQuery();
                          

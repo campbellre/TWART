@@ -42,8 +42,6 @@ namespace TWART.Models
                         cmd.Parameters.AddWithValue("DepotManager", d.ManagerID);
 
 
-                        connect.Open();
-
                         ret = int.Parse(cmd.ExecuteScalar().ToString());
 
                         transaction.Commit();
@@ -79,9 +77,6 @@ namespace TWART.Models
                         cmd.Parameters.AddWithValue("AddressID", d.Address);
                         cmd.Parameters.AddWithValue("DepotManager", d.ManagerID);
 
-
-                        connect.Open();
-
                         cmd.ExecuteNonQuery();
 
                         transaction.Commit();
@@ -110,9 +105,6 @@ namespace TWART.Models
                         var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
 
                         cmd.Parameters.AddWithValue("DepotID", ID);
-
-
-                        connect.Open();
 
                         cmd.ExecuteNonQuery();
 

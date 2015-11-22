@@ -36,8 +36,6 @@ namespace TWART.Models
                         cmd.Parameters.AddWithValue("TransportationID", g.Name);
                         cmd.Parameters.AddWithValue("HandlingRequirements", g.Name);
 
-
-
                         ret = int.Parse(cmd.ExecuteScalar().ToString());
 
                         transaction.Commit();

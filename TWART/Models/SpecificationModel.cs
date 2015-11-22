@@ -38,8 +38,6 @@ namespace TWART.Models
                         cmd.Parameters.AddWithValue("DimensionWidth", s.Width);
                         cmd.Parameters.AddWithValue("DimensionLength", s.Length);
 
-                        connect.Open();
-
                         ret = int.Parse(cmd.ExecuteScalar().ToString());
 
                         connect.Close();
@@ -72,8 +70,6 @@ namespace TWART.Models
                         cmd.Parameters.AddWithValue("DimensionWidth", s.Width);
                         cmd.Parameters.AddWithValue("DimensionLength", s.Length);
 
-                        connect.Open();
-
                         cmd.ExecuteNonQuery();
 
                         connect.Close();
@@ -100,8 +96,6 @@ namespace TWART.Models
                         var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
                         
                         cmd.Parameters.AddWithValue("SpecificationID", ID);
-
-                        connect.Open();
 
                         cmd.ExecuteNonQuery();
 

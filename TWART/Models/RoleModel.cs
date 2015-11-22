@@ -36,9 +36,6 @@ namespace TWART.Models
                         cmd.Parameters.AddWithValue("RoleTile", r.Title);
                         cmd.Parameters.AddWithValue("AccessLevel", r.AccessLevel);
 
-
-                        connect.Open();
-
                         ret = int.Parse(cmd.ExecuteScalar().ToString());
 
                            transaction.Commit();
@@ -102,9 +99,6 @@ namespace TWART.Models
                         var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
 
                         cmd.Parameters.AddWithValue("RoleID", ID);
-
-
-                        connect.Open();
 
                         cmd.ExecuteNonQuery();
 
