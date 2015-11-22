@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="create.aspx.cs" Inherits="TWART.Views.Order.newOrderVeiw" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="create.aspx.cs" Inherits="TWART.Views.Order.newOrderView" %>
 
 <%@ Import Namespace="System.Web.Mvc.Html" %>
 <%@ Import Namespace="TWART.DataObjects" %>
@@ -53,7 +53,7 @@
         <!-- Controls -->
 
         <section id="newOrder" class="two">
-            <form action="/order/create" method="POST" runat="server">
+            <form action="/order/createOrder" method="POST" runat="server">
                 <div class="container">
                     <table>
                         <% foreach (var addresses in Model)

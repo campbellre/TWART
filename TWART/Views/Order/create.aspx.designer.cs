@@ -10,7 +10,7 @@
 namespace TWART.Views.Order {
     
     
-    public partial class newOrderVeiw {
+    public partial class newOrderView {
         
         /// <summary>
         /// address1 control.
