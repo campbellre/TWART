@@ -44,7 +44,7 @@ namespace TWART.Models
                     }
                     catch (InvalidOperationException ioException)
                     {
-                        transaction.RollBack();
+                        transaction.Rollback();
                         connect.Close();
                     }
                 }
