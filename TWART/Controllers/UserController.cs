@@ -143,7 +143,6 @@ namespace TWART.Controllers
                 String username = Request.Form["username"];
                 String password = Request.Form["password"];
                 String email = Request.Form["email"];
-                
 
                 // Establishes handlers
                 EmployeeHandler emHandler = new EmployeeHandler();

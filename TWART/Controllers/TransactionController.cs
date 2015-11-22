@@ -10,44 +10,6 @@ namespace TWART.Controllers
 {
     public class TransactionController : System.Web.Mvc.Controller
     {
-        // GET: Transaction
-        public ActionResult Index()
-        {
-            // Ensures logged in
-            if (Session["loggedInState"] == null)
-            {
-                return Redirect("/403.html");
-            }
-
-            // Checks if logged in
-            bool state = (bool)Session["loggedInState"];
-            if (state == true)
-            {
-                // Establishes transaction model
-                TransactionModel transModel = new TransactionModel();
-
-                // Holds the new transaction
-                Transaction newTrans = new Transaction();
-
-                // Stored details for the transaction
-                newTrans.DateOfOrder = DateTime.Now;
-                newTrans.OrderID = int.Parse(Request.Form[0]);
-                newTrans.CustomerID = int.Parse(Request.Form[1]);
-                newTrans.BankID = int.Parse(Request.Form[2]);
-
-                // Adds the object to the database
-                transModel.CreateTransaction(newTrans);
-
-                // Returns the created transaction to view
-                return View(newTrans);
-            }
-            else
-            {
-                // If not logged in
-                return Redirect("/login.html");
-            }
-        }
-
         // Gets all transactions
         public ActionResult GetTransactions()
         {
