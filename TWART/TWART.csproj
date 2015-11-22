@@ -133,6 +133,8 @@
     <Content Include="login.html" />
     <Content Include="Views\Address\Address.aspx" />
     <Content Include="Views\Address\view.aspx" />
+    <Content Include="Views\Bank\bankdelete.aspx" />
+    <Content Include="Views\Bank\bankedit.aspx" />
     <Content Include="Views\Employee\edit.aspx" />
     <Content Include="Views\Order\create.aspx" />
     <Content Include="Views\Order\orders.aspx" />
@@ -156,6 +158,7 @@
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AddressController.cs" />
     <Compile Include="Controllers\BankController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\LoginController.cs">
@@ -175,6 +178,7 @@
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\Register.cs" />
     <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Handlers\EmployeeHandler.cs" />
     <Compile Include="Handlers\TransactionController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DataObjects\Account.cs" />
@@ -240,6 +244,20 @@
     </Compile>
     <Compile Include="Views\Address\view.aspx.designer.cs">
       <DependentUpon>view.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Bank\bankdelete.aspx.cs">
+      <DependentUpon>bankdelete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Bank\bankdelete.aspx.designer.cs">
+      <DependentUpon>bankdelete.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Bank\bankedit.aspx.cs">
+      <DependentUpon>bankedit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Bank\bankedit.aspx.designer.cs">
+      <DependentUpon>bankedit.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Order\create.aspx.cs">
       <DependentUpon>create.aspx</DependentUpon>
@@ -410,7 +428,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>3769</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
