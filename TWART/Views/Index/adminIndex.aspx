@@ -67,7 +67,7 @@
             <!-- Order -->
             <section id="order" class="three">
                 <div class="container">
-                    <a href="/Order/Orders">Order Controls</a>
+                    <a href="/Transaction/Transactions">Order Controls</a>
                     <p>Use this control to create, retrieve, update or delete on our order system.</p>
                 </div>
             </section>

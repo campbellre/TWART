@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="view.aspx.cs" Inherits="TWART.Views.Admin.OLDviewinfo" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="view.aspx.cs" Inherits="TWART.Views.Admin.viewinfo" %>
 
 <%@ Import Namespace="System.Web.Mvc.Html" %>
 <%@ Import Namespace="TWART.DataObjects" %>
@@ -45,27 +45,28 @@
         <section id="admin" class="top">
             <div class="container">
                 <header>
-                    <h2>Client's Full Addresses</h2>
+                    <h2>Client's Accounts</h2>
                 </header>
             </div>
         </section>
         <!-- Full Address -->
         <section id="controls" class="two">
             <div class="container">
+                
                 <table>
-                    <% Customer viewCustomer = (Customer)Model; %>
-                    <tr>
-                        <td><%= Html.Encode(viewCustomer.Name) %></td>
-                        <td><%= Html.Encode(viewCustomer.Address.LineOne) %></td>
-                        <td><%= Html.Encode(viewCustomer.Address.LineTwo) %></td>
-                        <td><%= Html.Encode(viewCustomer.Address.LineThree) %></td>
-                        <td><%= Html.Encode(viewCustomer.Address.LineFour) %></td>
-                        <td><%= Html.Encode(viewCustomer.Address.LineFive) %></td>
-                        <td><%= Html.Encode(viewCustomer.Address.State) %></td>
-                        <td><%= Html.Encode(viewCustomer.Address.County) %></td>
-                        <td><%= Html.Encode(viewCustomer.Address.Country) %></td>
-                        <td><%= Html.Encode(viewCustomer.Address.PostalCode) %></td>
-                    </tr>
+                    <% List<Account> viewCustomer = (List<Account>)Model;
+
+                           foreach (var account in Model)
+                           { %>
+
+                            <!-- name -->
+                            <tr>
+                                <td><%= Html.Encode(account.Customer.Name)%></td>
+                            </tr>
+                            <% }
+                    
+                    %>
+                    
                 </table>
             </div>
         </section>

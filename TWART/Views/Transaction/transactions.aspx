@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="orders.aspx.cs" Inherits="TWART.Views.Order.OrderView" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="transactions.aspx.cs" Inherits="TWART.Views.Transaction.TransactionView" %>
 
 <%@ Import Namespace="System.Web.Mvc.Html" %>
 <%@ Import Namespace="TWART.DataObjects" %>
@@ -56,7 +56,7 @@
             <!-- User -->
             <section id="orders" class="four">
                 <div class="container">
-                    <a href="create">Create an Order</a>
+                    <a href="/Order/create">Create an Order</a>
                     <p>Use this control to create a new order.</p>
                 </div>
             </section>
@@ -65,10 +65,10 @@
             <section id="controls" class="two">
                 <div class="container">
                     <table>
-                        <% foreach (var order in Model)
+                        <% foreach (var transaction in Model)
                            { %>
                         <tr>
-                            <td><%= Html.Encode(order.) %></td>
+                            <td><%= Html.Encode(transaction.DateOfOrder) %></td>
                             <td><%= Html.ActionLink("Edit", "edit", new { id = order.ID })%></td>
                         </tr>
                         <% } %>

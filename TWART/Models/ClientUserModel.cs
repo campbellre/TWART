@@ -108,8 +108,6 @@ namespace TWART.Models
                         cmd.Parameters.AddWithValue("pName", user.Name);
                         cmd.Parameters.AddWithValue("pUsername", user.AccountID);
                         cmd.Parameters.AddWithValue("PPWD", user.Name);
-    
-
 
                         cmd.ExecuteNonQuery();
                          
@@ -166,6 +164,8 @@ namespace TWART.Models
                 {
                     string query = "GetClientUser";
                     var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
+
+                    cmd.Parameters.AddWithValue("PUID", ID);
 
                     connect.Open();
 
@@ -229,6 +229,41 @@ namespace TWART.Models
                 return userList;
             }
         }
+
+
+        public void ChangePassword(ClientUser u, String password)
+        {
+            using (connect = new MySqlConnection(_connectionString))
+            {
+                connect.Open();
+                using (MySqlTransaction transaction = connect.BeginTransaction())
+                {
+
+                    try
+                    {
+                        string query = "ChangeClientPassword";
+                        var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
+
+                        cmd.Parameters.AddWithValue("pUID", u.Username);
+                        cmd.Parameters.AddWithValue("pPwd", password);
+
+                        cmd.ExecuteNonQuery();
+
+                        transaction.Commit();
+
+
+                        connect.Close();
+                    }
+                    catch (InvalidOperationException ioException)
+                    {
+                        transaction.Rollback();
+
+                        connect.Close();
+                    }
+                }
+            }
+        }
+
 
     }
 }

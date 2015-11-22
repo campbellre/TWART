@@ -6,9 +6,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using TWART.DataObjects;
 
-namespace TWART.Views.Admin
+namespace TWART.Views.Transaction
 {
-    public partial class viewinfo : System.Web.Mvc.ViewPage<IEnumerable<DataObjects.Account>>
+    public partial class TransactionView : System.Web.Mvc.ViewPage<IEnumerable<DataObjects.Transaction>>
     {
         protected void Page_Load(object sender, EventArgs e)
         {

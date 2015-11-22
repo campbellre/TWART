@@ -66,31 +66,24 @@ namespace TWART.Controllers
             if (state == true)
             {
                 // Establishes models
+                AccountModel clientModel = new AccountModel();
                 CustomerModel customerModel = new CustomerModel();
-                AddressModel addressModel = new AddressModel();
-
-                // Call the method to get the list
-                var customerList = customerModel.ListCustomers();
-
+                List<Account> accountList = new List<Account>();
+                
                 // Get the ID requested
-                int customerID = int.Parse(Url.RequestContext.RouteData.Values["id"].ToString());
+                int theID = int.Parse(Url.RequestContext.RouteData.Values["id"].ToString());
 
-                // For each customer in the list
-                foreach (var customer in customerList)
+                Customer customer = new Customer();
+                customer.ID = theID;
+
+                accountList = clientModel.SearchAccounts(customer);
+
+                foreach(var account in accountList)
                 {
-                    // If their ID matches
-                    if (customer.ID == customerID)
-                    {
-                        // Find associated address
-                        Address address = addressModel.SearchAddress(customer.Address_ID);
-
-                        // Append address to customer object
-                        customer.Address = address;
-
-                        // Return customer object
-                        return View(customer);
-                    }
+                    account.Customer = customerModel.SearchCustomers(account.CustomerID);
                 }
+
+                return View(accountList);
             }
             else
             {
@@ -98,8 +91,6 @@ namespace TWART.Controllers
                 return Redirect("/login.html");
             }
 
-            // Something went wrong
-            return Redirect("/404.html");
         }
 
         public ActionResult Create(){
