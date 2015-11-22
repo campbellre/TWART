@@ -132,8 +132,8 @@ namespace TWART.Models
                     var reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
-                        account.ID = int.Parse(reader["Package_ID "].ToString());
-                        account.ContactID = int.Parse(reader["Specification_ID"].ToString());
+                        account.ID = int.Parse(reader["Account_ID"].ToString());
+                        account.ContactID = int.Parse(reader["Contact_ID"].ToString());
                         account.CustomerID = int.Parse(reader["Customer_ID"].ToString());
                         account.AccountTypeID = int.Parse(reader["Account_Type_ID "].ToString());
                         account.BankID = int.Parse(reader["Banking_ID"].ToString());
@@ -171,10 +171,10 @@ namespace TWART.Models
                     while (reader.Read())
                     {
                         var a = new Account();
-                        a.ID = int.Parse(reader["Package_ID "].ToString());
-                        a.ContactID = int.Parse(reader["Specification_ID"].ToString());
+                        a.ID = int.Parse(reader["Account_ID"].ToString());
+                        a.ContactID = int.Parse(reader["Contact_ID"].ToString());
                         a.CustomerID = int.Parse(reader["Customer_ID"].ToString());
-                        a.AccountTypeID = int.Parse(reader["Account_Type_ID "].ToString());
+                        a.AccountTypeID = int.Parse(reader["Account_Type_ID"].ToString());
                         a.BankID = int.Parse(reader["Banking_ID"].ToString());
 
 
@@ -237,11 +237,12 @@ namespace TWART.Models
                     while (reader.Read())
                     {
                         var a = new Account();
-                        a.ID = int.Parse(reader["Package_ID "].ToString());
-                        a.ContactID = int.Parse(reader["Specification_ID"].ToString());
+                        a.ID = int.Parse(reader["Account_ID"].ToString());
+                        a.ContactID = int.Parse(reader["Contact_ID"].ToString());
                         a.CustomerID = int.Parse(reader["Customer_ID"].ToString());
-                        a.AccountTypeID = int.Parse(reader["Account_Type_ID "].ToString());
+                        a.AccountTypeID = int.Parse(reader["Account_Type_ID"].ToString());
                         a.BankID = int.Parse(reader["Banking_ID"].ToString());
+
 
                         accountList.Add(a);
                     }
