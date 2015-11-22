@@ -11,13 +11,29 @@ namespace TWART.Controllers
 {
     public class OrderController : System.Web.Mvc.Controller
     {
+
+        public ActionResult create() {
+            // Null handling
+            if (Session["loggedInState"] == null)
+            {
+                return Redirect("/403.html");
+            }
+            else {
+
+                AddressModel addressModel = new AddressModel();
+                List<Address> listAddresses = addressModel.GetAddressesList();
+
+                return View(listAddresses);
+            }
+        }
+
         // GET: Order
-        public ActionResult create()
+        public ActionResult createOrder()
         {
             // Null handling
             if (Session["loggedInState"] == null)
             {
-                Redirect("/403.html");
+                return Redirect("/403.html");
             }
 
             // Checks if logged in
@@ -69,7 +85,7 @@ namespace TWART.Controllers
                 newOrder.SourceAddressID = int.Parse(Request.Form["address1"]);
                 newOrder.Placed = DateTime.Now;
                 newOrder.OrderStatus = "Placed";
-                
+
                 // Calculate desired delivery date
                 newOrder.DesiredDeliveryDate = calcDesiredDeliveryDate(deliveryBand, newOrder.Placed);
 
@@ -91,28 +107,6 @@ namespace TWART.Controllers
             {
                 // If not logged in
                 return Redirect("/login.html");
-            }
-        }
-
-        // Gets all orders
-        public ActionResult Orders()
-        {
-            if (Session["loggedInState"] == null)
-            {
-                return Redirect("/403.html");
-            }
-            else
-            {
-                // Create a OrderModel object
-                var transactionModel = new TransactionModel();
-
-                // Call the method to get the list
-                List<Transaction> listTransactions = transactionModel.ListTransactions();
-
-
-
-                // Return the OrderList
-                return View(listTransactions);
             }
         }
 

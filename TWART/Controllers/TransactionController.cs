@@ -11,7 +11,7 @@ namespace TWART.Controllers
     public class TransactionController : System.Web.Mvc.Controller
     {
         // Gets all transactions
-        public ActionResult GetTransactions()
+        public ActionResult Transactions()
         {
             // Null handling
             if (Session["loggedInState"] == null)
