@@ -16,7 +16,7 @@ namespace TWART.Handlers
         // Creates an account
         public int create(int accountTypeID, int bankID, int customerID, int contactID)
         {
-            // Establishes models
+            // Establishes model
             AccountModel accountModel = new AccountModel();
 
             // Holds the new account

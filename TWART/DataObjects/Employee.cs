@@ -20,20 +20,5 @@ namespace TWART.DataObjects
         public int Dept { get; set; }
         public int Depot { get; set; }
         public int Role { get; set; }
-
-        public String GetDOBString()
-        {
-            return this.DOB.ToString(dateFormat);
-        }
-
-        public String GetStartDateString()
-        {
-            return this.Startdate.ToString(dateFormat);
-        }
-
-        public String GetEndDateString()
-        {
-            return this.EndDate.ToString(dateFormat);
-        }
     }
 }
