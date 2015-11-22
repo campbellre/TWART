@@ -43,57 +43,91 @@
     </div>
     <!-- Main -->
     <div id="main">
-        <!-- Client View -->
-        <section id="newClient" class="top">
-            <div class="container">
-                <header>
-                    <h2>Create A New Client</h2>
-                </header>
-            </div>
-        </section>
         <!-- Controls -->
-        <section id="clientList" class="two">
-            <div class="container">
-                <form action="/Customer/create" method="POST" runat="server">
-                    <table>
-                        <tr>
-                            <asp:TextBox runat="server" ID="newClientName">Client Name</asp:TextBox>
-                        </tr>
-                        <tr>
-                            <% foreach (var addresses in Model)
-                               {
-                                   //creates list items
-                                   ListItem item = new ListItem(addresses.LineOne.ToString() + ", " + addresses.LineTwo.ToString() + ", " + addresses.PostalCode.ToString());
-                                   item.Value = addresses.ID.ToString();
-                                   newAddress.Items.Add(item);
-                               } %>
-                            <asp:DropDownList runat="server" ID="newAddress"></asp:DropDownList>
-                        </tr>
-                        <tr>
-                            <% foreach (var bank in Model)
-                               {
-                                   //creates list items
-                                   ListItem item = new ListItem(bank);
-                                   item.Value = bank.ID.ToString();
-                                   bankList.Items.Add(item);
-                               } %>
-                            <asp:DropDownList runat="server" ID="bankList"></asp:DropDownList>
-                        </tr>
-                        <tr>
-                            <asp:DropDownList runat="server" ID="accountType">
-                                <asp:ListItem>Standard</asp:ListItem>
-                                <asp:ListItem>Premium</asp:ListItem>
-                            </asp:DropDownList>
-                        </tr>
-                    </table>
-                    <div class="row">
+        <form action="/Customer/create" method="POST" runat="server">
+            <section id="clientList" class="top">
+                <div class="container">
+                    <header>
+                        <h2>Create A New Client Profile</h2>
+                    </header>
+                    <footer>
+                        <asp:TextBox runat="server" ID="clientName">Client's Name</asp:TextBox><br />
+                        <asp:RegularExpressionValidator ID="nameRegulator" ControlToValidate="clientName" Display="Dynamic" runat="server" ErrorMessage="Allows up to 40 uppercase and lowercase characters." ValidationExpression="(?!^[0-9]*$)^[a-zA-Z'\s]{1,40}$"></asp:RegularExpressionValidator>
+                        <asp:TextBox runat="server" ID="username">Username</asp:TextBox><br />
+                        <asp:RegularExpressionValidator ID="usernameConfirm" ControlToValidate="username" Display="Dynamic" runat="server" ErrorMessage="Allows up to 15 uppercase and lowercase characters." ValidationExpression="^[a-zA-Z'\s]{1,15}$"></asp:RegularExpressionValidator>
+                        <p>Password:</p>
+                        <asp:TextBox runat="server" ID="password1" TextMode="Password">Password</asp:TextBox><br />
+                        <asp:RegularExpressionValidator ID="password1Confirm" ControlToValidate="password1" Display="Dynamic" runat="server" ErrorMessage="It must be between 8 and 10 characters, contain at least one digit and one alphabetic character, and must not contain special characters." ValidationExpression="(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,10})$"></asp:RegularExpressionValidator>
+                        <p>Re-Enter Password:</p>
+                        <asp:TextBox runat="server" ID="password2" TextMode="Password">Confirm Password</asp:TextBox><br />
+                        <asp:RegularExpressionValidator ID="password2Confirm" ControlToValidate="password2" Display="Dynamic" runat="server" ValidationExpression="(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,10})$"></asp:RegularExpressionValidator>
+                        <asp:CompareValidator runat="server" ControlToValidate="password1" Display="Dynamic" ControlToCompare="password2" ErrorMessage="Passwords do not match." />
+                    </footer>
+                </div>
+            </section>
+            <section id="contactInfo" class="three">
+                <div class="container">
+                    <header>
+                        <h2>Contact Information</h2>
+                    </header>
+                    <footer>
+                        <asp:TextBox runat="server" ID="contactForename">Contact's Forename</asp:TextBox><br />
+                        <asp:RegularExpressionValidator ID="contactNameValidator" ControlToValidate="contactForename" Display="Dynamic" runat="server" ErrorMessage="Allows up to 15 uppercase and lowercase characters." ValidationExpression="^[a-zA-Z''-'\s]{1,15}$"></asp:RegularExpressionValidator>
+                        <asp:TextBox runat="server" ID="contactSurname">Contact's Surname</asp:TextBox><br />
+                        <asp:RegularExpressionValidator ID="surnameValidator" ControlToValidate="contactSurname" Display="Dynamic" runat="server" ErrorMessage="Allows up to 15 uppercase and lowercase characters." ValidationExpression="^[a-zA-Z''-'\s]{1,15}$"></asp:RegularExpressionValidator>
+                        <asp:TextBox runat="server" ID="contactPosition">Contact's Position within Client</asp:TextBox><br />
+                        <asp:RegularExpressionValidator ID="contactPosValidator" ControlToValidate="contactPosition" Display="Dynamic" runat="server" ErrorMessage="Allows up to 40 uppercase and lowercase characters." ValidationExpression="^[a-zA-Z''-'\s]{1,40}$"></asp:RegularExpressionValidator>
+                        <asp:TextBox runat="server" ID="contactPhone">Contact Number</asp:TextBox><br />
+                        <asp:RegularExpressionValidator ID="contactNumberValidator" ControlToValidate="contactPhone" Display="Dynamic" runat="server" ErrorMessage="Invalid Phone Number" ValidationExpression="^\d+$"></asp:RegularExpressionValidator>
+                    </footer>
+                </div>
+            </section>
+            <section id="customerAddress" class="four">
+                <div class="container">
+                    <header>
+                        <h2>Address Information</h2>
+                    </header>
+                    <footer>
+                        <asp:TextBox runat="server" ID="address1">Address Line 1</asp:TextBox><br />
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" ControlToValidate="address1" Display="Dynamic" runat="server" ErrorMessage="Invalid Address Line, must contain a number." ValidationExpression="[A-Za-z0-9'\.\-\s\,]"></asp:RegularExpressionValidator>
+                        <asp:TextBox runat="server" ID="address2">Address Line 2</asp:TextBox><br />
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator2" ControlToValidate="address2" Display="Dynamic" runat="server" ErrorMessage="Invalid Address Line" ValidationExpression="^[a-zA-Z''-'\s]{1,40}$"></asp:RegularExpressionValidator>
+                        <asp:TextBox runat="server" ID="address3">Address Line 3</asp:TextBox><br />
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator3" ControlToValidate="address3" Display="Dynamic" runat="server" ErrorMessage="Invalid Address Line" ValidationExpression="^[a-zA-Z''-'\s]{1,40}$"></asp:RegularExpressionValidator>
+                        <asp:TextBox runat="server" ID="address4">Address Line 4</asp:TextBox><br />
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator4" ControlToValidate="address4" Display="Dynamic" runat="server" ErrorMessage="Invalid Address Line" ValidationExpression="^[a-zA-Z''-'\s]{1,40}$"></asp:RegularExpressionValidator>
+                        <asp:TextBox runat="server" ID="address5">Address Line 5</asp:TextBox><br />
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator5" ControlToValidate="address5" Display="Dynamic" runat="server" ErrorMessage="Invalid Address Line" ValidationExpression="^[a-zA-Z''-'\s]{1,40}$"></asp:RegularExpressionValidator>
+                        <asp:TextBox runat="server" ID="state">State</asp:TextBox><br />
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator7" ControlToValidate="state" Display="Dynamic" runat="server" ErrorMessage="Invalid State" ValidationExpression="^[a-zA-Z''-'\s]{1,40}$"></asp:RegularExpressionValidator>
+                        <asp:TextBox runat="server" ID="county">County</asp:TextBox><br />
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator8" ControlToValidate="county" Display="Dynamic" runat="server" ErrorMessage="Invalid County" ValidationExpression="^[a-zA-Z''-'\s]{1,40}$"></asp:RegularExpressionValidator>
+                        <asp:TextBox runat="server" ID="country">Country</asp:TextBox><br />
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator9" ControlToValidate="country" Display="Dynamic" runat="server" ErrorMessage="Invalid Country" ValidationExpression="^[a-zA-Z''-'\s]{1,40}$"></asp:RegularExpressionValidator>
+                        <asp:TextBox runat="server" ID="postcode">Postcode</asp:TextBox><br />
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator10" ControlToValidate="postcode" Display="Dynamic" runat="server" ErrorMessage="Invalid Postcode" ValidationExpression="[A-Za-z0-9'\.\-\s\,]"></asp:RegularExpressionValidator>
+                    </footer>
+                </div>
+            </section>
+            <section id="accountType" class="two">
+                <div class="container">
+                    <header>
+                        <h2>Account Type</h2>
+                    </header>
+                    <footer>
+                        <asp:DropDownList runat="server" ID="accountTypes">
+                            <asp:ListItem>Standard</asp:ListItem>
+                            <asp:ListItem>Premium</asp:ListItem>
+                            <br />
+                        </asp:DropDownList>
+                        <% int accountType = accountTypes.SelectedIndex; %>
                         <div class="12u$">
-                            <input type="submit" value="Add" />
+                            <input type="submit" value="Create Client" />
                         </div>
-                    </div>
-                </form>
-            </div>
-        </section>
+                    </footer>
+                </div>
+            </section>
+        </form>
     </div>
     <!-- Footer -->
     <div id="footer">

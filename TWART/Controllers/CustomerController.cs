@@ -102,6 +102,17 @@ namespace TWART.Controllers
             return Redirect("/404.html");
         }
 
+        public ActionResult Create(){
+            // Null handling
+            if (Session["loggedInState"] == null)
+            {
+                return Redirect("/403.html");
+            }
+            else
+            {
+                return View();
+            }
+        }
 
         // View individual customer details
         public ActionResult editPage()
