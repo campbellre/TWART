@@ -11,7 +11,7 @@ namespace TWART.Controllers
     public class AddressController : System.Web.Mvc.Controller
     {
         // Controller for modification of an address
-        public ActionResult EditAddress()
+        public ActionResult edit()
         {
             // Null handling
             if (Session["loggedInState"] == null)
@@ -115,7 +115,7 @@ namespace TWART.Controllers
             }
         }
 
-        public ActionResult ViewAddress()
+        public ActionResult view()
         {
             // Null handling
             if (Session["loggedInState"] == null)

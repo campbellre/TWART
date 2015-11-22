@@ -44,16 +44,16 @@
         <section id="admin" class="top">
             <div class="container">
                 <header>
-                    <h2>Change Company Name</h2>
+                    <h2>Change Employee Details</h2>
                 </header>
             </div>
         </section>
         <!-- Edit Here -->
         <section id="edit" class="two">
             <div class="container">
-                <% Customer edit = (Customer)Model; %>
+                <% Employee edit = (Employee)Model; %>
                 <form action="/employee/edit" method="POST">
-                    <input type="hidden" name="id" value="<%= edit.ID %>" />
+                    <input type="hidden" name="id" value="<%= edit.Id %>" />
                     <div class="row">
                         <div class="12u$">
                             <input type="submit" value="Update" />

@@ -203,7 +203,7 @@ namespace TWART.Models
                     string query = "GetEmployee";
                     var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
 
-                    cmd.Parameters.AddWithValue("EmployeID", ID);
+                    cmd.Parameters.AddWithValue("EmployeeID", ID);
 
                     connect.Open();
 
@@ -216,9 +216,14 @@ namespace TWART.Models
                         emp.DOB = DateTime.Parse(reader["DOB"].ToString());
                         emp.ContactNumber = reader["Contact_Number"].ToString();
                         emp.Startdate = DateTime.Parse(reader["Start_Date"].ToString());
-                        emp.EndDate = DateTime.Parse(reader["End_Date"].ToString());
+                        try
+                        {
+                            emp.EndDate = DateTime.Parse(reader["End_Date"].ToString());
+                        }catch(Exception){}
                         emp.Dept = (int)reader["Department_ID"];
-                        emp.Depot = (int)reader["Depot_ID"];
+                        try{
+                            emp.Depot = (int)reader["Depot_ID"];
+                        }catch(Exception){}
                         emp.Role = (int)reader["Role_ID"];
                     }
 

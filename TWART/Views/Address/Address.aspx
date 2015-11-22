@@ -28,7 +28,7 @@
             <!-- Nav -->
             <nav id="nav">
                 <ul>
-                    <li><a href="adminIndex" id="foobar-link"><span class="icon fa-hand-o-left">Control Panel</span></a></li>
+                    <li><a href="/admin" id="foobar-link"><span class="icon fa-hand-o-left">Control Panel</span></a></li>
                 </ul>
             </nav>
         </div>
@@ -62,9 +62,8 @@
                             <td><%= Html.Encode(address.LineOne) %></td>
                             <td><%= Html.Encode(address.LineTwo) %></td>
                             <td><%= Html.Encode(address.PostalCode) %></td>
-                            <td><%= Html.ActionLink("View", "ViewAddress", new { id = address.ID })%></td>
+                            <td><%= Html.ActionLink("View", "view", new { id = address.ID })%></td>
                             <td><%= Html.ActionLink("Edit", "edit", new { id = address.ID })%></td>
-                            <td><%= Html.ActionLink("Delete", "delete", new { id = address.ID })%></td>
                         </tr>
                         <% } %>
                     </table>
