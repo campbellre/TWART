@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="adminIndex.aspx.cs" Inherits="TWART.Views.Admin.IndexView" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="adminIndex.aspx.cs" Inherits="TWART.Views.Index.IndexView" %>
 
 <%@ Import Namespace="System.Web.Mvc.Html" %>
 <%@ Import Namespace="TWART.DataObjects" %>
@@ -32,7 +32,7 @@
                     <li><a href="#user" id="user-link" class="skel-layers-ignoreHref"><span class="icon fa-unlock-alt">User System</span></a></li>
                     <li><a href="#address" id="address-link" class="skel-layers-ignoreHref"><span class="icon fa-map-marker">Address System</span></a></li>
                     <li><a href="#banking" id="banking-link" class="skel-layers-ignoreHref"><span class="icon fa-credit-card">Banking System</span></a></li>
-                    <li><a href="#accounts" id="accounts-link" class="skel-layers-ignoreHref"><span class="icon fa-clone">Accounts System</span></a></li>
+                    <!--<li><a href="#accounts" id="accounts-link" class="skel-layers-ignoreHref"><span class="icon fa-clone">Accounts System</span></a></li>-->
                     <li><a href="#employees" id="employees-link" class="skel-layers-ignoreHref"><span class="icon fa-industry">Employees System</span></a></li>
                     <li><a href="/Admin/Logout" id="logout"><span class="icon fa-hand-o-left">Log Out</span></a></li>
                 </ul>
@@ -93,12 +93,12 @@
                 </div>
             </section>
             <!-- Accounts -->
-            <section id="accounts" class="four">
+            <!--<section id="accounts" class="four">
                 <div class="container">
                     <a href="Accounts">Accounts</a>
                     <p>Use this control to create, retrieve, update or delete on our accounts system.</p>
                 </div>
-            </section>
+            </section>-->
             <!-- Employees -->
             <section id="employees" class="two">
                 <div class="container">

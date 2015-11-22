@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace TWART.Views.Client
+namespace TWART.Views.Index
 {
-    public partial class IndexView : System.Web.Mvc.ViewPage
+    public partial class ClientIndex : System.Web.Mvc.ViewPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

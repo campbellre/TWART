@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace TWART.Views.Admin
+namespace TWART.Views.Index
 {
     public partial class IndexView : System.Web.Mvc.ViewPage
     {

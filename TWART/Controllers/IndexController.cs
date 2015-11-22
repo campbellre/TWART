@@ -11,12 +11,28 @@ namespace TWART.Controllers
 
         public ActionResult AdminIndex()
         {
-            return View();
+            // Ensures logged in
+            if (Session["loggedInState"] == null)
+            {
+                return Redirect("/403.html");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         public ActionResult ClientIndex()
         {
-            return View();
+            // Ensures logged in
+            if (Session["loggedInState"] == null)
+            {
+                return Redirect("/403.html");
+            }
+            else
+            {
+                return View();
+            }
         }
 	}
 }

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Address.aspx.cs" Inherits="TWART.Views.Admin.Address" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Address.aspx.cs" Inherits="TWART.Views.Address.Address" %>
 
 
 <%@ Import Namespace="System.Web.Mvc.Html" %>
@@ -63,7 +63,7 @@
                             <td><%= Html.Encode(address.LineTwo) %></td>
                             <td><%= Html.Encode(address.PostalCode) %></td>
                             <td><%= Html.ActionLink("View", "view", new { id = address.ID })%></td>
-                            <td><%= Html.ActionLink("Edit", "edit", new { id = address.ID })%></td>
+                            <td><%= Html.ActionLink("Edit", "editPage", new { id = address.ID })%></td>
                         </tr>
                         <% } %>
                     </table>

@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TWART.Views.Admin {
+namespace TWART.Views.Index {
     
     
-    public partial class clientView {
+    public partial class ClientIndex {
         
         /// <summary>
         /// adminForm control.

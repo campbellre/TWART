@@ -53,6 +53,28 @@ namespace TWART.Controllers
             }
         }
 
+        public ActionResult editPage() {
+            // Null handling
+            if (Session["loggedInState"] == null)
+            {
+                return Redirect("/403.html");
+            }
+            else {
+
+                // Get the ID as a parameter
+                var id = int.Parse(Url.RequestContext.RouteData.Values["id"].ToString());
+
+                AddressModel addressModel = new AddressModel();
+
+                Address address = addressModel.SearchAddress(id);
+
+                return View(address);
+
+            }        
+        }
+
+
+
         // Deletes an address
         public ActionResult Delete()
         {
