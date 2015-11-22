@@ -67,6 +67,7 @@ namespace TWART.Controllers
             {
                 // Establishes models
                 AccountModel clientModel = new AccountModel();
+                CustomerModel customerModel = new CustomerModel();
                 List<Account> accountList = new List<Account>();
                 
                 // Get the ID requested
@@ -76,6 +77,11 @@ namespace TWART.Controllers
                 customer.ID = theID;
 
                 accountList = clientModel.SearchAccounts(customer);
+
+                foreach(var account in accountList)
+                {
+                    account.Customer = customerModel.SearchCustomers(account.CustomerID);
+                }
 
                 return View(accountList);
             }

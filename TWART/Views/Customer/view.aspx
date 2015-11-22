@@ -45,7 +45,7 @@
         <section id="admin" class="top">
             <div class="container">
                 <header>
-                    <h2>Client's Full Addresses</h2>
+                    <h2>Client's Accounts</h2>
                 </header>
             </div>
         </section>
@@ -56,9 +56,6 @@
                 <table>
                     <% List<Account> viewCustomer = (List<Account>)Model;
 
-                       if (viewCustomer.Count > 0)
-                       {
-
                            foreach (var account in Model)
                            { %>
 
@@ -68,12 +65,6 @@
                             </tr>
                             <% }
                     
-                    }else{ %>
-
-                    <tr>
-                        <td><%= Html.Encode("No Account Associated with this Client")%></td>
-                    </tr>
-                    }    
                     %>
                     
                 </table>

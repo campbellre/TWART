@@ -61,6 +61,21 @@
                 </div>
             </section>
 
+            <!-- View -->
+            <section id="controls" class="two">
+                <div class="container">
+                    <table>
+                        <% foreach (var order in Model)
+                           { %>
+                        <tr>
+                            <td><%= Html.Encode(order.) %></td>
+                            <td><%= Html.ActionLink("Edit", "edit", new { id = order.ID })%></td>
+                        </tr>
+                        <% } %>
+                    </table>
+                </div>
+            </section>
+
         </div>
     </form>
     <!-- Footer -->
