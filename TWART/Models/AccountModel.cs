@@ -228,7 +228,7 @@ namespace TWART.Models
                     cmd.Parameters.AddWithValue("AccountID", null);
                     cmd.Parameters.AddWithValue("ContactID", null);
                     cmd.Parameters.AddWithValue("AccountTypeID", null);
-                    cmd.Parameters.AddWithValue("CustomerID", null);
+                    cmd.Parameters.AddWithValue("BankingID", null);
 
 
                     connect.Open();
