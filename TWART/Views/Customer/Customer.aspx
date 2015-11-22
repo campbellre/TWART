@@ -56,7 +56,7 @@
             <!-- New -->
             <section id="newClient" class="three">
                 <div class="container">
-                    <a href="create">Create a new Client</a>
+                    <a href="/User/CreateEmployee">Create a new Client</a>
                     <p>Use this control to create a our client on our system.</p>
                 </div>
             </section>

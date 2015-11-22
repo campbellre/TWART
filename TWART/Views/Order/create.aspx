@@ -42,33 +42,36 @@
     </div>
     <!-- Main -->
     <div id="main">
-        <form action="/order/create" method="POST" runat="server">
-            <!-- Client View -->
-            <section id="newClient" class="top">
-                <div class="container">
-                    <header>
-                        <h2>Create A New Order</h2>
-                    </header>
-                </div>
-            </section>
-            <!-- Controls -->
-            <section id="newOrder" class="two">
+        <!-- Client View -->
+        <section id="newClient" class="top">
+            <div class="container">
+                <header>
+                    <h2>Create A New Order</h2>
+                </header>
+            </div>
+        </section>
+        <!-- Controls -->
+
+        <section id="newOrder" class="two">
+            <form action="/order/create" method="POST" runat="server">
                 <div class="container">
                     <table>
-                        <tr>
-                            <% foreach (var addresses in Model)
-                               {
-                                   //creates list items
-                                   ListItem item = new ListItem(addresses.LineOne.ToString() + ", " + addresses.LineTwo.ToString() + ", " + addresses.PostalCode.ToString());
-                                   address1.Items.Add(item);
-                                   address2.Items.Add(item);
-                               } %>
-                            <asp:DropDownList runat="server" ID="address1" DataValueField="Source Address"></asp:DropDownList>
-                            <asp:DropDownList runat="server" ID="address2" DataValueField="Destination Address"></asp:DropDownList>
+                        <% foreach (var addresses in Model)
+                           {
+                               //creates list items
+                               ListItem item = new ListItem(addresses.LineOne.ToString() + ", " + addresses.LineTwo.ToString() + ", " + addresses.PostalCode.ToString());
+                               address1.Items.Add(item);
+                               address2.Items.Add(item);
+                           } %>
+                        <tr title="Source Address:">
+                            <asp:DropDownList runat="server" ID="address1"></asp:DropDownList>
+                        </tr>
+                        <tr title="Destination Address:">
+                            <asp:DropDownList runat="server" ID="address2"></asp:DropDownList>
                         </tr>
                         <tr>
                             <asp:TextBox runat="server" ID="weight">Weight (Grams)</asp:TextBox>
-                            <asp:RegularExpressionValidator ID="weightConfirm" ControlToValidate="weight" runat="server" ErrorMessage="Invalid Weight" ValidationExpression="\d+"></asp:RegularExpressionValidator>
+                            <asp:RegularExpressionValidator ID="weightConfirm" ControlToValidate="weight" BackColor="Red" runat="server" ErrorMessage="Invalid Weight" ValidationExpression="\d+"></asp:RegularExpressionValidator>
                             <asp:TextBox runat="server" ID="height">Height (CM)</asp:TextBox>
                             <asp:RegularExpressionValidator ID="heightConfirm" ControlToValidate="height" runat="server" ErrorMessage="Invalid Height" ValidationExpression="\d+"></asp:RegularExpressionValidator>
                             <asp:TextBox runat="server" ID="width">Width (CM)</asp:TextBox>
@@ -101,8 +104,8 @@
                         </div>
                     </div>
                 </div>
-            </section>
-        </form>
+            </form>
+        </section>
     </div>
     <!-- Footer -->
     <div id="footer">
@@ -112,12 +115,12 @@
         </ul>
     </div>
     <!-- Scripts -->
-    <script src="../../assets/js/jquery.min.js"></script>
-    <script src="../../assets/js/jquery.scrolly.min.js"></script>
-    <script src="../../assets/js/jquery.scrollzer.min.js"></script>
-    <script src="../../assets/js/skel.min.js"></script>
-    <script src="../../assets/js/util.js"></script>
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/jquery.scrolly.min.js"></script>
+    <script src="/assets/js/jquery.scrollzer.min.js"></script>
+    <script src="/assets/js/skel.min.js"></script>
+    <script src="/assets/js/util.js"></script>
     <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-    <script src="../../assets/js/main.js"></script>
+    <script src="/assets/js/main.js"></script>
 </body>
 </html>

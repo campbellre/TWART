@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace TWART.Views.Admin
+namespace TWART.Views.Bank
 {
-    public partial class Accounts : System.Web.Mvc.ViewPage<IEnumerable<Accounts>>
+    public partial class bankdelete : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

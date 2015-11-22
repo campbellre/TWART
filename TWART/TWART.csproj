@@ -133,6 +133,8 @@
     <Content Include="login.html" />
     <Content Include="Views\Address\Address.aspx" />
     <Content Include="Views\Address\view.aspx" />
+    <Content Include="Views\Bank\bankdelete.aspx" />
+    <Content Include="Views\Bank\bankedit.aspx" />
     <Content Include="Views\Employee\edit.aspx" />
     <Content Include="Views\Order\create.aspx" />
     <Content Include="Views\Order\orders.aspx" />
@@ -176,10 +178,7 @@
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\Register.cs" />
     <Compile Include="Controllers\RoleController.cs" />
-    <Compile Include="Handlers\DepartmentHandler.cs" />
-    <Compile Include="Handlers\DepotHandler.cs" />
     <Compile Include="Handlers\EmployeeHandler.cs" />
-    <Compile Include="Handlers\RoleHandler.cs" />
     <Compile Include="Handlers\TransactionController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DataObjects\Account.cs" />
@@ -245,6 +244,20 @@
     </Compile>
     <Compile Include="Views\Address\view.aspx.designer.cs">
       <DependentUpon>view.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Bank\bankdelete.aspx.cs">
+      <DependentUpon>bankdelete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Bank\bankdelete.aspx.designer.cs">
+      <DependentUpon>bankdelete.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Bank\bankedit.aspx.cs">
+      <DependentUpon>bankedit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Bank\bankedit.aspx.designer.cs">
+      <DependentUpon>bankedit.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Order\create.aspx.cs">
       <DependentUpon>create.aspx</DependentUpon>
@@ -395,9 +408,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Account\" />
-    <Folder Include="Views\Contact\" />
-    <Folder Include="Views\Depot\" />
     <Folder Include="Views\Message\" />
     <Folder Include="Views\Transaction\" />
   </ItemGroup>
