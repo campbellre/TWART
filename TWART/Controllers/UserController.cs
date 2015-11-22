@@ -39,50 +39,50 @@ namespace TWART.Controllers
 
                 // Extract for bank details
                 String sortCode = Request.Form["sortCode"];
-                int accountNumber = int.Parse(Request.Form["accountNum"]);
+                int accountNumber = int.Parse(Request.Form["accountNumber"]);
 
                 // Extract for client details
                 String username = Request.Form["username"];
-                String password = Request.Form["password"];
+                String password = Request.Form["password1"];
                 String name = Request.Form["clientName"];
 
                 // Extract contact details
-                String forename = Request.Form["forename"];
-                String surname = Request.Form["surname"];
-                String position = Request.Form["position"];
-                String phoneNumber = Request.Form["phoneNum"];
+                String forename = Request.Form["contactForename"];
+                String surname = Request.Form["contactSurname"];
+                String position = Request.Form["contactPosition"];
+                String phoneNumber = Request.Form["contactPhone"];
 
                 // Extract bank address details
-                String blineOne = Request.Form["bankL1"];
-                String blineTwo = Request.Form["bankL2"]; ;
-                String blineThree = Request.Form["bankL3"];
-                String blineFour = Request.Form["bankL4"];
-                String blineFive = Request.Form["bankL5"];
-                String bcState = Request.Form["bankState"];
-                String bcounty = Request.Form["bankCounty"];
-                String bcountry = Request.Form["bankCountry"];
-                String bpostalCode = Request.Form["bankPostalCode"];
+                //String blineOne = Request.Form["bankL1"];
+                //String blineTwo = Request.Form["bankL2"]; ;
+                //String blineThree = Request.Form["bankL3"];
+                //String blineFour = Request.Form["bankL4"];
+                //String blineFive = Request.Form["bankL5"];
+                //String bcState = Request.Form["bankState"];
+                //String bcounty = Request.Form["bankCounty"];
+                //String bcountry = Request.Form["bankCountry"];
+                //String bpostalCode = Request.Form["bankPostalCode"];
 
                 // Extract for customer details
-                String compName = Request.Form["compName"];
+                String compName = Request.Form["clientName"];
 
                 // Extract customer address details
-                String clineOne = Request.Form["custL1"];
-                String clineTwo = Request.Form["custL2"]; ;
-                String clineThree = Request.Form["custL3"];
-                String clineFour = Request.Form["custL4"];
-                String clineFive = Request.Form["custL5"];
-                String ccState = Request.Form["custState"];
-                String ccounty = Request.Form["custCounty"];
-                String ccountry = Request.Form["custCountry"];
-                String cpostalCode = Request.Form["custPostalCode"];
+                String clineOne = Request.Form["address1"];
+                String clineTwo = Request.Form["address2"]; ;
+                String clineThree = Request.Form["address3"];
+                String clineFour = Request.Form["address4"];
+                String clineFive = Request.Form["address5"];
+                String ccState = Request.Form["state"];
+                String ccounty = Request.Form["county"];
+                String ccountry = Request.Form["country"];
+                String cpostalCode = Request.Form["postcode"];
 
                 // Creates objects for user
-                int bankAddressID = addHand.create(blineOne, blineTwo, blineThree, blineFour, blineFive, bcState,
-                                                   bcounty, bcountry, bpostalCode);
+                //int bankAddressID = addHand.create(blineOne, blineTwo, blineThree, blineFour, blineFive, bcState,
+                //                                   bcounty, bcountry, bpostalCode);
                 int custAddressID = addHand.create(clineOne, clineTwo, clineThree, clineFour, clineFive, ccState,
                                                    ccounty, ccountry, cpostalCode);
-                int bankID = banHand.create(bankAddressID, sortCode, accountNumber);
+                int bankID = banHand.create(sortCode, accountNumber);
                 int contactID = conHand.create(forename, surname, position, phoneNumber);
                 int customerID = cusHand.create(compName, custAddressID);
                 int accountID = accHand.create(accountType, bankID, customerID, contactID);

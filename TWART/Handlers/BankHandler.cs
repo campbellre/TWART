@@ -15,7 +15,7 @@ namespace TWART.Handlers
         {}
 
         // Creates a bank
-        public int create(int addressID, String sortCode, int accountNumber)
+        public int create( String sortCode, int accountNumber)
         {
             // Establishes model
             BankingModel bankModel = new BankingModel();
@@ -24,7 +24,6 @@ namespace TWART.Handlers
             Bank newBank = new Bank();
 
             // Stored details for the bank
-            newBank.Address_ID = addressID;
             newBank.SortCode = sortCode;
             newBank.AccountNumber = accountNumber;
 

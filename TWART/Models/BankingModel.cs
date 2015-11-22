@@ -30,10 +30,9 @@ namespace TWART.Models
 
                     try
                     {
-                        string query = "NewBanking";
+                        string query = "NewBank";
                         var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
 
-                        cmd.Parameters.AddWithValue("AddressID", b.Address_ID);
                         cmd.Parameters.AddWithValue("SortCode", b.SortCode);
                         cmd.Parameters.AddWithValue("AccountNumber", b.ID);
 

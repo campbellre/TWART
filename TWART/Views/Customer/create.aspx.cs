@@ -13,6 +13,12 @@ namespace TWART.Views.Customer
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            foreach (var atype in Model)
+            {
+                ListItem item = new ListItem(atype.Name.ToString());
+                item.Value = atype.ID.ToString();
+                accountTypes.Items.Add(item);
+            }
 
         }
     }

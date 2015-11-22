@@ -111,19 +111,23 @@
                     </footer>
                 </div>
             </section>
+
+            <section id="bankDetails" class="five">
+                <header>
+                    <h2>Bank Details</h2>
+                </header>
+                <footer>
+                    <asp:TextBox runat="server" ID="accountNumber">Account Number</asp:TextBox><br />
+                    <asp:TextBox runat="server" ID="sortCode">Sort Code</asp:TextBox>
+                </footer>
+            </section>
+
             <section id="accountType" class="two">
                 <div class="container">
                     <header>
                         <h2>Account Type</h2>
                     </header>
                     <footer>
-                        <% foreach (var atype in Model)
-                           {
-                               ListItem item = new ListItem( atype.Name.ToString() );
-                               item.Value = atype.ID.ToString();
-                               accountTypes.Items.Add(item);
-                           }
-                        %>
                         <asp:DropDownList runat="server" ID="accountTypes">
                         </asp:DropDownList>
                         <div class="12u$">
@@ -133,6 +137,7 @@
                     </footer>
                 </div>
             </section>
+
         </form>
     </div>
     <!-- Footer -->
