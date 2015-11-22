@@ -116,25 +116,9 @@ namespace TWART.Models
                         cmd.Parameters.AddWithValue("EmployeeID", ID);
 
                         cmd.ExecuteNonQuery();
-                        transaction.Commit();
 
-                        connect.Close();
-                    }
-                    catch (InvalidOperationException ioException)
-                    {
-                        transaction.Rollback();
-                        connect.Close();
-                    }
-                }
-
-
-                using (MySqlTransaction transaction = connect.BeginTransaction())
-                {
-
-                    try
-                    {
-                        string query = "DeleteEmployee";
-                        var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
+                        query = "DeleteEmployee";
+                        cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
 
                         cmd.Parameters.AddWithValue("EmployeeID", ID);
 
