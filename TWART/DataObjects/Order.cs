@@ -17,6 +17,7 @@ namespace TWART.DataObjects
         public int SourceAddressID { get; set; }
         public int AccountID { get; set; }
         public DateTime DesiredDeliveryDate { get; set; }
+        public Decimal TotalCost { get; set; }
 
     
     }
