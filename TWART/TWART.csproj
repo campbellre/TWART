@@ -390,9 +390,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Account\" />
-    <Folder Include="Views\Contact\" />
-    <Folder Include="Views\Depot\" />
     <Folder Include="Views\Message\" />
     <Folder Include="Views\Transaction\" />
   </ItemGroup>

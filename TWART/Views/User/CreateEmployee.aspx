@@ -61,7 +61,7 @@
             <input type="date" name="DOB" value="DOB"/>
             <input type="text" name="ContactNumber" value="Contact Number"/>
             <input type="date" name="Password" value="Password"/>
-            <input type="number" name="PenisSize" value="Penis Size"/>
+
             <!-- drop down for the role -->
             <% foreach (Role role in Model)
                {
@@ -76,7 +76,7 @@
             <input type="text" name="LineThree" value="Address Line 1" />
             <input type="text" name="LineFour" value="Address Line 1" />
             <input type="text" name="LineFive" value="Address Line 1" />
-            <input type="text" name="State" vcalue="State" />
+            <input type="text" name="State" value="State" />
             <input type="text" name="County" value="County" />
             <input type="text" name="Country" value="Country" />
             <input type="text" name="postalCode" value="Postal Code" />
