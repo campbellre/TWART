@@ -55,7 +55,17 @@
             <section id="controls" class="two">
                 <div class="container">
                     <table>
-                        <tr><th><h3>ADDRESS ID</h3></th><th><h3>SORTCODE</h3></th><th><h3>ACCOUNT NUMBER</h3></th></tr>
+                        <tr>
+                            <th>
+                                <h3>ADDRESS ID</h3>
+                            </th>
+                            <th>
+                                <h3>SORTCODE</h3>
+                            </th>
+                            <th>
+                                <h3>ACCOUNT NUMBER</h3>
+                            </th>
+                        </tr>
                         <% foreach (var bank in Model)
                            { %>
                         <tr>
@@ -68,7 +78,7 @@
                         <% } %>
                     </table>
                 </div>
-             </section>
+            </section>
         </div>
     </form>
     <!-- Footer -->
