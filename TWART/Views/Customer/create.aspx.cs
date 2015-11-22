@@ -9,7 +9,7 @@ using TWART.DataObjects;
 
 namespace TWART.Views.Customer
 {
-    public partial class newCustomerView : System.Web.Mvc.ViewPage<IEnumerable<DataObjects.Address>>
+    public partial class newCustomerView : System.Web.Mvc.ViewPage<IEnumerable<DataObjects.Account_Type>>
     {
         protected void Page_Load(object sender, EventArgs e)
         {

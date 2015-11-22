@@ -117,11 +117,15 @@
                         <h2>Account Type</h2>
                     </header>
                     <footer>
+                        <% foreach (var atype in Model)
+                           {
+                               ListItem item = new ListItem( atype.Name.ToString() );
+                               item.Value = atype.ID.ToString();
+                               accountTypes.Items.Add(item);
+                           }
+                        %>
                         <asp:DropDownList runat="server" ID="accountTypes">
-                            <asp:ListItem>Standard</asp:ListItem>
-                            <asp:ListItem>Premium</asp:ListItem>
                         </asp:DropDownList>
-                        <% int accountType = accountTypes.SelectedIndex; %>
                         <div class="12u$">
                             <br />
                             <input type="submit" value="Create Client" />

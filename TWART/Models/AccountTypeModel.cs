@@ -170,10 +170,10 @@ namespace TWART.Models
                     while (reader.Read())
                     {
                         var accountType = new Account_Type();
-                        accountType.ID = int.Parse(reader["Account_Type_ID "].ToString());
+                        accountType.ID = int.Parse(reader["Account_Type_ID"].ToString());
                         accountType.Name = reader["Account_Name"].ToString();
                         accountType.Benefit = reader["Benefit"].ToString();
-                        accountType.Cost = decimal.Parse(reader["Cost "].ToString());
+                        accountType.Cost = decimal.Parse(reader["Cost"].ToString());
 
 
 

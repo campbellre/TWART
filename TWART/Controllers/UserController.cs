@@ -35,7 +35,7 @@ namespace TWART.Controllers
                 CustomerHandler cusHand = new CustomerHandler();
 
                 // Extract for account details
-                int accountType = int.Parse(Request.Form["accountType"]);
+                int accountType = int.Parse(Request.Form["accountTypes"]);
 
                 // Extract for bank details
                 String sortCode = Request.Form["sortCode"];

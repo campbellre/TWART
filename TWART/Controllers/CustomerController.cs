@@ -101,7 +101,11 @@ namespace TWART.Controllers
             }
             else
             {
-                return View();
+                AccountTypeModel typeModel = new AccountTypeModel();
+
+                List<Account_Type> acounttypeList = typeModel.ListAccounts();
+
+                return View(acounttypeList);
             }
         }
 
