@@ -9,7 +9,7 @@ using TWART.DataObjects;
 
 namespace TWART.Views.Order
 {
-    public partial class newOrderVeiw : System.Web.Mvc.ViewPage<IEnumerable<DataObjects.Address>>
+    public partial class newOrderView : System.Web.Mvc.ViewPage<IEnumerable<DataObjects.Address>>
     {
         protected void Page_Load(object sender, EventArgs e)
         {

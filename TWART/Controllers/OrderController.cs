@@ -60,8 +60,28 @@ namespace TWART.Controllers
                 String name = Request.Form["goodsDescriptor"];
                 String handling = Request.Form["options"];
 
+
+                String deliveryType = Request.Form["deliveryBands"];
+
                 // Stored details for order
-                int deliveryBand = int.Parse(Request.Form["deliveryBand"]);
+                int deliveryBand = 0;
+
+                switch (deliveryType) 
+                { 
+                    case "Next Day Delivery":
+                        deliveryBand = 1;
+                        break;
+                    case "Express 1-2 Days":
+                        deliveryBand = 2;
+                        break;
+                    case "Standard 3-5 Days":
+                        deliveryBand = 3;
+                        break;
+                    case "Basic 5-10 Days":
+                        deliveryBand = 4;
+                        break;
+                }
+
 
                 // Holds the order objects
                 Order newOrder = new Order();
