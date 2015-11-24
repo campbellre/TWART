@@ -29,7 +29,7 @@ namespace TWART.Models
             {
                 try
                 {
-                    string query = "LoggingIn";
+                    string query = "ClientLoggingIn";
                     var cmd = new MySqlCommand(query, connect) { CommandType = CommandType.StoredProcedure };
 
                     cmd.Parameters.AddWithValue("UsersName", u.Username);

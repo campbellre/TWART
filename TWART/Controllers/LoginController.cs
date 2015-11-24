@@ -17,7 +17,8 @@ namespace TWART.Controllers
         {  
 
             LoginModel loginModel = new LoginModel();
-
+            ClientUserModel clientmModel = new ClientUserModel();
+            
             // To store login details
             String username;
             String password;
@@ -30,15 +31,34 @@ namespace TWART.Controllers
             User thisUser = new User();
             thisUser.username = username;
             thisUser.password = password;
+            ClientUser client = new ClientUser();
+            client.Username = username;
+            client.Password = password;
 
  
             // get Account Type / Access levels from Database
-            LoggedIn logState = loginModel.Login(thisUser);
+            LoggedIn logState;
+            logState = loginModel.Login(thisUser);
+
+            if (logState.State)
+            {
+                Session["loggedInState"] = logState.State;
+                Session["username"] = thisUser.username;
+                Session["userID"] = logState.UserID;
+                Session["Type"] = "Employee";
+            }
+            else
+            {
+                logState = clientmModel.Login(client);
+
+                Session["loggedInState"] = logState.State;
+                Session["username"] = client.Username;
+                Session["userID"] = logState.UserID;
+                Session["Type"] = "Client";
+            }
 
             // Sets the Session variables
-            Session["loggedInState"] = logState.State;
-            Session["username"] = thisUser.username;
-            Session["userID"] = logState.UserID;
+
 
             // Acquire type of user from Ryan
             // Redirect based on user:
@@ -52,14 +72,17 @@ namespace TWART.Controllers
                 bool state = (bool)Session["loggedInState"];
                 if (state == true)  
                 {
-                    pageToDirectTo = "/Index/";
-                    if (logState.AccessLevel.Equals("Admin"))
+                    if (Session["Type"] == "Employee")
                     {
-                        pageToDirectTo = "/Index/adminIndex";
+                        pageToDirectTo = "/Index/";
+                        if (logState.AccessLevel.Equals("Admin"))
+                        {
+                            pageToDirectTo = "/Index/adminIndex";
+                        }
                     }
                     else
                     {
-                        pageToDirectTo = "/Index/clientIndex";// doesn't work
+                        pageToDirectTo = "/Index/clientIndex"; // doesn't work
                     }
                 }
                 else                              
