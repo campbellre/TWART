@@ -30,9 +30,9 @@
                     <li><a href="#client" id="client-link" class="skel-layers-ignoreHref"><span class="icon fa-user">Client System</span></a></li>
                     <li><a href="#order" id="order-link" class="skel-layers-ignoreHref"><span class="icon fa-sort">Order System</span></a></li>
                     <li><a href="#user" id="user-link" class="skel-layers-ignoreHref"><span class="icon fa-unlock-alt">User System</span></a></li>
-                    <!--<li><a href="#address" id="address-link" class="skel-layers-ignoreHref"><span class="icon fa-map-marker">Address System</span></a></li>-->
-                    <!--<li><a href="#banking" id="banking-link" class="skel-layers-ignoreHref"><span class="icon fa-credit-card">Banking System</span></a></li>-->
-                    <!--<li><a href="#accounts" id="accounts-link" class="skel-layers-ignoreHref"><span class="icon fa-clone">Accounts System</span></a></li>-->
+                    <li><a href="#address" id="address-link" class="skel-layers-ignoreHref"><span class="icon fa-map-marker">Address System</span></a></li>
+                    <li><a href="#banking" id="banking-link" class="skel-layers-ignoreHref"><span class="icon fa-credit-card">Banking System</span></a></li>
+                    <li><a href="#accounts" id="accounts-link" class="skel-layers-ignoreHref"><span class="icon fa-clone">Accounts System</span></a></li>
                     <li><a href="#employees" id="employees-link" class="skel-layers-ignoreHref"><span class="icon fa-industry">Employees System</span></a></li>
                     <li><a href="/Admin/Logout" id="logout"><span class="icon fa-hand-o-left">Log Out</span></a></li>
                 </ul>
@@ -79,19 +79,19 @@
                 </div>
             </section>
             <!-- Address -->
-            <!--<section id="address" class="two">
+            <section id="/Address/Address" class="two">
                 <div class="container">
                     <a href="/Address/Address">Address</a>
                     <p>Use this control to create, retrieve, update or delete on our address system.</p>
                 </div>
-            </section>-->
+            </section>
             <!-- Banking -->
-            <!---<section id="banking" class="three">
+            <section id="banking" class="three">
                 <div class="container">
-                    <a href="/Bank/view">Banking</a>
+                    <a href="/Bank/Bank">Banking</a>
                     <p>Use this control to create, retrieve, update or delete on our banking system.</p>
                 </div>
-            </section>-->
+            </section>
             <!-- Accounts -->
             <!--<section id="accounts" class="four">
                 <div class="container">

@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="TWART.Views.Role.Index" %>
+
 <%@ Import Namespace="System.Web.Mvc.Html" %>
 <%@ Import Namespace="System.Web.Routing" %>
 
@@ -17,7 +18,7 @@
                         Role Title
                     </thead>
                     <% foreach (var role in Model)
-                       { %>
+                        { %>
                     <tr>
                         <td>
                             <%= Html.Encode(role.Title)  %>

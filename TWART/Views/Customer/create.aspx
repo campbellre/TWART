@@ -111,7 +111,6 @@
                     </footer>
                 </div>
             </section>
-
             <section id="bankDetails" class="five">
                 <header>
                     <h2>Bank Details</h2>
@@ -121,7 +120,6 @@
                     <asp:TextBox runat="server" ID="sortCode">Sort Code</asp:TextBox>
                 </footer>
             </section>
-
             <section id="accountType" class="two">
                 <div class="container">
                     <header>
@@ -137,7 +135,6 @@
                     </footer>
                 </div>
             </section>
-
         </form>
     </div>
     <!-- Footer -->
