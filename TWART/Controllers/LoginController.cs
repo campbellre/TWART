@@ -72,7 +72,7 @@ namespace TWART.Controllers
                 bool state = (bool)Session["loggedInState"];
                 if (state == true)  
                 {
-                    if (Session["Type"] == "Employee")
+                    if (Session["Type"].ToString() == "Employee")
                     {
                         pageToDirectTo = "/Index/";
                         if (logState.AccessLevel.Equals("Admin"))

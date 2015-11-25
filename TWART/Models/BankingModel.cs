@@ -114,7 +114,10 @@ namespace TWART.Models
                     while (reader.Read())
                     {
                         bank.ID = int.Parse(reader["Banking_ID"].ToString());
-                        bank.Address_ID = int.Parse(reader["Address_ID"].ToString());
+                        if (reader["Address_ID"] == null)
+                        {
+                            bank.Address_ID = int.Parse(reader["Address_ID"].ToString());
+                        }
                         bank.SortCode = reader["Sort_Code"].ToString();
                         bank.AccountNumber = int.Parse(reader["Account_Number"].ToString());
 
