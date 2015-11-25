@@ -13,24 +13,23 @@
     <form id="index" runat="server">
         <div>
             <table>
+                <thead>
+                    <p>Role Title</p>
+                </thead>
+                <% foreach (var role in Model)
+                    { %>
                 <tr>
-                    <thead>
-                        Role Title
-                    </thead>
-                    <% foreach (var role in Model)
-                        { %>
-                    <tr>
-                        <td>
-                            <%= Html.Encode(role.Title)  %>
-                        </td>
-                        <td>
-                            <%= Html.ActionLink("Edit", "Edit", new { id = role.Id }) %>
-                        </td>
-                        <td>
-                            <%= Html.ActionLink("Delete", "Delete", new { id = role.Id }) %>
-                        </td>
-                    </tr>
-                    <% } %>
+                    <td>
+                        <%= Html.Encode(role.Title)  %>
+                    </td>
+                    <td>
+                        <%= Html.ActionLink("Edit", "Edit", new { id = role.Id }) %>
+                    </td>
+                    <td>
+                        <%= Html.ActionLink("Delete", "Delete", new { id = role.Id }) %>
+                    </td>
+                </tr>
+                <% } %>
             </table>
         </div>
     </form>

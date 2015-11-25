@@ -41,7 +41,7 @@
         </div>
     </div>
     <!-- Main -->
-    <form id="bankingForm" runat="server">
+    <form id="bankingForm" action="/Bank/view runat="server">
         <div id="main">
             <!-- Client View -->
             <section id="client" class="top">

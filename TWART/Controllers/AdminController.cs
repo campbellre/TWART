@@ -123,7 +123,7 @@ namespace TWART.Controllers
                 return View();
             }
         }
-        public ActionResult Banking()
+        public ActionResult Bank()
         {
             //If there is no valid session, return forbidden
             if (Session["loggedInState"] == null)
@@ -183,7 +183,7 @@ namespace TWART.Controllers
             loginMod.CreateUser(user);
             return Redirect("adminIndex");
         }
-        
+
 
         public ActionResult Delete()
         {

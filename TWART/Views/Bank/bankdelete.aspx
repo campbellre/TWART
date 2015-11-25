@@ -51,7 +51,7 @@
         <!-- Controls -->
         <section id="controls" class="two">
             <% Bank deleteCustomer = (Bank)Model; %>
-            <form action="/customer/delete" method="POST">
+            <form action="/Bank/delete" method="POST">
                 <div class="row">
                     <div class="12u$">
                         <input type="hidden" name="id" value="<%= deleteCustomer.ID %>" />

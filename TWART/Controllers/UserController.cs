@@ -104,12 +104,24 @@ namespace TWART.Controllers
                 int clientID = cModel.CreateClientUser(newClient);
 
                 // Return created department to view
-                return Redirect("Customer/Customer");
+                return Redirect("/Index/adminIndex");
             }
             else
             {
                 // If not logged in
                 return Redirect("/login.html");
+            }
+        }
+
+        public ActionResult Users()
+        {
+            if (Session["loggedInState"] == null)
+            {
+                return Redirect("/403.html");
+            }
+            else
+            {
+                return View();
             }
         }
 

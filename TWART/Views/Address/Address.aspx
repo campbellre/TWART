@@ -51,7 +51,6 @@
                     </header>
                 </div>
             </section>
-
             <!-- Controls -->
             <section id="controls" class="two">
                 <div class="container">

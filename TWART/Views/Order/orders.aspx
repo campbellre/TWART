@@ -27,7 +27,7 @@
             <!-- Nav -->
             <nav id="nav">
                 <ul>
-                    <li><a href="/admin" id="foobar-link"><span class="icon fa-hand-o-left">Control Panel</span></a></li>
+                    <li><a href="/Index/adminIndex" id="foobar-link"><span class="icon fa-hand-o-left">Control Panel</span></a></li>
                     <li><a href="#orders" id="ordersinfo" class="skel-layers-ignoreHref"><span class="icon fa-plus">New Order</span></a></li>
                 </ul>
             </nav>
@@ -52,7 +52,6 @@
                 </div>
             </section>
             <!-- Controls -->
-
             <!-- User -->
             <section id="orders" class="four">
                 <div class="container">
@@ -60,7 +59,6 @@
                     <p>Use this control to create a new order.</p>
                 </div>
             </section>
-
             <!-- View -->
             <section id="controls" class="two">
                 <div class="container">
@@ -68,14 +66,12 @@
                         <% foreach (var order in Model)
                            { %>
                         <tr>
-                            <td><%= Html.Encode(order.) %></td>
-                            <td><%= Html.ActionLink("Edit", "edit", new { id = order.ID })%></td>
+                            <td><%= Html.Encode("No. " + order.ID + "Delivery date:" + order.DesiredDeliveryDate + "Status" + order.OrderStatus) %></td>
                         </tr>
                         <% } %>
                     </table>
                 </div>
             </section>
-
         </div>
     </form>
     <!-- Footer -->

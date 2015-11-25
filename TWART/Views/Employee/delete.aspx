@@ -9,8 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
     <link rel="stylesheet" href="/assets/css/main.css" />
-    <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-    <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+    <!--[if lte IE 8]><link rel="stylesheet" href="/assets/css/ie8.css" /><![endif]-->
+    <!--[if lte IE 9]><link rel="stylesheet" href="/assets/css/ie9.css" /><![endif]-->
 </head>
 <body>
     <!-- Header -->
@@ -51,7 +51,7 @@
         <!-- Controls -->
         <section id="controls" class="two">
             <% Customer deleteEmployee = (Customer)Model; %>
-            <form action="/employee/delete" method="POST">
+            <form action="/Employee/delete" method="POST">
                 <div class="row">
                     <div class="12u$">
                         <input type="hidden" name="id" value="<%= deleteEmployee.ID %>" />

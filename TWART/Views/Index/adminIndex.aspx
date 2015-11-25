@@ -74,7 +74,7 @@
             <!-- User -->
             <section id="user" class="four">
                 <div class="container">
-                    <a href="/User/Users">Create New Admin User</a>
+                    <a href="/Users/Users">Create New Admin User</a>
                     <p>Use this control to create, retrieve, update or delete on our user system.</p>
                 </div>
             </section>

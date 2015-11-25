@@ -72,7 +72,6 @@
                             { %>
                         <tr>
                             <td><%= Html.Encode(employee.Lastname.ToUpper() + ", " + employee.Firstname) %></td>
-
                             <% if (employee.DepotO != null)
                             {%>
                             <td><%= Html.Encode(employee.DepotO.DepotName) %></td>
@@ -81,7 +80,6 @@
                             { %>
                             <td><%= Html.Encode("Unassigned") %></td>
                             <% } %>
-
                             <td><%= Html.Encode(employee.Department.Title) %></td>
                             <td><%= Html.Encode(employee.RoleO.Title) %></td>
                             <td><%= Html.ActionLink("Edit", "edit", new { id = employee.Id })%></td>

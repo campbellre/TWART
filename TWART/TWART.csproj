@@ -140,8 +140,8 @@
     <Content Include="Views\Order\create.aspx" />
     <Content Include="Views\Order\orders.aspx" />
     <Content Include="Views\Transaction\transactions.aspx" />
-    <Content Include="Views\User\CreateEmployee.aspx" />
-    <Content Include="Views\User\Users.aspx" />
+    <Content Include="Views\Users\CreateEmployee.aspx" />
+    <Content Include="Views\Users\Users.aspx" />
     <Content Include="Views\Customer\view.aspx" />
     <Content Include="Views\Bank\Bank.aspx" />
     <Content Include="Views\Bank\view.aspx" />
@@ -284,18 +284,18 @@
     <Compile Include="Views\Transaction\transactions.aspx.designer.cs">
       <DependentUpon>transactions.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\User\CreateEmployee.aspx.cs">
+    <Compile Include="Views\Users\CreateEmployee.aspx.cs">
       <DependentUpon>CreateEmployee.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\User\CreateEmployee.aspx.designer.cs">
+    <Compile Include="Views\Users\CreateEmployee.aspx.designer.cs">
       <DependentUpon>CreateEmployee.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\User\Users.aspx.cs">
+    <Compile Include="Views\Users\Users.aspx.cs">
       <DependentUpon>Users.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\User\Users.aspx.designer.cs">
+    <Compile Include="Views\Users\Users.aspx.designer.cs">
       <DependentUpon>Users.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Customer\view.aspx.cs">
@@ -418,9 +418,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Message\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resource1.resx">
       <Generator>ResXFileCodeGenerator</Generator>
